@@ -1,0 +1,109 @@
+security:
+    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+    password_hashers:
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+
+#    password_hashers:
+#        Symfony\Component\Security\Core\User\User: bcrypt
+#        App\Entity\User: bcrypt
+
+    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+    providers:
+        users_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+        in_memory:
+            memory:
+                users:
+                    adherent_cojobnantes:
+                        password: $2y$13$ckSFQrRCit3jstauIXvVhO6SqZpmpoPbpelfWArr4VlhoIensSM9.
+                        roles: ROLE_MEMBER
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        members:
+            pattern: ^/adherent
+            http_basic: ~
+            provider: in_memory
+
+        main:
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#the-firewall
+            lazy: true
+            provider: users_provider
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
+
+            form_login:
+                # "app_login" is the name of the route created previously
+                login_path: app_login
+                check_path: app_login
+                enable_csrf: true
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#the-firewall
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            switch_user: true
+
+    role_hierarchy:
+        ROLE_SUPER_ADMIN:
+            - ROLE_WEBMASTER
+        ROLE_WEBMASTER:
+            - ROLE_ADMIN_CONTACT_LIST
+            - ROLE_ADMIN_CONTACT_DELETE
+            - ROLE_ADMIN_USER_EDIT
+            - ROLE_ADMIN_ARTICLE_LIST
+            - ROLE_ADMIN_ARTICLE_EDIT
+            - ROLE_ADMIN_ARTICLE_CREATE
+            - ROLE_ADMIN_ARTICLE_DELETE
+            - ROLE_ADMIN_PROMO_LIST
+            - ROLE_ADMIN_PROMO_EDIT
+            - ROLE_ADMIN_PROMO_CREATE
+            - ROLE_ADMIN_PROMO_DELETE
+            - ROLE_ADMIN_EVENT_LIST
+            - ROLE_ADMIN_EVENT_EDIT
+            - ROLE_ADMIN_EVENT_CREATE
+            - ROLE_ADMIN_EVENT_DELETE
+            - ROLE_ADMIN_EVENTHASPICTURE_LIST
+            - ROLE_ADMIN_EVENTHASPICTURE_CREATE
+            - ROLE_ADMIN_EVENTHASPICTURE_EDIT
+            - ROLE_ADMIN_EVENTHASPICTURE_VIEW
+            - ROLE_ADMIN_EVENTHASPICTURE_DELETE
+            - ROLE_ADMIN_TESTIMONY_LIST
+            - ROLE_ADMIN_TESTIMONY_EDIT
+            - ROLE_ADMIN_TESTIMONY_CREATE
+            - ROLE_ADMIN_TESTIMONY_DELETE
+            - ROLE_ADMIN_MEDIA_LIST
+            - ROLE_ADMIN_MEDIA_CREATE
+            - ROLE_ADMIN_MEDIA_EDIT
+            - ROLE_ADMIN_MEDIA_VIEW
+            - ROLE_ADMIN_MEDIA_DELETE
+            - ROLE_MEMBER
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/admin/login, roles: PUBLIC_ACCESS  }
+        - { path: ^/admin/password, roles: PUBLIC_ACCESS  }
+        - { path: ^/admin, roles: ROLE_WEBMASTER }
+        - { path: ^/adherent, roles: ROLE_MEMBER }
+        - { path: ^/, roles: PUBLIC_ACCESS }
+
+when@test:
+    security:
+        password_hashers:
+            # By default, password hashers are resource intensive and take time. This is
+            # important to generate secure password hashes. In tests however, secure hashes
+            # are not important, waste resources and increase test times. The following
+            # reduces the work factor to the lowest possible values.
+            Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
+                algorithm: auto
+                cost: 4 # Lowest possible value for bcrypt
+                time_cost: 3 # Lowest possible value for argon
+                memory_cost: 10 # Lowest possible value for argon

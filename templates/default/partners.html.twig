@@ -1,0 +1,127 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}{{ 'partners.title'|trans }}{% endblock %}
+
+{% block description %}{{ 'partners.description'|trans }}{% endblock %}
+
+{% block canonical %}{{ absolute_url(path('partners')) }}{% endblock %}
+
+{% block content %}
+    <div class="one-page partners-page row parallax">
+        <div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 col-md-3 text-center">
+                        <a href="https://www.ecossolies.fr/" target="_blank" rel="noopener noreferrer">
+                            <img src="{{ asset('build/images/logo_Ecossolies.png') }}"
+                                 class="img-fluid"
+                                 alt="Les écossolies">
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p>
+                            Le réseau des Ecossolies a été créé en 2004 et regroupe plus de 600 associations, mutuelles,
+                            coopératives et entreprises à buts sociaux, qui se reconnaissent dans l'ESS (économie sociale et
+                            solidaire).
+                        </p>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 col-md-3 text-center">
+                        <a href="https://collectif-emploi.fr/" target="_blank" rel="noopener noreferrer">
+                            <img src="{{ asset('build/images/logo_collectif_emploi.png') }}"
+                                 class="img-fluid"
+                                 alt="Collectif emploi">
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p>
+                            Le Collectif Emploi de Nantes est un réseau d’une vingtaine de structures. Il accompagne
+                            des chercheurs d’emploi et des créateurs de projet vers l’emploi salarié et/ou la création
+                            d’entreprise. La volonté des structures membres est d’agir ensemble, en complément du
+                            service public de l’emploi afin de ne laisser personne seul et sans solution dans sa
+                            recherche d’emploi.
+                        </p>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 col-md-3 text-center">
+                        <a href="https://www.decolltonjob.fr/" target="_blank" rel="noopener noreferrer">
+                            <img src="{{ asset('build/images/Logo_Decoll_ton_Job.png') }}"
+                                 class="img-fluid"
+                                 alt="Décoll'ton job">
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p>
+                            L'association Décoll'ton job vise à remettre l’emploi au cœur de la vie locale. Ses membres
+                            animent un circuit court de l’emploi avec la participation de tous les acteurs de la vie
+                            locale. Leurs trois objectifs principaux : rendre accessible à tous les offres d’emploi
+                            local, lutter contre l’isolement social particulièrement important durant une période de
+                            chômage et agir aux côtés des entreprises sur leur marque employeur.
+                        </p>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 col-md-3 text-center">
+                        <a href="https://lacravatesolidaire.org/nantes" target="_blank" rel="noopener noreferrer">
+                            <img src="{{ asset('build/images/logo_la_cravate_solidaire.png') }}"
+                                 class="img-fluid"
+                                 alt="La cravate solidaire">
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p>
+                            La Cravate Solidaire accompagne individuellement, de façon ludique et bienveillante, des
+                            personnes en situation d'exclusion sociale et professionnelle depuis 2012. Sa mission est de
+                            lutter contre les discriminations à l'embauche et favoriser la réinsertion par l'emploi.
+                        </p>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 col-md-3 text-center">
+                        <a href="https://atelierdesinitiatives.org/" target="_blank" rel="noopener noreferrer">
+                            <img src="{{ asset('build/images/logo_atelier_initiatives.svg') }}"
+                                 class="img-fluid"
+                                 alt="L'atelier des initiatives">
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p>
+                            L'atelier des initiatives est une association d’éducation populaire qui accompagne les
+                            jeunes dans leurs projets et leur curiosité culturelle.
+                        </p>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 col-md-3 text-center">
+                        <a href="https://www.lesdetermines.fr/" target="_blank" rel="noopener noreferrer">
+                            <img src="{{ asset('static/images/logo_les_determines.webp') }}"
+                                 class="img-fluid"
+                                 alt="Les déterminés">
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p>
+                            Les Déterminés est une association qui lutte contre le déterminisme économique et social.
+                        </p>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 col-md-3 text-center">
+                        <img src="{{ asset('build/images/logo_ville_de_nantes.png') }}"
+                             class="img-fluid"
+                             alt="Ville de Nantes">
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 col-md-3 text-center">
+                        <img src="{{ asset('build/images/logo_nantes_metropole.svg') }}"
+                             class="img-fluid"
+                             alt="Nantes métropole">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

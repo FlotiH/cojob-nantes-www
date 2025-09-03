@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cojob Nantes - Email de réinitialisation de mot de passe envoyé{% endblock %}
+
+{% block meta %}
+    <meta name="robots" content="noindex">
+{% endblock %}
+
+{% block content %}
+
+    <div class="login-box">
+        <div class="login-logo">
+            <img class="img-fluid" src="{{ asset('build/images/logo.png') }}" alt="Cojob Nantes">
+        </div>
+
+        <div class="login-box-body">
+
+            <p>
+                Si un compte existe avec cet email, un email contenant un lien pour réinitialiser son mot de passe
+                vient d'être envoyé.
+                Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+            </p>
+            <p>Si vous ne recevez pas d'email merci de vérifier vos spams ou <a href="{{ path('app_forgot_password_request') }}">réessayer</a>.</p>
+
+        </div>
+    </div>
+{% endblock %}

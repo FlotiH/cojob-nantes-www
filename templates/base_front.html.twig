@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block meta %}
+    <!-- Open Graph meta -->
+    <meta property="og:title" content="{{ block('title') }}">
+    <meta property="og:type" content="siteweb">
+    {% if block('canonical') is defined %}
+        <meta property="og:url" content="{{ block('canonical') }}">
+    {% endif %}
+    {% block og_image %}
+        <meta property="og:image" content="{{ absolute_url(asset('build/images/promo.jpg')) }}">
+    {% endblock %}
+    <meta property="og:description" content="{{ block('description') }}">
+
+    {% if block('canonical') is defined %}
+        <link rel="alternate" href="{{ block('canonical') }}" hreflang="fr-fr">
+    {% endif %}
+{% endblock %}
+
+{% block header %}
+    <header>
+        <nav class="navbar navbar-expand-md fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{ path('homepage') }}"><span class="visually-hidden">Cojob Nantes</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="{{ 'toggle_navigation'|trans }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ms-auto me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('homepage') }}#about">{{ 'about.h2'|trans }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('promos') }}">{{ 'nav.promo'|trans }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('guide') }}">{{ 'nav.guide'|trans }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('support') }}">{{ 'nav.support_us'|trans }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('calendar') }}">{{ 'nav.calendar'|trans }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('airtable_data') }}">{{ 'nav.members'|trans }}</a>
+                        </li>
+                        <li>
+                            <ul class="list-inline social-links">
+                                <li class="list-inline-item">
+                                    <a href="{{ path('contact') }}" title="{{ 'nav.contact'|trans }}"
+                                       onclick="gtag('event', 'Head Email', {'event_category': 'Button Click'});">
+                                        <i class="icon icon-mail"></i>
+                                        <span class="visually-hidden">Contact</span>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="https://www.facebook.com/cojobnantes/" itemprop="sameAs" target="_blank"
+                                       rel="noopener noreferrer"
+                                       onclick="gtag('event', 'Head Socials Facebook', {'event_category': 'Button Click'});">
+                                        <i class="icon icon-facebook"></i>
+                                        <span class="visually-hidden">Facebook</span>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="https://fr.linkedin.com/company/cojob-nantes" itemprop="sameAs" target="_blank"
+                                       rel="noopener noreferrer"
+                                       onclick="gtag('event', 'Head Socials LinkedIn', {'event_category': 'Button Click'});">
+                                        <i class="icon icon-linkedin"></i>
+                                        <span class="visually-hidden">LinkedIn</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <a class="btn btn-primary btn-donation" role="button" target="_blank" rel="noopener noreferrer"
+                               href="https://www.helloasso.com/associations/cojob-nantes/formulaires/3"
+                               onclick="gtag('event', 'All pages Donate', {'event_category': 'Button Click'});">
+                                {{ 'home.donation'|trans }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+{% endblock %}

@@ -1,0 +1,171 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}{{ 'home.title'|trans }}{% endblock %}
+
+{% block description %}{{ 'home.description'|trans }}{% endblock %}
+
+{% block canonical %}{{ absolute_url(path('homepage')) }}{% endblock %}
+
+{% block content %}
+    <div id="carouselCover" class="row carousel slide" data-ride="carouselCover">
+        <div class="carousel-inner px-0">
+            <div class="carousel-item parallax active cover1"></div>
+        </div>
+        <div class="carousel-fixed text-center">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1>{{ 'home.h1'|trans }}</h1>
+                    </div>
+
+                    <div class="col-md-6 {% if promoOpen|length == 0 %}offset-md-3 col-xl-4 offset-xl-4{% else %}col-lg-5 offset-lg-1 col-xl-4 offset-xl-2{% endif %} d-grid">
+                        <a href="{{ path('promos') }}" class="btn btn-primary btn-lg"
+                           onclick="gtag('event', 'Home What is promo', {'event_category': 'Button Click'});">
+                            <span class="icon icon-info" aria-hidden="true"></span>
+                            {{ 'home.promo'|trans }}
+                        </a>
+                    </div>
+                    {% if promoOpen|length > 0 %}
+                        <div class="col-md-6 col-lg-5 col-xl-4 d-grid">
+                            <a href="{{ path('promos') }}#promoAnchor" class="btn btn-primary btn-lg"
+                               onclick="gtag('event', 'Home Register promo', {'event_category': 'Button Click'});">
+                                <div class="icon icon-register" aria-hidden="true"></div>
+                                <div>
+                                    {{ 'home.promo_registration'|trans }}
+                                    <div class="small">({{ promoOpen[0].start|dateInterval(promoOpen[0].end) }})
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+
+                    <div class="col-12 text-center go-to-content d-none d-sm-block">
+                        <a href="#about" class="icon-arrow-down" aria-hidden="true"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="about" class="row">
+        <div class="col-md-8 offset-xl-3 col-xl-6">
+            <div class="content">
+                <h2>{{ 'about.h2'|trans }}</h2>
+
+                <p>
+                    L’association COJOB Nantes a été créée en novembre 2015 par des chercheurs d’emploi en manque de
+                    collectif. Nous nous sommes inspirés en partie de l’approche développée par l’association COJOB,
+                    créée à Paris en 2013.
+                </p>
+                <p>
+                    COJOB Nantes est donc une association créée par des chercheurs d’emploi pour des chercheurs d’emploi
+                    !
+                </p>
+
+                <p>
+                    Nous prônons une recherche d’emploi <strong>collective</strong> et <strong>proactive</strong>.
+                    L’objectif est de permettre aux chercheurs d’emploi autonomes, de tous âges et tous horizons, de
+                    mieux vivre cette période de transition.
+                </p>
+
+                <p>
+                    Nous avons pour ambition de :
+                </p>
+
+                <ul>
+                    <li>
+                        Favoriser la collaboration entre les chercheurs d’emploi en les intégrant dans un collectif qui
+                        incite à la solidarité : partage de bons plans, de techniques de recherche, recherche d’offres
+                        d’emploi pour autrui, contacts réseaux, etc.
+                    </li>
+                    <li>
+                        Accroître le bien-être des chercheurs d’emploi : l’inscription dans un collectif permet de
+                        lutter contre l’isolement !
+                    </li>
+                </ul>
+
+                <p>
+                    L’association propose plusieurs dispositifs orientés vers le collectif et la convivialité
+                </p>
+
+                <ul>
+                    <li>
+                        <a href="{{ path('promos') }}">La promo</a>
+                    </li>
+                    <li>
+                        Les Apérotafs et événements (voir <a href="{{ path('calendar') }}">agenda</a> pour le prochain)
+                    </li>
+                </ul>
+
+                <p>
+                    Pour plus d’infos sur la communauté de COJOB Nantes, inscrivez-vous sur le groupe Facebook
+                    <a target="_blank" rel="noopener noreferrer"
+                       href="https://www.facebook.com/groups/959457907476976/"
+                       onclick="gtag('event', 'Facebook group Link home', {'event_category': 'Button Click'});">Communauté COJOB Nantes</a>. Si
+                    vous voulez <a href="{{ path('support') }}#join-form">adhérer</a> ou faire un don, <a target="_blank" rel="noopener noreferrer"
+                                                            href="https://www.helloasso.com/associations/cojob-nantes/formulaires/3">c’est
+                        par ici</a>.
+                </p>
+            </div>
+        </div>
+        <div class="offset-sm-3 col-sm-6 offset-md-0 col-md-4 col-xl-3 event-div">
+            <h2>{{ 'home.articles'|trans }}</h2>
+            <div id="carouselEvent" class="row carousel slide" data-ride="carouselEvent">
+                <div class="carousel-inner">
+                    {% for event in events %}
+                        <section class="carousel-item {% if loop.first %}active{% endif %}">
+                            <div class="cover-bg"
+                                 style="background-image: url({{ event.imageLink }});background-repeat: no-repeat;background-position: center;background-size: cover;height: 16rem;">
+                                {#<img src="{{ asset('build/images/o-cojob-nantes.png') }}"
+                                     class="img-fluid"
+                                     alt="Cojob O">#}
+                            </div>
+                            <h3>{{ event.title }}</h3>
+                            {{ event.content|raw }}
+                        </section>
+                    {% endfor %}
+                </div>
+                {% if events|length > 1 %}
+                    <a class="carousel-control-prev" data-target="#carouselEvent" role="button" data-slide="prev">
+                        <span class="icon icon-arrow-left" aria-hidden="true"></span>
+                        <span class="visually-hidden">{{ 'previous'|trans }}</span>
+                    </a>
+                    <a class="carousel-control-next" data-target="#carouselEvent" role="button" data-slide="next">
+                        <span class="icon icon-arrow-right" aria-hidden="true"></span>
+                        <span class="visually-hidden">{{ 'next'|trans }}</span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+    <div id="promotion" class="one-page row parallax">
+        <div class="col-12">
+            <div class="content jobber-quotes">
+                <h3>Ils ont participé à la promo (et ils ont aimé ça)</h3>
+                <br>
+                <div class="row">
+
+                    {% for testimony in requiredPromoTestimonies %}
+                        <div class="col-sm-6 col-md-4 mb-4">
+                            <h4>{{ testimony.name }}</h4>
+                            <p>{{ testimony.subtitle }}</p>
+
+                            {{ testimony.content|raw }}
+
+                        </div>
+                    {% endfor %}
+
+                    {% for testimony in promoTestimonies %}
+                        <div class="col-sm-6 col-md-4 mb-4">
+                            <h4>{{ testimony.name }}</h4>
+                            <p>{{ testimony.subtitle }}</p>
+
+                            {{ testimony.content|raw }}
+
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

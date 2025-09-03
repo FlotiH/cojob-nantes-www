@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'cojob-nantes';
+  src:  url('fonts/cojob-nantes.eot?rym3cx');
+  src:  url('fonts/cojob-nantes.eot?rym3cx#iefix') format('embedded-opentype'),
+    url('fonts/cojob-nantes.ttf?rym3cx') format('truetype'),
+    url('fonts/cojob-nantes.woff?rym3cx') format('woff'),
+    url('fonts/cojob-nantes.svg?rym3cx#cojob-nantes') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'cojob-nantes' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-register:before {
+  content: "\e923";
+}
+.icon-info:before {
+  content: "\ea0c";
+}
+.icon-submit:before {
+  content: "\ea10";
+}
+.icon-mail:before {
+  content: "\ea83";
+}
+.icon-arrow-up:before {
+  content: "\e903";
+}
+.icon-arrow-left:before {
+  content: "\e905";
+}
+.icon-arrow-right:before {
+  content: "\e906";
+}
+.icon-arrow-down:before {
+  content: "\e904";
+}
+.icon-facebook:before {
+  content: "\e900";
+}
+.icon-linkedin:before {
+  content: "\e901";
+}
+.icon-twitter:before {
+  content: "\e902";
+}

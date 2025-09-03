@@ -1,0 +1,224 @@
+toggle_navigation: Ouvir / Fermer le menu
+
+back_top:
+  title: Cliquer pour retourner en haut de la page
+
+nav:
+  homepage: Accueil
+  about: A propos
+  promo: La promo
+  calendar: Calendrier
+  cosearching: Cosearching
+  support_us: Nous soutenir
+  services: Prestations
+  contact: Contactez-nous
+  guide: Le guide pratique
+  members: Adhérents
+  partners: Partenaires
+
+previous: Précédent
+next: Suivant
+
+home:
+  title:  La recherche d'emploi collective | Association Cojob Nantes
+  description: Association mettant au service le collectif pour valoriser la période de recherche d'emplois et redynamiser le quotidien | Cojob Nantes
+  h1: "Cojob Nantes : la recherche d'emploi collective"
+  promo: C'est quoi une promo ?
+  promo_registration: S'inscrire à la prochaine promo
+  articles: Actualités
+  donation: Faire un don
+
+promo:
+  h2: La promo Cojob Nantes, qu'est-ce donc ?
+  title: Intégrer une promo de l'association | Cojob Nantes
+  description: Intégrez une promo de l'association et faites de la recherche d'emplois collective | Cojob Nantes
+  h1: Les promos de Cojob Nantes
+  next: Promos à venir
+
+support:
+  title:  Soutenir la recherche d'emploi collective | Cojob Nantes
+  description: Soutenez l'association et aidez à la recherche d'emplois collective | Cojob Nantes
+  join: Vous souhaitez adhérer ?
+  donate: Vous souhaitez faire un don ?
+
+airtable_data:
+  title: Les adhérents de l'association | Cojob Nantes
+  description: Retrouvez une personne adhérente de l'association | Cojob Nantes
+
+guide:
+  title: L'Explorateur, guide de l'emploi pour les nantais | Cojob Nantes
+  description: Retrouvez l'Explorateur, le guide de l'emploi à usage des aventuriers nantais rédigé par des bénévoles de l'association Cojob Nantes
+
+partners:
+  title: Les partenaires | Cojob Nantes
+  description: Retrouvez les partenaires de l'association Cojob Nantes
+
+about:
+  h2: Qui sommes-nous ?
+
+talk_about_us:
+  h2: On parle de Cojob Nantes
+
+contact:
+  title: Contacter l'association | Cojob Nantes
+  description: Envoyer un message à l'association | Cojob Nantes
+  h1 : Contact
+  h2: Vous souhaitez nous remercier, nous encourager, nous critiquer, avoir des informations ?
+  form:
+    last_name:
+      label: Nom *
+      not_blank: Merci de renseigner votre nom
+      placeholder: Nom *
+    first_name:
+      label: Prénom *
+      not_blank: Merci de renseigner votre prénom
+      placeholder: Prénom *
+    email:
+      label: Email *
+      not_blank: Merci de renseigner votre email
+      check_mx: Votre email est incorrect
+      placeholder: Email *
+    telephone:
+      label: Numéro de téléphone
+      placeholder: Numéro de téléphone
+    message:
+      label: Votre message
+      placeholder: Message
+    submit: Envoyer
+  error: Un champ est erroné, merci de vérifier le formulaire
+  email:
+    subject: Nouvelle demande de contact sur le site Cojob Nantes
+  thanks:
+    header: Merci pour votre message.
+    pitch: |
+      <p>Nous allons lui donner suite très prochainement.</p>
+      <p>À bientôt.</p>
+
+calendar:
+  title: Association Cojob Nantes - Le calendrier des promos
+  description: Le calendrier des promos organisées par l'association Cojob Nantes pour rechercher collectivement un emploi
+
+legals:
+  title: Mentions légales de Cojob Nantes - La recherche d'emploi collective
+  description: Mentions légales du site de l'association Cojob Nantes
+  h1: Mentions légales
+
+footer:
+  sitemap: Plan du site
+  legals: Mentions légales
+  social_links: Suivez-nous sur les réseaux sociaux
+
+sitemap:
+  title: Plan du site | Cojob Nantes
+  description: Plan du site de Cojob Nantes, association aidant les chercheurs d'emplois à redynamiser leur quotidien via la recherche d'emploi collective
+
+error404:
+  title: Page introuvable
+  description: Page introuvable
+  baseline: Cette page n'existe pas
+
+error:
+  title: Une erreur s'est produite
+  description: Une erreur s'est produite
+  baseline: Une erreur s'est produite, veuillez nous excuser.
+
+#admin
+Absolute File Path: Image
+Article: Actualités
+Article Create: Création d'une actualité
+Article List: Liste des actualités
+Contact List: Liste des contacts
+Contact: Contacts
+Content: Contenu (penser à gérer le responsive du contenu)
+Created At: Crée le
+Created By: Crée par
+Email: Email
+Enabled: Actif
+End: Fin
+Expires At: Expirée le
+Event: Evènements
+Event Has Pictures: Images (merci de mettre des images optimisées pour le web, vous pouvez utiliser tinypng par exemple)
+Event List: Liste des évènements
+First Name: Prénom
+Hello Asso Form Link: Lien des inscriptions HelloAsso
+Image Link: Lien de l'image
+Image File: Image
+Is Registering Open: Inscriptions ouvertes
+Last Login At: Dernière connexion
+Last Name: Nom
+Message: Message
+Meta Description: Meta description (utilisée seulement pour le référencement, merci de bien choisir vos mots-clés)
+Name: Nom
+Plain Password: Mot de passe
+Promo: Promotions
+Promo Create: Création d'une promo
+Promo List: Liste des promos
+Required Displaying: Affichage forcée sur la page d'accueil
+Published: Publiée
+Published At: Publiée le
+Registering End: Fin des inscriptions
+Registering Start: Début des inscriptions
+Search: Recherche
+Start: Début
+Subtitle: Sous-titre
+Testimony: Témoignages
+Testimony List: Liste des témoignages
+Title: Titre
+User List: Liste des utilisateurs
+Username: Identifiant
+User: Utilisateurs
+Media: Médias en ligne
+Media Create: Création d'un média en ligne
+Media List: Liste des médias en ligne
+Web Link: Lien sur les Internets
+
+security:
+  login:
+    title: Connexion
+    remember_me: Se souvenir de moi
+    submit: Se connecter
+    username: Identifiant
+  password_reset:
+    title: Mot de passe oublié
+    message: Entrez votre nom d'utilisateur pour réinitialiser le mot de passe.
+    btn_submit: Envoyer
+    link_login: Connexion
+    success:
+      email_sent: Un e-mail a été envoyé à %email%. Celui-ci contient un lien sur lequel vous devez cliquer pour réinitialiser votre mot de passe. Pensez à bien regarder dans vos spams.
+    warning:
+      already_requested: Le mot de passe de ce compte a déjà été demandé au cours des dernières 24 heures.
+    error:
+      not_found: Cet identifiant n'existe pas
+      disabled: Ce compte n'est plus actif
+      email_invalid: L'email semble invalide
+  password_change:
+    title: Nouveau mot de passe
+    message: Votre mot de passe doit contenir au moins 6 caractères
+    password: Mot de passe
+    password_repeat: Entrez de nouveau le mot de passe
+    btn_submit: Enregistrer
+    success: Le mot de passe a été changé
+  logout: Se déconnecter
+
+button:
+  publish: Publié
+  unpublish: Dépublié
+
+form:
+  header_file: Fichier
+  header_url: Url
+  description_file: Télécharger (envoyer) un fichier
+  description_url: 'Supporté: Youtube'
+
+placeholder:
+  website: 'http(s)://...'
+
+email:
+  password_reset:
+    subject: Réinitialisation de mot de passe
+    content: |
+      <h2 style="font-weight:400;font-size:24px;line-height:30px;margin:0 0 12px">Bonjour %name%,</h2>
+      <p style="font-size:17px;line-height:24px;margin:0 0 12px">
+          Pour réinitialiser votre mot de passe, veuillez utiliser le lien suivant:<br/>
+          <a href="%url%" target="_blank">%url%</a>
+      </p>

@@ -1,0 +1,26 @@
+{% apply inky_to_html|inline_css(source('@styles/email.css')) %}
+    <container>
+        <row class="header">
+            <columns>
+                <spacer size="16"></spacer>
+                <center>
+                    {% block header %}<img src="{{ absolute_url(asset('build/images/logo.png')) }}" alt="Logo" width="212" class="logo-img">{% endblock %}
+                </center>
+            </columns>
+        </row>
+        <row class="content">
+            <columns small="0" large="1"></columns>
+            <columns small="12">
+                <spacer size="32"></spacer>
+                {% block content %}{% endblock %}
+                <spacer size="32"></spacer>
+            </columns>
+            <columns small="0" large="1"></columns>
+        </row>
+        <row class="footer">
+            <columns>
+                {% block footer %}{% endblock %}
+            </columns>
+        </row>
+    </container>
+{% endapply %}

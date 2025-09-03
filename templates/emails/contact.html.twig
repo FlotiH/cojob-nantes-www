@@ -1,0 +1,19 @@
+{% extends 'layout.email.twig' %}
+
+{% block content %}
+    <h2>Hellololololo la team Cojob Nantes !</h2>
+
+    <p>Il y a une nouvelle demande de contact sur le site Cojob Nantes.</p>
+    <br>
+    <p>
+        Il s'agit de {{ data.firstName }} {{ data.lastName }}.<br>
+        Email : {{ data.email }}.<br>
+        Numéro de téléphone : {{ data.telephone }}.<br>
+        Message : {{ data.message }}.
+    </p>
+    <br>
+    <p>Nous vous laissons donner suite à sa demande.</p>
+
+    <p>Merci de ne pas répondre à ce message.</p>
+    <p>Et c'est signé : L'équipe envoyant automatiquement les demandes de contact depuis le site Internet.</p>
+{% endblock %}

@@ -1,0 +1,9 @@
+{
+  short_name: "Cojob Nantes",
+  name: "Cojob Nantes - La recherche d'emploi collective",
+  start_url: "https://cojobnantes.fr",
+  background_color: "#ffffff",
+  theme_color: "#0e3d67",
+  display: "standalone",
+  orientation: "portrait"
+}

@@ -1,0 +1,689 @@
+/*TODO FHA : à revoir pour mettre en sass*/
+
+@import "~bootstrap/scss/bootstrap";
+
+@import "../static/fonts/cojob-nantes/style.css";
+
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+/** FONTS **/
+@font-face {
+    font-family: 'Berlin Sans Fb';
+    font-weight: 400;
+    font-style: normal;
+    src: url('../static/fonts/berlin-sans-fb/berlin-sans-fb.eot');
+    src: url('../static/fonts/berlin-sans-fb/berlin-sans-fb.eot?#iefix') format('embedded-opentype'),
+    local('Berlin Sans Fb'),
+    local('Berlin-Sans-Fb-regular'),
+    url('../static/fonts/berlin-sans-fb/berlin-sans-fb.woff2') format('woff2'),
+    url('../static/fonts/berlin-sans-fb/berlin-sans-fb.woff') format('woff'),
+    url('../static/fonts/berlin-sans-fb/berlin-sans-fb.ttf') format('truetype'),
+    url('../static/fonts/berlin-sans-fb/berlin-sans-fb.svg#BerlinSansFb') format('svg');
+}
+
+@font-face {
+    font-family: 'Berlin Sans Fb Demi Bold';
+    font-weight: 600;
+    font-style: normal;
+    src: url('../static/fonts/berlin-sans-fb/berlin-sans-fb-demi-bold.eot');
+    src: url('../static/fonts/berlin-sans-fb/berlin-sans-fb-demi-bold.eot?#iefix') format('embedded-opentype'),
+    local('Berlin Sans Fb'),
+    local('Berlin-Sans-Fb-regular'),
+    url('../static/fonts/berlin-sans-fb/berlin-sans-fb-demi-bold.woff2') format('woff2'),
+    url('../static/fonts/berlin-sans-fb/berlin-sans-fb-demi-bold.woff') format('woff'),
+    url('../static/fonts/berlin-sans-fb/berlin-sans-fb-demi-bold.ttf') format('truetype'),
+    url('../static/fonts/berlin-sans-fb/berlin-sans-fb-demi-bold.svg#BerlinSansFb') format('svg');
+}
+
+
+/** GENERIC **/
+body {
+    color: #0e3d67;
+    background-color: #fbfbfb;
+    font-family: 'Berlin Sans Fb', sans-serif;
+    font-weight: 400;
+}
+h1 {
+    font-weight: 400;
+    font-size: 2rem;
+}
+h2, .h4 {
+    font-family: 'Berlin Sans Fb Demi Bold', sans-serif;
+    font-weight: 600;
+}
+h2 {
+    color: #00905d;
+}
+a {
+    color: #00905d;
+    text-decoration: none;
+}
+a:hover,
+a:active {
+    text-decoration: none;
+}
+
+/** BUTTON **/
+.btn-primary {
+    background-color: #0e3d67;
+    border-color: #0e3d67;
+}
+.btn-primary:hover,
+.btn-primary:active {
+    background-color: #00905d;
+    border-color: #00905d;
+    letter-spacing: 1px;
+    transition: all 0.4s ease 0s;
+}
+.btn > div {
+    display: inline-block;
+    vertical-align: middle;
+}
+.btn .icon {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+.btn .small {
+    font-size: 0.75rem;
+}
+
+/** HEADER **/
+header .navbar.fixed-top {
+    background: linear-gradient(180deg, rgba(233, 234, 235, .8) 10%, rgba(233, 234, 235, 0));       /*TODO FHA : à améliorer*/
+}
+header .navbar-brand {
+    width: 8rem;
+    height: 4rem;
+    background: url(../static/images/logo.png) no-repeat 50%;
+    background-size: contain;
+}
+.icon-bar {
+    display: block;
+    height: 0.125rem;
+    width: 1.6rem;
+    margin-top: 0.25rem;
+    border-radius: 1px;
+    background-color: #000;
+}
+header .navbar-collapse {
+    text-align: center;
+}
+header .navbar-collapse {
+    background-color: #fbfbfb;
+}
+header .nav-link {
+    color: #0e3d67;
+    font-size: 1.25rem;
+    font-family: 'Berlin Sans Fb Demi Bold', sans-serif;
+    font-weight: 600;
+}
+header .nav-link:hover,
+header .nav-link:active {
+    color: #00905d;
+}
+
+header .navbar.fixed-top.background {
+    background-color: #fff;
+}
+header .social-links a {
+    color: #0e3d67;
+    font-size: 1.5rem;
+    -webkit-transition: font-size 0.3s, color 0.3s; /* For Safari 3.1 to 6.0 */
+    transition: font-size 0.3s, color 0.3s;
+}
+header .social-links a:hover {
+    color: #00905d;
+    font-size: 1.8rem;
+}
+header .btn-donation {
+    z-index: 1;
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    width: 8rem;
+    margin: 0.5rem auto;
+    -moz-box-shadow: 0 0 1rem 0.125rem #eee;
+    -webkit-box-shadow: 0 0 1rem 0.125rem #eee;
+    -o-box-shadow: 0 0 1rem 0.125rem #eee;
+    box-shadow: 0 0 1rem 0.125rem #eee;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#eee, Direction=NaN, Strength=16);
+}
+
+/** FOOTER **/
+footer {
+    padding-top: 4rem;
+    background-color: #0e3d67;
+    color: #fff;
+}
+footer .brand-col {
+    height: 100%;
+    min-height: 8rem;
+    border-radius: 0.5rem;
+}
+footer .brand {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../static/images/logo-no-bg.png) no-repeat 50%;
+    background-size: contain;
+}
+footer .cojob-title {
+    margin-top: 2rem;
+}
+footer a {
+    color: #fff;
+}
+footer .list-group-item {
+    background-color: transparent;
+}
+footer .social-links {
+    margin-top: 1rem;
+}
+footer .social-links .list-inline {
+    margin-top: 1rem;
+}
+footer .icon {
+    font-size: 2rem;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+}
+.footer-footer {
+    width: 100%;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #fff;
+}
+.footer-footer li:not(:last-child):after {
+    content: ' - ';
+    margin-left: 0.5rem;
+}
+footer a:hover,
+footer a:active {
+    color: #ff9d00;
+}
+
+/** GENERIC BACKGROUND **/
+.one-page {
+    min-height: 100vh;
+}
+.cover1 {
+    background-image: url('../static/images/cover.jpg');
+}
+/*.cover2 {
+    background-image: url('../static/images/cover2.jpg');
+}
+.cover3 {
+    background-image: url('../static/images/cover3.jpg');
+}*/
+.services-page {
+    background-image: url('../static/images/about.jpg');
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+}
+.support-page {
+    background-image: url('../static/images/about.jpg');
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+}
+.promos-page {
+    background-image: url('../static/images/promo.jpg');
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+}
+.generic-page {
+    background-image: url('../static/images/cover.jpg');
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+}
+.partners-page {
+    background-image: url('../static/images/about.jpg');
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+}
+.ostrich-museum-bg {
+    background-image: url('../static/images/ostrich-museum.jpg');
+}
+.airtable-page {
+    background-image: url('../static/images/cover2.jpg');
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+}
+.airtable-page .airtable-div {
+    margin-top: 5rem;
+    height: 100vh;
+}
+.guide-page {
+    background-image: url('../static/images/cover3.jpg');
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+}
+
+/**PARALLAX**/
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/** HOMEPAGE**/
+#carouselCover .carousel-inner {
+    height: 100vh;
+}
+#carouselCover .carousel-item {
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+}
+#carouselCover .icon-arrow-down {
+    color: #fff;
+    font-size: 4rem;
+}
+#carouselCover .carousel-fixed {
+    position: absolute;
+    top: 25vh;
+}
+#carouselCover h1 {
+    margin-bottom: 0;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background: -moz-radial-gradient(ellipse at center, #eee, transparent 75%);
+    background: -webkit-gradient(ellipse at center, #eee, transparent 75%);
+    background: -webkit-radial-gradient(ellipse at center, #eee, transparent 75%);
+    background: -o-radial-gradient(ellipse at center, #eee, transparent 75%);
+    background: radial-gradient(ellipse at center, #eee, transparent 75%);
+}
+#carouselCover .carousel-fixed .btn-primary {
+    height: 3.5rem;
+    margin-top: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 1rem;
+    -moz-box-shadow: 0 0 1rem 0.125rem #eee;
+    -webkit-box-shadow: 0 0 1rem 0.125rem #eee;
+    -o-box-shadow: 0 0 1rem 0.125rem #eee;
+    box-shadow: 0 0 1rem 0.125rem #eee;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#eee, Direction=NaN, Strength=16);
+}
+#carouselCover .go-to-content {
+    margin-top: 20vh;
+}
+/*#carouselCover .carousel-control-next, #carouselCover .carousel-control-prev {
+    z-index: 1;
+}
+#carouselCover .carousel-control-next .icon, #carouselCover .carousel-control-prev .icon {
+    color: #0e3d67;
+    font-size: 2rem;
+}
+#carouselCover .carousel-control-next .icon:hover, #carouselCover .carousel-control-prev .icon:hover {
+    cursor: pointer;
+}*/
+
+.event-div h2 {
+    text-align: center;
+}
+#carouselEvent {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    text-align: center;
+}
+#carouselEvent .cover-bg {
+    background-size: contain;
+}
+#carouselEvent .cover-bg .img-fluid {
+    max-width: 101%;
+}
+
+#carouselEvent .icon{
+    color: #0e3d67;
+    font-size: 3rem;
+}
+#carouselEvent .icon:hover {
+    cursor: pointer;
+}
+
+#about {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+#promotion {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background-image: url('../static/images/promo.jpg');
+}
+#promotion .jobber-quotes {
+    margin-top: 3rem;
+}
+#talk-about-us {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+#talk-about-us .carousel-item img {
+    background-color: #ccc;
+}
+#contact {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background-image: url('../static/images/contact.jpg');
+}
+.content {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    opacity: 0.9;
+}
+.join-form-div {
+    padding: 1rem;
+    margin-top: 8rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+}
+
+.promos-page .video-responsive {
+    margin-top: 2rem;
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.promos-page .video-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+#promoAnchor {
+	margin-bottom: 4rem;
+}
+.promos-div {
+    margin-top: 2rem;
+}
+.promos-div li {
+    margin-bottom: 1rem;
+}
+
+/** MAP **/
+#map {
+    width: 100%;
+    height: 50vh;
+}
+
+/** BACK TO TOP BUTTON **/
+.back-to-top {
+    position: fixed;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 1rem;
+    padding: 4px 10px;
+    display: none;
+    z-index: 1;
+    -moz-box-shadow: 0 0 1rem 0.125rem #eee;
+    -webkit-box-shadow: 0 0 1rem 0.125rem #eee;
+    -o-box-shadow: 0 0 1rem 0.125rem #eee;
+    box-shadow: 0 0 1rem 0.125rem #eee;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#eee, Direction=NaN, Strength=16);
+}
+
+/** FORM **/
+.form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.form-label-group > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0; /* Override default `<label>` margin */
+    padding: 0.75rem;
+    line-height: 1.5;
+    color: #0e3d67;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .1s ease-in-out;
+}
+.form-label-group > label.hidden {
+    display: none;
+}
+
+.form-label-group > input {
+    height: 3rem;
+    padding: 0.75rem;
+}
+
+.form-label-group input::-webkit-input-placeholder,
+.form-label-group textarea::-webkit-input-placeholder {
+    color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder,
+.form-label-group textarea:-ms-input-placeholder {
+    color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder,
+.form-label-group textarea::-ms-input-placeholder {
+    color: transparent;
+}
+
+.form-label-group input::-moz-placeholder,
+.form-label-group textarea::-moz-placeholder {
+    color: transparent;
+}
+
+.form-label-group input::placeholder,
+.form-label-group textarea::placeholder {
+    color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown),
+.form-label-group textarea:not(:placeholder-shown) {
+    padding-top: 1.19rem;
+    padding-bottom: 0.25rem;
+}
+
+.form-label-group input:not(:placeholder-shown) ~ label,
+.form-label-group textarea:not(:placeholder-shown) ~ label {
+    padding-top: 0.19rem;
+    padding-bottom: 0.19rem;
+    font-size: 0.75rem;
+    color: #00905d;
+}
+
+/** RESPONSIVE **/
+@media (min-width: 576px){
+
+    header .navbar {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+
+    header .navbar-brand {
+        width: 10rem;
+    }
+
+    .navbar-expand-md .navbar-nav .nav-link {
+        font-size: 1rem;
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    /**FOOTER**/
+    footer .brand-col {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    footer .cojob-title {
+        margin-top: 0;
+    }
+    .promos-div li .add-to-calendar-btn {
+        display: inline-block;
+        float: right;
+    }
+}
+@media (min-width: 768px){
+    /** HEADER **/
+    header .navbar {
+        height: 6rem;
+    }
+    header .navbar-brand {
+        position: absolute;
+        top: 0.625rem;
+    }
+    header .navbar-collapse .navbar-nav {
+        margin-right: 0!important;
+    }
+    header .social-links {
+        position: absolute;
+        top: 0.1rem;
+        right: 1rem;
+    }
+    /** DONATE BUTTON **/
+    header .btn-donation {
+        position: absolute;
+        top: 0.1rem;
+        right: 9rem;
+        margin-top: 0;
+        margin-bottom: 0;
+        width: auto;
+        padding: 6px 12px;
+    }
+    header .navbar-collapse {
+        background-color: transparent;
+    }
+
+    .btn .icon {
+        margin-right: 1rem;
+        font-size: 2.5rem;
+    }
+
+    #carouselCover .carousel-fixed {
+        top: 35vh;
+        width: 100%;
+    }
+
+    #carouselCover .carousel-fixed .btn-primary {
+        margin-top: 0;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        font-size: 1.25rem;
+        height: 4rem;
+    }
+    #about {
+        padding-top: 7rem;
+    }
+    #promotion {
+        padding-top: 7rem;
+    }
+    #talk-about-us {
+        padding-top: 7rem;
+    }
+    #contact {
+        padding-top: 7rem;
+    }
+
+    /** BACK TO TOP BUTTON **/
+    .back-to-top {
+        bottom: 5rem;
+        right: 2rem;
+        font-size: 1.25rem;
+        padding: 8px 16px;
+    }
+}
+@media (min-width: 992px){
+    header .navbar {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    header .navbar-brand {
+        width: 12rem;
+    }
+    header .navbar-collapse {
+        margin-top: 0;
+    }
+    .navbar-expand-md .navbar-nav .nav-link {
+        font-size: 1.25rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    /**FOOTER**/
+    footer .brand-col {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+@media (min-width: 1200px){
+
+    header .navbar {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    header .navbar-brand {
+        width: 14rem;
+    }
+
+    header .navbar-collapse .navbar-nav {
+        margin-right: auto!important;
+        padding-left: 4rem;
+    }
+
+    /** DONATE BUTTON **/
+    header .btn-donation {
+        top: 3rem;
+        right: 1rem;
+        width: auto;
+    }
+
+    /**FOOTER**/
+    footer .brand-col {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+/* SWIPPER */
+.pictures .swiper-slide {
+    margin-top: 2rem;
+}
+.pictures .swiper-slide img {
+    max-width: 100%;
+}
+
+.login-box {
+    margin: 7% auto;
+    width: 360px;
+
+    .login-logo {
+        font-size: 35px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .login-box-body {
+        color: #666;
+        padding: 20px;
+
+        .login-box-msg {
+            margin: 0;
+            padding: 0 20px 20px;
+            text-align: center;
+        }
+    }
+}

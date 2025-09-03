@@ -1,0 +1,45 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}{{ 'sitemap.title'|trans }}{% endblock %}
+
+{% block description %}{{ 'sitemap.description'|trans }}{% endblock %}
+
+{% block canonical %}{{ absolute_url(path('sitemap')) }}{% endblock %}
+
+{% block content %}
+    <div class="one-page generic-page row parallax">
+        <div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+            <div class="content">
+                {% for item0 in map %}
+                    <h2>
+                        {% if item0.url is defined %}
+                            <a href="{{ item0.url }}">
+                        {% endif %}
+                            {{ item0.text|trans }}
+                        {% if item0.url is defined %}
+                            </a>
+                        {% endif %}
+                    </h2>
+
+                    {% if item0.map is defined %}
+                        <ul>
+                            {% for item1 in item0.map %}
+                                <li>
+                                    <h3>
+                                        {% if item1.url is defined %}
+                                            <a href="{{ item1.url }}">
+                                        {% endif %}
+                                            {{ item1.text|trans }}
+                                        {% if item1.url is defined %}
+                                            </a>
+                                        {% endif %}
+                                    </h3>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

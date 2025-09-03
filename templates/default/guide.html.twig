@@ -1,0 +1,50 @@
+{% extends 'base_front.html.twig' %}
+
+{% block og_image %}
+    <meta property="og:image" content="{{ absolute_url(asset('build/images/l_explorateur_guide_de_l_emploi.png')) }}">
+{% endblock %}
+
+{% block title %}{{ 'guide.title'|trans }}{% endblock %}
+
+{% block description %}{{ 'guide.description'|trans }}{% endblock %}
+
+{% block canonical %}{{ absolute_url(path('guide')) }}{% endblock %}
+
+{% block content %}
+    <div class="one-page guide-page row parallax">
+        <div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
+            <div class="content">
+                <h1>L'explorateur : le guide de l'emploi à usage des aventuriers nantais</h1>
+                <p>
+                    Pour Noël et ses soirées auprès d'un bon feu de cheminée, nous te proposons un superbe cadeau :
+                    "L'explorateur : le guide de l'emploi à usage des aventuriers nantais". Il s'agit d'un livret méga tip
+                    top créé par un groupe de bénévoles de Cojob Nantes.
+                </p>
+                <p>
+                    Notre objectif à terme est de le mettre à jour et pour cela nous aurons besoin de sous. Alors s'il
+                    t'a plu, n'hésite pas à
+                    <a target="_blank" rel="noopener noreferrer" class="gtag-donate-guide"
+                       href="https://www.helloasso.com/associations/cojob-nantes/formulaires/3"
+                       onclick="gtag('event', 'Donate Guide', {'event_category': 'Button Click', 'event_label': '{{ 'now'|date('d/m/Y H:i:s') }}'});">
+                        faire un don à l'association
+                    </a> :)
+                </p>
+
+                <p>
+                    Nous en profitons pour remercier les personnes ayant contribuées à cet ouvrage : Marie, Orane,
+                    Elodie, Meryem, Pauline, Joffrey, Matthieu, Antoine, François-Xavier et Julien.
+                </p>
+
+                <div class="text-center">
+                    <a href="{{ asset('static/resources/l_explorateur_cojob_nantes.pdf') }}" target="_blank"
+                       rel="noopener noreferrer" onclick="gtag('event', 'Download Guide', {'event_category': 'Button Click', 'event_label': '{{ 'now'|date('d/m/Y H:i:s') }}'});">
+                        <img src="{{ asset('build/images/l_explorateur_guide_de_l_emploi.png') }}"
+                             class="img-fluid"
+                             alt="L'explorateur : le guide de l'emploi nantais">
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

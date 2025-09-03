@@ -1,0 +1,56 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}{{ event.name }}{% endblock %}
+
+{% block description %}{{ event.metaDescription }}{% endblock %}
+
+{% block canonical %}{{ absolute_url(path('event_show', {'slug': event.slug})) }}{% endblock %}
+
+{% block content %}
+    <div class="one-page generic-page row parallax" itemscope itemtype="https://schema.org/NewsArticle">
+        <div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+            <div class="content">
+                <h1 itemprop="name">{{ event.name }}</h1>
+                <meta itemprop="author" content="COJOB Nantes">
+                <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+                    <meta itemprop="name" content="COJOB Nantes">
+                    <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                        <meta itemprop="url" content="{{ absolute_url(asset('build/images/logo.png')) }}">
+                    </span>
+                </div>
+                <meta itemprop="datePublished" content="{{ event.createdAt|date("Y-m-d") }}">
+                <meta itemprop="dateModified" content="{{ event.updatedAt|date("Y-m-d") }}">
+                <meta itemprop="headline" content="{{ event.content|u.truncate(100) }}">
+
+                <p>Début : {{ event.start|date('d/m/Y H:i') }}</p>
+                <p>Fin : {{ event.end|date('d/m/Y H:i') }}</p>
+
+                <div>{{ event.content|raw }}</div>
+            </div>
+            {% if event.pictures|length > 0 %}
+                <section class="container pictures">
+                    <div class="swiper-container" id="js-swiper-pictures">
+                        <div class="swiper-wrapper">
+                            {% for picture in event.pictures %}
+                                <a href="{{ picture.absoluteFilePath }}" class="swiper-slide">
+                                    <img src="{{ picture.absoluteFilePath }}" alt="Image {{ picture.reference }}" itemprop="image">
+                                </a>
+                            {% endfor %}
+                        </div>
+                        <div class="swiper-button-next swiper-button-white"></div>
+                        <div class="swiper-button-prev swiper-button-white"></div>
+                    </div>
+                    <div class="swiper-container gallery-thumbs">
+                        <div class="swiper-wrapper">
+                            {% for picture in event.pictures %}
+                                <img class="swiper-slide" src="{{ picture.absoluteFilePath }}" alt="Image miniature {{ picture.reference }}" >
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+            {% else %}
+                <meta itemprop="image" content="{{ absolute_url(asset('build/images/promo.jpg')) }}">
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

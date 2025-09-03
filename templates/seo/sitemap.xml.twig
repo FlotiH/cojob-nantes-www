@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {% for item0 in map %}
+        {% if item0.url is defined %}
+        <url>
+            <loc>{{ absolute_url(item0.url) }}</loc>
+        </url>
+        {% endif %}
+
+        {% if item0.map is defined  %}
+            {% for item1 in item0.map %}
+                {% if item1.url is defined %}
+                <url>
+                    <loc>{{ absolute_url(item1.url) }}</loc>
+                </url>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+</urlset>

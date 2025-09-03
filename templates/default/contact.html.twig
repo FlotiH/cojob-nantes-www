@@ -1,0 +1,114 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}{{ 'contact.title'|trans }}{% endblock %}
+
+{% block description %}{{ 'contact.description'|trans }}{% endblock %}
+
+{% block canonical %}{{ absolute_url(path('contact')) }}{% endblock %}
+
+{% block content %}
+    <div id="contact" class="one-page row align-items-center parallax">
+        <div class="col-md-6">
+            <div class="content">
+                <iframe id="map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2710.505779986849!2d-1.5768996839803007!3d47.206685079160145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4805ec096f7d096f%3A0x5ab4f739113d6710!2s1+Boulevard+Salvador+Allende%2C+44100+Nantes!5e0!3m2!1sfr!2sfr!4v1534510350352"
+                        allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="content">
+                {% if app.session.flashbag.has('contact.success') %}
+                    <div id="thanks">
+                        <h3>{{ 'contact.thanks.header'|trans }}</h3>
+                        <div>{{ 'contact.thanks.pitch'|trans|raw }}</div>
+                        <script>
+                            {% for msg in app.session.flashBag.get('contact.success') %}
+                            {{ msg|raw }}
+                            {% endfor %}
+                        </script>
+                    </div>
+                {% else %}
+
+                    <h1>{{ 'contact.h1'|trans }}</h1>
+                    <h3>{{ 'contact.h2'|trans }}</h3>
+
+                    {{ form_start(contactForm) }}
+
+                    {% if not contactForm.vars.valid %}
+                        <div class="alert alert-danger">
+                            {{ 'contact.error'|trans }}
+                        </div>
+                    {% endif %}
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-label-group">
+                                {{ form_widget(contactForm.first_name) }}
+                                {{ form_label(contactForm.first_name) }}
+                                {{ form_errors(contactForm.first_name) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-label-group">
+                                {{ form_widget(contactForm.last_name) }}
+                                {{ form_label(contactForm.last_name) }}
+                                {{ form_errors(contactForm.last_name) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-label-group">
+                                {{ form_widget(contactForm.email) }}
+                                {{ form_label(contactForm.email) }}
+                                {{ form_errors(contactForm.email) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-label-group">
+                                {{ form_widget(contactForm.telephone) }}
+                                {{ form_label(contactForm.telephone) }}
+                                {{ form_errors(contactForm.telephone) }}
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                {{ form_widget(contactForm.message) }}
+                                {{ form_label(contactForm.message) }}
+                                {{ form_errors(contactForm.message) }}
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-label-group">
+                                {{ form_label(contactForm.recaptcha) }}
+                                {{ form_widget(contactForm.recaptcha) }}
+                                {{ form_errors(contactForm.recaptcha) }}
+                            </div>
+                        </div>
+
+                        <div class="offset-sm-3 col-sm-6 offset-lg-4 col-lg-4 d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <span class="icon-submit" aria-hidden="true"></span>
+                                {{ 'contact.form.submit'|trans }}
+                            </button>
+                        </div>
+                    </div>
+
+                    {{ form_end(contactForm) }}
+
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% if not contactForm.vars.valid %}
+        <script type="text/javascript">
+            $('a[href="/#contact"]').get(0).click();
+        </script>
+    {% endif %}
+{% endblock %}

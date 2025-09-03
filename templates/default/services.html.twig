@@ -1,0 +1,136 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Cojob Nantes - La recherche d'emploi collective{% endblock %}
+
+{% block description %}Les prestations de l'association Cojob Nantes{% endblock %}
+
+{% block canonical %}{{ absolute_url(path('services')) }}{% endblock %}
+
+{% block content %}
+    <div class="one-page services-page row parallax">
+        <div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+            <div class="content">
+                <h1>{{ 'nav.services'|trans }}</h1>
+
+                <p>
+                    Pour pérenniser ses activités, COJOB Nantes développe différentes prestations :
+                </p>
+
+                <h2>Pour les entrepreneurs, associations : Les missions COJOB</h2>
+
+                <p>
+                    Au cours des 2 semaines de promos, nous proposons aux participant.e.s de travailler sur des missions
+                    (objets de communication, stratégie commerciale, etc.) proposées par des « joboosters » :
+                    entrepreneurs, associations, etc. Nous sommes régulièrement à la recherche de missions, alors
+                    n’hésitez plus, contactez-nous et devenez notre prochain jobooster !
+                </p>
+
+                <h3>Concrètement, ça se passe comment ?</h3>
+
+                <p>
+                    Il nous importe que les missions coïncident avec les attentes des joboosters et celles des
+                    participant.e.s à la promo. C’est pourquoi nous vous proposons avant toute chose une rencontre en
+                    amont de la promo pour bien préciser la ou les missions, l’organisation des 15 jours, les attentes
+                    de chacun.
+                </p>
+
+                <p>Durant la promo, on demande deux choses aux joboosters :</p>
+
+                <ul>
+                    <li>
+                        Être présent le premier lundi après-midi (vers 14h), pour présenter votre structure et la
+                        mission.
+                    </li>
+                    <li>
+                        Être présent le dernier vendredi (J+12) après-midi (vers 14h), pour la présentation du résultat de la
+                        mission par les membres de la promo
+                    </li>
+                </ul>
+
+                <p>
+                    Un point d’avancée à mi-parcours est également conseillé, de visu ou par téléphone, pour s’assurer
+                    que tout se passe bien.
+                </p>
+
+                <h3>Pourquoi faire appel à nous ?</h3>
+
+                <p>
+                    Nos jobeurs ont du talent ! Avec la promo, vous pouvez bénéficier de compétences variées, et
+                    aussi et surtout d’un regard neuf et différent sur vos projets ! Avec un interlocuteur dédié au
+                    projet pour « cadrer » le tout, une présentation vous est garantie au bout de 15 jours !
+                </p>
+
+                <p>
+                    Vous êtes entrepreneur, TPE, une association...
+                </p>
+                <p>
+                    Vous avez besoin de compétences sur du court terme ?
+                </p>
+                <p>
+                    Bénéficiez d'une mission COJOB !
+                </p>
+
+                <img src="{{ asset('build/images/services_cojob_nantes.png') }}" class="img-fluid d-block mx-auto"
+                     alt="Les services de Cojob Nantes pour les entrepreneurs et associations">
+
+                <h3>Ils nous ont fait confiance</h3>
+
+                <div class="row">
+                    <div class="col-6 col-sm-4 text-center">
+                        <img src="{{ asset('build/images/echappee_belle_nantes.png') }}" class="img-fluid"
+                             alt="Echappee belle Nantes">
+                    </div>
+                    <div class="col-6 col-sm-4 text-center">
+                        <img src="{{ asset('build/images/hamo_sphere_mouvement.png') }}" class="img-fluid"
+                             alt="Hamo sphere mouvement">
+                    </div>
+                    <div class="col-6 col-sm-4 text-center">
+                        <img src="{{ asset('build/images/bout_a_bout.png') }}" class="img-fluid" alt="Bout a bout">
+                    </div>
+                    <div class="col-6 col-sm-4 text-center">
+                        <img src="{{ asset('build/images/ville_simplement.png') }}" class="img-fluid"
+                             alt="Ville simplement">
+                    </div>
+                    <div class="col-6 col-sm-4 text-center">
+                        <img src="{{ asset('build/images/wave_me_up.png') }}" class="img-fluid" alt="Wave me up">
+                    </div>
+                    <div class="col-6 col-sm-4 text-center">
+                        <img src="{{ asset('build/images/oh_la_belle_idee.png') }}" class="img-fluid"
+                             alt="Oh la belle idee">
+                    </div>
+                    <div class="col-6 col-sm-4 text-center">
+                        <img src="{{ asset('build/images/diyloc.png') }}" class="img-fluid" alt="Diyloc">
+                    </div>
+                    <div class="col-6 col-sm-4 text-center">
+                        <img src="{{ asset('build/images/r.png') }}" class="img-fluid" alt="R">
+                    </div>
+                    <div class="col-6 col-sm-4 text-center">
+                        <img src="{{ asset('build/images/cress_pays_de_loire.png') }}" class="img-fluid"
+                             alt="Cress Pays de la Loire">
+                    </div>
+                </div>
+
+                <p>Et bien d'autres encore...</p>
+
+                <h2>Ateliers</h2>
+
+                <p>
+                    COJOB Nantes propose des ateliers participatifs.
+                </p>
+
+                <p>
+                    Le thème ? Le collectif au service de la recherche d’emploi !
+                </p>
+
+                <p>
+                    Retrouvez ci-dessous une plaquette des thématiques proposées lors de nos interventions. Pour plus
+                    d’informations, n’hésitez pas à <a href="{{ path('homepage') }}#contact">nous contacter !</a>
+                </p>
+
+                <img src="{{ asset('build/images/services_ateliers_cojob_nantes.png') }}" class="img-fluid d-block mx-auto"
+                     alt="Les ateliers de l'association Cojob Nantes">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

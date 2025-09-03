@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cojob Nantes - Se connecter{% endblock %}
+
+{% block meta %}
+    <meta name="robots" content="noindex">
+{% endblock %}
+
+{% block content %}
+
+    <div class="login-box">
+        <div class="login-logo">
+            <img class="img-fluid" src="{{ asset('build/images/logo.png') }}" alt="Cojob Nantes">
+        </div>
+
+        <div class="login-box-body">
+
+            <h3 class="login-box-msg">{{ 'security.login.title'|trans }}</h3>
+
+            {% if error %}
+                <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <form action="{{ path('app_login') }}" method="post">
+
+                <div class="input-group mb-2">
+                    <div class="input-group-text"><i class="fas fa-user"></i></div>
+                    <input type="text" class="form-control" id="username"  name="_username" value="{{ last_username }}" required="required" placeholder="Nom d'utilisateur">
+                </div>
+
+                <div class="input-group mb-2">
+                    <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                    <input type="password" class="form-control" id="password" name="_password" required="required" placeholder="Mot de passe">
+                </div>
+
+                <input type="hidden" name="_target_path" value="{{ path('admin') }}" >
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">{{ 'security.login.submit'|trans }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

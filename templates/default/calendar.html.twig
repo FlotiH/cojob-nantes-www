@@ -1,0 +1,68 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}{{ 'calendar.title'|trans }}{% endblock %}
+
+{% block description %}{{ 'calendar.description'|trans }}{% endblock %}
+
+{% block canonical %}{{ absolute_url(path('calendar')) }}{% endblock %}
+
+{% block content %}
+    <div class="one-page generic-page row parallax">
+        <div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+            <div class="content">
+                <h1>{{ 'nav.calendar'|trans }}</h1>
+                <div id="calendar-holder"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.js"></script>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+            let calendarEl = document.getElementById('calendar-holder');
+
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+                defaultView: 'dayGridMonth',
+                editable: false,
+                eventSources: [
+                    {
+                        url: "{{ path('fc_load_events') }}",
+                        method: "POST",
+                        extraParams: {
+                            filters: JSON.stringify({})
+                        },
+                        failure: () => {
+                            // alert("There was an error while fetching FullCalendar!");
+                        },
+                    },
+                ],
+                buttonText: {
+                    today: 'Aujourd\'hui'
+                },
+                plugins: [ 'interaction', 'dayGrid' ], // https://fullcalendar.io/docs/plugin-index
+                timeZone: 'UTC',
+                locale: 'fr',
+                firstDay: 1,
+                displayEventTime: false,
+                eventColor: '#00905d',
+                eventTextColor: '#fff'
+            });
+            calendar.render();
+        });
+    </script>
+{% endblock %}

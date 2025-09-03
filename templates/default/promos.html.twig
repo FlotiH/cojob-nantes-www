@@ -1,0 +1,146 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}{{ 'promo.title'|trans }}{% endblock %}
+
+{% block description %}{{ 'promo.description'|trans }}{% endblock %}
+
+{% block canonical %}{{ absolute_url(path('promos')) }}{% endblock %}
+
+{% block content %}
+
+    <div class="one-page promos-page row parallax">
+        <div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
+            <div class="content">
+                <h1>{{ 'promo.h1'|trans }}</h1>
+
+                <p>
+                    La promo rassemble une dizaine de personnes pour chercher du travail collectivement.
+                </p>
+                <p>
+                    L’idée est à la pointe de l’innovation sociale : créer un cadre collectif, bienveillant et solidaire
+                    qui facilite l’échange et l’entraide entre chercheurs d’emploi ! C’est plus simple et plus fun à
+                    plusieurs !
+                </p>
+
+                <h2>Comment ça se passe ?</h2>
+                <p>
+                    La promo dure deux semaines, du lundi au vendredi de 9h à 17h. La première journée est animée par
+                    un·e chapoteur·euse de Cojob et constitue un temps de rencontre entre tous les participants. Elle
+                    est aussi consacrée à la découverte du fonctionnement de Cojob et permet d'organiser le planning
+                    des 2 semaines à venir. Ensuite, les participants dédient leur temps à la recherche d'emploi
+                    individuelle ou collective, aux échanges d'expériences et à des ateliers pratiques.
+                </p>
+                <p>
+                    Les formats et contenus des ateliers diffèrent d’une promo à l’autre : bien-être au travail (et en
+                    recherche d’emploi), comment trouver du boulot sans chercher, l’utilisation des réseaux sociaux, le
+                    développement de réseaux professionnels, etc. Ces ateliers sont proposés par des professionnels qui
+                    interviennent en tant que bénévoles (et sont ravis d’être là).
+                </p>
+                <h2>Un·e chapoteur·euse pour vous accueillir</h2>
+                <p>
+                    Actuellement, les promos sont autonomes, c'est-à-dire qu'elles s'auto-gèrent dans leur organisation,
+                    la gestion de l'espace et des activités. Un kit promo est disponible sur place pour répondre à vos
+                    questions, vous guider avec des conseils et des propositions d'ateliers clés-en-main. Le/la
+                    chapoteur·euse qui vous accueille le 1er jour reste disponible à distance pour vous soutenir et vous
+                    aider au besoin.
+                </p>
+
+                <h3>Infos pratiques</h3>
+                <p>
+                    La promo s’adresse à tous les chercheurs d’emploi autonomes dans leurs recherches, sans limite d’âge
+                    ou de domaine d’activité.
+                </p>
+                <p>
+                    Durant la promo, nous ne prenons pas une posture de conseiller, bien au contraire, elle doit
+                    permettre le partage en toute horizontalité, chacun doit donc être actif pour les autres.
+                </p>
+
+                <p>
+                    On se retrouve au <a href="{{ path('contact') }}">local de COJOB Nantes</a>. Nous vous
+                    invitons à bouger les meubles selon votre envie pour vous approprier le lieu et vous sentir à l’aise
+                    pour les 15 jours.
+                </p>
+
+                <h3>Quelles sont les contreparties ?</h3>
+                <p>
+                    Nous demandons une participation de 40 € pour les deux semaines, incluant l’adhésion et frais divers
+                    (café / thé / tisanes / eau, wifi, et tout et tout).
+                </p>
+
+                <p>Surtout, nous demandons à chaque participant à la promo deux engagements principaux :</p>
+                <ul>
+                    <li>Être dans l’écoute, la bienveillance et le partage avec les autres membres</li>
+                    <li>Respecter autant que possible les horaires et le cadre proposé</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
+            <div class="video-responsive">
+                <iframe src="https://www.youtube.com/embed/4q7z2rnQ8gI"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+		
+		<div id="promoAnchor"></div>
+
+        {% for promo in promos %}
+            <div class="promos-div offset-md-1 col-md-10 offset-lg-2 col-lg-8">
+                <div class="content">
+                    <h2>{{ promo.name }} - {{ promo.start|dateInterval(promo.end) }}</h2>
+					<iframe id="haWidget" allowtransparency="true" scrolling="auto"
+                            src="{{ promo.helloAssoFormLink }}/widget"
+                            style="width:100%;height:750px;border:none;"></iframe>
+                    <div style="width:100%;text-align:center;">Merci à
+                        <a href="https://www.helloasso.com" rel="nofollow">HelloAsso</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% if otherPromos|length %}
+            <div class="promos-div offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+                <div class="content">
+                    <h2>{{ 'promo.next'|trans }}</h2>
+                    <ul>
+                        {% for promo in otherPromos %}
+                            <li>
+                                {{ promo.name }} - {{ promo.start|dateInterval(promo.end) }}
+                                <div class="dropdown add-to-calendar-btn">
+                                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Ajouter au calendrier
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" target="_blank" rel="noopener noreferrer"
+                                           href="https://www.google.com/calendar/event?action=TEMPLATE&dates={{ promo.start|date("Ymd") }}T093000%2F{{ promo.end|date("Ymd") }}T173000&text=Cojob%20Nantes%20{{ promo.name|url_encode }}"
+                                           onclick="gtag('event', 'Calendar add Google Promo', {'event_category': 'Button Click'});">
+                                            La promo sur un calendrier Google
+                                        </a>
+                                        <a class="dropdown-item" href="{{ path('promo_get_ical', {'id':promo.id}) }}"
+                                           onclick="gtag('event', 'Calendar add other Promo', {'event_category': 'Button Click'});">
+                                            La promo sur un autre calendrier
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" target="_blank" rel="noopener noreferrer"
+                                           href="https://www.google.com/calendar/event?action=TEMPLATE&dates={{ promo.registeringStart|date("Ymd") }}%2F{{ promo.registeringStart|date("Ymd") }}&text=Ouverture%20inscriptions%20Cojob%20Nantes%20{{ promo.name|url_encode }}"
+                                           onclick="gtag('event', 'Calendar add Google Inscriptions', {'event_category': 'Button Click'});">
+                                            L'ouverture des inscriptions sur un calendrier Google
+                                        </a>
+                                        <a class="dropdown-item"
+                                           href="{{ path('promo_registration_get_ical', {'id':promo.id}) }}"
+                                           onclick="gtag('event', 'Calendar add other Inscriptions', {'event_category': 'Button Click'});">
+                                            L'ouverture des inscriptions sur un autre calendrier
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

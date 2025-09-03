@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+    <head>
+        <meta charset="{{ _charset }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="description" content="{% block description %}{% endblock %}">
+        {% if block('canonical') is defined %}
+            <link rel="canonical" href="{{ block('canonical') }}">
+        {% endif %}
+
+        {% block meta %}{% endblock %}
+
+        {% if app.environment == 'prod' %}
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128778519-1"></script>
+            <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+            gtag('config', 'UA-128778519-1');
+        </script>
+
+            <!-- Google Tag Manager -->
+            <script>(function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-MDNN4PD');</script>
+            <!-- End Google Tag Manager -->
+        {% endif %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+        <link rel="manifest" href="{{ asset('manifest.json') }}">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body itemscope="" itemtype="https://schema.org/WebPage">
+        <meta itemprop="name" content="COJOB Nantes">
+        <meta itemprop="description" content="{{ block('description') }}">
+        <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+            <meta itemprop="name" content="COJOB Nantes">
+            <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                <meta itemprop="url" content="{{ absolute_url(asset('build/images/logo.png')) }}">
+            </span>
+        </div>
+
+    {% if app.environment == 'prod' %}
+        <!-- Google Tag Manager (noscript) -->
+        <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDNN4PD"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
+    {% endif %}
+
+    <div itemscope itemtype="https://schema.org/WebSite">
+        <link itemprop="url" href="{{ absolute_url(path('homepage')) }}">
+        <meta itemprop="inLanguage" content="FR">
+        <meta itemprop="image" content="{{ absolute_url(asset('build/images/promo.jpg')) }}">
+        <meta itemprop="headline" content="{{ block('description') }}">
+        <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+            <meta itemprop="name" content="COJOB Nantes">
+            <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+            <meta itemprop="url" content="{{ absolute_url(asset('build/images/logo.png')) }}">
+        </span>
+        </div>
+        <meta itemprop="keywords"
+              content="COJOB, COJOB Nantes, association, collectif, recherche, emploi, solidaire, entraide, réseau">
+        <meta itemprop="sameAs"
+              content="[https://www.facebook.com/cojobnantes/, https://fr.linkedin.com/company/cojob-nantes]">
+    </div>
+
+    {% block header %}{% endblock %}
+
+    <div class="container-fluid">
+        {% block content %}{% endblock %}
+
+        <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button"
+           title="{{ 'back_top.title'|trans }}">
+            <span class="icon-arrow-up"></span>
+        </a>
+
+        <footer class="row text-center">
+            <div class="col-sm-4">
+                <div class="brand-col">
+                    <a href="{{ path('homepage') }}" class="brand"><span class="visually-hidden">Cojob Nantes</span></a>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="h4 cojob-title">Cojob Nantes</div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="{{ path('homepage') }}#about">{{ 'about.h2'|trans }}</a></li>
+                        <li class="list-group-item"><a href="{{ path('contact') }}">{{ 'nav.contact'|trans }}</a>
+                        <li class="list-group-item"><a href="{{ path('promos') }}">{{ 'nav.promo'|trans }}</a></li>
+                        <li class="list-group-item"><a href="{{ path('guide') }}">{{ 'nav.guide'|trans }}</a></li>
+                        <li class="list-group-item"><a href="{{ path('support') }}">{{ 'nav.support_us'|trans }}</a></li>
+                        <li class="list-group-item"><a href="{{ path('calendar') }}">{{ 'nav.calendar'|trans }}</a></li>
+                        <li class="list-group-item"><a href="{{ path('partners') }}">{{ 'nav.partners'|trans }}</a></li>
+{#                        <li class="list-group-item"><a href="{{ path('airtable_data') }}">{{ 'nav.members'|trans }}</a></li>#}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="social-links" itemscope itemtype="https://schema.org/Organization">
+                    <meta itemprop="name" content="COJOB Nantes">
+                    <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                        <meta itemprop="streetAddress" content="boulevard salvador Allende, Les Salorges 2">
+                        <meta itemprop="postalCode" content="44100">
+                        <meta itemprop="addressLocality" content="Nantes, France">
+                    </div>
+                    <div class="h4">{{ 'footer.social_links'|trans }}</div>
+                    <link itemprop="url" href="{{ absolute_url(path('homepage')) }}">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="https://www.facebook.com/cojobnantes/" itemprop="sameAs" target="_blank"
+                               rel="noopener noreferrer"
+                               onclick="gtag('event', 'Footer Socials Facebook', {'event_category': 'Button Click'});">
+                                <i class="icon icon-facebook"></i>
+                                <span class="visually-hidden">Facebook</span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://fr.linkedin.com/company/cojob-nantes" itemprop="sameAs" target="_blank"
+                               rel="noopener noreferrer"
+                               onclick="gtag('event', 'Footer Socials LinkedIn', {'event_category': 'Button Click'});">
+                                <i class="icon icon-linkedin"></i>
+                                <span class="visually-hidden">LinkedIn</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="partners">
+                </div>
+            </div>
+            <div class="col-12">
+                <ul class="list-inline footer-footer">
+                    <li class="list-inline-item">© COJOB Nantes 2025. Tous droits réservés.</li>
+{#                    <li class="list-inline-item"><a href="{{ path('sitemap') }}">{{ 'footer.sitemap'|trans }}</a></li>#}
+                    <li class="list-inline-item"><a href="{{ path('legals') }}">{{ 'footer.legals'|trans }}</a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+        </footer>
+    </div>
+    </body>
+</html>
