@@ -43,9 +43,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('calendar') }}">{{ 'nav.calendar'|trans }}</a>
                         </li>
-                        <li class="nav-item">
+                        {#<li class="nav-item">
                             <a class="nav-link" href="{{ path('airtable_data') }}">{{ 'nav.members'|trans }}</a>
-                        </li>
+                        </li>#}
                         <li>
                             <ul class="list-inline social-links">
                                 <li class="list-inline-item">
@@ -63,6 +63,14 @@
                                         <span class="visually-hidden">Facebook</span>
                                     </a>
                                 </li>
+{#                                <li class="list-inline-item">#}
+{#                                    <a href="https://twitter.com/cojobnantes" itemprop="sameAs" target="_blank"#}
+{#                                       rel="noopener noreferrer"#}
+{#                                       onclick="gtag('event', 'Head Socials Twitter', {'event_category': 'Button Click'});">#}
+{#                                        <i class="icon icon-twitter"></i>#}
+{#                                        <span class="visually-hidden">Twitter</span>#}
+{#                                    </a>#}
+{#                                </li>#}
                                 <li class="list-inline-item">
                                     <a href="https://fr.linkedin.com/company/cojob-nantes" itemprop="sameAs" target="_blank"
                                        rel="noopener noreferrer"
@@ -73,7 +81,7 @@
                                 </li>
                             </ul>
                             <a class="btn btn-primary btn-donation" role="button" target="_blank" rel="noopener noreferrer"
-                               href="https://www.helloasso.com/associations/cojob-nantes/formulaires/3"
+                               href="https://www.helloasso.com/associations/cojob-nantes/formulaires/4"
                                onclick="gtag('event', 'All pages Donate', {'event_category': 'Button Click'});">
                                 {{ 'home.donation'|trans }}
                             </a>
