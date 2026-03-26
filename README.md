@@ -8,6 +8,20 @@ Website for Cojob Nantes association
 symfony composer install
 ```
 
+### Run yarn
+
+```bash
+yarn install
+```
+```bash
+yarn build
+```
+
+Or on dev
+```bash
+yarn encore dev
+```
+
 ### For local use:
 
 ```bash

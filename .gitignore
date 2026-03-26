@@ -1,50 +1,13 @@
-# Cache, session files and logs 
-/var/cache/*
-/var/sessions/*
-!var/cache/.gitkeep
-!var/sessions/.gitkeep
-/var/log/*
-!var/log/.gitkeep
-
-# Managed by Composer
-/var/bootstrap.php.cache
-/bin/*
-!bin/console
-/vendor/
-
-# Assets and user uploads
-/public/bundles/
-/public/uploads/
-/htdocs/bundles/
-/htdocs/uploads/
-
-# PHPUnit
-/phpunit.xml
-
-# Build data
-/build/
-
-# Composer PHAR
-/composer.phar
-
-# Backup entities generated with doctrine:generate:entities command
-**/Entity/*~
-
-# Embedded web-server pid file
-/.web-server-pid
 
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
 /.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
 ###< symfony/framework-bundle ###
-
-###> symfony/webpack-encore-bundle ###
-/node_modules/
-/public/build/
-npm-debug.log
-yarn-error.log
-###< symfony/webpack-encore-bundle ###
 
 ###> phpunit/phpunit ###
 /phpunit.xml
@@ -56,8 +19,13 @@ yarn-error.log
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
-/.yarn
-/htdocs/static
-/htdocs/build
-htdocs/credentials.json
-assets/credentials.json
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
+
+public/credentials.json
+/public/static
+/public/uploads
