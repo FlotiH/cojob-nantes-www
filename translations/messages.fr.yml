@@ -86,6 +86,7 @@ contact:
       placeholder: Message
     submit: Envoyer
   error: Un champ est erroné, merci de vérifier le formulaire
+  spam: SPAM detecté, demande non envoyée
   email:
     subject: Nouvelle demande de contact sur le site Cojob Nantes
   thanks:

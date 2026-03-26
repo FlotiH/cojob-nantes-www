@@ -27,6 +27,12 @@
                             {% endfor %}
                         </script>
                     </div>
+                {% elseif app.session.flashbag.has('contact.danger') %}
+                    {% for message in app.flashes('contact.danger') %}
+                        <div class="alert alert-danger">
+                            {{ message|trans }}
+                        </div>
+                    {% endfor %}
                 {% else %}
 
                     <h1>{{ 'contact.h1'|trans }}</h1>
@@ -77,14 +83,8 @@
                             </div>
                         </div>
 
-                        <div class="col-12">
-                            <div class="form-label-group">
-                                {{ form_label(contactForm.recaptcha) }}
-                                {{ form_widget(contactForm.recaptcha) }}
-                                {{ form_errors(contactForm.recaptcha) }}
-                            </div>
-                        </div>
-
+                        {{ form_widget(contactForm.name) }}
+                        
                         <div class="offset-sm-3 col-sm-6 offset-lg-4 col-lg-4 d-grid">
                             <button type="submit" class="btn btn-primary btn-lg">
                                 <span class="icon-submit" aria-hidden="true"></span>

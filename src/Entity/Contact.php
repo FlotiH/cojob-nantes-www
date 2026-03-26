@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use EWZ\Bundle\RecaptchaBundle\Validator\Constraints as Recaptcha;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
@@ -47,8 +46,8 @@ class Contact
     #[ORM\Column(type: 'string', nullable: true, length: 15)]
     private $telephone;
 
-    #[Recaptcha\IsTrue]
-    public $recaptcha;
+    // honeypot
+    protected $name;
 
     public function __toString()
     {
@@ -123,6 +122,18 @@ class Contact
     public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
 
         return $this;
     }

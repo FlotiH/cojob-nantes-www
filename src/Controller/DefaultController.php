@@ -8,7 +8,6 @@ use App\Entity\Event;
 use App\Entity\Promo;
 use App\Entity\Testimony;
 use App\Form\ContactType;
-use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Eluceo\iCal\Domain\Entity\Calendar;
 use Eluceo\iCal\Domain\ValueObject\Date;
@@ -16,12 +15,11 @@ use Eluceo\iCal\Domain\ValueObject\MultiDay;
 use Eluceo\iCal\Presentation\Factory\CalendarFactory;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class DefaultController extends AbstractController
@@ -29,7 +27,7 @@ class DefaultController extends AbstractController
     #[Route('/', name: 'homepage')]
     public function indexAction(EntityManagerInterface $em): RedirectResponse|Response
     {
-        $now = new DateTime();
+        $now = new \DateTime();
         $events = $em->getRepository(Article::class)
             ->createQueryBuilder('a')
             ->where('a.publishedAt IS NOT NULL AND a.publishedAt <= :date')
@@ -70,8 +68,7 @@ class DefaultController extends AbstractController
                 ->setMaxResults(6 - $nbRequiredTestmonies)
                 ->getQuery()
                 ->getResult();
-        }
-        else {
+        } else {
             $promoTestimonies = [];
         }
 
@@ -79,14 +76,14 @@ class DefaultController extends AbstractController
             'events' => $events,
             'requiredPromoTestimonies' => $requiredPromoTestimonies,
             'promoTestimonies' => $promoTestimonies,
-            'promoOpen' => $promoOpen
+            'promoOpen' => $promoOpen,
         ]);
     }
 
     #[Route('/promos', name: 'promos')]
     public function promosAction(EntityManagerInterface $em): Response
     {
-        $now = new DateTime();
+        $now = new \DateTime();
         $availablePromos = $em->getRepository(Promo::class)
             ->createQueryBuilder('p')
             ->where('p.helloAssoFormLink IS NOT NULL')
@@ -108,7 +105,7 @@ class DefaultController extends AbstractController
 
         return $this->render('default/promos.html.twig', [
             'promos' => $availablePromos,
-            'otherPromos' => $otherPromos
+            'otherPromos' => $otherPromos,
         ]);
     }
 
@@ -135,7 +132,7 @@ class DefaultController extends AbstractController
     {
         return $this->render('default/guide.html.twig');
     }
-	
+
     #[Route('/partenaires', name: 'partners')]
     public function partnersAction(): Response
     {
@@ -146,7 +143,7 @@ class DefaultController extends AbstractController
     public function eventShowAction(Event $event): Response
     {
         return $this->render('default/event_show.html.twig', [
-            'event' => $event
+            'event' => $event,
         ]);
     }
 
@@ -157,7 +154,7 @@ class DefaultController extends AbstractController
             $request,
             $promo->getStart()->setTime(0, 0, 0),
             $promo->getEnd()->setTime(23, 30, 0),
-            'Cojob Nantes ' . $promo->getName());
+            'Cojob Nantes '.$promo->getName());
     }
 
     #[Route('/promo/registration/{id}/get-ical', name: 'promo_registration_get_ical')]
@@ -167,7 +164,7 @@ class DefaultController extends AbstractController
             $request,
             $promo->getRegisteringStart()->setTime(0, 0, 0),
             $promo->getRegisteringStart()->setTime(23, 30, 0),
-            'Ouverture inscriptions Cojob Nantes ' . $promo->getName());
+            'Ouverture inscriptions Cojob Nantes '.$promo->getName());
     }
 
     #[Route('/contact', name: 'contact')]
@@ -179,30 +176,37 @@ class DefaultController extends AbstractController
         $contactForm->handleRequest($request);
 
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
-            $em->persist($contact);
-            $em->flush();
+            if ($contact->getName()) {
+                $this->addFlash(
+                    'contact.danger',
+                    'contact.spam'
+                );
+            } else {
+                $em->persist($contact);
+                $em->flush();
 
-            $mailerParam = $this->getParameter('mailer');
+                $mailerParam = $this->getParameter('mailer');
 
-            $email = (new TemplatedEmail())
-                ->from($mailerParam['from'])
-                ->to($mailerParam['to'])
-                ->bcc($mailerParam['default_bcc'])
-                ->subject($translator->trans('contact.email.subject').' : '.$contact->getFirstName().' '.$contact->getLastName())
-                ->htmlTemplate('emails/contact.html.twig')
-                ->context([
-                    'data' => $contact
-                ])
-            ;
+                $email = (new TemplatedEmail())
+                    ->from($mailerParam['from'])
+                    ->to($mailerParam['to'])
+                    ->bcc($mailerParam['default_bcc'])
+                    ->subject($translator->trans('contact.email.subject').' : '.$contact->getFirstName().' '.$contact->getLastName())
+                    ->htmlTemplate('emails/contact.html.twig')
+                    ->context([
+                        'data' => $contact,
+                    ])
+                ;
 
-            $mailer->send($email);
+                $mailer->send($email);
 
-            $this->addFlash(
-                'contact.success',
-                'gtag(\'event\', \'contact-form-homepage\');'
-            );
+                $this->addFlash(
+                    'contact.success',
+                    'gtag(\'event\', \'contact-form-homepage\');'
+                );
+            }
 
-            return $this->redirect($this->generateUrl('contact') . '#contact');
+            return $this->redirect($this->generateUrl('contact').'#contact');
         }
 
         return $this->render('default/contact.html.twig', [

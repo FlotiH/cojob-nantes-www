@@ -30,7 +30,6 @@ class DefaultControllerTest extends WebTestCase
             ->getRepository(Event::class);
     }
 
-
     public function testIndex(): void
     {
         $crawler = $this->client->request('GET', '/');
@@ -117,5 +116,24 @@ class DefaultControllerTest extends WebTestCase
         $crawler = $this->client->request('GET', '/partenaires');
 
         self::assertResponseIsSuccessful();
+    }
+
+    public function testContactHoneypot(): void
+    {
+        $crawler = $this->client->request('GET', '/contact');
+
+        self::assertResponseIsSuccessful();
+
+        $this->client->submitForm('Envoyer', [
+            'app_contact[last_name]' => 'test',
+            'app_contact[first_name]' => 'test',
+            'app_contact[email]' => 'test@test.test',
+            'app_contact[telephone]' => 'test',
+            'app_contact[message]' => 'test',
+            'app_contact[name]' => 'honeypot',
+        ]);
+        $this->assertResponseRedirects();
+        $this->client->followRedirect();
+        self::assertSelectorTextContains('.alert-danger', 'SPAM detecté, demande non envoyée');
     }
 }
