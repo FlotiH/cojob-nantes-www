@@ -33,13 +33,13 @@ symfony server:start --port=8007
 /!\ Please run tests before each commit (manually or in a pre-commit hook for instance) :
 
 ```bash
-symfony php bin/phpunit
+symfony php vendor/bin/phpunit
 ```
 
 or without deprecations helper :
 
 ```bash
-SYMFONY_DEPRECATIONS_HELPER=disabled symfony php bin/phpunit
+SYMFONY_DEPRECATIONS_HELPER=disabled symfony php vendor/bin/phpunit
 ```
 
 ### Google credentials

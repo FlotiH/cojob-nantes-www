@@ -13,6 +13,7 @@ use Eluceo\iCal\Domain\Entity\Calendar;
 use Eluceo\iCal\Domain\ValueObject\Date;
 use Eluceo\iCal\Domain\ValueObject\MultiDay;
 use Eluceo\iCal\Presentation\Factory\CalendarFactory;
+use Psr\Log\LoggerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -168,7 +169,7 @@ class DefaultController extends AbstractController
     }
 
     #[Route('/contact', name: 'contact')]
-    public function contactAction(Request $request, MailerInterface $mailer, EntityManagerInterface $em, TranslatorInterface $translator): RedirectResponse|Response
+    public function contactAction(Request $request, MailerInterface $mailer, EntityManagerInterface $em, TranslatorInterface $translator, LoggerInterface $logger): RedirectResponse|Response
     {
         $contact = new Contact();
         $contactForm = $this->createForm(ContactType::class, $contact);
@@ -181,6 +182,7 @@ class DefaultController extends AbstractController
                     'contact.danger',
                     'contact.spam'
                 );
+                $logger->critical('SPAM detected', ['contact' => $contact]);
             } else {
                 $em->persist($contact);
                 $em->flush();
