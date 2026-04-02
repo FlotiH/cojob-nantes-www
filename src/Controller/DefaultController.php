@@ -182,7 +182,13 @@ class DefaultController extends AbstractController
                     'contact.danger',
                     'contact.spam'
                 );
-                $logger->critical('SPAM detected', ['contact' => $contact]);
+                $logger->info('SPAM detected', [
+                    'contact' => $contact,
+                    'email' => $contact->getEmail(),
+                    'tel' => $contact->getTelephone(),
+                    'pot' => $contact->getName(),
+                    'message' => $contact->getMessage(),
+                ]);
             } else {
                 $em->persist($contact);
                 $em->flush();
