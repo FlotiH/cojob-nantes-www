@@ -2,6 +2,8 @@ twig:
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
     file_name_pattern: '*.twig'
+    paths:
+        '%kernel.project_dir%/assets/styles': styles
 
 when@test:
     twig:
