@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -32,6 +33,7 @@ class ContactCrudController extends AbstractCrudController
             TextField::new('last_name'),
             TextField::new('first_name'),
             EmailField::new('email'),
+            TelephoneField::new('telephone'),
             TextareaField::new('message'),
             DateTimeField::new('createdAt'),
         ];
@@ -43,7 +45,7 @@ class ContactCrudController extends AbstractCrudController
             ->add('last_name')
             ->add('first_name')
             ->add('email')
-            ;
+        ;
     }
 
     public function configureActions(Actions $actions): Actions
@@ -51,6 +53,6 @@ class ContactCrudController extends AbstractCrudController
         return $actions
             ->disable(Action::NEW, Action::EDIT)
             ->add(Crud::PAGE_INDEX, Action::DETAIL)
-            ;
+        ;
     }
 }
