@@ -45,3 +45,5 @@ SYMFONY_DEPRECATIONS_HELPER=disabled symfony php vendor/bin/phpunit
 ### Google credentials
 
 Add credentials.json file in assets directory
+
+TODO FHA : faire test BO, ménage image, mep, performance et bonne pratique

@@ -1,0 +1,84 @@
+<?php
+
+namespace App\Tests\Controller\Admin;
+
+use App\Controller\Admin\DashboardController;
+use App\Controller\Admin\MediaCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Test\AbstractCrudTestCase;
+use Symfony\Component\Security\Core\User\InMemoryUser;
+
+final class MediaCrudControllerTest extends AbstractCrudTestCase
+{
+    protected function getControllerFqcn(): string
+    {
+        return MediaCrudController::class;
+    }
+
+    protected function getDashboardFqcn(): string
+    {
+        return DashboardController::class;
+    }
+
+    // not logged
+    public function testIndexPageNotlogged(): void
+    {
+        $this->client->request('GET', $this->generateIndexUrl());
+        static::assertResponseRedirects('/login', 302);
+    }
+
+    public function testNewPageNotlogged(): void
+    {
+        $this->client->request('GET', $this->generateNewFormUrl());
+        static::assertResponseRedirects('/login', 302);
+    }
+
+    public function testEditPageNotlogged(): void
+    {
+        $this->client->request('GET', $this->generateEditFormUrl(20));
+        static::assertResponseRedirects('/login', 302);
+    }
+
+    public function testDetailPageNotlogged(): void
+    {
+        $this->client->request('GET', $this->generateDetailUrl(20));
+        static::assertResponseRedirects('/login', 302);
+    }
+
+    // logged
+    public function testIndexPage(): void
+    {
+        $testUser = new InMemoryUser('user', 'pass', ['ROLE_WEBMASTER']);
+        $this->client->loginUser($testUser);
+
+        $this->client->request('GET', $this->generateIndexUrl());
+        static::assertResponseIsSuccessful();
+    }
+
+    public function testNewPage(): void
+    {
+        $testUser = new InMemoryUser('user', 'pass', ['ROLE_WEBMASTER']);
+        $this->client->loginUser($testUser);
+
+        $this->client->request('GET', $this->generateNewFormUrl());
+        static::assertResponseIsSuccessful();
+    }
+
+    // TODO FHA : comment trouver l'id ?
+    public function testEditPage(): void
+    {
+        $testUser = new InMemoryUser('user', 'pass', ['ROLE_WEBMASTER']);
+        $this->client->loginUser($testUser);
+
+        $this->client->request('GET', $this->generateEditFormUrl(20));
+        static::assertResponseIsSuccessful();
+    }
+
+    public function testDetailPage(): void
+    {
+        $testUser = new InMemoryUser('user', 'pass', ['ROLE_WEBMASTER']);
+        $this->client->loginUser($testUser);
+
+        $this->client->request('GET', $this->generateDetailUrl(20));
+        static::assertResponseIsSuccessful();
+    }
+}
