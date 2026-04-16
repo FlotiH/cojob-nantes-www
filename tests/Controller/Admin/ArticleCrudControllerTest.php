@@ -35,17 +35,35 @@ final class ArticleCrudControllerTest extends AbstractCrudTestCase
 
     public function testEditPageNotlogged(): void
     {
-        $this->client->request('GET', $this->generateEditFormUrl(36));
+        $this->client->request('GET', $this->generateEditFormUrl(1));
         static::assertResponseRedirects('/login', 302);
     }
 
     public function testDetailPageNotlogged(): void
     {
-        $this->client->request('GET', $this->generateDetailUrl(36));
+        $this->client->request('GET', $this->generateDetailUrl(1));
         static::assertResponseRedirects('/login', 302);
     }
 
-    // TODO FHA : publish et unpublish
+    public function testPublishActionNotlogged(): void
+    {
+        $this->client->request('GET', $this->adminUrlGenerator
+            ->setController(ArticleCrudController::class)
+            ->setAction('publish')
+            ->setEntityId(1)
+            ->generateUrl());
+        static::assertResponseRedirects('/login', 302);
+    }
+
+    public function testUnpublishActionNotlogged(): void
+    {
+        $this->client->request('GET', $this->adminUrlGenerator
+            ->setController(ArticleCrudController::class)
+            ->setAction('unpublish')
+            ->setEntityId(1)
+            ->generateUrl());
+        static::assertResponseRedirects('/login', 302);
+    }
 
     // logged
     public function testIndexPage(): void
@@ -66,13 +84,12 @@ final class ArticleCrudControllerTest extends AbstractCrudTestCase
         static::assertResponseIsSuccessful();
     }
 
-    // TODO FHA : comment trouver l'id ?
     public function testEditPage(): void
     {
         $testUser = new InMemoryUser('user', 'pass', ['ROLE_WEBMASTER']);
         $this->client->loginUser($testUser);
 
-        $this->client->request('GET', $this->generateEditFormUrl(36));
+        $this->client->request('GET', $this->generateEditFormUrl(1));
         static::assertResponseIsSuccessful();
     }
 
@@ -81,7 +98,33 @@ final class ArticleCrudControllerTest extends AbstractCrudTestCase
         $testUser = new InMemoryUser('user', 'pass', ['ROLE_WEBMASTER']);
         $this->client->loginUser($testUser);
 
-        $this->client->request('GET', $this->generateDetailUrl(36));
+        $this->client->request('GET', $this->generateDetailUrl(1));
         static::assertResponseStatusCodeSame(Response::HTTP_FORBIDDEN);
+    }
+
+    public function testPublishAction(): void
+    {
+        $testUser = new InMemoryUser('user', 'pass', ['ROLE_WEBMASTER']);
+        $this->client->loginUser($testUser);
+
+        $this->client->request('GET', $this->adminUrlGenerator
+            ->setController(ArticleCrudController::class)
+            ->setAction('publish')
+            ->setEntityId(1)
+            ->generateUrl());
+        static::assertResponseRedirects('/admin/article');
+    }
+
+    public function testUnpublishAction(): void
+    {
+        $testUser = new InMemoryUser('user', 'pass', ['ROLE_WEBMASTER']);
+        $this->client->loginUser($testUser);
+
+        $this->client->request('GET', $this->adminUrlGenerator
+            ->setController(ArticleCrudController::class)
+            ->setAction('unpublish')
+            ->setEntityId(1)
+            ->generateUrl());
+        static::assertResponseRedirects('/admin/article');
     }
 }

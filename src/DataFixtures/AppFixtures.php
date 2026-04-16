@@ -30,7 +30,7 @@ class AppFixtures extends Fixture
         $manager->persist($article);
 
         $event = (new Event())
-            ->setName('name')
+            ->setName('Apérotaf - Courses d\'obstacles de Cojob Nantes')
             ->setStart(new \DateTime())
             ->setEnd(new \DateTime())
             ->setMetaDescription('metadescription');
@@ -56,8 +56,14 @@ class AppFixtures extends Fixture
 
         $user = (new User())
             ->setEmail('email@email.email')
-            ->setPassword('pass');
+            ->setPassword('$2y$13$KzXFPUZnVmFdU5Y0V6vSbuF8Lk/fKoR/MK2JpwKL9iVI77AXK9Hqe')
+            ->setRoles(['ROLE_WEBMASTER']);
+        $admin = (new User())
+            ->setEmail('admin@email.email')
+            ->setPassword('$2y$13$KzXFPUZnVmFdU5Y0V6vSbuF8Lk/fKoR/MK2JpwKL9iVI77AXK9Hqe')
+            ->setRoles(['ROLE_SUPER_ADMIN']);
         $manager->persist($user);
+        $manager->persist($admin);
 
         $manager->flush();
     }

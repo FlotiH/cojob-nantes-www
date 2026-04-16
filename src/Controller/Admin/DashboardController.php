@@ -29,9 +29,8 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkTo(ContactCrudController::class, 'Contact', 'fas fa-address-card');
-        if ($this->isGranted('ROLE_SUPER_ADMIN')) {
-            yield MenuItem::linkTo(UserCrudController::class, 'User', 'fas fa-user');
-        }
+        yield MenuItem::linkTo(UserCrudController::class, 'User', 'fas fa-user')
+            ->setPermission('ROLE_SUPER_ADMIN');
         yield MenuItem::linkTo(ArticleCrudController::class, 'Article', 'fas fa-newspaper');
         yield MenuItem::linkTo(EventCrudController::class, 'Event', 'fas fa-calendar-check');
         yield MenuItem::linkTo(TestimonyCrudController::class, 'Testimony', 'fas fa-comments');

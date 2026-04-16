@@ -35,13 +35,13 @@ final class ContactCrudControllerTest extends AbstractCrudTestCase
 
     public function testEditPageNotlogged(): void
     {
-        $this->client->request('GET', $this->generateEditFormUrl(1618));
+        $this->client->request('GET', $this->generateEditFormUrl(1));
         static::assertResponseRedirects('/login', 302);
     }
 
     public function testDetailPageNotlogged(): void
     {
-        $this->client->request('GET', $this->generateDetailUrl(1618));
+        $this->client->request('GET', $this->generateDetailUrl(1));
         static::assertResponseRedirects('/login', 302);
     }
 
@@ -64,13 +64,12 @@ final class ContactCrudControllerTest extends AbstractCrudTestCase
         static::assertResponseStatusCodeSame(Response::HTTP_FORBIDDEN);
     }
 
-    // TODO FHA : comment trouver l'id ?
     public function testEditPage(): void
     {
         $testUser = new InMemoryUser('user', 'pass', ['ROLE_WEBMASTER']);
         $this->client->loginUser($testUser);
 
-        $this->client->request('GET', $this->generateEditFormUrl(1618));
+        $this->client->request('GET', $this->generateEditFormUrl(1));
         static::assertResponseStatusCodeSame(Response::HTTP_FORBIDDEN);
     }
 
@@ -79,7 +78,7 @@ final class ContactCrudControllerTest extends AbstractCrudTestCase
         $testUser = new InMemoryUser('user', 'pass', ['ROLE_WEBMASTER']);
         $this->client->loginUser($testUser);
 
-        $this->client->request('GET', $this->generateDetailUrl(1618));
+        $this->client->request('GET', $this->generateDetailUrl(1));
         static::assertResponseIsSuccessful();
     }
 }
