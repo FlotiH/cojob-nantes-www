@@ -2,23 +2,16 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Article;
-use App\Entity\Contact;
-use App\Entity\Event;
-use App\Entity\Media;
-use App\Entity\Promo;
-use App\Entity\Testimony;
-use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
+#[AdminDashboard(routePath: '/admin', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
 {
-    #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
@@ -29,21 +22,20 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('<img src="static/images/logo.png" alt="Cojob Nantes" style="max-width: 100%">')
+            ->setTitle('<img src="/static/images/logo.png" alt="Cojob Nantes" style="max-width: 100%">')
             ->setFaviconPath('favicon.ico');
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToCrud('Contact', 'fas fa-address-card', Contact::class);
-        if ($this->isGranted('ROLE_SUPER_ADMIN')) {
-            yield MenuItem::linkToCrud('User', 'fas fa-user', User::class);
-        }
-        yield MenuItem::linkToCrud('Article', 'fas fa-newspaper', Article::class);
-        yield MenuItem::linkToCrud('Event', 'fas fa-calendar-check', Event::class);
-        yield MenuItem::linkToCrud('Testimony', 'fas fa-comments', Testimony::class);
-        yield MenuItem::linkToCrud('Promo', 'fas fa-users', Promo::class);
-        yield MenuItem::linkToCrud('Media', 'fas fa-photo-video', Media::class);
+        yield MenuItem::linkTo(ContactCrudController::class, 'Contact', 'fas fa-address-card');
+        yield MenuItem::linkTo(UserCrudController::class, 'User', 'fas fa-user')
+            ->setPermission('ROLE_SUPER_ADMIN');
+        yield MenuItem::linkTo(ArticleCrudController::class, 'Article', 'fas fa-newspaper');
+        yield MenuItem::linkTo(EventCrudController::class, 'Event', 'fas fa-calendar-check');
+        yield MenuItem::linkTo(TestimonyCrudController::class, 'Testimony', 'fas fa-comments');
+        yield MenuItem::linkTo(PromoCrudController::class, 'Promo', 'fas fa-users');
+        yield MenuItem::linkTo(MediaCrudController::class, 'Media', 'fas fa-photo-video');
         yield MenuItem::linkToLogout('security.logout', 'fa fa-fw fa-sign-out');
     }
 }

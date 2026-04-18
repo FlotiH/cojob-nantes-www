@@ -21,7 +21,8 @@ security:
                         roles: ROLE_MEMBER
     firewalls:
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            # Ensure dev tools and static assets are always allowed
+            pattern: ^/(_profiler|_wdt|assets|build)/
             security: false
 
         members:
@@ -45,7 +46,7 @@ security:
                 check_path: app_login
                 enable_csrf: true
 
-            # activate different ways to authenticate
+            # Activate different ways to authenticate:
             # https://symfony.com/doc/current/security.html#the-firewall
 
             # https://symfony.com/doc/current/security/impersonating_user.html
@@ -86,8 +87,7 @@ security:
             - ROLE_ADMIN_MEDIA_DELETE
             - ROLE_MEMBER
 
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
+    # Note: Only the *first* matching rule is applied
     access_control:
         - { path: ^/admin/login, roles: PUBLIC_ACCESS  }
         - { path: ^/admin/password, roles: PUBLIC_ACCESS  }
@@ -98,12 +98,16 @@ security:
 when@test:
     security:
         password_hashers:
-            # By default, password hashers are resource intensive and take time. This is
-            # important to generate secure password hashes. In tests however, secure hashes
-            # are not important, waste resources and increase test times. The following
-            # reduces the work factor to the lowest possible values.
+            # Password hashers are resource-intensive by design to ensure security.
+            # In tests, it's safe to reduce their cost to improve performance.
             Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
                 algorithm: auto
                 cost: 4 # Lowest possible value for bcrypt
                 time_cost: 3 # Lowest possible value for argon
                 memory_cost: 10 # Lowest possible value for argon
+        providers:
+            users_in_memory:
+                memory:
+                    users:
+                        user: { password: pass, roles: ROLE_WEBMASTER }
+                        admin: { password: pass, roles: ROLE_SUPER_ADMIN }

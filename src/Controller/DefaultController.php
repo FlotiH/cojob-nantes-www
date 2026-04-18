@@ -140,7 +140,7 @@ class DefaultController extends AbstractController
         return $this->render('default/partners.html.twig');
     }
 
-    #[Route('/evenement/{slug}', name: 'event_show')]
+    #[Route('/evenement/{slug:event}', name: 'event_show')]
     public function eventShowAction(Event $event): Response
     {
         return $this->render('default/event_show.html.twig', [
@@ -182,7 +182,13 @@ class DefaultController extends AbstractController
                     'contact.danger',
                     'contact.spam'
                 );
-                $logger->critical('SPAM detected', ['contact' => $contact]);
+                $logger->info('SPAM detected', [
+                    'contact' => $contact,
+                    'email' => $contact->getEmail(),
+                    'tel' => $contact->getTelephone(),
+                    'pot' => $contact->getName(),
+                    'message' => $contact->getMessage(),
+                ]);
             } else {
                 $em->persist($contact);
                 $em->flush();

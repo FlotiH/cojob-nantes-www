@@ -3,10 +3,10 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Article;
+use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminRoute;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -63,25 +63,23 @@ class ArticleCrudController extends AbstractCrudController
         ];
     }
 
-    public function publish(AdminContext $context)
+    #[AdminRoute('/{entityId:article.id}/publish')]
+    public function publish(Article $article)
     {
-        $article = $context->getEntity()->getInstance();
-
         $article->setPublished(true);
         $this->container->get('doctrine')->getManager()->flush();
         $this->addFlash('success', sprintf('Actualité "%s" publiée', $article));
 
-        return $this->redirect($context->getReferrer());
+        return $this->redirectToRoute('admin_article_index');
     }
 
-    public function unpublish(AdminContext $context)
+    #[AdminRoute('/{entityId:article.id}/unpublish')]
+    public function unpublish(Article $article)
     {
-        $article = $context->getEntity()->getInstance();
-
         $article->setPublished(false);
         $this->container->get('doctrine')->getManager()->flush();
         $this->addFlash('success', sprintf('Actualité "%s" dépubliée', $article));
 
-        return $this->redirect($context->getReferrer());
+        return $this->redirectToRoute('admin_article_index');
     }
 }
