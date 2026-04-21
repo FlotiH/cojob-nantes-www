@@ -36,7 +36,7 @@ class Media
         return $this->id;
     }
 
-    public function setImageFile(File $image = null)
+    public function setImageFile(?File $image)
     {
         $this->imageFile = $image;
 

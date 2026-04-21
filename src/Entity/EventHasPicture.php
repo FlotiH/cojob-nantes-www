@@ -49,7 +49,7 @@ class EventHasPicture
         return $this->media;
     }
 
-    public function setMedia(Media $media = null)
+    public function setMedia(?Media $media)
     {
         $this->media = $media;
 
