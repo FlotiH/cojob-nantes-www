@@ -39,7 +39,7 @@ trait PublishableTrait
         return $this->publishedAt;
     }
 
-    public function setPublishedAt(\DateTime $publishedAt = null)
+    public function setPublishedAt(?\DateTime $publishedAt)
     {
         $this->publishedAt = $publishedAt;
 
@@ -51,7 +51,7 @@ trait PublishableTrait
         return $this->expiresAt;
     }
 
-    public function setExpiresAt(\DateTime $expiresAt = null)
+    public function setExpiresAt(?\DateTime $expiresAt)
     {
         $this->expiresAt = $expiresAt;
 
