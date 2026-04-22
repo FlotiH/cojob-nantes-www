@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DataFixtures;
 
 use App\Entity\Article;
@@ -16,7 +18,7 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $contact = (new Contact())
+        $contact = new Contact()
             ->setLastName('lastname')
             ->setEmail('email@email.email')
             ->setFirstName('firstname')
@@ -24,12 +26,12 @@ class AppFixtures extends Fixture
             ->setTelephone('0202020202');
         $manager->persist($contact);
 
-        $article = (new Article())
+        $article = new Article()
             ->setImageLink('https://cojobnantes.fr/build/images/logo.d7e19af0.png')
             ->setTitle('title');
         $manager->persist($article);
 
-        $event = (new Event())
+        $event = new Event()
             ->setName('Apérotaf - Courses d\'obstacles de Cojob Nantes')
             ->setStart(new \DateTime())
             ->setEnd(new \DateTime())
@@ -40,7 +42,7 @@ class AppFixtures extends Fixture
         $media->setImage('image');
         $manager->persist($media);
 
-        $promo = (new Promo())
+        $promo = new Promo()
             ->setName('name')
             ->setStart(new \DateTime())
             ->setEnd(new \DateTime())
@@ -48,17 +50,17 @@ class AppFixtures extends Fixture
             ->setRegisteringEnd(new \DateTime());
         $manager->persist($promo);
 
-        $testimony = (new Testimony())
+        $testimony = new Testimony()
             ->setName('name')
             ->setSubtitle('subtitle')
             ->setContent('content');
         $manager->persist($testimony);
 
-        $user = (new User())
+        $user = new User()
             ->setEmail('email@email.email')
             ->setPassword('$2y$13$KzXFPUZnVmFdU5Y0V6vSbuF8Lk/fKoR/MK2JpwKL9iVI77AXK9Hqe')
             ->setRoles(['ROLE_WEBMASTER']);
-        $admin = (new User())
+        $admin = new User()
             ->setEmail('admin@email.email')
             ->setPassword('$2y$13$KzXFPUZnVmFdU5Y0V6vSbuF8Lk/fKoR/MK2JpwKL9iVI77AXK9Hqe')
             ->setRoles(['ROLE_SUPER_ADMIN']);

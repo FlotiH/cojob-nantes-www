@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -143,7 +145,7 @@ class Media2
 
     public function getMetadataValue($name, $default = null)
     {
-        return isset($this->metadata[$name]) ? $this->metadata[$name] : $default;
+        return $this->metadata[$name] ?? $default;
     }
 
     public function setMetadataValue($name, $value)

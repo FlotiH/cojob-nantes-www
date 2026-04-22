@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -167,8 +169,6 @@ class Event
 
     public function getPictures()
     {
-        return $this->getEventHasPictures()->map(static function (EventHasPicture $eventHasPicture) {
-            return $eventHasPicture->getMedia();
-        });
+        return $this->getEventHasPictures()->map(static fn (EventHasPicture $eventHasPicture) => $eventHasPicture->getMedia());
     }
 }

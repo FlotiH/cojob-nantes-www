@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\Article;
@@ -155,7 +157,8 @@ class DefaultController extends AbstractController
             $request,
             $promo->getStart()->setTime(0, 0, 0),
             $promo->getEnd()->setTime(23, 30, 0),
-            'Cojob Nantes '.$promo->getName());
+            'Cojob Nantes '.$promo->getName()
+        );
     }
 
     #[Route('/promo/registration/{id}/get-ical', name: 'promo_registration_get_ical')]
@@ -165,7 +168,8 @@ class DefaultController extends AbstractController
             $request,
             $promo->getRegisteringStart()->setTime(0, 0, 0),
             $promo->getRegisteringStart()->setTime(23, 30, 0),
-            'Ouverture inscriptions Cojob Nantes '.$promo->getName());
+            'Ouverture inscriptions Cojob Nantes '.$promo->getName()
+        );
     }
 
     #[Route('/contact', name: 'contact')]
@@ -195,7 +199,7 @@ class DefaultController extends AbstractController
 
                 $mailerParam = $this->getParameter('mailer');
 
-                $email = (new TemplatedEmail())
+                $email = new TemplatedEmail()
                     ->from($mailerParam['from'])
                     ->to($mailerParam['to'])
                     ->bcc($mailerParam['default_bcc'])
@@ -231,9 +235,7 @@ class DefaultController extends AbstractController
 
         $vCalendar = new Calendar([$vEvent]);
 
-        $componentFactory = new CalendarFactory();
-
-        $response = new Response($componentFactory->createCalendar($vCalendar));
+        $response = new Response(new CalendarFactory()->createCalendar($vCalendar)->__toString());
         $response->headers->set('Content-Type', 'text/calendar; charset=utf-8');
         $response->headers->set('Content-Disposition', 'attachment; filename="cojob_nantes_ics_to_calendar.ics"');
         $response->prepare($request);
