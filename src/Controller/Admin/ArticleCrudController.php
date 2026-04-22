@@ -68,7 +68,7 @@ class ArticleCrudController extends AbstractCrudController
     {
         $article->setPublished(true);
         $this->container->get('doctrine')->getManager()->flush();
-        $this->addFlash('success', sprintf('Actualité "%s" publiée', $article));
+        $this->addFlash('success', \sprintf('Actualité "%s" publiée', $article));
 
         return $this->redirectToRoute('admin_article_index');
     }
@@ -78,7 +78,7 @@ class ArticleCrudController extends AbstractCrudController
     {
         $article->setPublished(false);
         $this->container->get('doctrine')->getManager()->flush();
-        $this->addFlash('success', sprintf('Actualité "%s" dépubliée', $article));
+        $this->addFlash('success', \sprintf('Actualité "%s" dépubliée', $article));
 
         return $this->redirectToRoute('admin_article_index');
     }

@@ -193,8 +193,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Get PlainPassword.
-     *
-     * @return mixed
      */
     public function getPlainPassword()
     {
@@ -203,8 +201,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Set PlainPassword.
-     *
-     * @param mixed $plainPassword
      *
      * @return User
      */

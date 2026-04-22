@@ -63,7 +63,6 @@ final class MediaCrudControllerTest extends AbstractCrudTestCase
         static::assertResponseIsSuccessful();
     }
 
-
     public function testEditPage(): void
     {
         $testUser = new InMemoryUser('user', 'pass', ['ROLE_WEBMASTER']);

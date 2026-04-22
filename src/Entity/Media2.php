@@ -20,7 +20,7 @@ class Media2
     use SoftDeleteableEntity;
     use TimestampableEntity;
 
-    const MAX_IMAGE_SIZE = 20; // MB/Mo
+    public const MAX_IMAGE_SIZE = 20; // MB/Mo
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -74,16 +74,16 @@ class Media2
     }
 
     #[Assert\Callback]
-    public function validate(ExecutionContextInterface $context, $payload)
+    public function validate(ExecutionContextInterface $context, $payload): void
     {
         if (null === $this->id) {
             if (null === $this->getSourceFile() && null === $this->getSourceUrl()) {
                 $context->buildViolation('You need to add a source')->addViolation();
-            } elseif ($this->getSourceFile() instanceof UploadedFile &&
-                    0 === mb_strpos($this->getSourceFile()->getMimeType(), 'image/') &&
-                    $this->getSourceFile()->getSize() > self::MAX_IMAGE_SIZE * 1024 * 1024) {
+            } elseif ($this->getSourceFile() instanceof UploadedFile
+                    && 0 === mb_strpos($this->getSourceFile()->getMimeType(), 'image/')
+                    && $this->getSourceFile()->getSize() > self::MAX_IMAGE_SIZE * 1024 * 1024) {
                 $context
-                        ->buildViolation(sprintf('Image file size exceeds limit (max. %d MB)', self::MAX_IMAGE_SIZE))
+                        ->buildViolation(\sprintf('Image file size exceeds limit (max. %d MB)', self::MAX_IMAGE_SIZE))
                         ->atPath('sourceFile')
                         ->addViolation();
             }

@@ -58,7 +58,7 @@ class DefaultController extends AbstractController
             ->getQuery()
             ->getResult();
 
-        $nbRequiredTestmonies = count($requiredPromoTestimonies);
+        $nbRequiredTestmonies = \count($requiredPromoTestimonies);
 
         if ($nbRequiredTestmonies < 6) {
             $promoTestimonies = $em->getRepository(Testimony::class)

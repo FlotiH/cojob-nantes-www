@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\PromoRepository;
-use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -110,7 +109,7 @@ class Promo
 
     public function isRegisteringOpen()
     {
-        $now = new DateTime();
+        $now = new \DateTime();
 
         return $this->getRegisteringStart() <= $now && $this->getRegisteringEnd() >= $now;
     }

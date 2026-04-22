@@ -27,7 +27,7 @@ class CalendarSubscriber implements EventSubscriberInterface
     {
         $start = $calendar->getStart();
         $end = $calendar->getEnd();
-//        $filters = $calendar->getFilters();
+        //        $filters = $calendar->getFilters();
 
         $promos = $this->em->getRepository(Promo::class)
             ->createQueryBuilder('p')
@@ -39,7 +39,6 @@ class CalendarSubscriber implements EventSubscriberInterface
 
         /** @var Promo $promo */
         foreach ($promos as $promo) {
-
             $promoStart = $promo->getStart();
             $nextSaturday = clone $promoStart;
             $nextSaturday = $nextSaturday->modify('next saturday');
@@ -73,7 +72,6 @@ class CalendarSubscriber implements EventSubscriberInterface
 
         /** @var Event $event */
         foreach ($events as $event) {
-
             $bookingEvent = new Event(
                 $event->getName(),
                 $event->getStart(),

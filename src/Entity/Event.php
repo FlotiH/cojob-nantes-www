@@ -167,7 +167,7 @@ class Event
 
     public function getPictures()
     {
-        return $this->getEventHasPictures()->map(function (EventHasPicture $eventHasPicture) {
+        return $this->getEventHasPictures()->map(static function (EventHasPicture $eventHasPicture) {
             return $eventHasPicture->getMedia();
         });
     }

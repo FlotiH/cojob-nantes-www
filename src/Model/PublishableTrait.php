@@ -16,15 +16,15 @@ trait PublishableTrait
     {
         $now = new \DateTime();
 
-        return (
-            ($this->publishedAt != null && $this->publishedAt <= $now) &&
-            ($this->expiresAt == null || ($this->expiresAt > $now))
-        );
+        return
+            (null !== $this->publishedAt && $this->publishedAt <= $now)
+            && (null === $this->expiresAt || ($this->expiresAt > $now))
+        ;
     }
 
     public function setPublished($bool)
     {
-        if($bool) {
+        if ($bool) {
             $this->setPublishedAt(new \DateTime());
             $this->setExpiresAt(null);
         } else {
