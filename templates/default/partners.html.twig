@@ -13,9 +13,24 @@
                 <div class="row">
                     <div class="col-12 col-md-3 text-center">
                         <a href="https://www.ecossolies.fr/" target="_blank" rel="noopener noreferrer">
-                            <img src="{{ asset('build/images/logo_Ecossolies.png') }}"
-                                 class="img-fluid"
-                                 alt="Les écossolies">
+                            <picture>
+                                <source
+                                    srcset="{{ asset('img/logo_partners/logo_Ecossolies-100.avif') }} 100w"
+                                    sizes="100px"
+                                    type="image/avif"
+                                >
+                                <source
+                                    srcset="{{ asset('img/logo_partners/logo_Ecossolies-100.webp') }} 100w"
+                                    sizes="100px"
+                                    type="image/webp"
+                                >
+                                <img 
+                                    src="{{ asset('img/logo_partners/logo_Ecossolies.png') }}"
+                                    class="img-fluid"
+                                    alt="Les écossolies"
+                                    width="100"
+                                    height="100">
+                            </picture>
                         </a>
                     </div>
                     <div class="col-12 col-md-9">
@@ -29,9 +44,24 @@
                 <div class="row mt-4">
                     <div class="col-12 col-md-3 text-center">
                         <a href="https://collectif-emploi.fr/" target="_blank" rel="noopener noreferrer">
-                            <img src="{{ asset('build/images/logo_collectif_emploi.png') }}"
-                                 class="img-fluid"
-                                 alt="Collectif emploi">
+                            <picture>
+                                <source
+                                    srcset="{{ asset('img/logo_partners/logo_collectif_emploi-100.avif') }} 100w"
+                                    sizes="100px"
+                                    type="image/avif"
+                                >
+                                <source
+                                    srcset="{{ asset('img/logo_partners/logo_collectif_emploi-100.webp') }} 100w"
+                                    sizes="100px"
+                                    type="image/webp"
+                                >
+                                <img 
+                                    src="{{ asset('img/logo_partners/logo_collectif_emploi.png') }}"
+                                    class="img-fluid"
+                                    alt="Collectif emploi"
+                                    width="100"
+                                    height="100">
+                            </picture>
                         </a>
                     </div>
                     <div class="col-12 col-md-9">
@@ -47,9 +77,24 @@
                 <div class="row mt-4">
                     <div class="col-12 col-md-3 text-center">
                         <a href="https://lacravatesolidaire.org/nantes" target="_blank" rel="noopener noreferrer">
-                            <img src="{{ asset('build/images/logo_la_cravate_solidaire.png') }}"
-                                 class="img-fluid"
-                                 alt="La cravate solidaire">
+                            <picture>
+                                <source
+                                    srcset="{{ asset('img/logo_partners/logo_la_cravate_solidaire-100.avif') }} 100w"
+                                    sizes="100px"
+                                    type="image/avif"
+                                >
+                                <source
+                                    srcset="{{ asset('img/logo_partners/logo_la_cravate_solidaire-100.webp') }} 100w"
+                                    sizes="100px"
+                                    type="image/webp"
+                                >
+                                <img 
+                                    src="{{ asset('img/logo_partners/logo_la_cravate_solidaire.png') }}"
+                                    class="img-fluid"
+                                    alt="La cravate solidaire"
+                                    width="100"
+                                    height="100">
+                            </picture>
                         </a>
                     </div>
                     <div class="col-12 col-md-9">
@@ -78,7 +123,7 @@
                 <div class="row mt-4">
                     <div class="col-12 col-md-3 text-center">
                         <a href="https://www.lesdetermines.fr/" target="_blank" rel="noopener noreferrer">
-                            <img src="{{ asset('static/images/logo_les_determines.webp') }}"
+                            <img src="{{ asset('img/logo_partners/logo_les_determines.webp') }}"
                                  class="img-fluid"
                                  alt="Les déterminés">
                         </a>
@@ -91,9 +136,32 @@
                 </div>
                 <div class="row mt-4">
                     <div class="col-12 col-md-3 text-center">
-                        <img src="{{ asset('build/images/logo_ville_de_nantes.png') }}"
-                             class="img-fluid"
-                             alt="Ville de Nantes">
+                        <picture>
+                            <source
+                                srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.avif') }} 300w, 
+                                {{ asset('img/logo_partners/logo_ville_de_nantes-630.avif') }} 630w, 
+                                {{ asset('img/logo_partners/logo_ville_de_nantes-170.avif') }} 170w"
+                                sizes="(max-width: 768px) 100vw, 25vw"
+                                type="image/avif"
+                            >
+                            <source
+                                srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.webp') }} 300w, 
+                                {{ asset('img/logo_partners/logo_ville_de_nantes-630.webp') }} 630w, 
+                                {{ asset('img/logo_partners/logo_ville_de_nantes-170.webp') }} 170w"
+                                sizes="(max-width: 768px) 100vw, 25vw"
+                                type="image/webp"
+                            >
+                            <img 
+                                src="{{ asset('img/logo_partners/logo_ville_de_nantes.jpg') }}"
+                                srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.jpg') }} 300w, 
+                                {{ asset('img/logo_partners/logo_ville_de_nantes-630.jpg') }} 630w, 
+                                {{ asset('img/logo_partners/logo_ville_de_nantes-170.jpg') }} 170w"
+                                sizes="(max-width: 768px) 100vw, 25vw"
+                                class="img-fluid"
+                                alt="Ville de Nantes"
+                                width="280"
+                                height="125">
+                        </picture>
                     </div>
                 </div>
                 <div class="row mt-4">

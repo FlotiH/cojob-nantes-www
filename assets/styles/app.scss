@@ -210,44 +210,33 @@ footer a:active {
     min-height: 100vh;
 }
 .cover1 {
-    background-image: url('../static/images/cover.jpg');
-}
-/*.cover2 {
-    background-image: url('../static/images/cover2.jpg');
-}
-.cover3 {
-    background-image: url('../static/images/cover3.jpg');
-}*/
-.services-page {
-    background-image: url('../static/images/about.jpg');
-    padding-top: 10rem;
-    padding-bottom: 5rem;
+    background-image: url('../static/images/bg/cover.jpg');
 }
 .support-page {
-    background-image: url('../static/images/about.jpg');
+    background-image: url('../static/images/bg/about.jpg');
     padding-top: 10rem;
     padding-bottom: 5rem;
 }
 .promos-page {
-    background-image: url('../static/images/promo.jpg');
+    background-image: url('../static/images/bg/promo.jpg');
     padding-top: 10rem;
     padding-bottom: 5rem;
 }
 .generic-page {
-    background-image: url('../static/images/cover.jpg');
+    background-image: url('../static/images/bg/cover.jpg');
     padding-top: 10rem;
     padding-bottom: 5rem;
 }
 .partners-page {
-    background-image: url('../static/images/about.jpg');
+    background-image: url('../static/images/bg/about.jpg');
     padding-top: 10rem;
     padding-bottom: 5rem;
 }
 .ostrich-museum-bg {
-    background-image: url('../static/images/ostrich-museum.jpg');
+    background-image: url('../static/images/bg/ostrich-museum.jpg');
 }
 .airtable-page {
-    background-image: url('../static/images/cover2.jpg');
+    background-image: url('../static/images/bg/cover2.jpg');
     padding-top: 10rem;
     padding-bottom: 5rem;
 }
@@ -256,7 +245,7 @@ footer a:active {
     height: 100vh;
 }
 .guide-page {
-    background-image: url('../static/images/cover3.jpg');
+    background-image: url('../static/images/bg/cover3.jpg');
     padding-top: 10rem;
     padding-bottom: 5rem;
 }
@@ -352,7 +341,7 @@ footer a:active {
 #promotion {
     padding-top: 5rem;
     padding-bottom: 5rem;
-    background-image: url('../static/images/promo.jpg');
+    background-image: url('../static/images/bg/promo.jpg');
 }
 #promotion .jobber-quotes {
     margin-top: 3rem;

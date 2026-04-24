@@ -16,7 +16,6 @@ return (new PhpCsFixer\Config())
         '@autoPHPMigration' => true,
         '@autoPHPMigration:risky' => true,
         '@autoPHPUnitMigration:risky' => true,
-        '@DoctrineAnnotation' => true,
         'mb_str_functions' => true,
         'no_unreachable_default_argument_value' => true,
         'php_unit_strict' => true,

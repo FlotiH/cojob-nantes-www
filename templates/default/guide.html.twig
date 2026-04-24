@@ -38,9 +38,35 @@
                 <div class="text-center">
                     <a href="{{ asset('static/resources/l_explorateur_cojob_nantes.pdf') }}" target="_blank"
                        rel="noopener noreferrer" onclick="gtag('event', 'Download Guide', {'event_category': 'Button Click', 'event_label': '{{ 'now'|date('d/m/Y H:i:s') }}'});">
-                        <img src="{{ asset('build/images/l_explorateur_guide_de_l_emploi.png') }}"
-                             class="img-fluid"
-                             alt="L'explorateur : le guide de l'emploi nantais">
+                        <picture>
+                            <source
+                                srcset="{{ asset('img/guide/l_explorateur_guide_de_l_emploi-800.avif') }} 800w, 
+                                {{ asset('img/guide/l_explorateur_guide_de_l_emploi-620.avif') }} 620w, 
+                                {{ asset('img/guide/l_explorateur_guide_de_l_emploi-530.avif') }} 530w, 
+                                {{ asset('img/guide/l_explorateur_guide_de_l_emploi-400.avif') }} 400w"
+                                sizes="(max-width: 768px) 100vw, (max-width: 992px) 83vw, 627px"
+                                type="image/avif"
+                            >
+                            <source
+                                srcset="{{ asset('img/guide/l_explorateur_guide_de_l_emploi-800.webp') }} 800w, 
+                                {{ asset('img/guide/l_explorateur_guide_de_l_emploi-620.webp') }} 620w, 
+                                {{ asset('img/guide/l_explorateur_guide_de_l_emploi-530.webp') }} 530w, 
+                                {{ asset('img/guide/l_explorateur_guide_de_l_emploi-400.webp') }} 400w"
+                                sizes="(max-width: 768px) 100vw, (max-width: 992px) 83vw, 627px"
+                                type="image/webp"
+                            >
+                            <img
+                                src="{{ asset('img/guide/l_explorateur_guide_de_l_emploi.png') }}"
+                                srcset="{{ asset('img/guide/l_explorateur_guide_de_l_emploi-800.png') }} 800w, 
+                                {{ asset('img/guide/l_explorateur_guide_de_l_emploi-620.png') }} 620w, 
+                                {{ asset('img/guide/l_explorateur_guide_de_l_emploi-530.png') }} 530w, 
+                                {{ asset('img/guide/l_explorateur_guide_de_l_emploi-400.png') }} 400w"
+                                sizes="(max-width: 768px) 100vw, (max-width: 992px) 83vw, 627px"
+                                alt="L'explorateur : le guide de l'emploi nantais"
+                                width="627"
+                                height="882"
+                            >
+                        </picture>
                     </a>
                 </div>
 

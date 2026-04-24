@@ -8,9 +8,7 @@ nav:
   about: A propos
   promo: La promo
   calendar: Calendrier
-  cosearching: Cosearching
   support_us: Nous soutenir
-  services: Prestations
   contact: Contactez-nous
   guide: Le guide pratique
   members: Adhérents
@@ -55,9 +53,6 @@ partners:
 
 about:
   h2: Qui sommes-nous ?
-
-talk_about_us:
-  h2: On parle de Cojob Nantes
 
 contact:
   title: Contacter l'association | Cojob Nantes
