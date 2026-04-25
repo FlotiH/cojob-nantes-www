@@ -13,23 +13,11 @@ security:
             entity:
                 class: App\Entity\User
                 property: email
-        in_memory:
-            memory:
-                users:
-                    adherent_cojobnantes:
-                        password: $2y$13$ckSFQrRCit3jstauIXvVhO6SqZpmpoPbpelfWArr4VlhoIensSM9.
-                        roles: ROLE_MEMBER
     firewalls:
         dev:
             # Ensure dev tools and static assets are always allowed
             pattern: ^/(_profiler|_wdt|assets|build)/
             security: false
-
-        members:
-            pattern: ^/adherent
-            http_basic: ~
-            provider: in_memory
-
         main:
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -85,14 +73,12 @@ security:
             - ROLE_ADMIN_MEDIA_EDIT
             - ROLE_ADMIN_MEDIA_VIEW
             - ROLE_ADMIN_MEDIA_DELETE
-            - ROLE_MEMBER
 
     # Note: Only the *first* matching rule is applied
     access_control:
         - { path: ^/admin/login, roles: PUBLIC_ACCESS  }
         - { path: ^/admin/password, roles: PUBLIC_ACCESS  }
         - { path: ^/admin, roles: ROLE_WEBMASTER }
-        - { path: ^/adherent, roles: ROLE_MEMBER }
         - { path: ^/, roles: PUBLIC_ACCESS }
 
 when@test:

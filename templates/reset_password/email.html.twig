@@ -1,8 +1,0 @@
-{% extends 'layout.email.twig' %}
-
-{% block content %}
-    {{ 'email.password_reset.content'|trans({
-        '%url%': url('app_reset_password', {token: resetToken.token}),
-        '%name%': user.username
-    })|raw }}
-{% endblock %}
