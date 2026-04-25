@@ -39,10 +39,6 @@ support:
   join: Vous souhaitez adhérer ?
   donate: Vous souhaitez faire un don ?
 
-airtable_data:
-  title: Les adhérents de l'association | Cojob Nantes
-  description: Retrouvez une personne adhérente de l'association | Cojob Nantes
-
 guide:
   title: L'Explorateur, guide de l'emploi pour les nantais | Cojob Nantes
   description: Retrouvez l'Explorateur, le guide de l'emploi à usage des aventuriers nantais rédigé par des bénévoles de l'association Cojob Nantes
