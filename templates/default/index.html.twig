@@ -111,20 +111,20 @@
             <h2>{{ 'home.articles'|trans }}</h2>
             <div id="carouselEvent" class="row carousel slide" data-ride="carouselEvent">
                 <div class="carousel-inner">
-                    {% for event in events %}
+                    {% for article in articles %}
                         <section class="carousel-item {% if loop.first %}active{% endif %}">
                             <div class="cover-bg"
-                                 style="background-image: url({{ event.imageLink }});background-repeat: no-repeat;background-position: center;background-size: cover;height: 16rem;">
+                                 style="background-image: url({{ article.imageLink }});background-repeat: no-repeat;background-position: center;background-size: cover;height: 16rem;">
                                 {#<img src="{{ asset('build/images/o-cojob-nantes.png') }}"
                                      class="img-fluid"
                                      alt="Cojob O">#}
                             </div>
-                            <h3>{{ event.title }}</h3>
-                            {{ event.content|raw }}
+                            <h3>{{ article.title }}</h3>
+                            {{ article.content|raw }}
                         </section>
                     {% endfor %}
                 </div>
-                {% if events|length > 1 %}
+                {% if articles|length > 1 %}
                     <a class="carousel-control-prev" data-target="#carouselEvent" role="button" data-slide="prev">
                         <span class="icon icon-arrow-left" aria-hidden="true"></span>
                         <span class="visually-hidden">{{ 'previous'|trans }}</span>

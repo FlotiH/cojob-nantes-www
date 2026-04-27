@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\Article;
 use App\Entity\Contact;
 use App\Entity\Event;
 use App\Entity\Promo;
-use App\Entity\Testimony;
 use App\Form\ContactType;
+use App\Repository\ArticleRepository;
+use App\Repository\PromoRepository;
+use App\Repository\TestimonyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Eluceo\iCal\Domain\Entity\Calendar;
 use Eluceo\iCal\Domain\ValueObject\Date;
@@ -28,87 +29,32 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class DefaultController extends AbstractController
 {
     #[Route('/', name: 'homepage')]
-    public function indexAction(EntityManagerInterface $em): RedirectResponse|Response
+    public function indexAction(ArticleRepository $articleRepo, PromoRepository $promoRepo, TestimonyRepository $testimonyRepo): RedirectResponse|Response
     {
-        $now = new \DateTime();
-        $events = $em->getRepository(Article::class)
-            ->createQueryBuilder('a')
-            ->where('a.publishedAt IS NOT NULL AND a.publishedAt <= :date')
-            ->andWhere('a.expiresAt IS NULL OR a.expiresAt > :date')
-            ->setParameter('date', $now)
-            ->orderBy('a.publishedAt', 'DESC')
-            ->getQuery()
-            ->getResult();
-
-        $promoOpen = $em->getRepository(Promo::class)
-            ->createQueryBuilder('p')
-            ->where('p.registeringStart <= :date')
-            ->andWhere('p.registeringEnd >= :date')
-            ->andWhere('p.helloAssoFormLink IS NOT NULL')
-            ->setParameter('date', $now)
-            ->orderBy('p.start', 'ASC')
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getResult();
-
-        $requiredPromoTestimonies = $em->getRepository(Testimony::class)
-            ->createQueryBuilder('t')
-            ->where('t.promo = 1')
-            ->andWhere('t.requiredDisplaying = 1')
-            ->orderBy('RAND()')
-            ->setMaxResults(6)
-            ->getQuery()
-            ->getResult();
+        $requiredPromoTestimonies = $testimonyRepo->findRequiredPromoTestimonies();
 
         $nbRequiredTestmonies = \count($requiredPromoTestimonies);
 
         if ($nbRequiredTestmonies < 6) {
-            $promoTestimonies = $em->getRepository(Testimony::class)
-                ->createQueryBuilder('t')
-                ->where('t.promo = 1')
-                ->andWhere('t.requiredDisplaying = 0')
-                ->orderBy('RAND()')
-                ->setMaxResults(6 - $nbRequiredTestmonies)
-                ->getQuery()
-                ->getResult();
+            $promoTestimonies = $testimonyRepo->findNotRequiredPromoTestimonies($nbRequiredTestmonies);
         } else {
             $promoTestimonies = [];
         }
 
         return $this->render('default/index.html.twig', [
-            'events' => $events,
+            'articles' => $articleRepo->findPublishedArticles(),
             'requiredPromoTestimonies' => $requiredPromoTestimonies,
             'promoTestimonies' => $promoTestimonies,
-            'promoOpen' => $promoOpen,
+            'promoOpen' => $promoRepo->findOpenPromos(),
         ]);
     }
 
     #[Route('/promos', name: 'promos')]
-    public function promosAction(EntityManagerInterface $em): Response
+    public function promosAction(PromoRepository $promoRepo): Response
     {
-        $now = new \DateTime();
-        $availablePromos = $em->getRepository(Promo::class)
-            ->createQueryBuilder('p')
-            ->where('p.helloAssoFormLink IS NOT NULL')
-            ->andWhere('p.registeringStart <= :date')
-            ->andWhere('p.registeringEnd >= :date')
-            ->setParameter('date', $now)
-            ->orderBy('p.start', 'ASC')
-            ->getQuery()
-            ->getResult();
-
-        $otherPromos = $em->getRepository(Promo::class)
-            ->createQueryBuilder('p')
-            ->where('p.start >= :date')
-            ->andWhere('p.registeringStart >= :date')
-            ->setParameter('date', $now)
-            ->orderBy('p.start', 'ASC')
-            ->getQuery()
-            ->getResult();
-
         return $this->render('default/promos.html.twig', [
-            'promos' => $availablePromos,
-            'otherPromos' => $otherPromos,
+            'promos' => $promoRepo->findAvailablePromos(),
+            'otherPromos' => $promoRepo->findNotAvailablePromos(),
         ]);
     }
 

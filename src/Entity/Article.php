@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Model\PublishableTrait;
+use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -12,7 +13,7 @@ use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: ArticleRepository::class)]
 #[ORM\Table(name: 'article', indexes: [new ORM\Index(columns: ['published_at']), new ORM\Index(columns: ['deleted_at']), new ORM\Index(columns: ['expires_at', 'published_at', 'deleted_at'])])]
 #[Gedmo\SoftDeleteable(fieldName: 'deletedAt')]
 class Article
