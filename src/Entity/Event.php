@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Behavior;
@@ -51,16 +50,6 @@ class Event
 
     #[ORM\Column(type: 'text', nullable: true)]
     private $content;
-
-    #[ORM\OneToMany(targetEntity: EventHasPicture::class, mappedBy: 'event', orphanRemoval: true, cascade: ['persist'])]
-    #[ORM\OrderBy(['position' => 'ASC'])]
-    #[Assert\Valid]
-    private $eventHasPictures;
-
-    public function __construct()
-    {
-        $this->eventHasPictures = new ArrayCollection();
-    }
 
     public function __toString()
     {
@@ -135,40 +124,5 @@ class Event
         $this->metaDescription = $metaDescription;
 
         return $this;
-    }
-
-    public function getEventHasPictures()
-    {
-        return $this->eventHasPictures;
-    }
-
-    public function setEventHasPictures($eventHasPictures)
-    {
-        $this->eventHasPictures = $eventHasPictures;
-
-        return $this;
-    }
-
-    public function addEventHasPicture(EventHasPicture $eventHasPicture)
-    {
-        if (!$this->getPictures()->contains($eventHasPicture->getMedia())) {
-            $eventHasPicture->setModel($this);
-            $eventHasPicture->setPosition($this->getEventHasPictures()->count() + 1);
-            $this->getEventHasPictures()->add($eventHasPicture);
-        }
-
-        return $this;
-    }
-
-    public function removeEventHasPicture(EventHasPicture $eventHasPicture)
-    {
-        $this->getEventHasPictures()->removeElement($eventHasPicture);
-
-        return $this;
-    }
-
-    public function getPictures()
-    {
-        return $this->getEventHasPictures()->map(static fn (EventHasPicture $eventHasPicture) => $eventHasPicture->getMedia());
     }
 }

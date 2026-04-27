@@ -26,19 +26,19 @@ class Contact
     private $id;
 
     #[ORM\Column(name: 'last_name', type: 'string', length: 63)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(message: 'contact.form.last_name.not_blank')]
     #[Assert\Length(max: 63)]
     protected $last_name;
 
     #[ORM\Column(name: 'first_name', type: 'string', length: 63)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(message: 'contact.form.first_name.not_blank')]
     #[Assert\Length(max: 63)]
     protected $first_name;
 
     #[ORM\Column(name: 'email', type: 'string', length: 127)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(message: 'contact.form.email.not_blank')]
     #[Assert\Length(max: 127)]
-    #[Assert\Email]
+    #[Assert\Email(message: 'contact.form.email.check_mx', mode: 'strict')]
     protected $email;
 
     #[ORM\Column(name: 'message', type: 'text')]

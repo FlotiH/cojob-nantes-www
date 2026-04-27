@@ -197,7 +197,7 @@ class DefaultController extends AbstractController
                 $em->persist($contact);
                 $em->flush();
 
-                $mailerParam = $this->getParameter('mailer');
+                $mailerParam = $this->getParameter('app.mailer');
 
                 $email = new TemplatedEmail()
                     ->from($mailerParam['from'])

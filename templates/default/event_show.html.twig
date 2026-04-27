@@ -27,30 +27,7 @@
 
                 <div>{{ event.content|raw }}</div>
             </div>
-            {% if event.pictures|length > 0 %}
-                <section class="container pictures">
-                    <div class="swiper-container" id="js-swiper-pictures">
-                        <div class="swiper-wrapper">
-                            {% for picture in event.pictures %}
-                                <a href="{{ picture.absoluteFilePath }}" class="swiper-slide">
-                                    <img src="{{ picture.absoluteFilePath }}" alt="Image {{ picture.reference }}" itemprop="image">
-                                </a>
-                            {% endfor %}
-                        </div>
-                        <div class="swiper-button-next swiper-button-white"></div>
-                        <div class="swiper-button-prev swiper-button-white"></div>
-                    </div>
-                    <div class="swiper-container gallery-thumbs">
-                        <div class="swiper-wrapper">
-                            {% for picture in event.pictures %}
-                                <img class="swiper-slide" src="{{ picture.absoluteFilePath }}" alt="Image miniature {{ picture.reference }}" >
-                            {% endfor %}
-                        </div>
-                    </div>
-                </section>
-            {% else %}
-                <meta itemprop="image" content="{{ absolute_url(asset('build/images/promo.jpg')) }}">
-            {% endif %}
+            <meta itemprop="image" content="{{ absolute_url(asset('build/images/promo.jpg')) }}">
         </div>
     </div>
 {% endblock %}

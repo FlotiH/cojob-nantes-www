@@ -11,8 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Email;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ContactType extends AbstractType
 {
@@ -22,35 +20,16 @@ class ContactType extends AbstractType
             ->add('last_name', null, [
                 'label' => 'contact.form.last_name.label',
                 'required' => true,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'contact.form.last_name.not_blank',
-                    ]),
-                ],
                 'attr' => ['placeholder' => 'contact.form.last_name.placeholder', 'class' => 'form-control'],
             ])
             ->add('first_name', null, [
                 'label' => 'contact.form.first_name.label',
                 'required' => true,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'contact.form.first_name.not_blank',
-                    ]),
-                ],
                 'attr' => ['placeholder' => 'contact.form.first_name.placeholder', 'class' => 'form-control'],
             ])
             ->add('email', EmailType::class, [
                 'label' => 'contact.form.email.label',
                 'required' => true,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'contact.form.email.not_blank',
-                    ]),
-                    new Email([
-                        'message' => 'contact.form.email.check_mx',
-                        'mode' => 'strict',
-                    ]),
-                ],
                 'attr' => ['placeholder' => 'contact.form.email.placeholder', 'class' => 'form-control'],
             ])
             ->add('telephone', TelType::class, [
