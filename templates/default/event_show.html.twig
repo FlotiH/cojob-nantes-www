@@ -15,7 +15,7 @@
                 <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
                     <meta itemprop="name" content="COJOB Nantes">
                     <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-                        <meta itemprop="url" content="{{ absolute_url(asset('build/images/logo.png')) }}">
+                        <meta itemprop="url" content="{{ absolute_url(asset('images/logo.png')) }}">
                     </span>
                 </div>
                 <meta itemprop="datePublished" content="{{ event.createdAt|date("Y-m-d") }}">
@@ -27,7 +27,7 @@
 
                 <div>{{ event.content|raw }}</div>
             </div>
-            <meta itemprop="image" content="{{ absolute_url(asset('build/images/promo.jpg')) }}">
+            <meta itemprop="image" content="{{ absolute_url(asset('images/promo.jpg')) }}">
         </div>
     </div>
 {% endblock %}

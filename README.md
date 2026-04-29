@@ -8,20 +8,6 @@ Website for Cojob Nantes association
 symfony composer install
 ```
 
-### Run yarn
-
-```bash
-yarn install
-```
-```bash
-yarn build
-```
-
-Or on dev
-```bash
-yarn encore dev
-```
-
 ### For local use:
 
 ```bash
@@ -33,6 +19,18 @@ symfony server:start --port=8007
 ```bash
 symfony console do:mi:mi
 ```
+
+### Assets
+
+```bash
+symfony console asset-map:compile
+``
+
+ou
+
+```bash
+php bin/console asset-map:compile
+``
 
 ### Run Php cs fixer
 

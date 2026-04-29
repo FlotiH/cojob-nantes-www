@@ -47,11 +47,10 @@
         <link rel="manifest" href="{{ asset('manifest.json') }}">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
 
         {% set frankenphpHotReload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
@@ -67,7 +66,7 @@
         <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
             <meta itemprop="name" content="COJOB Nantes">
             <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-                <meta itemprop="url" content="{{ absolute_url(asset('build/images/logo.png')) }}">
+                <meta itemprop="url" content="{{ absolute_url(asset('images/logo.png')) }}">
             </span>
         </div>
 
@@ -83,12 +82,12 @@
     <div itemscope itemtype="https://schema.org/WebSite">
         <link itemprop="url" href="{{ absolute_url(path('homepage')) }}">
         <meta itemprop="inLanguage" content="FR">
-        <meta itemprop="image" content="{{ absolute_url(asset('build/images/promo.jpg')) }}">
+        <meta itemprop="image" content="{{ absolute_url(asset('images/promo.jpg')) }}">
         <meta itemprop="headline" content="{{ block('description') }}">
         <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
             <meta itemprop="name" content="COJOB Nantes">
             <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-            <meta itemprop="url" content="{{ absolute_url(asset('build/images/logo.png')) }}">
+            <meta itemprop="url" content="{{ absolute_url(asset('images/logo.png')) }}">
         </span>
         </div>
         <meta itemprop="keywords"

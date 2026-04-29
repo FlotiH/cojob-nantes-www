@@ -283,7 +283,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         }>,
  *     },
  *     asset_mapper?: bool|array{ // Asset Mapper configuration
- *         enabled?: bool|Param, // Default: false
+ *         enabled?: bool|Param, // Default: true
  *         paths?: array<string, scalar|Param|null>,
  *         excluded_patterns?: list<scalar|Param|null>,
  *         exclude_dotfiles?: bool|Param, // If true, any files starting with "." will be excluded from the asset mapper. // Default: true
@@ -1619,16 +1619,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     skip_translation_on_load?: bool|Param, // Default: false
  *     metadata_cache_pool?: scalar|Param|null, // Default: null
  * }
- * @psalm-type WebpackEncoreConfig = array{
- *     output_path?: scalar|Param|null, // The path where Encore is building the assets - i.e. Encore.setOutputPath()
- *     crossorigin?: false|"anonymous"|"use-credentials"|Param, // crossorigin value when Encore.enableIntegrityHashes() is used, can be false (default), anonymous or use-credentials // Default: false
- *     preload?: bool|Param, // preload all rendered script and link tags automatically via the http2 Link header. // Default: false
- *     cache?: bool|Param, // Enable caching of the entry point file(s) // Default: false
- *     strict_mode?: bool|Param, // Throw an exception if the entrypoints.json file is missing or an entry is missing from the data // Default: true
- *     builds?: array<string, scalar|Param|null>,
- *     script_attributes?: array<string, scalar|Param|null>,
- *     link_attributes?: array<string, scalar|Param|null>,
- * }
  * @psalm-type VichUploaderConfig = array{
  *     default_filename_attribute_suffix?: scalar|Param|null, // Default: "_name"
  *     db_driver?: scalar|Param|null,
@@ -1692,7 +1682,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     monolog?: MonologConfig,
  *     fos_ck_editor?: FosCkEditorConfig,
  *     stof_doctrine_extensions?: StofDoctrineExtensionsConfig,
- *     webpack_encore?: WebpackEncoreConfig,
  *     vich_uploader?: VichUploaderConfig,
  *     twig_component?: TwigComponentConfig,
  *     "when@dev"?: array{
@@ -1711,7 +1700,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         maker?: MakerConfig,
  *         fos_ck_editor?: FosCkEditorConfig,
  *         stof_doctrine_extensions?: StofDoctrineExtensionsConfig,
- *         webpack_encore?: WebpackEncoreConfig,
  *         vich_uploader?: VichUploaderConfig,
  *         twig_component?: TwigComponentConfig,
  *     },
@@ -1728,7 +1716,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         monolog?: MonologConfig,
  *         fos_ck_editor?: FosCkEditorConfig,
  *         stof_doctrine_extensions?: StofDoctrineExtensionsConfig,
- *         webpack_encore?: WebpackEncoreConfig,
  *         vich_uploader?: VichUploaderConfig,
  *         twig_component?: TwigComponentConfig,
  *     },
@@ -1746,7 +1733,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         monolog?: MonologConfig,
  *         fos_ck_editor?: FosCkEditorConfig,
  *         stof_doctrine_extensions?: StofDoctrineExtensionsConfig,
- *         webpack_encore?: WebpackEncoreConfig,
  *         vich_uploader?: VichUploaderConfig,
  *         twig_component?: TwigComponentConfig,
  *     },

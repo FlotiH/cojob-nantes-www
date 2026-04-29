@@ -1,13 +1,4 @@
-/*TODO FHA : à revoir pour mettre en sass*/
-
-@import "~bootstrap/scss/bootstrap";
-
 @import "../static/fonts/cojob-nantes/style.css";
-
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import '~@fortawesome/fontawesome-free/scss/regular';
-@import '~@fortawesome/fontawesome-free/scss/solid';
-@import '~@fortawesome/fontawesome-free/scss/brands';
 
 /** FONTS **/
 @font-face {
@@ -98,7 +89,7 @@ header .navbar.fixed-top {
 header .navbar-brand {
     width: 8rem;
     height: 4rem;
-    background: url(../static/images/logo.png) no-repeat 50%;
+    background: url(../images/main/logo.png) no-repeat 50%;
     background-size: contain;
 }
 .icon-bar {
@@ -167,7 +158,7 @@ footer .brand {
     display: block;
     width: 100%;
     height: 100%;
-    background: url(../static/images/logo-no-bg.png) no-repeat 50%;
+    background: url(../images/main/logo-no-bg.png) no-repeat 50%;
     background-size: contain;
 }
 footer .cojob-title {
@@ -210,33 +201,33 @@ footer a:active {
     min-height: 100vh;
 }
 .cover1 {
-    background-image: url('../static/images/bg/cover.jpg');
+    background-image: url('../images/bg/cover.jpg');
 }
 .support-page {
-    background-image: url('../static/images/bg/about.jpg');
+    background-image: url('../images/bg/about.jpg');
     padding-top: 10rem;
     padding-bottom: 5rem;
 }
 .promos-page {
-    background-image: url('../static/images/bg/promo.jpg');
+    background-image: url('../images/bg/promo.jpg');
     padding-top: 10rem;
     padding-bottom: 5rem;
 }
 .generic-page {
-    background-image: url('../static/images/bg/cover.jpg');
+    background-image: url('../images/bg/cover.jpg');
     padding-top: 10rem;
     padding-bottom: 5rem;
 }
 .partners-page {
-    background-image: url('../static/images/bg/about.jpg');
+    background-image: url('../images/bg/about.jpg');
     padding-top: 10rem;
     padding-bottom: 5rem;
 }
 .ostrich-museum-bg {
-    background-image: url('../static/images/bg/ostrich-museum.jpg');
+    background-image: url('../images/bg/ostrich-museum.jpg');
 }
 .guide-page {
-    background-image: url('../static/images/bg/cover3.jpg');
+    background-image: url('../images/bg/cover3.jpg');
     padding-top: 10rem;
     padding-bottom: 5rem;
 }
@@ -291,16 +282,6 @@ footer a:active {
 #carouselCover .go-to-content {
     margin-top: 20vh;
 }
-/*#carouselCover .carousel-control-next, #carouselCover .carousel-control-prev {
-    z-index: 1;
-}
-#carouselCover .carousel-control-next .icon, #carouselCover .carousel-control-prev .icon {
-    color: #0e3d67;
-    font-size: 2rem;
-}
-#carouselCover .carousel-control-next .icon:hover, #carouselCover .carousel-control-prev .icon:hover {
-    cursor: pointer;
-}*/
 
 .event-div h2 {
     text-align: center;
@@ -332,7 +313,7 @@ footer a:active {
 #promotion {
     padding-top: 5rem;
     padding-bottom: 5rem;
-    background-image: url('../static/images/bg/promo.jpg');
+    background-image: url('../images/bg/promo.jpg');
 }
 #promotion .jobber-quotes {
     margin-top: 3rem;
@@ -347,7 +328,7 @@ footer a:active {
 #contact {
     padding-top: 5rem;
     padding-bottom: 5rem;
-    background-image: url('../static/images/contact.jpg');
+    background-image: url('../images/bg/contact.jpg');
 }
 .content {
     padding: 0.75rem;

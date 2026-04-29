@@ -6,35 +6,39 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/css/all.css';
+import './styles/app.css';
 
 // start the Stimulus application
-import './bootstrap';
+//import './bootstrap.js';
 
-const $ = require('jquery');
-require('bootstrap');
+document.addEventListener('DOMContentLoaded', function () {
+    /** BACK TO TOP BUTTON + MENU BACKGROUND **/
+    const backToTop = document.getElementById('back-to-top');
+    const navbar = document.querySelector('.navbar.fixed-top');
 
-$(document).ready(function () {
+    // Cacher le bouton au départ
+    backToTop.style.display = 'none';
 
-    /** BACK TO TOP BUTTON + MENU BACKGROUND**/
-    const $backToTop = $('#back-to-top');
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 50) {
-            $backToTop.fadeIn();
-            $('.navbar.fixed-top').addClass('background');
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) {
+            backToTop.style.display = 'block';
+            backToTop.style.opacity = '1';
+            if (navbar) navbar.classList.add('background');
         } else {
-            $backToTop.fadeOut();
-            $('.navbar.fixed-top').removeClass('background');
+            backToTop.style.display = 'none';
+            backToTop.style.opacity = '0';
+            if (navbar) navbar.classList.remove('background');
         }
     });
 
-    // scroll body to 0px on click
-    $backToTop.click(function () {
-        $('body,html').animate({
-            scrollTop: 0
-        }, 800);
-        return false;
+    // Scroll vers le haut au clic
+    backToTop.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
-
-    $backToTop.fadeOut();
 });
