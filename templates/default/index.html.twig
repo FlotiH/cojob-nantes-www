@@ -21,7 +21,7 @@
                     <div class="col-md-6 {% if promoOpen|length == 0 %}offset-md-3 col-xl-4 offset-xl-4{% else %}col-lg-5 offset-lg-1 col-xl-4 offset-xl-2{% endif %} d-grid">
                         <a href="{{ path('promos') }}" class="btn btn-primary btn-lg"
                            onclick="gtag('event', 'Home What is promo', {'event_category': 'Button Click'});">
-                            <span class="icon icon-info" aria-hidden="true"></span>
+                            <i class="icon fa-solid fa-circle-info" aria-hidden="true"></i>
                             {{ 'home.promo'|trans }}
                         </a>
                     </div>
@@ -29,7 +29,7 @@
                         <div class="col-md-6 col-lg-5 col-xl-4 d-grid">
                             <a href="{{ path('promos') }}#promoAnchor" class="btn btn-primary btn-lg"
                                onclick="gtag('event', 'Home Register promo', {'event_category': 'Button Click'});">
-                                <div class="icon icon-register" aria-hidden="true"></div>
+                                <i class="icon fa-regular fa-address-card" aria-hidden="true"></i>
                                 <div>
                                     {{ 'home.promo_registration'|trans }}
                                     <div class="small">({{ promoOpen[0].start|dateInterval(promoOpen[0].end) }})
@@ -40,7 +40,9 @@
                     {% endif %}
 
                     <div class="col-12 text-center go-to-content d-none d-sm-block">
-                        <a href="#about" class="icon-arrow-down" aria-hidden="true"></a>
+                        <a href="#about" aria-hidden="true">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -124,16 +126,6 @@
                         </section>
                     {% endfor %}
                 </div>
-                {% if articles|length > 1 %}
-                    <a class="carousel-control-prev" data-target="#carouselEvent" role="button" data-slide="prev">
-                        <span class="icon icon-arrow-left" aria-hidden="true"></span>
-                        <span class="visually-hidden">{{ 'previous'|trans }}</span>
-                    </a>
-                    <a class="carousel-control-next" data-target="#carouselEvent" role="button" data-slide="next">
-                        <span class="icon icon-arrow-right" aria-hidden="true"></span>
-                        <span class="visually-hidden">{{ 'next'|trans }}</span>
-                    </a>
-                {% endif %}
             </div>
         </div>
 
