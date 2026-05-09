@@ -10,7 +10,7 @@ return [
     | Directory containing the source PNG/JPG images to process, relative to
     | the project root.
     */
-    'source' => 'assets/static/images',
+    'source' => 'assets/images',
 
     /*
     |--------------------------------------------------------------------------

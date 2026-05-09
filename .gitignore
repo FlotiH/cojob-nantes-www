@@ -30,3 +30,4 @@ public/credentials.json
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+/.phpunit.cache
