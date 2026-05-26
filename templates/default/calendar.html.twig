@@ -17,28 +17,15 @@
     </div>
 {% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.11/main.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.11/main.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@6.1.11/main.min.css">
-{% endblock %}
-
 {% block javascripts %}
     {{ parent() }}
 
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.11/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@6.1.11/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.11/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@6.1.11/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.js"></script>
 
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', () => {
-            let calendarEl = document.getElementById('calendar-holder');
-
-            let calendar = new FullCalendar.Calendar(calendarEl, {
+            new FullCalendar.Calendar(document.getElementById('calendar-holder'), {
                 initialView: 'dayGridMonth',
-                editable: false,
                 eventSources: [
                     {
                         url: "{{ path('fc_load_events') }}",
@@ -54,15 +41,13 @@
                 buttonText: {
                     today: 'Aujourd\'hui'
                 },
-                plugins: [ 'interaction', 'dayGrid' ], // https://fullcalendar.io/docs/plugin-index
                 timeZone: 'UTC',
                 locale: 'fr',
                 firstDay: 1,
                 displayEventTime: false,
                 eventColor: '#00905d',
                 eventTextColor: '#fff'
-            });
-            calendar.render();
+            }).render();
         });
     </script>
 {% endblock %}

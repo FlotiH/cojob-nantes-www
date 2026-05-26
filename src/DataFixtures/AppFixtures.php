@@ -34,7 +34,7 @@ class AppFixtures extends Fixture
         $event = new Event()
             ->setName('Apérotaf - Courses d\'obstacles de Cojob Nantes')
             ->setStart(new \DateTime())
-            ->setEnd(new \DateTime())
+            ->setEnd(new \DateTime('+ 2 hours'))
             ->setMetaDescription('metadescription');
         $manager->persist($event);
 
@@ -45,7 +45,7 @@ class AppFixtures extends Fixture
         $promo = new Promo()
             ->setName('name')
             ->setStart(new \DateTime())
-            ->setEnd(new \DateTime())
+            ->setEnd(new \DateTime('+ 10 days'))
             ->setRegisteringStart(new \DateTime())
             ->setRegisteringEnd(new \DateTime());
         $manager->persist($promo);
