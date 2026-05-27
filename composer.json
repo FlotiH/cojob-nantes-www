@@ -11,7 +11,7 @@
         "doctrine/doctrine-bundle": "^3.2.2",
         "doctrine/doctrine-migrations-bundle": "^4.0",
         "doctrine/orm": "^3.6.7",
-        "easycorp/easyadmin-bundle": "^4.29.9",
+        "easycorp/easyadmin-bundle": "^5.0.10",
         "egulias/email-validator": "^4.0.4",
         "eluceo/ical": "^2.16",
         "friendsofsymfony/ckeditor-bundle": "^2.8",

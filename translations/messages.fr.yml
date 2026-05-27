@@ -169,6 +169,7 @@ security:
     remember_me: Se souvenir de moi
     submit: Se connecter
     username: Identifiant
+  logout: Se déconnecter
 
 button:
   publish: Publié
