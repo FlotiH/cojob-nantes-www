@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\EventSubscriber;
 
 use App\Entity\Promo;
-use CalendarBundle\CalendarEvents;
 use CalendarBundle\Entity\Event;
-use CalendarBundle\Event\CalendarEvent;
+use CalendarBundle\Event\SetDataEvent;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -19,15 +20,14 @@ class CalendarSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            CalendarEvents::SET_DATA => 'onCalendarSetData',
+            SetDataEvent::class => 'onCalendarSetData',
         ];
     }
 
-    public function onCalendarSetData(CalendarEvent $calendar): void
+    public function onCalendarSetData(SetDataEvent $setDataEvent): void
     {
-        $start = $calendar->getStart();
-        $end = $calendar->getEnd();
-//        $filters = $calendar->getFilters();
+        $start = $setDataEvent->getStart();
+        $end = $setDataEvent->getEnd();
 
         $promos = $this->em->getRepository(Promo::class)
             ->createQueryBuilder('p')
@@ -39,12 +39,11 @@ class CalendarSubscriber implements EventSubscriberInterface
 
         /** @var Promo $promo */
         foreach ($promos as $promo) {
-
             $promoStart = $promo->getStart();
             $nextSaturday = clone $promoStart;
             $nextSaturday = $nextSaturday->modify('next saturday');
             while ($nextSaturday < $promo->getEnd()) {
-                $calendar->addEvent(new Event(
+                $setDataEvent->addEvent(new Event(
                     $promo->getName(),
                     clone $promoStart,
                     clone $nextSaturday
@@ -55,10 +54,10 @@ class CalendarSubscriber implements EventSubscriberInterface
                 $nextSaturday = $nextSaturday->modify('next saturday');
             }
 
-            $calendar->addEvent(new Event(
+            $setDataEvent->addEvent(new Event(
                 $promo->getName(),
                 clone $promoStart,
-                clone ($promo->getEnd())->setTime(23, 59)
+                (clone $promo->getEnd())->setTime(23, 59)
             ));
         }
 
@@ -71,9 +70,7 @@ class CalendarSubscriber implements EventSubscriberInterface
             ->getQuery()
             ->getResult();
 
-        /** @var Event $event */
         foreach ($events as $event) {
-
             $bookingEvent = new Event(
                 $event->getName(),
                 $event->getStart(),
@@ -92,7 +89,7 @@ class CalendarSubscriber implements EventSubscriberInterface
                 ])
             );
 
-            $calendar->addEvent($bookingEvent);
+            $setDataEvent->addEvent($bookingEvent);
         }
     }
 }

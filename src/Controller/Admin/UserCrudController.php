@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Admin;
 
 use App\Entity\User;
@@ -16,6 +18,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class UserCrudController extends AbstractCrudController
 {
     private UserPasswordHasherInterface $passwordHasher;
+
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
         $this->passwordHasher = $passwordHasher;
@@ -25,7 +28,7 @@ class UserCrudController extends AbstractCrudController
     {
         return $crud
             ->setEntityPermission('ROLE_SUPER_ADMIN')
-            ;
+        ;
     }
 
     public static function getEntityFqcn(): string
@@ -48,7 +51,7 @@ class UserCrudController extends AbstractCrudController
         ];
     }
 
-    public function encodePassword($user)
+    public function encodePassword($user): void
     {
         if ($user instanceof User && $user->getPlainPassword()) {
             $user->setPassword(

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
@@ -22,7 +24,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('<img src="/static/images/logo.png" alt="Cojob Nantes" style="max-width: 100%">')
+            ->setTitle('<img src="/img/main/logo-200.avif" alt="Cojob Nantes" style="max-width: 100%">')
             ->setFaviconPath('favicon.ico');
     }
 

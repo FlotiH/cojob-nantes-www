@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repository\UserRepository;
@@ -193,8 +195,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Get PlainPassword.
-     *
-     * @return mixed
      */
     public function getPlainPassword()
     {
@@ -203,8 +203,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Set PlainPassword.
-     *
-     * @param mixed $plainPassword
      *
      * @return User
      */

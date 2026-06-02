@@ -8,9 +8,7 @@ nav:
   about: A propos
   promo: La promo
   calendar: Calendrier
-  cosearching: Cosearching
   support_us: Nous soutenir
-  services: Prestations
   contact: Contactez-nous
   guide: Le guide pratique
   members: Adhérents
@@ -41,10 +39,6 @@ support:
   join: Vous souhaitez adhérer ?
   donate: Vous souhaitez faire un don ?
 
-airtable_data:
-  title: Les adhérents de l'association | Cojob Nantes
-  description: Retrouvez une personne adhérente de l'association | Cojob Nantes
-
 guide:
   title: L'Explorateur, guide de l'emploi pour les nantais | Cojob Nantes
   description: Retrouvez l'Explorateur, le guide de l'emploi à usage des aventuriers nantais rédigé par des bénévoles de l'association Cojob Nantes
@@ -55,9 +49,6 @@ partners:
 
 about:
   h2: Qui sommes-nous ?
-
-talk_about_us:
-  h2: On parle de Cojob Nantes
 
 contact:
   title: Contacter l'association | Cojob Nantes
@@ -138,7 +129,6 @@ Enabled: Actif
 End: Fin
 Expires At: Expirée le
 Event: Evènements
-Event Has Pictures: Images (merci de mettre des images optimisées pour le web, vous pouvez utiliser tinypng par exemple)
 Event List: Liste des évènements
 First Name: Prénom
 Hello Asso Form Link: Lien des inscriptions HelloAsso
@@ -179,26 +169,6 @@ security:
     remember_me: Se souvenir de moi
     submit: Se connecter
     username: Identifiant
-  password_reset:
-    title: Mot de passe oublié
-    message: Entrez votre nom d'utilisateur pour réinitialiser le mot de passe.
-    btn_submit: Envoyer
-    link_login: Connexion
-    success:
-      email_sent: Un e-mail a été envoyé à %email%. Celui-ci contient un lien sur lequel vous devez cliquer pour réinitialiser votre mot de passe. Pensez à bien regarder dans vos spams.
-    warning:
-      already_requested: Le mot de passe de ce compte a déjà été demandé au cours des dernières 24 heures.
-    error:
-      not_found: Cet identifiant n'existe pas
-      disabled: Ce compte n'est plus actif
-      email_invalid: L'email semble invalide
-  password_change:
-    title: Nouveau mot de passe
-    message: Votre mot de passe doit contenir au moins 6 caractères
-    password: Mot de passe
-    password_repeat: Entrez de nouveau le mot de passe
-    btn_submit: Enregistrer
-    success: Le mot de passe a été changé
   logout: Se déconnecter
 
 button:
@@ -213,13 +183,3 @@ form:
 
 placeholder:
   website: 'http(s)://...'
-
-email:
-  password_reset:
-    subject: Réinitialisation de mot de passe
-    content: |
-      <h2 style="font-weight:400;font-size:24px;line-height:30px;margin:0 0 12px">Bonjour %name%,</h2>
-      <p style="font-size:17px;line-height:24px;margin:0 0 12px">
-          Pour réinitialiser votre mot de passe, veuillez utiliser le lien suivant:<br/>
-          <a href="%url%" target="_blank">%url%</a>
-      </p>

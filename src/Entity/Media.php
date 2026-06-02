@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -28,7 +30,7 @@ class Media
     #[ORM\Column(type: 'string', length: 255)]
     private $image;
 
-    #[Vich\UploadableField(mapping: 'medias', fileNameProperty:'image')]
+    #[Vich\UploadableField(mapping: 'medias', fileNameProperty: 'image')]
     private $imageFile;
 
     public function getId()
@@ -36,7 +38,7 @@ class Media
         return $this->id;
     }
 
-    public function setImageFile(?File $image)
+    public function setImageFile(?File $image): void
     {
         $this->imageFile = $image;
 
@@ -54,7 +56,7 @@ class Media
         return $this->imageFile;
     }
 
-    public function setImage($image)
+    public function setImage($image): void
     {
         $this->image = $image;
     }

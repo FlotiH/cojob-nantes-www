@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\Event;
@@ -27,7 +29,7 @@ class SeoController extends AbstractController
         foreach ($events as $event) {
             $eventsMap[] = [
                 'text' => $event->getName(),
-                'url' => $this->generateUrl('event_show', ['slug' => $event->getSlug()])
+                'url' => $this->generateUrl('event_show', ['slug' => $event->getSlug()]),
             ];
         }
 
@@ -62,8 +64,8 @@ class SeoController extends AbstractController
             ],
             [
                 'text' => 'Événements',
-                'map' => $eventsMap
-            ]
+                'map' => $eventsMap,
+            ],
         ];
     }
 
@@ -77,8 +79,9 @@ class SeoController extends AbstractController
     public function sitemap(): Response
     {
         $map = $this->getMap();
+
         return $this->render('seo/sitemap.html.twig', [
-            'map' => $map
+            'map' => $map,
         ]);
     }
 
@@ -86,9 +89,9 @@ class SeoController extends AbstractController
     public function sitemapGoogle(): Response
     {
         $map = $this->getMap();
+
         return $this->render('seo/sitemap.xml.twig', [
-            'map' => $map
+            'map' => $map,
         ]);
     }
-
 }

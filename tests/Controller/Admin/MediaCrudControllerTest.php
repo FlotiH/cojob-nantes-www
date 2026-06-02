@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Controller\Admin;
 
 use App\Controller\Admin\DashboardController;
@@ -62,7 +64,6 @@ final class MediaCrudControllerTest extends AbstractCrudTestCase
         $this->client->request('GET', $this->generateNewFormUrl());
         static::assertResponseIsSuccessful();
     }
-
 
     public function testEditPage(): void
     {

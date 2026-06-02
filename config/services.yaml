@@ -7,11 +7,11 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-    public_dir: '%kernel.project_dir%/../htdocs'
+    app.public_dir: '%kernel.project_dir%/../htdocs'
     locale: fr
-    media_path: '/static/media'
-    media_dir: '%public_dir%%media_path%'
-    mailer:
+    app.media_path: '/static/media'
+    app.media_dir: '%app.public_dir%%app.media_path%'
+    app.mailer:
         from: '%env(MAILER_FROM)%'
         to: '%env(MAILER_TO)%'
         default_bcc: '%env(MAILER_BCC)%'
