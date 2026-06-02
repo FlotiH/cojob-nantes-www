@@ -109,7 +109,32 @@
         <footer class="row text-center">
             <div class="col-sm-4">
                 <div class="brand-col">
-                    <a href="{{ path('homepage') }}" class="brand"><span class="visually-hidden">Cojob Nantes</span></a>
+                    <a href="{{ path('homepage') }}" class="brand">
+                        <picture>
+                            <source
+                                srcset="{{ asset('img/main/logo-no-bg-400.avif') }} 400w, 
+                                {{ asset('img/main/logo-no-bg-200.avif') }} 200w"
+                                sizes="(max-width: 576px) 34vw, 100vw"
+                                type="image/avif"
+                            >
+                            <source
+                                srcset="{{ asset('img/main/logo-no-bg-400.webp') }} 400w, 
+                                {{ asset('img/main/logo-no-bg-200.webp') }} 200w"
+                                sizes="(max-width: 576px) 34vw, 100vw"
+                                type="image/webp"
+                            >
+                            <img
+                                src="{{ asset('img/main/logo-no-bg.png') }}"
+                                srcset="{{ asset('img/main/logo-no-bg-400.png') }} 400w, 
+                                {{ asset('img/main/logo-no-bg-200.png') }} 200w"
+                                sizes="(max-width: 576px) 34vw, 100vw"
+                                alt="Cojob Nantes"
+                                class="img-fluid"
+                                width="400"
+                                height="134"
+                            >
+                        </picture>
+                    </a>
                 </div>
             </div>
             <div class="col-sm-4">
