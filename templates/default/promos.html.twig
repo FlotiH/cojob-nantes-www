@@ -100,11 +100,21 @@
                 </div>
             </div>
         {% endfor %}
-        {% if otherPromos|length %}
+        {% if otherPromos|length or promos|length %}
             <div class="promos-div offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
                 <div class="content">
                     <h2>{{ 'promo.next'|trans }}</h2>
                     <ul>
+                        {% for promo in promos %}
+                            <li>
+                                {{ promo.name }} - {{ promo.start|dateInterval(promo.end) }}
+                                    <a href="#promoAnchor" class="btn btn-primary btn-sm add-to-calendar-btn"
+                                    onclick="gtag('event', 'Promo Register promo', {'event_category': 'Button Click'});">
+                                        S'inscrire
+                                    </a>
+                                </div>
+                            </li>
+                        {% endfor %}
                         {% for promo in otherPromos %}
                             <li>
                                 {{ promo.name }} - {{ promo.start|dateInterval(promo.end) }}
