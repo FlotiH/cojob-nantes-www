@@ -31,3 +31,4 @@ public/credentials.json
 /assets/vendor/
 ###< symfony/asset-mapper ###
 /.phpunit.cache
+/public/test-coverage

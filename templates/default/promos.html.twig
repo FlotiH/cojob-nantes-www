@@ -108,11 +108,10 @@
                         {% for promo in promos %}
                             <li>
                                 {{ promo.name }} - {{ promo.start|dateInterval(promo.end) }}
-                                    <a href="#promoAnchor" class="btn btn-primary btn-sm add-to-calendar-btn"
+                                <a href="#promoAnchor" class="btn btn-primary btn-sm add-to-calendar-btn"
                                     onclick="gtag('event', 'Promo Register promo', {'event_category': 'Button Click'});">
                                         S'inscrire
-                                    </a>
-                                </div>
+                                </a>
                             </li>
                         {% endfor %}
                         {% for promo in otherPromos %}
