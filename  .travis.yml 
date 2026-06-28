@@ -1,0 +1,6 @@
+language: php
+php:
+ - '8.5'
+script:
+  - composer install
+  - bash bin/run-tests.sh
