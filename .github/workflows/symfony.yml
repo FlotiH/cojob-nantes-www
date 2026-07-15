@@ -77,6 +77,9 @@ jobs:
       - name: Php-cs-fixer
         run: vendor/bin/php-cs-fixer fix --allow-risky=yes
 
+      - name: Static analysis of PHP code (PHPStan)
+        run: vendor/bin/phpstan analyse
+          
       # —— Tests  ———————————————————————————————————————————————————————————
 
       - name: Prepare the database
