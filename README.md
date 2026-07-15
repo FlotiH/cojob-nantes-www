@@ -48,7 +48,7 @@ php bin/console asset-map:compile
 This command delete and create a new database suffixed by test, run migrations, fixtures and tests and then generate code coverage information
 
 ```bash
-bash bin/run-tests.sh 
+composer app:tests
 ```
 
 To run only one test without fixtures loading:

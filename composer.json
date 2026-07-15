@@ -101,6 +101,20 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "app:load-fixtures": [
+            "bin/console do:da:dr --force --if-exists --env=test",
+            "bin/console do:da:cr --env=test",
+            "bin/console do:mi:mi -n --allow-no-migration --env=test",
+            "bin/console do:fi:lo -n --env=test"
+        ],
+        "app:tests": [
+            "@app:load-fixtures",
+            "SYMFONY_DEPRECATIONS_HELPER=disabled vendor/bin/phpunit"
+        ],
+        "app:tests-with-code-coverage": [
+            "@app:load-fixtures",
+            "XDEBUG_MODE=coverage SYMFONY_DEPRECATIONS_HELPER=disabled vendor/bin/phpunit --coverage-html public/test-coverage"
         ]
     },
     "conflict": {
