@@ -4,7 +4,7 @@
 
 {% block description %}{{ event.metaDescription }}{% endblock %}
 
-{% block canonical %}{{ absolute_url(path('event_show', {'slug': event.slug})) }}{% endblock %}
+{% block canonical %}{{ absolute_url(path('event_show', {slug: event.slug})) }}{% endblock %}
 
 {% block content %}
     <div class="one-page generic-page row parallax" itemscope itemtype="https://schema.org/NewsArticle">
@@ -18,8 +18,8 @@
                         <meta itemprop="url" content="{{ absolute_url(asset('images/logo.png')) }}">
                     </span>
                 </div>
-                <meta itemprop="datePublished" content="{{ event.createdAt|date("Y-m-d") }}">
-                <meta itemprop="dateModified" content="{{ event.updatedAt|date("Y-m-d") }}">
+                <meta itemprop="datePublished" content="{{ event.createdAt|date('Y-m-d') }}">
+                <meta itemprop="dateModified" content="{{ event.updatedAt|date('Y-m-d') }}">
                 <meta itemprop="headline" content="{{ event.content|u.truncate(100) }}">
 
                 <p>Début : {{ event.start|date('d/m/Y H:i') }}</p>

@@ -42,10 +42,10 @@ php bin/console asset-map:compile
 
 ### Run tests
 
-/!\ Please run tests before each commit (manually or in a pre-commit hook for instance):
-/!\ Please install XDEBUG to generate code coverage information (else comment code coverage generation in bin:run-test.sh)
+/!\ Please run tests before each commit (manually or in a pre-commit hook for instance)
+/!\ Please install XDEBUG if you want to generate code coverage information (composer app:tests-with-code-coverage)
 
-This command delete and create a new database suffixed by test, run migrations, fixtures and tests and then generate code coverage information
+This command delete and create a new database suffixed by test, run migrations, fixtures and tests
 
 ```bash
 composer app:tests

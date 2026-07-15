@@ -56,8 +56,25 @@ jobs:
       - name: Check the Symfony console
         run: bin/console about
 
+      # —— Linter  ———————————————————————————————————————————————————————————
+      - name: Twig linter
+        run: |
+          bin/console lint:twig templates
+          vendor/bin/twig-cs-fixer lint
+      
+      - name: Yaml linter
+        run: |
+          bin/console lint:yaml config --parse-tags
+          bin/console lint:yaml translations --parse-tags
+
+      - name: Container linter
+        run: bin/console lint:container
+
+      - name: Translations linter
+        run: bin/console lint:translations --locale=fr
+
       # —— Coding standards  ————————————————————————————————————————————————
-      - name: Pphp-cs-fixer
+      - name: Php-cs-fixer
         run: vendor/bin/php-cs-fixer fix --allow-risky=yes
 
       # —— Tests  ———————————————————————————————————————————————————————————

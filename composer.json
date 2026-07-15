@@ -144,6 +144,7 @@
         "symfony/phpunit-bridge": "^7.4.14",
         "symfony/stopwatch": "8.1.*",
         "symfony/web-profiler-bundle": "8.1.*",
-        "uxcode-fr/image-optimizer": "^1.0.6"
+        "uxcode-fr/image-optimizer": "^1.0.6",
+        "vincentlanglet/twig-cs-fixer": "^4.0"
     }
 }
