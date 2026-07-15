@@ -1,6 +1,8 @@
 {
     "type": "project",
     "license": "proprietary",
+    "name": "flotih/cojob-nantes-www",
+    "description": "Website for Cojob Nantes association",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
@@ -11,16 +13,16 @@
         "doctrine/doctrine-bundle": "^3.2.4",
         "doctrine/doctrine-migrations-bundle": "^4.0",
         "doctrine/orm": "^3.6.7",
-        "easycorp/easyadmin-bundle": "^5.1.0",
+        "easycorp/easyadmin-bundle": "^5.2.0",
         "egulias/email-validator": "^4.0.4",
-        "eluceo/ical": "^2.16",
+        "eluceo/ical": "^2.17",
         "friendsofsymfony/ckeditor-bundle": "^2.8",
         "gedmo/doctrine-extensions": "^3.22",
-        "google/apiclient": "^2.19.3",
+        "google/apiclient": "^2.19.4",
         "imagine/imagine": "^1.5.4",
         "incenteev/composer-parameter-handler": "^2.3",
         "phpdocumentor/reflection-docblock": "^6.0.3",
-        "phpstan/phpdoc-parser": "^2.3.2",
+        "phpstan/phpdoc-parser": "^2.3.3",
         "stof/doctrine-extensions-bundle": "^1.15.3",
         "symfony/apache-pack": "^1.0.1",
         "symfony/asset": "8.1.*",
@@ -41,6 +43,7 @@
         "symfony/process": "8.1.*",
         "symfony/property-access": "8.1.*",
         "symfony/property-info": "8.1.*",
+        "symfony/requirements-checker": "^2.0",
         "symfony/runtime": "8.1.*",
         "symfony/security-bundle": "8.1.*",
         "symfony/serializer": "8.1.*",
@@ -55,7 +58,7 @@
         "twig/extra-bundle": "^3.24",
         "twig/inky-extra": "^3.26",
         "twig/string-extra": "^3.24",
-        "twig/twig": "^3.27.1",
+        "twig/twig": "^3.28.0",
         "vich/uploader-bundle": "^2.9.4"
     },
     "config": {
@@ -94,13 +97,30 @@
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd",
             "ckeditor:install": "symfony-cmd",
-            "importmap:install": "symfony-cmd"
+            "importmap:install": "symfony-cmd",
+            "requirements-checker": "script"
         },
         "post-install-cmd": [
             "@auto-scripts"
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "app:load-fixtures": [
+            "bin/console do:da:dr --force --if-exists --env=test",
+            "bin/console do:da:cr --env=test",
+            "bin/console do:mi:mi -n --allow-no-migration --env=test",
+            "bin/console do:fi:lo -n --env=test"
+        ],
+        "app:tests": [
+            "bin/console ca:wa --env=test",
+            "@app:load-fixtures",
+            "SYMFONY_DEPRECATIONS_HELPER=disabled vendor/bin/phpunit"
+        ],
+        "app:tests-with-code-coverage": [
+            "bin/console ca:wa --env=test",
+            "@app:load-fixtures",
+            "XDEBUG_MODE=coverage SYMFONY_DEPRECATIONS_HELPER=disabled vendor/bin/phpunit --coverage-html public/test-coverage"
         ]
     },
     "conflict": {
@@ -114,16 +134,17 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^4.3.1",
-        "friendsofphp/php-cs-fixer": "^3.95.11",
-        "phpunit/phpunit": "^13.2.1",
+        "friendsofphp/php-cs-fixer": "^3.95.14",
+        "phpunit/phpunit": "^13.2.4",
         "roave/security-advisories": "dev-latest",
         "symfony/browser-kit": "8.1.*",
         "symfony/css-selector": "8.1.*",
         "symfony/debug-bundle": "8.1.*",
         "symfony/maker-bundle": "^1.67",
-        "symfony/phpunit-bridge": "^7.4.8",
+        "symfony/phpunit-bridge": "^7.4.14",
         "symfony/stopwatch": "8.1.*",
         "symfony/web-profiler-bundle": "8.1.*",
-        "uxcode-fr/image-optimizer": "^1.0.6"
+        "uxcode-fr/image-optimizer": "^1.0.6",
+        "vincentlanglet/twig-cs-fixer": "^4.0"
     }
 }
