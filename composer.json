@@ -113,10 +113,12 @@
             "bin/console do:fi:lo -n --env=test"
         ],
         "app:tests": [
+            "bin/console ca:wa --env=test",
             "@app:load-fixtures",
             "SYMFONY_DEPRECATIONS_HELPER=disabled vendor/bin/phpunit"
         ],
         "app:tests-with-code-coverage": [
+            "bin/console ca:wa --env=test",
             "@app:load-fixtures",
             "XDEBUG_MODE=coverage SYMFONY_DEPRECATIONS_HELPER=disabled vendor/bin/phpunit --coverage-html public/test-coverage"
         ]

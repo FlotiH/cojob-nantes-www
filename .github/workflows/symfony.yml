@@ -54,8 +54,7 @@ jobs:
         run: vendor/bin/requirements-checker
 
       - name: Check the Symfony console
-        run: |
-          bin/console about
+        run: bin/console about
 
       # —— Coding standards  ————————————————————————————————————————————————
       - name: Pphp-cs-fixer
@@ -65,9 +64,14 @@ jobs:
 
       - name: Prepare the database
         run: sudo systemctl start mysql
+      
+      - name: AssetMapper
+        run: |
+          bin/console importmap:install
+          bin/console asset-map:compile
 
       - name: Run functionnal and unit tests
         run: composer app:tests
         env:
           APP_ENV: test
-          DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.database.ports['3306'] }}/app_test 
+          DATABASE_URL: mysql://root:root@127.0.0.1:${{ job.services.database.ports['3306'] }}/app?serverVersion=10.11.14-MariaDB&charset=utf8mb4
