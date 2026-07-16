@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\Article;
+use Doctrine\Persistence\AbstractManagerRegistry;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminRoute;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -36,17 +37,11 @@ class ArticleCrudController extends AbstractCrudController
         $publish = Action::new('publish', 'button.publish', 'fa fa-eye')
             ->linkToCrudAction('publish')
             ->setCssClass('text-success')
-            ->displayIf(static function ($entity) {
-                /* @var Article $entity */
-                return !$entity->isPublished();
-            });
+            ->displayIf(static fn (Article $entity) => !$entity->isPublished());
         $unpublish = Action::new('unpublish', 'button.unpublish', 'fa fa-eye-slash')
             ->linkToCrudAction('unpublish')
             ->setCssClass('text-danger')
-            ->displayIf(static function ($entity) {
-                /* @var Article $entity */
-                return $entity->isPublished();
-            });
+            ->displayIf(static fn (Article $entity) => $entity->isPublished());
 
         $actions->add(Crud::PAGE_INDEX, $publish);
         $actions->add(Crud::PAGE_INDEX, $unpublish);
@@ -73,7 +68,9 @@ class ArticleCrudController extends AbstractCrudController
     public function publish(Article $article): RedirectResponse
     {
         $article->setPublished(true);
-        $this->container->get('doctrine')->getManager()->flush();
+        /** @var AbstractManagerRegistry $doctrine */
+        $doctrine = $this->container->get('doctrine');
+        $doctrine->getManager()->flush();
         $this->addFlash('success', \sprintf('Actualité "%s" publiée', $article));
 
         return $this->redirectToRoute('admin_article_index');
@@ -83,7 +80,9 @@ class ArticleCrudController extends AbstractCrudController
     public function unpublish(Article $article): RedirectResponse
     {
         $article->setPublished(false);
-        $this->container->get('doctrine')->getManager()->flush();
+        /** @var AbstractManagerRegistry $doctrine */
+        $doctrine = $this->container->get('doctrine');
+        $doctrine->getManager()->flush();
         $this->addFlash('success', \sprintf('Actualité "%s" dépubliée', $article));
 
         return $this->redirectToRoute('admin_article_index');
