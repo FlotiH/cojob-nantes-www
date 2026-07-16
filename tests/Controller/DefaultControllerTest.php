@@ -85,6 +85,7 @@ class DefaultControllerTest extends WebTestCase
     public function testEventShow(): void
     {
         $event = $this->eventRepository->find(1);
+        self::assertNotNull($event);
         $crawler = $this->client->request('GET', '/evenement/'.$event->getSlug());
 
         self::assertResponseIsSuccessful();
@@ -94,6 +95,7 @@ class DefaultControllerTest extends WebTestCase
     public function testPromoGetICal(): void
     {
         $promo = $this->promoRepository->find(1);
+        self::assertNotNull($promo);
         $crawler = $this->client->request('GET', '/promo/'.$promo->getId().'/get-ical');
 
         self::assertResponseIsSuccessful();
@@ -102,6 +104,7 @@ class DefaultControllerTest extends WebTestCase
     public function testPromoRegistrationGetICal(): void
     {
         $promo = $this->promoRepository->find(1);
+        self::assertNotNull($promo);
         $crawler = $this->client->request('GET', '/promo/registration/'.$promo->getId().'/get-ical');
 
         self::assertResponseIsSuccessful();
