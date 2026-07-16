@@ -16,7 +16,7 @@ class SeoController extends AbstractController
     {
     }
 
-    /** @return array<array<mixed>> */
+    /** @return array<array{'text': string, 'url'?: string, 'map'?: array<array{'text': string, 'url': string}>}> */
     private function getMap(): array
     {
         $events = $this->em
