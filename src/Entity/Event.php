@@ -24,102 +24,102 @@ class Event
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 63)]
     #[Assert\Length(max: 63)]
     #[Assert\NotBlank]
-    private $name;
+    private string $name;
 
     #[Behavior\Slug(fields: ['name'])]
     #[ORM\Column(type: 'string', length: 63, unique: true)]
-    private $slug;
+    private string $slug;
 
     #[ORM\Column(type: 'datetime', nullable: false)]
     #[Assert\NotBlank]
-    private $start;
+    private \DateTime $start;
 
     #[ORM\Column(type: 'datetime', nullable: false)]
     #[Assert\NotBlank]
-    private $end;
+    private \DateTime $end;
 
     #[ORM\Column(type: 'string', length: 127)]
     #[Assert\Length(max: 127)]
     #[Assert\NotBlank]
-    private $metaDescription;
+    private string $metaDescription;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    private $content;
+    private ?string $content;
 
     public function __toString()
     {
         return (string) $this->name;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function setName($name)
+    public function setName(string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getSlug()
+    public function getSlug(): string
     {
         return $this->slug;
     }
 
-    public function getStart()
+    public function getStart(): \DateTime
     {
         return $this->start;
     }
 
-    public function setStart($start)
+    public function setStart(\DateTime $start): self
     {
         $this->start = $start;
 
         return $this;
     }
 
-    public function getEnd()
+    public function getEnd(): \DateTime
     {
         return $this->end;
     }
 
-    public function setEnd($end)
+    public function setEnd(\DateTime $end): self
     {
         $this->end = $end;
 
         return $this;
     }
 
-    public function getContent()
+    public function getContent(): ?string
     {
         return $this->content;
     }
 
-    public function setContent($content)
+    public function setContent(?string $content): self
     {
         $this->content = $content;
 
         return $this;
     }
 
-    public function getMetaDescription()
+    public function getMetaDescription(): string
     {
         return $this->metaDescription;
     }
 
-    public function setMetaDescription($metaDescription)
+    public function setMetaDescription(string $metaDescription): self
     {
         $this->metaDescription = $metaDescription;
 

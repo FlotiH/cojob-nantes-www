@@ -172,7 +172,7 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    private function getResponseIcal(Request $request, $start, $end, $summary): Response
+    private function getResponseIcal(Request $request, \DateTime $start, \DateTime $end, string $summary): Response
     {
         $vEvent = new \Eluceo\iCal\Domain\Entity\Event();
 

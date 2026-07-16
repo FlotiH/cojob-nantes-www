@@ -13,7 +13,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
+/**
+ * @extends AbstractCrudController<Article>
+ */
 class ArticleCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
@@ -66,7 +70,7 @@ class ArticleCrudController extends AbstractCrudController
     }
 
     #[AdminRoute('/{entityId:article.id}/publish')]
-    public function publish(Article $article)
+    public function publish(Article $article): RedirectResponse
     {
         $article->setPublished(true);
         $this->container->get('doctrine')->getManager()->flush();
@@ -76,7 +80,7 @@ class ArticleCrudController extends AbstractCrudController
     }
 
     #[AdminRoute('/{entityId:article.id}/unpublish')]
-    public function unpublish(Article $article)
+    public function unpublish(Article $article): RedirectResponse
     {
         $article->setPublished(false);
         $this->container->get('doctrine')->getManager()->flush();

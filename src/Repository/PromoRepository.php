@@ -8,6 +8,9 @@ use App\Entity\Promo;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @extends ServiceEntityRepository<Promo>
+ */
 class PromoRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)

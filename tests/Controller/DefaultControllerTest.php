@@ -15,6 +15,7 @@ class DefaultControllerTest extends WebTestCase
 {
     private KernelBrowser $client;
     private PromoRepository $promoRepository;
+    /** @var EntityRepository<Event> */
     private EntityRepository $eventRepository;
 
     protected function setUp(): void

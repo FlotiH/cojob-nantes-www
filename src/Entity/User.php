@@ -30,34 +30,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     #[Assert\Email]
     #[Assert\Length(max: 180)]
-    private $email;
+    private string $email;
 
+    /** @var array<string> */
     #[ORM\Column(type: 'json')]
-    private $roles = [];
+    private array $roles = [];
 
     #[ORM\Column(type: 'string')]
-    private $password;
+    private string $password;
 
     #[ORM\Column(type: 'string', length: 127, nullable: true)]
     #[Assert\Length(max: 127)]
-    private $lastName;
+    private ?string $lastName;
 
     #[ORM\Column(type: 'string', length: 127, nullable: true)]
     #[Assert\Length(max: 127)]
-    private $firstName;
+    private ?string $firstName;
 
     #[ORM\Column(type: 'boolean')]
-    private $enabled = true;
+    private bool $enabled = true;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
-    private $lastLoginAt;
+    private ?\DateTime $lastLoginAt;
 
-    private $plainPassword;
+    private ?string $plainPassword;
 
     public function __toString(): string
     {
@@ -103,6 +104,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
 
+    /**
+     * @param array<string> $roles
+     */
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
@@ -145,68 +149,60 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getLastName()
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
-    public function setLastName($lastName)
+    public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
 
         return $this;
     }
 
-    public function getFirstName()
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
-    public function setFirstName($firstName)
+    public function setFirstName(?string $firstName): self
     {
         $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function isEnabled()
+    public function isEnabled(): bool
     {
         return $this->enabled;
     }
 
-    public function setEnabled($enabled)
+    public function setEnabled(bool $enabled): self
     {
         $this->enabled = $enabled;
 
         return $this;
     }
 
-    public function getLastLoginAt()
+    public function getLastLoginAt(): ?\DateTime
     {
         return $this->lastLoginAt;
     }
 
-    public function setLastLoginAt($lastLoginAt)
+    public function setLastLoginAt(?\DateTime $lastLoginAt): self
     {
         $this->lastLoginAt = $lastLoginAt;
 
         return $this;
     }
 
-    /**
-     * Get PlainPassword.
-     */
-    public function getPlainPassword()
+    public function getPlainPassword(): ?string
     {
         return $this->plainPassword;
     }
 
-    /**
-     * Set PlainPassword.
-     *
-     * @return User
-     */
-    public function setPlainPassword($plainPassword)
+    public function setPlainPassword(?string $plainPassword): self
     {
         $this->plainPassword = $plainPassword;
 

@@ -9,6 +9,9 @@ use App\Controller\Admin\MediaCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Test\AbstractCrudTestCase;
 use Symfony\Component\Security\Core\User\InMemoryUser;
 
+/**
+ * @extends AbstractCrudTestCase<MediaCrudController>
+ */
 final class MediaCrudControllerTest extends AbstractCrudTestCase
 {
     protected function getControllerFqcn(): string

@@ -9,12 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
 trait PublishableTrait
 {
     #[ORM\Column(type: 'datetime', nullable: true)]
-    private $publishedAt;
+    private ?\DateTime $publishedAt;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
-    private $expiresAt;
+    private ?\DateTime $expiresAt;
 
-    public function isPublished()
+    public function isPublished(): bool
     {
         $now = new \DateTime();
 
@@ -24,7 +24,7 @@ trait PublishableTrait
         ;
     }
 
-    public function setPublished($bool)
+    public function setPublished(bool $bool): self
     {
         if ($bool) {
             $this->setPublishedAt(new \DateTime());
@@ -36,24 +36,24 @@ trait PublishableTrait
         return $this;
     }
 
-    public function getPublishedAt()
+    public function getPublishedAt(): ?\DateTime
     {
         return $this->publishedAt;
     }
 
-    public function setPublishedAt(?\DateTime $publishedAt)
+    public function setPublishedAt(?\DateTime $publishedAt): self
     {
         $this->publishedAt = $publishedAt;
 
         return $this;
     }
 
-    public function getExpiresAt()
+    public function getExpiresAt(): ?\DateTime
     {
         return $this->expiresAt;
     }
 
-    public function setExpiresAt(?\DateTime $expiresAt)
+    public function setExpiresAt(?\DateTime $expiresAt): self
     {
         $this->expiresAt = $expiresAt;
 

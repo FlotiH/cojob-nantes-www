@@ -10,6 +10,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Test\AbstractCrudTestCase;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\User\InMemoryUser;
 
+/**
+ * @extends AbstractCrudTestCase<ArticleCrudController>
+ */
 final class ArticleCrudControllerTest extends AbstractCrudTestCase
 {
     protected function getControllerFqcn(): string
