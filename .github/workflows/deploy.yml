@@ -20,7 +20,7 @@ jobs:
           key:  ${{ secrets.SSH_KEY }}
           script: |
             cd ~/sites/cojobnantes.fr
-            git pull origin main --rebase
+            git pull
             /opt/php8.5/bin/composer2 install --optimize-autoloader
             php-8.5 bin/console do:da:cr --if-not-exists
             php-8.5 bin/console do:mi:mi --no-interaction --allow-no-migration
