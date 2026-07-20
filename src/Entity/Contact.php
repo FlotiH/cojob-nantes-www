@@ -23,117 +23,117 @@ class Contact
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(name: 'last_name', type: 'string', length: 63)]
     #[Assert\NotBlank(message: 'contact.form.last_name.not_blank')]
     #[Assert\Length(max: 63)]
-    protected $last_name;
+    protected string $last_name;
 
     #[ORM\Column(name: 'first_name', type: 'string', length: 63)]
     #[Assert\NotBlank(message: 'contact.form.first_name.not_blank')]
     #[Assert\Length(max: 63)]
-    protected $first_name;
+    protected string $first_name;
 
     #[ORM\Column(name: 'email', type: 'string', length: 127)]
     #[Assert\NotBlank(message: 'contact.form.email.not_blank')]
     #[Assert\Length(max: 127)]
     #[Assert\Email(message: 'contact.form.email.check_mx', mode: 'strict')]
-    protected $email;
+    protected string $email;
 
     #[ORM\Column(name: 'message', type: 'text')]
     #[Assert\NotBlank]
-    protected $message;
+    protected string $message;
 
     #[ORM\Column(type: 'string', nullable: true, length: 15)]
-    private $telephone;
+    private ?string $telephone;
 
     // honeypot
-    protected $name;
+    protected ?string $name;
 
     public function __toString()
     {
         return $this->getFirstname().' '.$this->getLastname();
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId($id)
+    public function setId(int $id): self
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function getLastName()
+    public function getLastName(): string
     {
         return $this->last_name;
     }
 
-    public function setLastName($last_name)
+    public function setLastName(string $last_name): self
     {
         $this->last_name = $last_name;
 
         return $this;
     }
 
-    public function getFirstName()
+    public function getFirstName(): string
     {
         return $this->first_name;
     }
 
-    public function setFirstName($first_name)
+    public function setFirstName(string $first_name): self
     {
         $this->first_name = $first_name;
 
         return $this;
     }
 
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
 
-    public function setEmail($email)
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 
         return $this;
     }
 
-    public function getMessage()
+    public function getMessage(): string
     {
         return $this->message;
     }
 
-    public function setMessage($message)
+    public function setMessage(string $message): self
     {
         $this->message = $message;
 
         return $this;
     }
 
-    public function getTelephone()
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
-    public function setTelephone($telephone)
+    public function setTelephone(?string $telephone): self
     {
         $this->telephone = $telephone;
 
         return $this;
     }
 
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName($name)
+    public function setName(?string $name): self
     {
         $this->name = $name;
 

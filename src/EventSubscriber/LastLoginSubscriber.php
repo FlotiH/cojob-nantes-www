@@ -12,6 +12,8 @@ use Symfony\Component\Security\Http\SecurityEvents;
 
 class LastLoginSubscriber implements EventSubscriberInterface
 {
+    private EntityManagerInterface $em;
+
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;

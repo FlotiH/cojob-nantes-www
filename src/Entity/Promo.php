@@ -24,116 +24,116 @@ class Promo
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 63)]
     #[Assert\Length(max: 63)]
     #[Assert\NotBlank]
-    private $name;
+    private string $name;
 
     #[ORM\Column(type: 'date', nullable: false)]
     #[Assert\NotBlank]
-    private $start;
+    private \DateTime $start;
 
     #[ORM\Column(type: 'date', nullable: false)]
     #[Assert\NotBlank]
-    private $end;
+    private \DateTime $end;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Assert\Length(max: 255)]
-    private $helloAssoFormLink;
+    private ?string $helloAssoFormLink;
 
     #[ORM\Column(type: 'date', nullable: false)]
     #[Assert\NotBlank]
-    private $registeringStart;
+    private \DateTime $registeringStart;
 
     #[ORM\Column(type: 'date', nullable: false)]
     #[Assert\NotBlank]
-    private $registeringEnd;
+    private \DateTime $registeringEnd;
 
     public function __toString()
     {
         return (string) $this->name;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function setName($name)
+    public function setName(string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getStart()
+    public function getStart(): \DateTime
     {
         return $this->start;
     }
 
-    public function setStart($start)
+    public function setStart(\DateTime $start): self
     {
         $this->start = $start;
 
         return $this;
     }
 
-    public function getEnd()
+    public function getEnd(): \DateTime
     {
         return $this->end;
     }
 
-    public function setEnd($end)
+    public function setEnd(\DateTime $end): self
     {
         $this->end = $end;
 
         return $this;
     }
 
-    public function getHelloAssoFormLink()
+    public function getHelloAssoFormLink(): ?string
     {
         return $this->helloAssoFormLink;
     }
 
-    public function setHelloAssoFormLink($helloAssoFormLink)
+    public function setHelloAssoFormLink(?string $helloAssoFormLink): self
     {
         $this->helloAssoFormLink = $helloAssoFormLink;
 
         return $this;
     }
 
-    public function isRegisteringOpen()
+    public function isRegisteringOpen(): bool
     {
         $now = new \DateTime();
 
         return $this->getRegisteringStart() <= $now && $this->getRegisteringEnd() >= $now;
     }
 
-    public function getRegisteringStart()
+    public function getRegisteringStart(): \DateTime
     {
         return $this->registeringStart;
     }
 
-    public function setRegisteringStart($registeringStart)
+    public function setRegisteringStart(\DateTime $registeringStart): self
     {
         $this->registeringStart = $registeringStart;
 
         return $this;
     }
 
-    public function getRegisteringEnd()
+    public function getRegisteringEnd(): \DateTime
     {
         return $this->registeringEnd;
     }
 
-    public function setRegisteringEnd($registeringEnd)
+    public function setRegisteringEnd(\DateTime $registeringEnd): self
     {
         $this->registeringEnd = $registeringEnd;
 

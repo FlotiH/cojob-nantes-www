@@ -1,5 +1,12 @@
 name: Full CI process
-on: [push, pull_request]
+on: 
+  workflow_call:
+  push:
+    branches-ignore: 
+      - main
+  pull_request:
+    branches-ignore: 
+      - main
 jobs:
   symfony:
     name: Symfony 8.1 (PHP ${{ matrix.php-versions }})
@@ -77,6 +84,9 @@ jobs:
       - name: Php-cs-fixer
         run: vendor/bin/php-cs-fixer fix --allow-risky=yes
 
+      - name: Static analysis of PHP code (PHPStan)
+        run: vendor/bin/phpstan analyse
+          
       # —— Tests  ———————————————————————————————————————————————————————————
 
       - name: Prepare the database

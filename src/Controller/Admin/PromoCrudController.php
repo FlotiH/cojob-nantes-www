@@ -16,6 +16,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 
+/**
+ * @extends AbstractCrudController<Promo>
+ */
 class PromoCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string

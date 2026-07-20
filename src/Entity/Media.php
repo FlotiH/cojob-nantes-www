@@ -25,15 +25,15 @@ class Media
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $image;
+    private string $image = '';
 
     #[Vich\UploadableField(mapping: 'medias', fileNameProperty: 'image')]
-    private $imageFile;
+    private ?File $imageFile = null;
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -51,22 +51,22 @@ class Media
         }
     }
 
-    public function getImageFile()
+    public function getImageFile(): ?File
     {
         return $this->imageFile;
     }
 
-    public function setImage($image): void
+    public function setImage(string $image): void
     {
         $this->image = $image;
     }
 
-    public function getImage()
+    public function getImage(): string
     {
         return $this->image;
     }
 
-    public function getImageLink()
+    public function getImageLink(): string
     {
         return '';
     }

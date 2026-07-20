@@ -24,92 +24,92 @@ class Testimony
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 63)]
     #[Assert\Length(max: 63)]
     #[Assert\NotBlank]
-    private $name;
+    private string $name;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\Length(max: 255)]
     #[Assert\NotBlank]
-    private $subtitle;
+    private string $subtitle;
 
     #[ORM\Column(type: 'text')]
     #[Assert\NotBlank]
-    private $content;
+    private string $content;
 
     #[ORM\Column(type: 'boolean')]
-    private $promo = true;
+    private bool $promo = true;
 
     #[ORM\Column(type: 'boolean')]
-    private $requiredDisplaying = false;
+    private bool $requiredDisplaying = false;
 
     public function __toString()
     {
         return (string) $this->name;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function setName($name)
+    public function setName(string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getSubtitle()
+    public function getSubtitle(): string
     {
         return $this->subtitle;
     }
 
-    public function setSubtitle($subtitle)
+    public function setSubtitle(string $subtitle): self
     {
         $this->subtitle = $subtitle;
 
         return $this;
     }
 
-    public function getContent()
+    public function getContent(): string
     {
         return $this->content;
     }
 
-    public function setContent($content)
+    public function setContent(string $content): self
     {
         $this->content = $content;
 
         return $this;
     }
 
-    public function isPromo()
+    public function isPromo(): bool
     {
         return $this->promo;
     }
 
-    public function setPromo($promo)
+    public function setPromo(bool $promo): self
     {
         $this->promo = $promo;
 
         return $this;
     }
 
-    public function isRequiredDisplaying()
+    public function isRequiredDisplaying(): bool
     {
         return $this->requiredDisplaying;
     }
 
-    public function setRequiredDisplaying($requiredDisplaying)
+    public function setRequiredDisplaying(bool $requiredDisplaying): self
     {
         $this->requiredDisplaying = $requiredDisplaying;
 

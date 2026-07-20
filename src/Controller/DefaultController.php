@@ -143,6 +143,7 @@ class DefaultController extends AbstractController
                 $em->persist($contact);
                 $em->flush();
 
+                /** @var array{'from': string, 'to': string, 'default_bcc': string} $mailerParam */
                 $mailerParam = $this->getParameter('app.mailer');
 
                 $email = new TemplatedEmail()
@@ -172,7 +173,7 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    private function getResponseIcal(Request $request, $start, $end, $summary): Response
+    private function getResponseIcal(Request $request, \DateTime $start, \DateTime $end, string $summary): Response
     {
         $vEvent = new \Eluceo\iCal\Domain\Entity\Event();
 

@@ -26,61 +26,61 @@ class Article
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\Length(max: 255)]
     #[Assert\NotBlank]
-    private $imageLink;
+    private string $imageLink;
 
     #[ORM\Column(type: 'string', length: 63)]
     #[Assert\Length(max: 63)]
     #[Assert\NotBlank]
-    private $title;
+    private string $title;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    private $content;
+    private ?string $content;
 
     public function __toString()
     {
         return (string) $this->title;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getImageLink()
+    public function getImageLink(): string
     {
         return $this->imageLink;
     }
 
-    public function setImageLink($imageLink)
+    public function setImageLink(string $imageLink): self
     {
         $this->imageLink = $imageLink;
 
         return $this;
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    public function setTitle($title)
+    public function setTitle(string $title): self
     {
         $this->title = $title;
 
         return $this;
     }
 
-    public function getContent()
+    public function getContent(): ?string
     {
         return $this->content;
     }
 
-    public function setContent($content)
+    public function setContent(?string $content): self
     {
         $this->content = $content;
 

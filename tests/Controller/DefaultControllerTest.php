@@ -7,7 +7,8 @@ namespace App\Tests\Controller;
 use App\Entity\Event;
 use App\Entity\Promo;
 use App\Repository\PromoRepository;
-use Doctrine\ORM\EntityRepository;
+use Doctrine\Persistence\AbstractManagerRegistry;
+use Doctrine\Persistence\ObjectRepository;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -15,19 +16,20 @@ class DefaultControllerTest extends WebTestCase
 {
     private KernelBrowser $client;
     private PromoRepository $promoRepository;
-    private EntityRepository $eventRepository;
+    /** @var ObjectRepository<Event> */
+    private ObjectRepository $eventRepository;
 
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->client = static::createClient();
-        $this->promoRepository = static::getContainer()
-            ->get('doctrine')
+        /** @var AbstractManagerRegistry $doctrine */
+        $doctrine = static::getContainer()->get('doctrine');
+        $this->promoRepository = $doctrine
             ->getManager()
             ->getRepository(Promo::class);
-        $this->eventRepository = static::getContainer()
-            ->get('doctrine')
+        $this->eventRepository = $doctrine
             ->getManager()
             ->getRepository(Event::class);
     }
@@ -83,6 +85,7 @@ class DefaultControllerTest extends WebTestCase
     public function testEventShow(): void
     {
         $event = $this->eventRepository->find(1);
+        self::assertNotNull($event);
         $crawler = $this->client->request('GET', '/evenement/'.$event->getSlug());
 
         self::assertResponseIsSuccessful();
@@ -92,6 +95,7 @@ class DefaultControllerTest extends WebTestCase
     public function testPromoGetICal(): void
     {
         $promo = $this->promoRepository->find(1);
+        self::assertNotNull($promo);
         $crawler = $this->client->request('GET', '/promo/'.$promo->getId().'/get-ical');
 
         self::assertResponseIsSuccessful();
@@ -100,6 +104,7 @@ class DefaultControllerTest extends WebTestCase
     public function testPromoRegistrationGetICal(): void
     {
         $promo = $this->promoRepository->find(1);
+        self::assertNotNull($promo);
         $crawler = $this->client->request('GET', '/promo/registration/'.$promo->getId().'/get-ical');
 
         self::assertResponseIsSuccessful();

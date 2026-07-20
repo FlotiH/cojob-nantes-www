@@ -16,8 +16,10 @@ class SeoController extends AbstractController
     {
     }
 
+    /** @return array<array{'text': string, 'url'?: string, 'map'?: array<array{'text': string, 'url': string}>}> */
     private function getMap(): array
     {
+        /** @var Event[] $events */
         $events = $this->em
             ->getRepository(Event::class)
             ->createQueryBuilder('e')
@@ -25,7 +27,6 @@ class SeoController extends AbstractController
             ->getResult();
 
         $eventsMap = [];
-        /** @var Event $event */
         foreach ($events as $event) {
             $eventsMap[] = [
                 'text' => $event->getName(),

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\EventSubscriber;
 
+use App\Entity\Event as EntityEvent;
 use App\Entity\Promo;
 use CalendarBundle\Entity\Event;
 use CalendarBundle\Event\SetDataEvent;
@@ -29,6 +30,7 @@ class CalendarSubscriber implements EventSubscriberInterface
         $start = $setDataEvent->getStart();
         $end = $setDataEvent->getEnd();
 
+        /** @var Promo[] $promos */
         $promos = $this->em->getRepository(Promo::class)
             ->createQueryBuilder('p')
             ->where('p.start BETWEEN :start and :end')
@@ -37,7 +39,6 @@ class CalendarSubscriber implements EventSubscriberInterface
             ->getQuery()
             ->getResult();
 
-        /** @var Promo $promo */
         foreach ($promos as $promo) {
             $promoStart = $promo->getStart();
             $nextSaturday = clone $promoStart;
@@ -62,7 +63,8 @@ class CalendarSubscriber implements EventSubscriberInterface
         }
 
         // Get events
-        $events = $this->em->getRepository(\App\Entity\Event::class)
+        /** @var EntityEvent[] $events */
+        $events = $this->em->getRepository(EntityEvent::class)
             ->createQueryBuilder('e')
             ->where('e.start BETWEEN :start and :end')
             ->setParameter('start', $start->format('Y-m-d H:i:s'))

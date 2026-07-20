@@ -14,6 +14,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+/**
+ * @extends AbstractCrudController<User>
+ */
 #[IsGranted('ROLE_SUPER_ADMIN')]
 class UserCrudController extends AbstractCrudController
 {
@@ -51,9 +54,9 @@ class UserCrudController extends AbstractCrudController
         ];
     }
 
-    public function encodePassword($user): void
+    public function encodePassword(User $user): void
     {
-        if ($user instanceof User && $user->getPlainPassword()) {
+        if ($user->getPlainPassword()) {
             $user->setPassword(
                 $this->passwordHasher->hashPassword($user, $user->getPlainPassword())
             );
