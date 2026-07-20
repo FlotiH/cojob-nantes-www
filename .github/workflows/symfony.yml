@@ -1,5 +1,12 @@
 name: Full CI process
-on: [push, pull_request]
+on: 
+  workflow_call:
+  push:
+    branches-ignore: 
+      - main
+  pull_request:
+    branches-ignore: 
+      - main
 jobs:
   symfony:
     name: Symfony 8.1 (PHP ${{ matrix.php-versions }})

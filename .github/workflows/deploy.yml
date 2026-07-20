@@ -1,0 +1,27 @@
+name: deploy
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  symfony:
+    uses: './.github/workflows/symfony.yml'
+  deploy:
+    name: Deploy
+    needs: [symfony]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute ssh command
+        uses: appleboy/ssh-action@v1.2.0
+        with: 
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key:  ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/sites/cojobnantes.fr
+            git pull origin main --rebase
+            /opt/php8.5/bin/composer2 install --optimize-autoloader
+            php-8.5 bin/console do:da:cr --if-not-exists
+            php-8.5 bin/console do:mi:mi --no-interaction --allow-no-migration
+            php-8.5 bin/console ca:cl --env=prod
