@@ -21,7 +21,7 @@ jobs:
           script: |
             cd ~/sites/cojobnantes.fr
             git pull
-            /opt/php8.5/bin/composer2 install --optimize-autoloader
+            /opt/php8.5/bin/composer2 install --optimize-autoloader --no-dev
             php-8.5 bin/console do:da:cr --if-not-exists
             php-8.5 bin/console do:mi:mi --no-interaction --allow-no-migration
             php-8.5 bin/console ca:cl --env=prod
