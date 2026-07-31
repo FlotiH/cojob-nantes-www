@@ -46,10 +46,10 @@ class Contact
     protected string $message;
 
     #[ORM\Column(type: 'string', nullable: true, length: 15)]
-    private ?string $telephone;
+    private ?string $telephone = null;
 
     // honeypot
-    protected ?string $name;
+    protected ?string $name = null;
 
     public function __toString()
     {
