@@ -1,21 +1,79 @@
-version: '3'
-
 services:
-###> doctrine/doctrine-bundle ###
-  database:
-    image: postgres:${POSTGRES_VERSION:-14}-alpine
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
-      # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
-    volumes:
-      - db-data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
 
+  php:
+    build:
+      context: ./docker/php
+      dockerfile: DockerFile
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    container_name: php-container
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    networks:
+      - app_network
+    
+  apache:
+    build:
+      context: ./docker/apache
+      dockerfile: DockerFile
+    container_name: apache-container
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - php
+    networks:
+      - app_network
+
+  mariadb:
+    image: mariadb:10.11.14
+    container_name: mariadb-container
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: mypassword
+      MARIADB_DATABASE: mydb
+      MARIADB_USER: myuser
+      MARIADB_PASSWORD: mypassword
+    ports:
+      - "3307:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - app_network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin-container
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+      PMA_USER: myuser
+      PMA_PASSWORD: mypassword
+    ports:
+      - "8081:80"
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    networks:
+      - app_network
+
+    
 volumes:
-###> doctrine/doctrine-bundle ###
-  db-data:
-###< doctrine/doctrine-bundle ###
+  mariadb_data:
+
+networks:
+  app_network:
+    driver: bridge
