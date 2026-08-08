@@ -1,0 +1,7 @@
+FROM ubuntu/apache2:latest
+
+# Active les modules nécessaires pour faire proxy vers PHP-FPM
+RUN a2enmod proxy proxy_fcgi rewrite headers
+
+# Configuration du virtual host par défaut
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
