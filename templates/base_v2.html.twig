@@ -137,7 +137,7 @@
     {% block content %}{% endblock %}
 
     <footer class="bg-navy-900 text-white pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-6 lg:px-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+        <div class="max-w-[1048px] mx-auto grid sm:grid-cols-2 lg:grid-cols-[3fr_2fr_2fr_2fr] pb-12 border-b border-white/50">
             <div>
                 <a href="{{ path('homepage') }}">
                 {# TODO FHA : revoir les tailles quand j'aurai la bonne image #}
@@ -160,36 +160,36 @@
                             {{ asset('img/main/logo-no-bg-200.png') }} 200w"
                             sizes="(max-width: 576px) 34vw, 100vw"
                             alt="Cojob Nantes"
-                            class="img-fluid"
+                            class="w-[150px]"
                             width="400"
                             height="134"
                         >
                     </picture>
                 </a>
-                <p class="text-sm text-white/60 mt-4 leading-relaxed max-w-xs">
+                <p class="text-xs mt-4 leading-relaxed pr-8 max-w-xs">
                     Association favorisant une recherche d'emploi collective, proactive et solidaire.
                 </p>
             </div>
             <div>
-                <p class="font-semibold mb-4">{{ 'v2.nav.about'|trans }}</p>
-                <ul class="space-y-2 text-sm text-white/60">
-                    <li><a href="{{ path('promos') }}" class="hover:text-white">{{ 'nav.promo'|trans }}</a></li>
-                    <li><a href="{{ path('calendar') }}" class="hover:text-white">{{ 'nav.calendar'|trans }}</a></li>
-                    <li><a href="{{ path('partners') }}" class="hover:text-white">{{ 'nav.partners'|trans }}</a></li>
+                <ul class="space-y-4 text-xs font-semibold">
+                    <li><a href="{{ path('homepage') }}#about" class="hover:text-white/60">{{ 'v2.nav.about'|trans }}</a></li>
+                    <li><a href="{{ path('promos') }}" class="hover:text-white/60">{{ 'nav.promo'|trans }}</a></li>
+                    <li><a href="{{ path('calendar') }}" class="hover:text-white/60">{{ 'nav.calendar'|trans }}</a></li>
+                    <li><a href="{{ path('partners') }}" class="hover:text-white/60">{{ 'nav.partners'|trans }}</a></li>
                 </ul>
             </div>
             <div>
-                <p class="font-semibold mb-4">{{ 'nav.support_us'|trans }}</p>
-                <ul class="space-y-2 text-sm text-white/60">
-                    <li><a href="{{ path('support') }}#join-form" class="hover:text-white"
+                <p class="text-xs font-semibold mb-4">{{ 'nav.support_us'|trans }}</p>
+                <ul class="space-y-4 text-xs">
+                    <li><a href="{{ path('support') }}#join-form" class="hover:text-white/60"
                         onclick="gtag('event', 'Join Link Footer', {'event_category': 'Button Click'});">
                         {{ 'v2.nav.join'|trans }}</a>
                     </li>
-                    <li><a href="{{ path('support') }}#donate-form" class="hover:text-white"
+                    <li><a href="{{ path('support') }}#donate-form" class="hover:text-white/60"
                         onclick="gtag('event', 'Donate Link Footer', {'event_category': 'Button Click'});">
                         {{ 'v2.nav.donate'|trans }}</a>
                     </li>
-                    <li><a href="{{ path('support') }}" class="hover:text-white"
+                    <li><a href="{{ path('support') }}" class="hover:text-white/60"
                         onclick="gtag('event', 'Become volunteer Link Footer', {'event_category': 'Button Click'});">
                         {{ 'v2.nav.become_volunteer'|trans }}</a>
                     </li>
@@ -202,19 +202,19 @@
                     <meta itemprop="postalCode" content="44100">
                     <meta itemprop="addressLocality" content="Nantes, France">
                 </div>
-                <p class="font-semibold mb-4">{{ 'v2.footer.social_links'|trans }}</p>
+                <p class="font-semibold text-xs mb-4">{{ 'v2.footer.social_links'|trans }}</p>
                 <link itemprop="url" href="{{ absolute_url(path('homepage')) }}">
-                <div class="flex gap-3">
+                <div class="flex gap-4">
                     {{ include('button/contact.html.twig', {gtagEventName: 'Footer Email'}, with_context: false) }}
                     {{ include('button/linkedin.html.twig', {gtagEventName: 'Footer Socials LinkedIn'}, with_context: false) }}
                     {{ include('button/facebook.html.twig', {gtagEventName: 'Footer Socials Facebook'}, with_context: false) }}
                 </div>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-6 flex flex-col sm:flex-row items-center justify-center gap-6 text-xs">
             <p>© COJOB Nantes 2026. Tous droits réservés.</p>
-            <a href="{{ path('legals') }}" class="hover:text-white">{{ 'footer.legals'|trans }}</a>
+            <a href="{{ path('legals') }}" class="hover:text-white/60">{{ 'footer.legals'|trans }}</a>
         </div>
-        </footer>
+    </footer>
     </body>
 </html>
