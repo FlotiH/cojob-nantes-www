@@ -1,0 +1,105 @@
+{% extends 'base_v2.html.twig' %}
+
+{% block meta %}
+    <!-- Open Graph meta -->
+    <meta property="og:title" content="{{ block('title') }}">
+    <meta property="og:type" content="siteweb">
+    {% if block('canonical') is defined %}
+        <meta property="og:url" content="{{ block('canonical') }}">
+    {% endif %}
+    {% block og_image %}
+        <meta property="og:image" content="{{ absolute_url(asset('images/promo.jpg')) }}">
+    {% endblock %}
+    <meta property="og:description" content="{{ block('description') }}">
+
+    {% if block('canonical') is defined %}
+        <link rel="alternate" href="{{ block('canonical') }}" hreflang="fr-fr">
+    {% endif %}
+{% endblock %}
+
+{% block header %}
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100 font-semibold">
+        <div class="max-w-7xl mx-auto 2xl:px-10 h-20 flex items-center justify-between">
+            <a href="{{ path('homepage') }}" class="flex items-center gap-2 shrink-0">
+                <picture>
+                    {# TODO FHA <source
+                        srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.avif') }} 300w,
+                        {{ asset('img/logo_partners/logo_ville_de_nantes-630.avif') }} 630w,
+                        {{ asset('img/logo_partners/logo_ville_de_nantes-170.avif') }} 170w"
+                        sizes="(max-width: 768px) 100vw, 25vw"
+                        type="image/avif"
+                    >
+                    <source
+                        srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.webp') }} 300w,
+                        {{ asset('img/logo_partners/logo_ville_de_nantes-630.webp') }} 630w,
+                        {{ asset('img/logo_partners/logo_ville_de_nantes-170.webp') }} 170w"
+                        sizes="(max-width: 768px) 100vw, 25vw"
+                        type="image/webp"
+                    >
+                    <img
+                        src="{{ asset('img/main/logo-200.png') }}"
+                        srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.jpg') }} 300w,
+                        {{ asset('img/logo_partners/logo_ville_de_nantes-630.jpg') }} 630w,
+                        {{ asset('img/logo_partners/logo_ville_de_nantes-170.jpg') }} 170w"
+                        sizes="(max-width: 768px) 100vw, 25vw"
+                        alt="Cojob Nantes"
+                        width="280"
+                        height="125"> #}
+                    <img
+                        src="{{ asset('img/main/logo-200.png') }}" {# TODO FHA : revoir les tailles #}
+                        alt="Cojob Nantes"
+                        width="109"
+                        height="38">
+                </picture>
+                <span class="sr-only">Cojob Nantes</span>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-9 text-[15px] text-navy-900">
+                <a href="{{ path('homepage') }}#about" class="hover:text-brand-blue transition">{{ 'v2.nav.about'|trans }}</a>
+                <a href="{{ path('promos') }}" class="hover:text-brand-blue transition">{{ 'nav.promo'|trans }} </a>
+                <a href="{{ path('calendar') }}" class="hover:text-brand-blue transition">{{ 'nav.calendar'|trans }}</a>
+                <details class="relative inline-block">
+                    <summary class="cursor-pointer flex items-center gap-1 hover:text-brand-blue transition list-none">
+                        {{ 'nav.support_us'|trans }}
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                    </summary>
+
+                    <div class="absolute right-0 mt-2 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 z-10">
+                        <a href="{{ path('support') }}#join-form" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            onclick="gtag('event', 'Join Link Header', {'event_category': 'Button Click'});">
+                            {{ 'v2.nav.join'|trans }}
+                        </a>
+                        <a href="{{ path('support') }}#donate-form" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            onclick="gtag('event', 'Donate Link Header', {'event_category': 'Button Click'});">
+                            {{ 'v2.nav.donate'|trans }}
+                        </a>
+                        <a href="{{ path('support') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            onclick="gtag('event', 'Become volunteer Link Header', {'event_category': 'Button Click'});">
+                            {{ 'v2.nav.become_volunteer'|trans }}
+                        </a>
+                    </div>
+                </details>
+            </nav>
+
+            <div class="flex items-center gap-4">
+            <div class="hidden md:flex items-center gap-3 text-navy-900">
+                {{ include('button/contact.html.twig', {gtagEventName: 'Head Email'}, with_context: false) }}
+                {{ include('button/linkedin.html.twig', {gtagEventName: 'Head Socials LinkedIn'}, with_context: false) }}
+                {{ include('button/facebook.html.twig', {gtagEventName: 'Head Socials Facebook'}, with_context: false) }}
+            </div>
+            <a href="{{ path('promos') }}#promoAnchor" class="hidden sm:inline-flex items-center bg-navy-900 text-white text-[15px] px-5 py-3 rounded-lg hover:bg-white hover:text-navy-900 hover:border hover:border-navy-900 transition"
+                role="button">
+                {{ 'v2.home.promo_registration'|trans }}
+            </a>
+            <button class="lg:hidden w-9 h-9 flex items-center justify-center">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            {# TODO FHA : vérifier s'il faut conserver les ari #}
+            {# <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="{{ 'toggle_navigation'|trans }}">
+                    <span class="navbar-toggler-icon"></span> 
+                </button> #}
+            </div>
+        </div>
+        </header>
+{% endblock %}

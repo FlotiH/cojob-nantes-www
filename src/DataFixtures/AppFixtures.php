@@ -8,7 +8,9 @@ use App\Entity\Article;
 use App\Entity\Contact;
 use App\Entity\Event;
 use App\Entity\Media;
+use App\Entity\Partner;
 use App\Entity\Promo;
+use App\Entity\Talk;
 use App\Entity\Testimony;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -28,7 +30,9 @@ class AppFixtures extends Fixture
 
         $article = new Article()
             ->setImageLink('https://cojobnantes.fr/build/images/logo.d7e19af0.png')
-            ->setTitle('title');
+            ->setTitle('title')
+            ->setButtonLabel('buttonLabel')
+             ->setButtonLink('https://cojobnantes.fr/');
         $manager->persist($article);
 
         $event = new Event()
@@ -53,8 +57,24 @@ class AppFixtures extends Fixture
         $testimony = new Testimony()
             ->setName('name')
             ->setSubtitle('subtitle')
-            ->setContent('content');
+            ->setContent('content')
+            ->setFirstname('firstname')
+            ->setAge(30)
+            ->setPromoNb('promoNb');
         $manager->persist($testimony);
+
+        $talk = new Talk()
+            ->setTitle('title')
+            ->setSource('source')
+            ->setDate(new \DateTimeImmutable())
+            ->setLink('https://cojobnantes.fr');
+        $manager->persist($talk);
+
+        $partner = new Partner()
+            ->setPriority(1)
+            ->setName('name')
+        ;
+        $manager->persist($partner);
 
         $user = new User()
             ->setEmail('email@email.email')

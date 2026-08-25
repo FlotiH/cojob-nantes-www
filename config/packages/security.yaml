@@ -68,12 +68,14 @@ security:
             - ROLE_ADMIN_MEDIA_EDIT
             - ROLE_ADMIN_MEDIA_VIEW
             - ROLE_ADMIN_MEDIA_DELETE
+            - ROLE_PREPROD
 
     # Note: Only the *first* matching rule is applied
     access_control:
         - { path: ^/admin/login, roles: PUBLIC_ACCESS  }
         - { path: ^/admin/password, roles: PUBLIC_ACCESS  }
         - { path: ^/admin, roles: ROLE_WEBMASTER }
+        - { path: ^/v2, roles: ROLE_PREPROD }
         - { path: ^/, roles: PUBLIC_ACCESS }
 
 when@test:

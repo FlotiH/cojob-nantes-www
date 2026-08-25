@@ -58,6 +58,7 @@
         "twig/cssinliner-extra": "^3.26",
         "twig/extra-bundle": "^3.24",
         "twig/inky-extra": "^3.26",
+        "twig/intl-extra": "^3.26",
         "twig/string-extra": "^3.24",
         "twig/twig": "^3.28.0",
         "vich/uploader-bundle": "^2.9.4"
@@ -122,6 +123,18 @@
             "bin/console ca:wa --env=test",
             "@app:load-fixtures",
             "XDEBUG_MODE=coverage SYMFONY_DEPRECATIONS_HELPER=disabled vendor/bin/phpunit --coverage-html public/test-coverage"
+        ],
+        "app:linters": [
+            "bin/console lint:twig templates",
+            "vendor/bin/twig-cs-fixer lint",
+            "bin/console lint:yaml config --parse-tags",
+            "bin/console lint:yaml translations --parse-tags",
+            "bin/console lint:container",
+            "bin/console lint:translations --locale=fr"
+        ],
+        "app:coding-standard": [
+            "vendor/bin/php-cs-fixer fix --allow-risky=yes",
+            "vendor/bin/phpstan analyse"
         ]
     },
     "conflict": {

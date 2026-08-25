@@ -1,3 +1,91 @@
+v2:
+  nav:
+    about: Qui sommes-nous
+    join: Adhérer
+    donate: Faire un don
+    become_volunteer: Devenir bénévole
+  
+  home:
+    promo_registration: S'inscrire à une promo
+    next_promo_registration: S'inscrire à la prochaine promo
+    next_promo_ready: Prêt·e à rejoindre la prochaine promo ?
+    next_promo_start_soon: La prochaine session démarre bientôt et les places sont limitées.
+    more: En savoir plus
+    next_promo_from: Prochaine promo du
+    faq: Tes questions, nos réponses
+    faq_contact: 
+      title: Si tu as d'autres questions, n'hésite pas à nous contacter !
+      button: Nous contacter
+    talk_about_us: Ils parlent de nous
+    partners: Nos partenaires
+    testimonies: Ce que les jobeurs en disent (et les chiffres le prouvent !)
+    who_are_we:
+      title: Cojob Nantes, qui sommes-nous ?
+      subtitle1: Une association née du collectif
+      part1: Chaque année, de nombreuses personnes vivent une période de recherche d'emploi souvent vécue comme solitaire, anxiogène et décourageante.
+      part2: Depuis 2015, Cojob Nantes, association loi 1901 d'intérêt général propose une démarche collective pour permettre à chacun·e de retrouver de l'énergie, développer son réseau professionnel et accélérer son retour à l'emploi.
+      subtitle2: Les bénévoles réuni·es lors des 10 ans de Cojob Nantes
+      subtitle3: Notre mission
+      part3: Favoriser <span class="font-semibold text-navy-900">une recherche d'emploi collective, proactive et bienveillante</span> en plaçant le collectif au cœur de la démarche pour donner à chacun·e un nouvel élan dans sa recherche d'emploi ou la définition de son projet professionnel.
+      item1: Lutter contre l'isolement
+      item2: Redonner confiance, énergie et rythme
+      item3: Collaborer et développer son pouvoir d'agir
+      item4: Élargir son réseau professionnel et personnel
+    stats:
+      more_efficient:
+        percent: 98%
+        label: se sentent plus efficaces dans leur recherche d'emploi
+      gained_confidence:
+        percent: 91%
+        label: estiment avoir gagné en confiance
+      pro_networking:
+        percent: 96%
+        label: se sentent capables de développer leur réseau professionnel
+    articles: Nos actualités
+    see_agenda: Voir le calendrier
+    article_from: À partir de
+    promo:
+      title: "Une promo Cojob Nantes : 2 semaines pour booster ta recherche d'emploi !"
+      bloc1:
+        title: Tu rejoins un collectif
+        text1: Un groupe de 10 chercheur·ses d'emploi maximum, aux parcours, expériences et projets variés.
+        text2: Un cadre bienveillant en semi-autonomie, pour faire avancer la recherche d'emploi autrement, partager ses pratiques et sortir de l'isolement.
+        location: À Nantes, proche de Gare Maritime
+      bloc2:
+        title: Tu vis l'expérience Cojob
+        text1: Pendant deux semaines au Cospace, tu alternes temps de travail individuel et échanges collectifs. Tu participes à des ateliers en autonomie ou animés par des intervenant·es bénévoles. 
+        text2: Tu enrichis tes méthodes, développes ton réseau et fais avancer concrètement ta recherche.
+      bloc3:
+        title: Tu reprends ton élan
+        text1: "À l'issue : un réseau étendu, des clefs dans ta recherche d'emploi, une dose de confiance en soi, une aventure humaine où tu as retrouvé goût à la collaboration, l'échange et la motivation pour donner un nouvel élan à ta recherche d'emploi."
+    hero:
+      slide1:
+        title: Donne un <span class="underline decoration-brand-blue decoration-4 underline-offset-4">nouvel élan</span> à ta recherche d'emploi
+        subtitle: L'association Cojob Nantes favorise une recherche d'emploi collective, proactive et bienveillante, en plaçant le collectif au cœur de la démarche pour permettre à chacun·e d'avancer dans sa recherche d'emploi ou la définition de son projet professionnel.
+        people_supported: + xxx personnes accompagnées depuis 2015
+
+  faq0:
+    question: C'est quoi une promo Cojob Nantes ?
+    answer: Des sessions de recherche d'emploi collectives et semi-autonomes, de 2 semaines chacune, durant lesquelles le groupe co-construit sa dynamique de recherche, partage ses expériences, participe à des ateliers proposés par des intervenant·es bénévoles et avance ensemble.
+  faq1:
+    question: Qui peut s'inscrire à une promo ?
+    answer: Cojob Nantes s’adresse à toute personne en recherche d’emploi ou en réflexion professionnelle, prête à s’engager dans une démarche collective d’entraide et de partage, quels que soient son âge et son parcours.  Il n'est pas nécessaire d'être inscrit à France Travail.
+  faq2:
+    question: Combien coûte l'inscription à une promo ?
+    answer: 'Le coût d’inscription est de 40€ dont 10 € d''adhésion à l''association. Ce tarif inclut l’utilisation de notre local avec ses équipements : WiFi, imprimante, kitchenette… ainsi que les consommables (thé, café…).' 
+  faq3:
+    question: Comment s'inscrire ?
+    answer: En cliquant sur « S'inscrire » puis remplir le formulaire. Tu reçois un mail de confirmation de ta demande d’inscription, et une fois qu’il y a assez de participant·es inscrit·s (4 minimum), tu reçois la confirmation d’inscription et le détail le vendredi précédant le début de la promo.
+  faq4:
+    question: J'ai des contraintes, dois-je être présent·e tous les jours ?
+    answer: Afin que ces 2 semaines soient pleinement "collectives et solidaires", il est important que chaque participant·e s'engage à être présent·e chaque journée de 9h à 17h (avec une pause déj' bien sûr ^^) sur les 10 jours de promo. A l'exception bien sûr de RDV urgents (médical...) ou liés à ta recherche d'emploi, mais cela doit rester à la marge.
+  faq5:
+    question: Puis-je être remboursé·e si je ne peux finalement pas participer à la promo ?
+    answer: Oui c’est possible. L’important est de nous prévenir le plus vite possible afin de libérer ta place pour les personnes qui souhaitent rejoindre une promo Cojob. Selon ton choix, tu peux être remboursé·e de 40€, ou bien de 30€ et rester adhérent·e de l’association.
+
+  footer:
+     social_links: Restons en contact
+
 toggle_navigation: Ouvir / Fermer le menu
 
 back_top:

@@ -65,6 +65,18 @@ or without deprecations helper :
 SYMFONY_DEPRECATIONS_HELPER=disabled symfony php vendor/bin/phpunit
 ```
 
+### Run linters
+
+```bash
+composer app:linters
+```
+
+### Run coding standard (cs fixer and phpstan)
+
+```bash
+composer app:coding-standard
+```
+
 ### Google credentials
 
 Add credentials.json file in assets directory

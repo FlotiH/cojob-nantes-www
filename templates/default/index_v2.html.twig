@@ -1,0 +1,418 @@
+{% extends 'base_front_v2.html.twig' %}
+
+{% block title %}{{ 'home.title'|trans }}{% endblock %}
+
+{% block description %}{{ 'home.description'|trans }}{% endblock %}
+
+{% block canonical %}{{ absolute_url(path('homepage')) }}{% endblock %}
+
+{% block content %}
+<!-- ============ HERO ============ -->
+<section class="bg-brand-cream relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20 grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <span class="inline-block bg-white text-navy-900 text-sm font-semibold px-4 py-2 rounded-full mb-6">
+        {{ 'v2.home.next_promo_from'|trans }} {% if promoOpen[0] is defined %} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }} {% endif %} {# TODO FHA : quoi mettre sinon ? #}
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight text-navy-900">
+        {{ 'v2.home.hero.slide1.title'|trans|raw }}
+      </h1>
+      <p class="mt-6 text-slate-600 text-[15px] leading-relaxed max-w-lg">
+         {{ 'v2.home.hero.slide1.subtitle'|trans }}
+      </p>
+
+      <div class="mt-6 flex items-center gap-3">
+        <div class="flex -space-x-3">
+          <span class="w-9 h-9 rounded-full bg-navy-700 border-2 border-brand-cream"></span>
+          <span class="w-9 h-9 rounded-full bg-brand-orange border-2 border-brand-cream"></span>
+          <span class="w-9 h-9 rounded-full bg-brand-teal border-2 border-brand-cream"></span>
+        </div>
+        <p class="text-sm font-medium text-navy-900"> {{ 'v2.home.hero.slide1.people_supported'|trans }}</p>
+      </div>
+
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a href="{{ path('promos') }}#promoAnchor" class="bg-navy-900 text-white font-semibold px-6 py-3.5 rounded-lg hover:bg-navy-800 transition"
+           onclick="gtag('event', 'Home Register promo hero', {'event_category': 'Button Click'});">
+          {{ 'v2.home.next_promo_registration'|trans }}
+        </a>
+        <a href="{{ path('promos') }}" class="bg-white text-navy-900 font-semibold px-6 py-3.5 rounded-lg border border-slate-200 hover:bg-slate-50 transition">
+          {{ 'v2.home.more'|trans }}
+        </a>
+      </div>
+    </div>
+
+    <div class="relative h-[420px] hidden sm:block">
+      <!-- decorative squiggle -->
+      <svg class="absolute -left-2 top-6 w-14 h-14 text-brand-blue/60" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="3"><path d="M2 30c8-12 14 12 22 0s14-12 22 0"/></svg>
+
+      <div class="absolute top-0 right-4 w-64 h-44 rounded-2xl shadow-xl overflow-hidden rotate-2 bg-gradient-to-br from-brand-blue to-navy-700"></div>
+      <span class="absolute top-16 left-2 bg-navy-900 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md -rotate-3">Oser</span>
+
+      <div class="absolute top-28 right-0 w-56 h-40 rounded-2xl shadow-xl overflow-hidden -rotate-2 bg-gradient-to-br from-brand-teal to-emerald-700"></div>
+      <span class="absolute top-[13rem] right-8 bg-brand-orange text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md rotate-2">Partager</span>
+
+      <div class="absolute bottom-0 left-8 w-60 h-40 rounded-2xl shadow-xl overflow-hidden rotate-1 bg-gradient-to-br from-amber-400 to-brand-orange"></div>
+      <span class="absolute bottom-2 right-16 bg-brand-green text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md -rotate-2">Avancer</span>
+
+      <svg class="absolute bottom-0 right-0 w-16 h-16 text-brand-teal" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="3"><path d="M8 50 L48 12 M48 12 L34 12 M48 12 L48 26"/></svg>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 pb-10 flex items-center justify-between">
+    <div class="flex gap-2">
+      <span class="w-2 h-2 rounded-full bg-navy-900"></span>
+      <span class="w-2 h-2 rounded-full bg-slate-300"></span>
+      <span class="w-2 h-2 rounded-full bg-slate-300"></span>
+    </div>
+    <div class="flex gap-3">
+      <button class="w-9 h-9 rounded-full bg-white shadow flex items-center justify-center hover:bg-slate-50">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <button class="w-9 h-9 rounded-full bg-white shadow flex items-center justify-center hover:bg-slate-50">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUI SOMMES-NOUS ============ -->
+<section id="qui-sommes-nous" class="bg-white py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <h2 class="text-3xl font-extrabold text-navy-900 mb-10">{{ 'v2.home.who_are_we.title'|trans }}</h2>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <span class="inline-block bg-brand-amber text-navy-900 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+          {{ 'v2.home.who_are_we.subtitle1'|trans }}
+        </span>
+        <p class="text-slate-600 leading-relaxed mb-6">
+          {{ 'v2.home.who_are_we.part1'|trans }}
+        </p>
+        <p class="text-slate-600 leading-relaxed">
+          {{ 'v2.home.who_are_we.part2'|trans }}
+        </p>
+      </div>
+
+      <div class="relative">
+        <div class="relative rounded-2xl overflow-hidden h-72 bg-gradient-to-br from-navy-800 to-navy-900 flex items-center justify-center">
+          <span class="text-white/70 text-sm">Photo — équipe de bénévoles</span>
+        </div>
+        <span class="absolute -bottom-3 left-4 bg-brand-blue text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md">
+          {{ 'v2.home.who_are_we.subtitle2'|trans }}
+        </span>
+      </div>
+    </div>
+
+    <div class="mt-14">
+      <span class="inline-block bg-brand-amber text-navy-900 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+        {{ 'v2.home.who_are_we.subtitle3'|trans }}
+      </span>
+      <p class="text-slate-600 leading-relaxed max-w-3xl">
+        {{ 'v2.home.who_are_we.part3'|trans|raw }}
+      </p>
+
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="bg-brand-cream rounded-2xl p-6 text-center">
+          <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-brand-teal flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+          </div>
+          <p class="font-semibold text-navy-900 text-sm">{{ 'v2.home.who_are_we.item1'|trans }}</p>
+        </div>
+        <div class="bg-brand-cream rounded-2xl p-6 text-center">
+          <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-brand-teal flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          </div>
+          <p class="font-semibold text-navy-900 text-sm">{{ 'v2.home.who_are_we.item2'|trans }}</p>
+        </div>
+        <div class="bg-brand-cream rounded-2xl p-6 text-center">
+          <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-brand-teal flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14 15c2.8 0 5 2 5 5"/></svg>
+          </div>
+          <p class="font-semibold text-navy-900 text-sm">{{ 'v2.home.who_are_we.item3'|trans }}</p>
+        </div>
+        <div class="bg-brand-cream rounded-2xl p-6 text-center">
+          <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-brand-teal flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3z"/></svg>
+          </div>
+          <p class="font-semibold text-navy-900 text-sm">{{ 'v2.home.who_are_we.item4'|trans }}</p>
+        </div>
+      </div>
+
+      <a href="#" class="inline-block mt-8 bg-white text-navy-900 font-semibold px-6 py-3 rounded-lg border border-slate-200 hover:bg-slate-50 transition">
+        {{ 'v2.home.more'|trans }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LA PROMO ============ -->
+<section id="promo" class="bg-brand-lightblue py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <h2 class="text-3xl font-extrabold text-navy-900 mb-12 max-w-2xl">
+      {{ 'v2.home.promo.title'|trans }}
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl p-7">
+        <span class="inline-block bg-brand-amber text-navy-900 text-sm font-semibold px-4 py-1.5 rounded-full mb-5">
+          {{ 'v2.home.promo.bloc1.title'|trans }}
+        </span>
+        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+           {{ 'v2.home.promo.bloc1.text1'|trans }}
+        </p>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          {{ 'v2.home.promo.bloc1.text2'|trans }}
+        </p>
+        <p class="flex items-center gap-2 text-navy-900 text-sm font-medium mt-6">
+          <svg class="w-4 h-4 text-brand-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.4 7-12.5A7 7 0 105 9.5C5 14.6 12 22 12 22z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          {{ 'v2.home.promo.bloc1.location'|trans }}
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-7">
+        <span class="inline-block bg-brand-amber text-navy-900 text-sm font-semibold px-4 py-1.5 rounded-full mb-5">
+          {{ 'v2.home.promo.bloc2.title'|trans }}
+        </span>
+        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+          {{ 'v2.home.promo.bloc2.text1'|trans }}
+        </p>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          {{ 'v2.home.promo.bloc2.text2'|trans }}
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-7">
+        <span class="inline-block bg-brand-amber text-navy-900 text-sm font-semibold px-4 py-1.5 rounded-full mb-5">
+          {{ 'v2.home.promo.bloc3.title'|trans }}
+        </span>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          {{ 'v2.home.promo.bloc3.text1'|trans }}
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-10 flex flex-wrap gap-4">
+      <a href="{{ path('promos') }}#promoAnchor" class="bg-navy-900 text-white font-semibold px-6 py-3.5 rounded-lg hover:bg-navy-800 transition"
+        onclick="gtag('event', 'Home Register promo bloc promo', {'event_category': 'Button Click'});">
+        {{ 'v2.home.next_promo_registration'|trans }}
+      </a>
+      <a href="{{ path('promos') }}" class="bg-white text-navy-900 font-semibold px-6 py-3.5 rounded-lg border border-slate-200 hover:bg-slate-50 transition">
+        {{ 'v2.home.more'|trans }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACTUALITÉS ============ -->
+<section id="actualites" class="bg-white py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between mb-10">
+      <h2 class="text-3xl font-extrabold text-navy-900">{{ 'v2.home.articles'|trans }}</h2>
+      <a href="{{ path('calendar') }}" class="hidden sm:inline-flex bg-white text-navy-900 font-semibold px-5 py-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 transition">
+        {{ 'v2.home.see_agenda'|trans }}
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {% for article in articles %}
+        <article class="rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
+          <div class="h-40 bg-gradient-to-br from-amber-200 to-brand-orange"
+            style="background-image: url({{ article.imageLink }});background-repeat: no-repeat;background-position: center;background-size: cover;"></div>
+          <div class="p-6">
+            {# TODO à faire <span class="inline-flex items-center gap-1.5 {{ article.tag.color() }} text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">{{ article.tag }}</span> #}
+            <h3 class="font-semibold text-navy-900 mb-2">{{ article.title }}</h3>
+            {% if article.start %}
+              {% if article.end %}
+                <p class="flex items-center gap-2 text-slate-500 text-xs mb-1">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+                  {{ article.start|dateIntervalv2(article.end) }}
+                </p>
+              {% else %}
+                {{ article.start|format_datetime(locale: 'fr', pattern: 'dd MMMM YYYY') }}
+              {% endif %}
+            {% endif %}
+            {% if article.startTime %}
+              <p class="flex items-center gap-2 text-slate-500 text-xs mb-4">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>
+                {{ 'v2.home.article_from'|trans }} {{ article.startTime }}
+              </p>
+            {% endif %}
+            {% if article.location %}
+              <p class="flex items-center gap-2 text-slate-500 text-xs mb-4">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.4 7-12.5A7 7 0 105 9.5C5 14.6 12 22 12 22z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+                {{ article.location }}
+              </p>
+            {% endif %}
+            <a href="{{ article.buttonLink }}" class="text-brand-blue text-sm font-semibold hover:underline">{{ article.buttonLabel }}</a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+
+    {# TODO FHA : faire le carousel #}
+    <div class="mt-8 flex items-center justify-between">
+      <span class="w-2 h-2 rounded-full bg-navy-900"></span>
+      <div class="flex gap-3">
+        <button class="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <button class="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TÉMOIGNAGES / CHIFFRES ============ -->
+<section class="bg-brand-cream py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <h2 class="text-3xl font-extrabold text-navy-900 mb-12 max-w-2xl">
+      {{ 'v2.home.testimonies'|trans }}
+    </h2>
+
+    <div class="grid sm:grid-cols-3 gap-8 mb-14 text-center">
+      <div>
+        <p class="text-5xl font-extrabold text-brand-teal">{{ 'v2.home.stats.more_efficient.percent'|trans }}</p>
+        <p class="text-slate-600 text-sm mt-2">{{ 'v2.home.stats.more_efficient.label'|trans }}</p>
+      </div>
+      <div>
+        <p class="text-5xl font-extrabold text-brand-teal">{{ 'v2.home.stats.gained_confidence.percent'|trans }}</p>
+        <p class="text-slate-600 text-sm mt-2">{{ 'v2.home.stats.gained_confidence.label'|trans }}</p>
+      </div>
+      <div>
+        <p class="text-5xl font-extrabold text-brand-teal">{{ 'v2.home.stats.pro_networking.percent'|trans }}</p>
+        <p class="text-slate-600 text-sm mt-2">{{ 'v2.home.stats.pro_networking.label'|trans }}</p>
+      </div>
+    </div>
+
+    {# TODO FHA : faire le carousel #}
+    <div class="grid md:grid-cols-3 gap-6">
+      {% for testimony in testimonies %}
+        <article class="bg-white rounded-2xl p-7">
+          <h3 class="font-semibold text-navy-900 mb-3">{{ testimony.subtitle }}</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            {{ testimony.content|raw }}
+          </p>
+          <div class="flex items-center gap-3">
+            <span class="w-9 h-9 rounded-full {% if loop.index0 == 0 %}bg-navy-700{% elseif loop.index0 == 1 %}bg-brand-orange{% else %}bg-brand-teal{% endif %} flex items-center justify-center text-white text-xs font-semibold">J</span>
+            <div>
+              <p class="text-sm font-semibold text-navy-900">{{ testimony.firstname }}</p>
+              <p class="text-xs text-slate-500">{{ testimony.age }} ans · {{ testimony.promo }}</p>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+
+    <div class="mt-8 flex items-center justify-between">
+      <div class="flex gap-2">
+        <span class="w-2 h-2 rounded-full bg-navy-900"></span>
+        <span class="w-2 h-2 rounded-full bg-slate-300"></span>
+        <span class="w-2 h-2 rounded-full bg-slate-300"></span>
+        <span class="w-2 h-2 rounded-full bg-slate-300"></span>
+      </div>
+      <div class="flex gap-3">
+        <button class="w-9 h-9 rounded-full bg-white shadow flex items-center justify-center hover:bg-slate-50">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <button class="w-9 h-9 rounded-full bg-white shadow flex items-center justify-center hover:bg-slate-50">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTENAIRES ============ -->
+<section class="bg-white py-16">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <h2 class="text-xl font-extrabold text-navy-900 mb-10">{{ 'v2.home.partners'|trans }}</h2>
+    <div class="flex flex-wrap items-center gap-x-14 gap-y-6 opacity-70">
+    {% for partner in partners %}
+      {% if parner.link %}
+        <a href="{{ partner.link }}" target="_blank" rel="noopener noreferrer">
+          <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}"/> {# TODO FHA : gérer les bons formats d'image #}
+        </a>
+      {% else %}
+        <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}"/>
+      {% endif %}
+    {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ============ ILS PARLENT DE NOUS ============ -->
+<section class="bg-brand-lightblue py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <h2 class="text-2xl font-extrabold text-navy-900 mb-10">{{ 'v2.home.talk_about_us'|trans }}</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
+
+      {% for talk in talks %}
+         <a href="{{ talk.link }}" class="flex items-start gap-3 bg-white rounded-xl p-4 hover:shadow-md transition"
+          target="_blank" rel="noopener noreferrer">
+          <img class="w-8 h-8 rounded-full shrink-0" src="{{ vich_uploader_asset(talk, 'imageFile') }}" alt="{{ talk.source }}"/> {# TODO FHA : gestion des formats #}
+          <div>
+            <p class="text-sm font-medium text-navy-900 leading-snug">{{ talk.title }}</p>
+            <p class="text-xs text-slate-500 mt-1">{{ talk.source }} · {{ talk.date|format_datetime(locale: 'fr', pattern: 'dd MMMM YYYY') }}</p>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="bg-white py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-3 gap-12">
+    <div>
+      <h2 class="text-3xl font-extrabold text-navy-900">{{ 'v2.home.faq'|trans }}</h2>
+    </div>
+
+    <div class="lg:col-span-2 divide-y divide-slate-200 border-t border-b border-slate-200">
+
+      {% for i in 0..5 %}
+        <details class="group py-5">
+          <summary class="flex items-center justify-between cursor-pointer list-none">
+            <span class="font-semibold text-navy-900">{{ ('v2.faq' ~ i ~ '.question')|trans }}</span>
+            <svg class="w-4 h-4 text-navy-900 shrink-0 group-open:rotate-45 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 leading-relaxed max-w-xl">
+            {{ ('v2.faq' ~ i ~ '.answer')|trans }}
+          </p>
+        </details>
+      {% endfor %}
+
+      <div class="pt-8 flex flex-wrap items-center justify-between gap-4">
+        <p class="text-sm text-slate-600">{{ 'v2.home.faq_contact.title'|trans }}</p>
+        <a href="{{ path('contact') }}" class="bg-navy-900 text-white font-semibold px-6 py-3 rounded-lg hover:bg-navy-800 transition">
+          {{ 'v2.home.faq_contact.button'|trans }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+  {% if promoOpen|length > 0 %}
+    <section class="bg-brand-blue py-20 text-center text-white">
+      <div class="max-w-3xl mx-auto px-6">
+        <span class="inline-block bg-white/15 text-white text-sm font-semibold px-4 py-2 rounded-full mb-6">
+          {{ 'v2.home.next_promo_from'|trans }} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }}
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">{{ 'v2.home.next_promo_ready'|trans }}</h2>
+        <p class="text-white/80 mb-8">{{ 'v2.home.next_promo_start_soon'|trans }}</p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="{{ path('promos') }}#promoAnchor" class="bg-navy-900 text-white font-semibold px-6 py-3.5 rounded-lg hover:bg-navy-800 transition"
+            onclick="gtag('event', 'Home Register promo', {'event_category': 'Button Click'});">
+            {{ 'v2.home.next_promo_registration'|trans }}
+          </a>
+          <a href="{{ path('promos') }}" class="bg-white text-navy-900 font-semibold px-6 py-3.5 rounded-lg hover:bg-slate-100 transition">
+            {{ 'v2.home.more'|trans }}
+          </a>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+{% endblock %}
