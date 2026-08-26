@@ -366,26 +366,31 @@
 <section class="bg-white py-20">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-3 gap-12">
     <div>
-      <h2 class="text-3xl font-extrabold text-navy-900">{{ 'v2.home.faq'|trans }}</h2>
+      <h2 class="text-[26px] font-bold text-navy-900 font-[Poppins]">{{ ('v2.home.faq'|trans)|raw }}</h2>
     </div>
 
-    <div class="lg:col-span-2 divide-y divide-slate-200 border-t border-b border-slate-200">
+    <div class="lg:col-span-2">
+      <div class="divide-y divide-blue-300 border-b border-blue-300">
 
-      {% for i in 0..5 %}
-        <details class="group py-5">
-          <summary class="flex items-center justify-between cursor-pointer list-none">
-            <span class="font-semibold text-navy-900">{{ ('v2.faq' ~ i ~ '.question')|trans }}</span>
-            <svg class="w-4 h-4 text-navy-900 shrink-0 group-open:rotate-45 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-          </summary>
-          <p class="mt-3 text-sm text-slate-600 leading-relaxed max-w-xl">
-            {{ ('v2.faq' ~ i ~ '.answer')|trans }}
-          </p>
-        </details>
-      {% endfor %}
+        {% for i in 0..5 %}
+          <details class="group py-5">
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <span class="font-semibold text-navy-900 text-[15px]">{{ ('v2.faq' ~ i ~ '.question')|trans }}</span>
+              <svg class="w-4 h-4 text-navy-900 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14"/>
+                <path class="origin-center transition-transform duration-300 group-open:rotate-90" d="M12 5v14"/>
+              </svg>
+            </summary>
+            <p class="mt-3 text-[15px] text-navy-900 leading-relaxed pr-32">
+              {{ ('v2.faq' ~ i ~ '.answer')|trans }}
+            </p>
+          </details>
+        {% endfor %}
+      </div>
 
-      <div class="pt-8 flex flex-wrap items-center justify-between gap-4">
-        <p class="text-sm text-slate-600">{{ 'v2.home.faq_contact.title'|trans }}</p>
-        <a href="{{ path('contact') }}" class="bg-navy-900 text-white font-semibold px-6 py-3 rounded-lg hover:bg-navy-800 transition">
+      <div class="mt-8 p-4 flex flex-wrap items-center justify-between bg-blue-100 gap-4">
+        <p class="text-[15px] text-navy-900">{{ 'v2.home.faq_contact.title'|trans }}</p>
+        <a href="{{ path('contact') }}" class="text-[15px] text-navy-900 bg-white font-semibold px-5 py-2.5 rounded-md border border-brand-whitedark hover:bg-navy-900 hover:text-white transition">
           {{ 'v2.home.faq_contact.button'|trans }}
         </a>
       </div>
@@ -395,19 +400,19 @@
 
 <!-- ============ CTA FINAL ============ -->
   {% if promoOpen|length > 0 %}
-    <section class="bg-brand-blue py-20 text-center text-white">
+    <section class="bg-blue-600 py-20 text-center text-white">
       <div class="max-w-3xl mx-auto px-6">
-        <span class="inline-block bg-white/15 text-white text-sm font-semibold px-4 py-2 rounded-full mb-6">
+        <span class="inline-block bg-green-100 text-navy-900 text-[13px] font-semibold px-2.5 py-1 rounded-md mb-6 border border-brand-green">
           {{ 'v2.home.next_promo_from'|trans }} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }}
         </span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">{{ 'v2.home.next_promo_ready'|trans }}</h2>
-        <p class="text-white/80 mb-8">{{ 'v2.home.next_promo_start_soon'|trans }}</p>
+        <h2 class="text-3xl sm:text-[26px] font-bold mb-4 font-[Poppins]">{{ 'v2.home.next_promo_ready'|trans }}</h2>
+        <p class="text-[15px] mb-8">{{ 'v2.home.next_promo_start_soon'|trans }}</p>
         <div class="flex flex-wrap items-center justify-center gap-4">
-          <a href="{{ path('promos') }}#promoAnchor" class="bg-navy-900 text-white font-semibold px-6 py-3.5 rounded-lg hover:bg-navy-800 transition"
+          <a href="{{ path('promos') }}#promoAnchor" class="bg-navy-900 text-[15px] font-semibold px-5 py-2.5 rounded-md hover:bg-navy-800 transition"
             onclick="gtag('event', 'Home Register promo', {'event_category': 'Button Click'});">
             {{ 'v2.home.next_promo_registration'|trans }}
           </a>
-          <a href="{{ path('promos') }}" class="bg-white text-navy-900 font-semibold px-6 py-3.5 rounded-lg hover:bg-slate-100 transition">
+          <a href="{{ path('promos') }}" class="bg-white text-navy-900 text-[15px] font-semibold px-5 py-2.5 rounded-md hover:bg-slate-100 transition">
             {{ 'v2.home.more'|trans }}
           </a>
         </div>
