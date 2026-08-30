@@ -9,7 +9,7 @@
 {% block content %}
 <!-- ============ HERO ============ -->
 <section class="bg-brand-cream relative overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20 grid lg:grid-cols-2 gap-12 items-center">
+  <div class="max-w-[1048px] mx-auto py-16 lg:py-20 grid lg:grid-cols-2 gap-12 items-center">
     <div>
       <span class="inline-block bg-white text-navy-900 text-sm font-semibold px-4 py-2 rounded-full mb-6">
         {{ 'v2.home.next_promo_from'|trans }} {% if promoOpen[0] is defined %} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }} {% endif %} {# TODO FHA : quoi mettre sinon ? #}
@@ -77,7 +77,7 @@
 
 <!-- ============ QUI SOMMES-NOUS ============ -->
 <section id="qui-sommes-nous" class="bg-white py-20">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+  <div class="max-w-[1048px] mx-auto">
     <h2 class="text-3xl font-extrabold text-navy-900 mb-10">{{ 'v2.home.who_are_we.title'|trans }}</h2>
 
     <div class="grid lg:grid-cols-2 gap-12 items-start">
@@ -147,7 +147,7 @@
 
 <!-- ============ LA PROMO ============ -->
 <section id="promo" class="bg-brand-lightblue py-20">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+  <div class="max-w-[1048px] mx-auto">
     <h2 class="text-3xl font-extrabold text-navy-900 mb-12 max-w-2xl">
       {{ 'v2.home.promo.title'|trans }}
     </h2>
@@ -205,7 +205,7 @@
 
 <!-- ============ ACTUALITÉS ============ -->
 <section id="actualites" class="bg-white py-20">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+  <div class="max-w-[1048px] mx-auto">
     <div class="flex items-center justify-between mb-10">
       <h2 class="text-3xl font-extrabold text-navy-900">{{ 'v2.home.articles'|trans }}</h2>
       <a href="{{ path('calendar') }}" class="hidden sm:inline-flex bg-white text-navy-900 font-semibold px-5 py-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 transition">
@@ -266,8 +266,8 @@
 
 <!-- ============ TÉMOIGNAGES / CHIFFRES ============ -->
 <section class="bg-brand-cream py-20">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <h2 class="text-3xl font-extrabold text-navy-900 mb-12 max-w-2xl">
+  <div class="max-w-[1048px] mx-auto">
+    <h2 class="text-3xl font-extrabold text-navy-900 mb-12">
       {{ 'v2.home.testimonies'|trans }}
     </h2>
 
@@ -326,16 +326,16 @@
 
 <!-- ============ PARTENAIRES ============ -->
 <section class="bg-white py-16">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <h2 class="text-xl font-extrabold text-navy-900 mb-10">{{ 'v2.home.partners'|trans }}</h2>
-    <div class="flex flex-wrap items-center gap-x-14 gap-y-6 opacity-70">
+  <div class="max-w-[1048px] mx-auto">
+    <h2 class="text-[26px] font-bold font-[Poppins] text-navy-900 mb-10">{{ 'v2.home.partners'|trans }}</h2>
+    <div class="flex flex-wrap items-center">
     {% for partner in partners %}
-      {% if parner.link %}
-        <a href="{{ partner.link }}" target="_blank" rel="noopener noreferrer">
+      {% if partner.link %}
+        <a class="w-1/6 max-w-[170px]" href="{{ partner.link }}" target="_blank" rel="noopener noreferrer">
           <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}"/> {# TODO FHA : gérer les bons formats d'image #}
         </a>
       {% else %}
-        <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}"/>
+        <img class="w-1/6 max-w-[170px]" src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}"/>
       {% endif %}
     {% endfor %}
     </div>
@@ -344,17 +344,21 @@
 
 <!-- ============ ILS PARLENT DE NOUS ============ -->
 <section class="bg-brand-lightblue py-20">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <h2 class="text-2xl font-extrabold text-navy-900 mb-10">{{ 'v2.home.talk_about_us'|trans }}</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
+  <div class="max-w-[1048px] mx-auto">
+    <h2 class="text-[26px] font-bold font-[Poppins] text-navy-900 mb-6">{{ 'v2.home.talk_about_us'|trans }}</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-4">
 
       {% for talk in talks %}
-         <a href="{{ talk.link }}" class="flex items-start gap-3 bg-white rounded-xl p-4 hover:shadow-md transition"
+        <a href="{{ talk.link }}" class="flex items-start gap-3 bg-white rounded-xl p-2 hover:shadow-md transition"
           target="_blank" rel="noopener noreferrer">
-          <img class="w-8 h-8 rounded-full shrink-0" src="{{ vich_uploader_asset(talk, 'imageFile') }}" alt="{{ talk.source }}"/> {# TODO FHA : gestion des formats #}
+          <img class="w-8 h-8 shrink-0 border border-brand-whitedark" src="{{ vich_uploader_asset(talk, 'imageFile') }}" alt="{{ talk.source }}"/> {# TODO FHA : gestion des formats #}
           <div>
-            <p class="text-sm font-medium text-navy-900 leading-snug">{{ talk.title }}</p>
-            <p class="text-xs text-slate-500 mt-1">{{ talk.source }} · {{ talk.date|format_datetime(locale: 'fr', pattern: 'dd MMMM YYYY') }}</p>
+            <p class="text-[13px] font-semibold text-navy-900 leading-snug">{{ talk.title }}</p>
+            <p class="text-[11px] text-navy-900">{{ talk.source }} · {{ talk.date|format_datetime(locale: 'fr', pattern: 'dd MMMM YYYY') }}</p>
+          </div>
+
+          <div class="bg-brand-whitedark rounded-md p-1.5">
+            <svg class="h-4 w-4 shrink-0 fill-navy-900 transition" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z"/></svg>
           </div>
         </a>
       {% endfor %}
@@ -364,7 +368,7 @@
 
 <!-- ============ FAQ ============ -->
 <section class="bg-white py-20">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-3 gap-12">
+  <div class="max-w-[1048px] mx-auto grid lg:grid-cols-3 gap-12">
     <div>
       <h2 class="text-[26px] font-bold text-navy-900 font-[Poppins]">{{ ('v2.home.faq'|trans)|raw }}</h2>
     </div>

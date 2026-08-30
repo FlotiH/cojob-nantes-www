@@ -25,13 +25,13 @@ symfony console do:mi:mi
 ```bash
 php bin/console tailwind:build --minify
 php bin/console asset-map:compile
-``
+```
 
 ### Tailwind watcher en local
 
 ```bash
 php bin/console tailwind:build --watch
-``
+```
 
 ### Run Php cs fixer
 
