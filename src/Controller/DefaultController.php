@@ -9,7 +9,9 @@ use App\Entity\Event;
 use App\Entity\Promo;
 use App\Form\ContactType;
 use App\Repository\ArticleRepository;
+use App\Repository\PartnerRepository;
 use App\Repository\PromoRepository;
+use App\Repository\TalkRepository;
 use App\Repository\TestimonyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Eluceo\iCal\Domain\Entity\Calendar;
@@ -29,7 +31,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class DefaultController extends AbstractController
 {
     #[Route('/', name: 'homepage')]
-    public function indexAction(ArticleRepository $articleRepo, PromoRepository $promoRepo, TestimonyRepository $testimonyRepo): RedirectResponse|Response
+    public function index(ArticleRepository $articleRepo, PromoRepository $promoRepo, TestimonyRepository $testimonyRepo): RedirectResponse|Response
     {
         $requiredPromoTestimonies = $testimonyRepo->findRequiredPromoTestimonies();
 
@@ -49,8 +51,20 @@ class DefaultController extends AbstractController
         ]);
     }
 
+    #[Route('/v2', name: 'homepage_v2')]
+    public function indexV2(ArticleRepository $articleRepo, PromoRepository $promoRepo, TestimonyRepository $testimonyRepo, TalkRepository $talkRepo, PartnerRepository $partnerRepo): RedirectResponse|Response
+    {
+        return $this->render('default/index_v2.html.twig', [
+            'articles' => $articleRepo->findPublishedArticles(),
+            'testimonies' => $testimonyRepo->findBy([], ['createdAt' => 'DESC']), // TODO FHA : à voir quelle requêtes faire en fonction des choix du CDC
+            'promoOpen' => $promoRepo->findOpenPromos(),
+            'talks' => $talkRepo->findBy([], ['createdAt' => 'DESC'], 6),
+            'partners' => $partnerRepo->findBy([], ['priority' => 'ASC']),
+        ]);
+    }
+
     #[Route('/promos', name: 'promos')]
-    public function promosAction(PromoRepository $promoRepo): Response
+    public function promos(PromoRepository $promoRepo): Response
     {
         return $this->render('default/promos.html.twig', [
             'promos' => $promoRepo->findAvailablePromos(),
@@ -59,37 +73,37 @@ class DefaultController extends AbstractController
     }
 
     #[Route('/nous-soutenir', name: 'support')]
-    public function supportAction(): Response
+    public function support(): Response
     {
         return $this->render('default/support.html.twig');
     }
 
     #[Route('/mentions-legales', name: 'legals')]
-    public function legalsAction(): Response
+    public function legals(): Response
     {
         return $this->render('default/legals.html.twig');
     }
 
     #[Route('/calendrier', name: 'calendar')]
-    public function calendarAction(): Response
+    public function calendar(): Response
     {
         return $this->render('default/calendar.html.twig');
     }
 
     #[Route('/l-explorateur-guide-de-l-emploi', name: 'guide')]
-    public function guideAction(): Response
+    public function guide(): Response
     {
         return $this->render('default/guide.html.twig');
     }
 
     #[Route('/partenaires', name: 'partners')]
-    public function partnersAction(): Response
+    public function partners(): Response
     {
         return $this->render('default/partners.html.twig');
     }
 
     #[Route('/evenement/{slug:event}', name: 'event_show')]
-    public function eventShowAction(Event $event): Response
+    public function eventShow(Event $event): Response
     {
         return $this->render('default/event_show.html.twig', [
             'event' => $event,
@@ -97,7 +111,7 @@ class DefaultController extends AbstractController
     }
 
     #[Route('/promo/{id}/get-ical', name: 'promo_get_ical')]
-    public function promoGetICalAction(Request $request, Promo $promo): Response
+    public function promoGetICal(Request $request, Promo $promo): Response
     {
         return $this->getResponseIcal(
             $request,
@@ -108,7 +122,7 @@ class DefaultController extends AbstractController
     }
 
     #[Route('/promo/registration/{id}/get-ical', name: 'promo_registration_get_ical')]
-    public function promoRegistrationGetICalAction(Request $request, Promo $promo): Response
+    public function promoRegistrationGetICal(Request $request, Promo $promo): Response
     {
         return $this->getResponseIcal(
             $request,
@@ -119,7 +133,7 @@ class DefaultController extends AbstractController
     }
 
     #[Route('/contact', name: 'contact')]
-    public function contactAction(Request $request, MailerInterface $mailer, EntityManagerInterface $em, TranslatorInterface $translator, LoggerInterface $logger): RedirectResponse|Response
+    public function contact(Request $request, MailerInterface $mailer, EntityManagerInterface $em, TranslatorInterface $translator, LoggerInterface $logger): RedirectResponse|Response
     {
         $contact = new Contact();
         $contactForm = $this->createForm(ContactType::class, $contact);

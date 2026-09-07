@@ -38,6 +38,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkTo(EventCrudController::class, 'Event', 'fas fa-calendar-check');
         yield MenuItem::linkTo(TestimonyCrudController::class, 'Testimony', 'fas fa-comments');
         yield MenuItem::linkTo(PromoCrudController::class, 'Promo', 'fas fa-users');
+        yield MenuItem::linkTo(TalkCrudController::class, 'Talk', 'fa-solid fa-bullhorn');
+        yield MenuItem::linkTo(PartnerCrudController::class, 'Partner', 'fa-solid fa-handshake');
         yield MenuItem::linkTo(MediaCrudController::class, 'Media', 'fas fa-photo-video');
         yield MenuItem::linkToLogout('security.logout', 'fa fa-fw fa-sign-out');
     }

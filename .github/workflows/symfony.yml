@@ -94,6 +94,7 @@ jobs:
       
       - name: AssetMapper
         run: |
+          bin/console tailwind:build --minify
           bin/console importmap:install
           bin/console asset-map:compile
 

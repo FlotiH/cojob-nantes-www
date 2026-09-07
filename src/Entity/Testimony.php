@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\TestimonyRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -45,6 +46,20 @@ class Testimony
 
     #[ORM\Column(type: 'boolean')]
     private bool $requiredDisplaying = false;
+
+    #[ORM\Column(length: 31)]
+    #[Assert\Length(max: 31)]
+    #[Assert\NotBlank]
+    private string $firstname;
+
+    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
+    #[Assert\Positive()]
+    private ?int $age = null;
+
+    #[ORM\Column(length: 31)]
+    #[Assert\Length(max: 31)]
+    #[Assert\NotBlank]
+    private string $promoNb;
 
     public function __toString()
     {
@@ -112,6 +127,42 @@ class Testimony
     public function setRequiredDisplaying(bool $requiredDisplaying): self
     {
         $this->requiredDisplaying = $requiredDisplaying;
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): static
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getPromoNb(): ?string
+    {
+        return $this->promoNb;
+    }
+
+    public function setPromoNb(string $promoNb): static
+    {
+        $this->promoNb = $promoNb;
+
+        return $this;
+    }
+
+    public function getAge(): ?int
+    {
+        return $this->age;
+    }
+
+    public function setAge(?int $age): static
+    {
+        $this->age = $age;
 
         return $this;
     }
