@@ -23,10 +23,10 @@ v2:
       title: Cojob Nantes, qui sommes-nous ?
       subtitle1: Une association née du collectif
       part1: Chaque année, de nombreuses personnes vivent une période de recherche d'emploi souvent vécue comme solitaire, anxiogène et décourageante.
-      part2: Depuis 2015, Cojob Nantes, association loi 1901 d'intérêt général propose une démarche collective pour permettre à chacun·e de retrouver de l'énergie, développer son réseau professionnel et accélérer son retour à l'emploi.
+      part2: Depuis 2015, Cojob Nantes, association de loi 1901 d'intérêt général propose une démarche fondée sur la recherche d'emploi collective pour permettre à chacun·e de retrouver de l'énergie, développer son réseau professionnel et accélérer son retour à l'emploi.
       subtitle2: Les bénévoles réuni·es lors des 10 ans de Cojob Nantes
       subtitle3: Notre mission
-      part3: Favoriser <span class="font-semibold text-navy-900">une recherche d'emploi collective, proactive et bienveillante</span> en plaçant le collectif au cœur de la démarche pour donner à chacun·e un nouvel élan dans sa recherche d'emploi ou la définition de son projet professionnel.
+      part3: Favoriser <span class="font-semibold">une recherche d'emploi collective, proactive et bienveillante</span> en plaçant le collectif au cœur de la démarche pour donner à chacun·e un nouvel élan dans sa recherche d'emploi ou la définition de son projet professionnel.
       item1: Lutter contre l'isolement
       item2: Redonner confiance, énergie et rythme
       item3: Collaborer et développer son pouvoir d'agir
@@ -45,7 +45,7 @@ v2:
     see_agenda: Voir le calendrier
     article_from: À partir de
     promo:
-      title: "Une promo Cojob Nantes : 2 semaines pour booster ta recherche d'emploi !"
+      title: "Une promo Cojob Nantes :<br>2 semaines pour booster ta recherche d'emploi !"
       bloc1:
         title: Tu rejoins un collectif
         text1: Un groupe de 10 chercheur·ses d'emploi maximum, aux parcours, expériences et projets variés.
