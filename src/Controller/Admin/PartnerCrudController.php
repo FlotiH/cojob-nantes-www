@@ -42,14 +42,13 @@ class PartnerCrudController extends AbstractCrudController
     {
         return [
             TextareaField::new('imageFile')
+                ->setHelp('help.image.max170x64')
                 ->setFormType(VichImageType::class)
                 ->setTemplatePath('admin/fields/vich_image.html.twig')
                 ->setRequired(true),
-            TextField::new('imageLink')
-                ->onlyOnIndex()
-                ->setTemplatePath('admin/fields/vich_image_link.html.twig'),
             TextField::new('name'),
-            UrlField::new('link'),
+            UrlField::new('link')
+                ->setFormTypeOption('attr.placeholder', 'placeholder.website'),
             IntegerField::new('priority'),
             TextField::new('createdBy')->onlyOnIndex(),
             DateTimeField::new('createdAt')->onlyOnIndex(),

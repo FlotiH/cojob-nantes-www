@@ -42,16 +42,15 @@ class TalkCrudController extends AbstractCrudController
     {
         return [
             TextareaField::new('imageFile')
+                ->setHelp('help.image.32x32')
                 ->setFormType(VichImageType::class)
                 ->setTemplatePath('admin/fields/vich_image.html.twig')
                 ->setRequired(true),
-            TextField::new('imageLink')
-                ->onlyOnIndex()
-                ->setTemplatePath('admin/fields/vich_image_link.html.twig'),
             TextField::new('title'),
             TextField::new('source'),
             DateField::new('date'),
-            UrlField::new('link'),
+            UrlField::new('link')
+                ->setFormTypeOption('attr.placeholder', 'placeholder.website'),
             TextField::new('createdBy')->onlyOnIndex(),
             DateTimeField::new('createdAt')->onlyOnIndex(),
         ];

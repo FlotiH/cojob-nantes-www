@@ -160,27 +160,27 @@
                 <a href="{{ path('homepage') }}">
                 {# TODO FHA : revoir les tailles quand j'aurai la bonne image #}
                     <picture>
-                        <source
+                        {# <source
                             srcset="{{ asset('img/main/logo-no-bg-400.avif') }} 400w,
-                            {{ asset('img/main/logo-no-bg-200.avif') }} 200w"
+                            {{ asset('img/main/logo-white-200.avif') }} 200w"
                             sizes="(max-width: 576px) 34vw, 100vw"
                             type="image/avif"
                         >
                         <source
                             srcset="{{ asset('img/main/logo-no-bg-400.webp') }} 400w,
-                            {{ asset('img/main/logo-no-bg-200.webp') }} 200w"
+                            {{ asset('img/main/logo-white-200.webp') }} 200w"
                             sizes="(max-width: 576px) 34vw, 100vw"
                             type="image/webp"
-                        >
+                        > #}
                         <img
-                            src="{{ asset('img/main/logo-no-bg.png') }}"
-                            srcset="{{ asset('img/main/logo-no-bg-400.png') }} 400w,
-                            {{ asset('img/main/logo-no-bg-200.png') }} 200w"
-                            sizes="(max-width: 576px) 34vw, 100vw"
+                            src="{{ asset('img/main/logo-white.png') }}"
+                            {# srcset="{{ asset('img/main/logo-white-400.png') }} 400w,
+                            {{ asset('img/main/logo-white-200.png') }} 200w"
+                            sizes="(max-width: 576px) 34vw, 100vw" #}
                             alt="Cojob Nantes"
                             class="w-[150px]"
-                            width="400"
-                            height="134"
+                            width="150"
+                            height="52"
                         >
                     </picture>
                 </a>
@@ -231,7 +231,7 @@
         </div>
         <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-6 flex flex-col sm:flex-row items-center justify-center gap-6 text-xs">
             <p>© COJOB Nantes 2026. Tous droits réservés.</p>
-            <a href="{{ path('legals') }}" class="hover:text-white/60">{{ 'footer.legals'|trans }}</a>
+            <a href="{{ path('legals') }}" class="underline hover:text-white/60">{{ 'footer.legals'|trans }}</a>
         </div>
     </footer>
     </body>

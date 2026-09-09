@@ -8,53 +8,167 @@
 
 {% block content %}
 <!-- ============ HERO ============ -->
-<section class="bg-brand-cream relative overflow-hidden">
-  <div class="max-w-[1048px] mx-auto py-16 lg:py-20 grid lg:grid-cols-2 gap-12 items-center">
+<section class="bg-yellow-100 relative overflow-hidden py-16">
+  <div class="max-w-[1048px] mx-auto grid lg:grid-cols-2 gap-8 items-center">
     <div>
-      <span class="inline-block bg-white text-navy-900 text-sm font-semibold px-4 py-2 rounded-full mb-6">
-        {{ 'v2.home.next_promo_from'|trans }} {% if promoOpen[0] is defined %} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }} {% endif %} {# TODO FHA : quoi mettre sinon ? #}
-      </span>
-      <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight text-navy-900">
+      {% if promoOpen[0] is defined %}
+        <span class="inline-block bg-green-100 text-[13px] font-semibold px-2.5 py-1 rounded-md mb-4 border border-brand-green">
+          {{ 'v2.home.next_promo_from'|trans }} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }}
+        </span>
+      {% endif %}
+      <h1 class="text-4xl font-extrabold font-[Poppins]">
         {{ 'v2.home.hero.slide1.title'|trans|raw }}
       </h1>
-      <p class="mt-6 text-slate-600 text-[15px] leading-relaxed max-w-lg">
+      <p class="mt-4 text-[15px]">
          {{ 'v2.home.hero.slide1.subtitle'|trans }}
       </p>
 
-      <div class="mt-6 flex items-center gap-3">
+      <div class="mt-4 flex items-center gap-2">
         <div class="flex -space-x-3">
-          <span class="w-9 h-9 rounded-full bg-navy-700 border-2 border-brand-cream"></span>
-          <span class="w-9 h-9 rounded-full bg-brand-orange border-2 border-brand-cream"></span>
-          <span class="w-9 h-9 rounded-full bg-brand-teal border-2 border-brand-cream"></span>
+         <div class="w-11 h-11 rounded-full border-2 border-yellow-100 overflow-hidden">
+            <picture>
+                  {# TODO FHA <source
+                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.avif') }} 300w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.avif') }} 630w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.avif') }} 170w"
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    type="image/avif"
+                  >
+                  <source
+                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.webp') }} 300w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.webp') }} 630w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.webp') }} 170w"
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    type="image/webp"
+                  >
+                  <img
+                    src="{{ asset('img/main/logo-200.png') }}"
+                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.jpg') }} 300w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.jpg') }} 630w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.jpg') }} 170w"
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    alt="Cojob Nantes"
+                    width="280"
+                    height="125"> #}
+              <img
+                src="{{ asset('img/main/jobeuse1.jpg') }}" {# TODO FHA : revoir les tailles #}
+                alt="Jobeuse 1"
+                width="40"
+                height="40">
+            </picture>
+          </div>
+          <div class="w-11 h-11 rounded-full border-2 border-yellow-100 overflow-hidden">
+            <picture>
+                  {# TODO FHA <source
+                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.avif') }} 300w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.avif') }} 630w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.avif') }} 170w"
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    type="image/avif"
+                  >
+                  <source
+                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.webp') }} 300w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.webp') }} 630w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.webp') }} 170w"
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    type="image/webp"
+                  >
+                  <img
+                    src="{{ asset('img/main/logo-200.png') }}"
+                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.jpg') }} 300w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.jpg') }} 630w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.jpg') }} 170w"
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    alt="Cojob Nantes"
+                    width="280"
+                    height="125"> #}
+              <img
+                src="{{ asset('img/main/jobeuse2.jpg') }}" {# TODO FHA : revoir les tailles #}
+                alt="Jobeuse 2"
+                width="40"
+                height="40">
+            </picture>
+          </div>
+          <div class="w-11 h-11 rounded-full border-2 border-yellow-100 overflow-hidden">
+            <picture>
+                  {# TODO FHA <source
+                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.avif') }} 300w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.avif') }} 630w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.avif') }} 170w"
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    type="image/avif"
+                  >
+                  <source
+                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.webp') }} 300w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.webp') }} 630w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.webp') }} 170w"
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    type="image/webp"
+                  >
+                  <img
+                    src="{{ asset('img/main/logo-200.png') }}"
+                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.jpg') }} 300w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.jpg') }} 630w,
+                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.jpg') }} 170w"
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    alt="Cojob Nantes"
+                    width="280"
+                    height="125"> #}
+              <img
+                src="{{ asset('img/main/jobeur3.jpg') }}" {# TODO FHA : revoir les tailles #}
+                alt="Jobeuse 3"
+                width="40"
+                height="40">
+            </picture>
+          </div>
         </div>
-        <p class="text-sm font-medium text-navy-900"> {{ 'v2.home.hero.slide1.people_supported'|trans }}</p>
+        <p class="text-[13px] font-semibold"> {{ 'v2.home.hero.slide1.people_supported'|trans }}</p>
       </div>
 
-      <div class="mt-8 flex flex-wrap items-center gap-4">
-        <a href="{{ path('promos') }}#promoAnchor" class="bg-navy-900 text-white font-semibold px-6 py-3.5 rounded-lg hover:bg-navy-800 transition"
-           onclick="gtag('event', 'Home Register promo hero', {'event_category': 'Button Click'});">
-          {{ 'v2.home.next_promo_registration'|trans }}
-        </a>
-        <a href="{{ path('promos') }}" class="bg-white text-navy-900 font-semibold px-6 py-3.5 rounded-lg border border-slate-200 hover:bg-slate-50 transition">
+      <div class="mt-12 flex flex-wrap items-center gap-4">
+        {% if promoOpen[0] is defined %}
+          <a href="{{ path('promos') }}#promoAnchor" class="bg-navy-900 text-white font-semibold text-[15px] px-5 py-2.5 rounded-md hover:bg-white hover:text-navy-900 transition"
+            onclick="gtag('event', 'Home Register promo hero', {'event_category': 'Button Click'});">
+            {{ 'v2.home.next_promo_registration'|trans }}
+          </a>
+        {% endif %}
+        <a href="{{ path('promos') }}" class="bg-white font-semibold text-[15px] px-5 py-2.5 rounded-md border border-brand-whitedark hover:bg-navy-900 hover:text-white transition">
           {{ 'v2.home.more'|trans }}
         </a>
       </div>
     </div>
 
-    <div class="relative h-[420px] hidden sm:block">
-      <!-- decorative squiggle -->
-      <svg class="absolute -left-2 top-6 w-14 h-14 text-brand-blue/60" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="3"><path d="M2 30c8-12 14 12 22 0s14-12 22 0"/></svg>
-
-      <div class="absolute top-0 right-4 w-64 h-44 rounded-2xl shadow-xl overflow-hidden rotate-2 bg-gradient-to-br from-brand-blue to-navy-700"></div>
-      <span class="absolute top-16 left-2 bg-navy-900 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md -rotate-3">Oser</span>
-
-      <div class="absolute top-28 right-0 w-56 h-40 rounded-2xl shadow-xl overflow-hidden -rotate-2 bg-gradient-to-br from-brand-teal to-emerald-700"></div>
-      <span class="absolute top-[13rem] right-8 bg-brand-orange text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md rotate-2">Partager</span>
-
-      <div class="absolute bottom-0 left-8 w-60 h-40 rounded-2xl shadow-xl overflow-hidden rotate-1 bg-gradient-to-br from-amber-400 to-brand-orange"></div>
-      <span class="absolute bottom-2 right-16 bg-brand-green text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md -rotate-2">Avancer</span>
-
-      <svg class="absolute bottom-0 right-0 w-16 h-16 text-brand-teal" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="3"><path d="M8 50 L48 12 M48 12 L34 12 M48 12 L48 26"/></svg>
+    <div>
+      <picture>
+              {# TODO FHA <source
+                srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.avif') }} 300w,
+                {{ asset('img/logo_partners/logo_ville_de_nantes-630.avif') }} 630w,
+                {{ asset('img/logo_partners/logo_ville_de_nantes-170.avif') }} 170w"
+                sizes="(max-width: 768px) 100vw, 25vw"
+                type="image/avif"
+              >
+              <source
+                srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.webp') }} 300w,
+                {{ asset('img/logo_partners/logo_ville_de_nantes-630.webp') }} 630w,
+                {{ asset('img/logo_partners/logo_ville_de_nantes-170.webp') }} 170w"
+                sizes="(max-width: 768px) 100vw, 25vw"
+                type="image/webp"
+              >
+              <img
+                src="{{ asset('img/main/logo-200.png') }}"
+                srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.jpg') }} 300w,
+                {{ asset('img/logo_partners/logo_ville_de_nantes-630.jpg') }} 630w,
+                {{ asset('img/logo_partners/logo_ville_de_nantes-170.jpg') }} 170w"
+                sizes="(max-width: 768px) 100vw, 25vw"
+                alt="Cojob Nantes"
+                width="280"
+                height="125"> #}
+          <img
+            src="{{ asset('img/main/header promo.png') }}" {# TODO FHA : revoir les tailles #}
+            alt="Les promos de Cojob Nantes"
+            width="508"
+            height="521">
+        </picture>
     </div>
   </div>
 
@@ -187,13 +301,19 @@
                 width="544"
                 height="350">
             </picture>
-            <div class="absolute bottom-2">
-              <svg class=inline width="73" height="36" viewBox="0 0 73 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div class="absolute bottom-4">
+              <svg class="inline -mt-5" width="73" height="36" viewBox="0 0 73 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M30.337 25.926C27.4137 27.1208 24.6696 26.8132 22.4645 25.442C22.1809 25.2657 21.9067 25.0744 21.6455 24.8681C28.5928 19.241 31.3668 10.3595 30.6691 5.31016C30.268 2.41033 28.7662 0.587153 26.7627 0.114477C25.0576 -0.290674 22.554 0.305798 19.5748 3.09871C12.525 9.70493 12.2526 18.0837 15.4874 23.8815C15.2804 23.9846 15.0677 24.0822 14.8532 24.1778C11.5978 25.6127 9.15771 25.6578 7.42277 24.5417C5.82029 23.5101 4.91737 21.5987 4.46965 19.4117C3.70105 15.6659 4.32787 11.0854 6.04415 7.61915C6.5553 6.58752 6.13743 5.33267 5.10952 4.81873C4.08348 4.30479 2.83545 4.72495 2.32429 5.75846C0.216249 10.0182 -0.543019 15.649 0.399071 20.2539C1.09305 23.6357 2.70299 26.4643 5.18414 28.0605C7.82759 29.7599 11.5605 30.1913 16.5228 28.0024C17.0507 27.7698 17.5619 27.5203 18.06 27.2521C18.7409 27.9161 19.4853 28.5013 20.28 28.9946C23.5521 31.0298 27.7607 31.6487 32.1839 29.7168C33.1633 31.0598 34.4393 32.2565 35.9877 33.365C43.5151 38.7595 51.8297 35.0831 57.1539 29.4129C61.0118 32.7573 66.3267 34.0646 72.0763 30.2082C73.0296 29.5686 73.287 28.2706 72.6509 27.3121C72.0147 26.3536 70.7238 26.0948 69.7686 26.7344C65.8958 29.3322 62.355 28.4207 59.747 26.1473C60.1444 25.5527 60.5063 24.9506 60.8309 24.3485C62.2655 21.6869 63.8251 16.4143 63.0658 13.3757C62.5546 11.3293 61.2805 9.98253 59.0195 9.80059C56.3779 9.58863 54.503 10.3595 53.2363 11.5975C51.9715 12.8336 51.2738 14.6136 51.1917 16.6957C51.0761 19.6536 52.2476 23.2944 54.3724 26.318C52.8371 28.0286 50.9791 29.5442 48.94 30.5646C45.6828 32.1946 41.935 32.4966 38.398 29.9644C37.3682 29.2253 36.4932 28.4432 35.8011 27.5728C36.8608 26.7719 37.9222 25.8097 38.9763 24.6749C42.0189 21.3943 47.3805 14.3079 48.6583 9.18348C49.4251 6.11859 48.8206 3.62391 46.748 2.17212C44.9609 0.921027 42.7987 1.1705 40.6254 2.75546C37.2917 5.18449 33.7211 11.153 32.3928 13.7621C31.1261 16.2492 29.6841 20.5915 29.893 23.3619C29.962 24.2697 30.1094 25.1213 30.337 25.926ZM18.9984 21.67C24.7143 17.1364 27.1227 9.99379 26.5537 5.886C26.4866 5.39645 26.3765 4.96504 26.1993 4.61428C26.0985 4.41358 26.0034 4.22413 25.8113 4.17912C25.537 4.11534 25.2217 4.22413 24.843 4.39482C24.123 4.71557 23.3189 5.30079 22.4067 6.15423C17.144 11.0854 16.7019 17.3484 18.9984 21.67ZM34.0942 23.5926C34.7079 23.0749 35.3236 22.4878 35.9392 21.8257C38.2786 19.3029 42.1999 14.306 43.9927 10.0313C44.4945 8.83085 44.8359 7.70918 44.8266 6.74883C44.8228 6.27615 44.7389 5.85599 44.3732 5.59902C44.14 5.43584 43.8938 5.63466 43.614 5.78472C43.0711 6.07733 42.5226 6.53875 41.9704 7.08458C39.4706 9.56425 37.0846 13.7114 36.0903 15.6659C35.1128 17.5866 33.8741 20.9066 34.0364 23.0468C34.0494 23.2325 34.0699 23.4144 34.0942 23.5926ZM56.9898 22.6998C57.0551 22.5854 57.1166 22.4728 57.1782 22.3584C58.1054 20.6365 59.2079 17.4928 59.1333 15.1838C59.1221 14.8575 59.0885 14.5517 59.0064 14.2854C58.956 14.1222 58.8777 13.9796 58.6893 13.9646C57.4785 13.8671 56.5906 14.0772 56.0495 14.6793C55.0888 15.7466 55.1709 17.5585 55.6597 19.4379C55.9395 20.5183 56.3909 21.6363 56.9898 22.6998Z" fill="#2C8CE2"/>
               </svg>
-              <span class="bg-blue-500 text-white text-[13px] font-semibold px-5 py-0.5 rounded-md">
+              <span class="-ml-2 bg-blue-500 text-white text-[13px] font-semibold px-5 py-0.5 rounded-md">
                 {{ 'v2.home.who_are_we.subtitle2'|trans }}
               </span>
+              <svg class="inline -mt-14" width="34" height="31" viewBox="0 0 34 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.2138 5.09026C16.8832 3.33368 17.2142 0.507336 14.9672 0.0303419C12.5963 -0.285541 11.9551 1.92294 12.6239 3.80169C12.8551 5.55904 13.0577 7.32182 13.2241 9.08599C13.3354 10.2807 14.37 11.2082 15.584 11.1192C18.6283 10.7306 17.3383 7.14771 17.2162 5.09001L17.2138 5.09026Z" fill="#2C8CE2"/>
+                <path d="M24.5544 17.607C26.8629 17.5386 29.1698 17.4316 31.4739 17.2521C31.4931 17.25 31.5099 17.2483 31.5291 17.2462C34.3307 16.9512 33.9972 12.6777 31.1495 12.8587C29.026 13.0241 26.8937 13.1297 24.7625 13.1988C24.0502 13.1889 23.3057 13.2648 22.7569 13.7693C21.1131 15.1245 22.4496 17.9962 24.5541 17.6046L24.5544 17.607Z" fill="#2C8CE2"/>
+                <path d="M8.47254 20.1382C11.2478 19.8459 10.9145 15.5749 8.06657 15.7535C6.47966 15.7361 4.60479 15.6811 2.96228 15.5507C1.60962 15.13 0.0643381 16.038 0.00553887 17.5079C-0.0964742 18.9823 1.23739 19.939 2.60873 19.9378C4.53314 20.0944 6.46298 20.1411 8.39066 20.1444C8.41707 20.1417 8.44348 20.1389 8.46989 20.1361L8.47254 20.1382Z" fill="#2C8CE2"/>
+                <path d="M15.8607 20.246C13.421 20.7967 14.1747 23.7588 14.1596 25.5979C14.338 27.6376 13.6501 30.7855 16.638 30.784C16.6692 30.7807 16.7031 30.7795 16.7367 30.776C17.8771 30.6559 18.7604 29.5701 18.6688 28.4243C18.6019 26.6132 18.5128 24.7996 18.4701 22.9885C18.8322 21.4478 17.4554 19.8766 15.8607 20.246Z" fill="#2C8CE2"/>
+              </svg>
             </div>
           </div>
         </div>
@@ -382,7 +502,7 @@
     {% for partner in partners %}
       {% if partner.link %}
         <a class="w-1/6 max-w-[170px]" href="{{ partner.link }}" target="_blank" rel="noopener noreferrer">
-          <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}"/> {# TODO FHA : gérer les bons formats d'image #}
+          <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}"/>
         </a>
       {% else %}
         <img class="w-1/6 max-w-[170px]" src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}"/>
@@ -401,7 +521,7 @@
       {% for talk in talks %}
         <a href="{{ talk.link }}" class="flex items-start gap-3 bg-white rounded-xl p-2 hover:shadow-md transition"
           target="_blank" rel="noopener noreferrer">
-          <img class="w-8 h-8 shrink-0 border border-brand-whitedark" src="{{ vich_uploader_asset(talk, 'imageFile') }}" alt="{{ talk.source }}"/> {# TODO FHA : gestion des formats #}
+          <img class="w-8 h-8 shrink-0 border border-brand-whitedark" src="{{ vich_uploader_asset(talk, 'imageFile') }}" alt="{{ talk.source }}"/>
           <div>
             <p class="text-[13px] font-semibold text-navy-900 leading-snug">{{ talk.title }}</p>
             <p class="text-[11px] text-navy-900">{{ talk.source }} · {{ talk.date|format_datetime(locale: 'fr', pattern: 'dd MMMM YYYY') }}</p>
@@ -435,7 +555,7 @@
                 <path class="origin-center transition-transform duration-300 group-open:rotate-90" d="M12 5v14"/>
               </svg>
             </summary>
-            <p class="mt-3 text-[15px] text-navy-900 leading-relaxed pr-32">
+            <p class="mt-3 text-[15px] text-navy-900 leading-relaxed pr-8">
               {{ ('v2.faq' ~ i ~ '.answer')|trans }}
             </p>
           </details>
