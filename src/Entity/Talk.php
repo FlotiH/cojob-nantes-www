@@ -44,11 +44,10 @@ class Talk
     #[Assert\NotBlank]
     private \DateTimeImmutable $date;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     #[Assert\Length(max: 255)]
-    #[Assert\NotBlank]
     #[Assert\Url()]
-    private string $link;
+    private ?string $link;
 
     #[ORM\Column(type: 'string', length: 255)]
     private string $image = '';
@@ -107,7 +106,7 @@ class Talk
         return $this->link;
     }
 
-    public function setLink(string $link): static
+    public function setLink(?string $link): static
     {
         $this->link = $link;
 
