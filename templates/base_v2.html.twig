@@ -49,6 +49,10 @@
         {% block stylesheets %}
         {% endblock %}
 
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('v2_app') }}{% endblock %}
+        {% endblock %}
+
         {% set frankenphp_hot_reload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
         {% if frankenphp_hot_reload %}
         <meta name="frankenphp-hot-reload:url" content="{{ frankenphp_hot_reload }}">
@@ -60,45 +64,45 @@
         <script>
             tailwind.config = {
                 theme: {
-                extend: {
-                    colors: {
-                        navy: {
-                            900: '#0E3D67',
-                            800: '#123258',
-                            700: '#1a4272',
+                    extend: {
+                        colors: {
+                            navy: {
+                                900: '#0E3D67',
+                                800: '#123258',
+                                700: '#1a4272'
+                            },
+                            green: {
+                                100: '#D6FFF1',
+                                300: '#00C27D'
+                            },
+                            blue: {
+                                100: '#F2F8FD',
+                                300: '#86BDEF',
+                                600: '#1A72C1'
+                            },
+                            orange: {
+                                200: '#FFCF99'
+                            },
+                            yellow: {
+                                100: '#FEF1D7',
+                                300: '#FCCE74',
+                                500: '#F9AB10'
+                            },
+                            brand: {
+                                blue: '#1c4f8f',
+                                cream: '#fdf1dd',
+                                lightblue: '#eaf1fb',
+                                teal: '#189b78',
+                                amber: '#f6c445',
+                                orange: '#f2821f',
+                                green: '#00905D',
+                                whitedark: '#E9E9E9'
+                            }
                         },
-                        green: {
-                            100: '#D6FFF1',
-                            300: '#00C27D'
-                        },
-                        blue: {
-                            100: '#F2F8FD',
-                            300: '#86BDEF',
-                            600: '#1A72C1'
-                        },
-                        orange: {
-                            200: '#FFCF99'
-                        },
-                        yellow: {
-                            100: '#FEF1D7',
-                            300: '#FCCE74',
-                            500: '#F9AB10',
-                        },
-                        brand: {
-                            blue: '#1c4f8f',
-                            cream: '#fdf1dd',
-                            lightblue: '#eaf1fb',
-                            teal: '#189b78',
-                            amber: '#f6c445',
-                            orange: '#f2821f',
-                            green: '#00905D',
-                            whitedark: '#E9E9E9'
+                        fontFamily: {
+                            sans: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif']
                         }
-                    },
-                    fontFamily: {
-                        sans: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
                     }
-                }
                 }
             }
         </script>
@@ -184,8 +188,8 @@
                         >
                     </picture>
                 </a>
-                <p class="text-xs mt-4 leading-relaxed pr-8 max-w-xs">
-                    Association favorisant une recherche d'emploi collective, proactive et solidaire.
+                <p class="text-xs mt-4 pr-8 max-w-xs">
+                    {{ 'v2.footer.cojob'|trans }}
                 </p>
             </div>
             <div>
@@ -193,7 +197,7 @@
                     <li><a href="{{ path('homepage') }}#about" class="hover:text-white/60">{{ 'v2.nav.about'|trans }}</a></li>
                     <li><a href="{{ path('promos') }}" class="hover:text-white/60">{{ 'nav.promo'|trans }}</a></li>
                     <li><a href="{{ path('calendar') }}" class="hover:text-white/60">{{ 'nav.calendar'|trans }}</a></li>
-                    <li><a href="{{ path('partners') }}" class="hover:text-white/60">{{ 'nav.partners'|trans }}</a></li>
+                    <li><a href="{{ path('partners') }}" class="hover:text-white/60">{{ 'v2.nav.partners'|trans }}</a></li>
                 </ul>
             </div>
             <div>
