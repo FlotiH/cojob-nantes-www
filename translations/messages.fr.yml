@@ -69,13 +69,10 @@ v2:
     stats:
       gained_confidence:
         label: estiment avoir gagné<br>en confiance
-        percent: 91%
       more_efficient:
         label: se sentent plus efficaces dans leur recherche d'emploi
-        percent: 98%
       pro_networking:
         label: se sentent capables de développer leur réseau professionnel
-        percent: 96%
     talk_about_us: Ils parlent de nous
     testimonies: Ce que les jobeurs en disent (et les chiffres le prouvent !)
     who_are_we:

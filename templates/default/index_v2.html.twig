@@ -607,15 +607,15 @@
         <path d="M7.83244 55.1513C10.1488 55.7427 12.2944 55.2586 14.4705 54.313C19.6842 52.0689 24.9923 50.0089 30.2162 47.7792C31.9448 47.0261 33.6089 46.15 35.1959 45.1639C36.6564 44.2621 37.1097 42.8703 36.5897 41.6596C36.0443 40.4063 34.608 39.7164 32.9392 40.3456C30.1888 41.3827 27.5374 42.6783 24.8249 43.8312C20.7166 45.5904 16.5704 47.2337 12.529 49.0884C10.1734 50.1597 8.30665 51.8983 7.32187 54.3913L7.83244 55.1513ZM12.4925 0.0315297C14.6859 -0.119349 16.7874 0.251482 18.5537 1.56035C23.1175 4.94875 27.635 8.41271 32.1129 11.9433C32.9885 12.6332 33.7087 13.5139 34.2167 14.5043C34.5524 15.1623 34.6219 16.352 34.2329 16.8314C33.7702 17.3841 32.6838 17.5451 31.8544 17.6296C31.3712 17.6789 30.7875 17.3196 30.3133 17.0304C24.7756 13.4955 19.2732 9.91864 14.6601 5.19702C13.4242 3.93099 12.8624 2.00746 11.9918 0.382142L12.4925 0.0315297ZM4.51483 23.7517C10.3092 23.4826 16.0786 23.067 21.8328 24.3362C23.2054 24.6393 24.6644 24.5668 26.0679 24.7663C27.3122 24.9478 28.5845 25.114 29.7632 25.5528C30.815 25.9338 31.4946 26.8429 31.2518 28.0916C31.0191 29.2685 30.1108 29.8009 29.0408 29.8684C26.762 30.0143 24.4566 30.2393 22.2017 30.0622C17.6893 29.6795 13.209 29.0716 8.72525 28.5266C6.96163 28.3118 5.18786 28.0825 3.43638 27.7988C2.07629 27.569 0.789685 27.1237 -0.000115426 25.7309C1.22609 24.3157 2.80889 23.8287 4.51483 23.7517Z" fill="#00905D"/>
       </svg>
       <div>
-        <p class="text-[38px]/[48px] font-[Poppins] font-extrabold text-navy-900">{{ 'v2.home.stats.more_efficient.percent'|trans }}</p>
+        <p class="text-[38px]/[48px] font-[Poppins] font-extrabold text-navy-900 counter counter-a"></p>
         <p class="text-[15px]">{{ 'v2.home.stats.more_efficient.label'|trans }}</p>
       </div>
       <div>
-        <p class="text-[38px]/[48px] font-[Poppins] font-extrabold text-navy-900">{{ 'v2.home.stats.gained_confidence.percent'|trans }}</p>
+        <p class="text-[38px]/[48px] font-[Poppins] font-extrabold text-navy-900 counter counter-b"></p>
         <p class="text-[15px]">{{ 'v2.home.stats.gained_confidence.label'|trans|raw }}</p>
       </div>
       <div>
-        <p class="text-[38px]/[48px] font-[Poppins] font-extrabold text-navy-900">{{ 'v2.home.stats.pro_networking.percent'|trans }}</p>
+        <p class="text-[38px]/[48px] font-[Poppins] font-extrabold text-navy-900 counter counter-c"></p>
         <p class="text-[15px]">{{ 'v2.home.stats.pro_networking.label'|trans }}</p>
       </div>
       <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -673,10 +673,10 @@
 <section class="bg-white py-16">
   <div class="max-w-[1048px] mx-auto">
     <h2 class="text-[26px] font-bold font-[Poppins] text-navy-900 mb-10">{{ 'v2.home.partners'|trans }}</h2>
-    <div class="flex flex-wrap items-center">
+    <div class="flex items-center justify-between">
     {% for partner in partners %}
       {% if partner.link %}
-        <a class="w-1/6 max-w-[170px]" href="{{ partner.link }}" target="_blank" rel="noopener noreferrer">
+        <a href="{{ partner.link }}" target="_blank" rel="noopener noreferrer">
           <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}"/>
         </a>
       {% else %}
