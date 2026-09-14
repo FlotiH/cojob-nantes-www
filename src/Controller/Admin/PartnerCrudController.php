@@ -45,7 +45,7 @@ class PartnerCrudController extends AbstractCrudController
                 ->setHelp('help.image.max170x64')
                 ->setFormType(VichImageType::class)
                 ->setTemplatePath('admin/fields/vich_image.html.twig')
-                ->setRequired(true),
+                ->setRequired(Crud::PAGE_NEW === $pageName),
             TextField::new('name'),
             UrlField::new('link')
                 ->setFormTypeOption('attr.placeholder', 'placeholder.website'),

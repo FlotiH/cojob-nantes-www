@@ -45,7 +45,7 @@ class TalkCrudController extends AbstractCrudController
                 ->setHelp('help.image.32x32')
                 ->setFormType(VichImageType::class)
                 ->setTemplatePath('admin/fields/vich_image.html.twig')
-                ->setRequired(true),
+                ->setRequired(Crud::PAGE_NEW === $pageName),
             TextField::new('title'),
             TextField::new('source'),
             DateField::new('date'),
