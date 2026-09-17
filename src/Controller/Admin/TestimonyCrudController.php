@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -34,6 +35,9 @@ class TestimonyCrudController extends AbstractCrudController
     {
         return [
             TextField::new('name'),
+            TextField::new('firstname'),
+            IntegerField::new('age')->onlyOnForms(),
+            TextField::new('promoNb')->onlyOnForms(),
             TextField::new('subtitle'),
             TextEditorField::new('content')->onlyOnForms(),
             BooleanField::new('requiredDisplaying'),
