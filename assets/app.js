@@ -9,7 +9,7 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.css';
-import './styles/app.css';
+import './styles/app_v1.css';
 
 // start the Stimulus application
 //import './bootstrap.js';
