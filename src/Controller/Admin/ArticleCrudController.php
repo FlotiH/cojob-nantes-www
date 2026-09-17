@@ -11,9 +11,12 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
@@ -58,6 +61,12 @@ class ArticleCrudController extends AbstractCrudController
             TextField::new('title'),
             DateTimeField::new('createdAt')->onlyOnIndex(),
             TextEditorField::new('content')->onlyOnForms(),
+            TextField::new('location')->onlyOnForms(),
+            DateField::new('start')->onlyOnForms(),
+            TimeField::new('startTime')->onlyOnForms(),
+            DateField::new('end')->onlyOnForms(),
+            TextField::new('buttonLabel')->onlyOnForms(),
+            UrlField::new('buttonLink')->onlyOnForms(),
             DateTimeField::new('publishedAt'),
             DateTimeField::new('expiresAt'),
             TextField::new('createdBy')->onlyOnIndex(),

@@ -18,8 +18,10 @@
 {% endblock %}
 
 {% block header %}
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100 font-semibold">
-        <div class="max-w-7xl mx-auto 2xl:px-10 h-20 flex items-center justify-between">
+    <header class="sticky top-0 z-50 bg-white backdrop-blur border-b border-brand-whitedark font-semibold">
+        <nav class="px-4 xl:px-20 mx-auto h-20 flex items-center justify-between relative"
+            data-controller="menu"
+            data-action="click@window->menu#closeOnClickOutside">
             <a href="{{ path('homepage') }}" class="flex items-center gap-2 shrink-0">
                 <picture>
                     {# TODO FHA <source
@@ -54,7 +56,7 @@
                 <span class="sr-only">Cojob Nantes</span>
             </a>
 
-            <nav class="hidden lg:flex items-center gap-4 text-[15px] text-navy-900">
+            <div class="hidden lg:flex items-center gap-4 text-[15px] text-navy-900">
                 <a href="{{ path('homepage') }}#about" class="hover:text-brand-blue transition">{{ 'v2.nav.about'|trans }}</a>
                 <a href="{{ path('promos') }}" class="hover:text-brand-blue transition">{{ 'nav.promo'|trans }} </a>
                 <a href="{{ path('calendar') }}" class="hover:text-brand-blue transition">{{ 'nav.calendar'|trans }}</a>
@@ -79,27 +81,88 @@
                         </a>
                     </div>
                 </details>
-            </nav>
+            </div>
 
             <div class="flex items-center gap-4">
-            <div class="hidden md:flex items-center gap-3 text-navy-900">
-                {{ include('button/contact.html.twig', {gtagEventName: 'Head Email'}, with_context: false) }}
-                {{ include('button/linkedin.html.twig', {gtagEventName: 'Head Socials LinkedIn'}, with_context: false) }}
-                {{ include('button/facebook.html.twig', {gtagEventName: 'Head Socials Facebook'}, with_context: false) }}
+                <div class="hidden md:flex items-center gap-3 text-navy-900">
+                    {{ include('button/contact.html.twig', {gtagEventName: 'Head Email'}, with_context: false) }}
+                    {{ include('button/linkedin.html.twig', {gtagEventName: 'Head Socials LinkedIn'}, with_context: false) }}
+                    {{ include('button/facebook.html.twig', {gtagEventName: 'Head Socials Facebook'}, with_context: false) }}
+                </div>
+                <a href="{{ path('promos') }}#promoAnchor" class="hidden sm:inline-flex items-center bg-navy-900 text-white text-[15px] px-5 py-3 rounded-lg hover:bg-white hover:text-navy-900 hover:border hover:border-navy-900 transition"
+                    role="button">
+                    {{ 'v2.home.promo_registration'|trans }}
+                </a>
+                <button class="lg:hidden w-9 h-9 flex items-center justify-center"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                    aria-label="{{ 'toggle_navigation'|trans }}"
+                    data-menu-target="button"
+                    data-action="menu#toggle">
+                    {# <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg> #}
+                    <svg data-menu-target="openIcon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg data-menu-target="closeIcon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <ul id="mobile-menu" data-menu-target="panel"
+                    class="hidden absolute inset-x-0 top-full z-50 w-full bg-white shadow-lg lg:hidden pb-4">
+                    <li>
+                        <a href="{{ path('homepage') }}#about" class="block px-4 py-3 hover:text-brand-blue transition">
+                            {{ 'v2.nav.about'|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('promos') }}" class="block px-4 py-3 hover:text-brand-blue transition">
+                            {{ 'nav.promo'|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('calendar') }}" class="block px-4 py-3 hover:text-brand-blue transition">
+                            {{ 'nav.calendar'|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <details class="relative block px-4 py-3">
+                            <summary class="cursor-pointer flex items-center gap-1 hover:text-brand-blue transition list-none">
+                                {{ 'nav.support_us'|trans }}
+                                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                            </summary>
+
+                            <div class="absolute mt-2 w-5/6 rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 z-10">
+                                <a href="{{ path('support') }}#join-form" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    onclick="gtag('event', 'Join Link Header', {'event_category': 'Button Click'});">
+                                    {{ 'v2.nav.join'|trans }}
+                                </a>
+                                <a href="{{ path('support') }}#donate-form" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    onclick="gtag('event', 'Donate Link Header', {'event_category': 'Button Click'});">
+                                    {{ 'v2.nav.donate'|trans }}
+                                </a>
+                                <a href="{{ path('support') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    onclick="gtag('event', 'Become volunteer Link Header', {'event_category': 'Button Click'});">
+                                    {{ 'v2.nav.become_volunteer'|trans }}
+                                </a>
+                            </div>
+                        </details>
+                    </li>
+                    <li class="md:hidden">
+                        <div class="flex items-center gap-3 text-navy-900 px-4 py-3">
+                            {{ include('button/contact.html.twig', {gtagEventName: 'Head Email'}, with_context: false) }}
+                            {{ include('button/linkedin.html.twig', {gtagEventName: 'Head Socials LinkedIn'}, with_context: false) }}
+                            {{ include('button/facebook.html.twig', {gtagEventName: 'Head Socials Facebook'}, with_context: false) }}
+                        </div>
+                    </li>
+                    <li class="px-4 py-3 sm:hidden">
+                        <a href="{{ path('promos') }}#promoAnchor" class="items-center bg-navy-900 text-white text-[15px] px-5 py-3 rounded-lg hover:bg-white hover:text-navy-900 hover:border hover:border-navy-900 transition"
+                            role="button">
+                        {{ 'v2.home.promo_registration'|trans }}
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <a href="{{ path('promos') }}#promoAnchor" class="hidden sm:inline-flex items-center bg-navy-900 text-white text-[15px] px-5 py-3 rounded-lg hover:bg-white hover:text-navy-900 hover:border hover:border-navy-900 transition"
-                role="button">
-                {{ 'v2.home.promo_registration'|trans }}
-            </a>
-            <button class="lg:hidden w-9 h-9 flex items-center justify-center">
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-            </button>
-            {# TODO FHA : vérifier s'il faut conserver les ari #}
-            {# <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="{{ 'toggle_navigation'|trans }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button> #}
-            </div>
-        </div>
-        </header>
+        </nav>
+    </header>
 {% endblock %}

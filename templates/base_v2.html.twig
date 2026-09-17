@@ -152,10 +152,10 @@
 
     {% block content %}{% endblock %}
 
-    <footer class="bg-navy-900 text-white pt-16 pb-8">
-        <div class="max-w-[1048px] mx-auto grid sm:grid-cols-2 lg:grid-cols-[3fr_2fr_2fr_2fr] pb-12 border-b border-white/50">
-            <div>
-                <a href="{{ path('homepage') }}">
+    <footer class="bg-navy-900 text-white pt-16 pb-8 text-center sm:text-left">
+        <div class="px-6 xl:px-0 max-w-[1048px] mx-auto grid sm:grid-cols-2 lg:grid-cols-[3fr_2fr_2fr_2fr] pb-12 border-b border-blue-100">
+            <div class="mb-8 lg:md-0">
+                <a href="{{ path('homepage') }}" class="inline-block sm:inline mx-auto">
                 {# TODO FHA : revoir les tailles quand j'aurai la bonne image #}
                     <picture>
                         {# <source
@@ -182,11 +182,26 @@
                         >
                     </picture>
                 </a>
-                <p class="text-xs mt-4 pr-8 max-w-xs">
+                <p class="text-xs mt-4 sm:pr-8 max-w-xs">
                     {{ 'v2.footer.cojob'|trans }}
                 </p>
             </div>
-            <div>
+            <div class="lg:order-4" itemscope itemtype="https://schema.org/Organization">
+                <meta itemprop="name" content="COJOB Nantes">
+                <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                    <meta itemprop="streetAddress" content="boulevard salvador Allende, Les Salorges 2">
+                    <meta itemprop="postalCode" content="44100">
+                    <meta itemprop="addressLocality" content="Nantes, France">
+                </div>
+                <p class="font-semibold text-xs mb-4">{{ 'v2.footer.social_links'|trans }}</p>
+                <link itemprop="url" href="{{ absolute_url(path('homepage')) }}">
+                <div class="flex gap-4 justify-center sm:justify-start">
+                    {{ include('button/contact.html.twig', {gtagEventName: 'Footer Email'}, with_context: false) }}
+                    {{ include('button/linkedin.html.twig', {gtagEventName: 'Footer Socials LinkedIn'}, with_context: false) }}
+                    {{ include('button/facebook.html.twig', {gtagEventName: 'Footer Socials Facebook'}, with_context: false) }}
+                </div>
+            </div>
+            <div class="lg:order-2 mt-4 sm:mt-0">
                 <ul class="space-y-4 text-xs font-semibold">
                     <li><a href="{{ path('homepage') }}#about" class="hover:text-white/60">{{ 'v2.nav.about'|trans }}</a></li>
                     <li><a href="{{ path('promos') }}" class="hover:text-white/60">{{ 'nav.promo'|trans }}</a></li>
@@ -194,7 +209,7 @@
                     <li><a href="{{ path('partners') }}" class="hover:text-white/60">{{ 'v2.nav.partners'|trans }}</a></li>
                 </ul>
             </div>
-            <div>
+            <div class="lg:order-3 mt-4 sm:mt-0">
                 <p class="text-xs font-semibold mb-4">{{ 'nav.support_us'|trans }}</p>
                 <ul class="space-y-4 text-xs">
                     <li><a href="{{ path('support') }}#join-form" class="hover:text-white/60"
@@ -210,21 +225,6 @@
                         {{ 'v2.nav.become_volunteer'|trans }}</a>
                     </li>
                 </ul>
-            </div>
-            <div itemscope itemtype="https://schema.org/Organization">
-                <meta itemprop="name" content="COJOB Nantes">
-                <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                    <meta itemprop="streetAddress" content="boulevard salvador Allende, Les Salorges 2">
-                    <meta itemprop="postalCode" content="44100">
-                    <meta itemprop="addressLocality" content="Nantes, France">
-                </div>
-                <p class="font-semibold text-xs mb-4">{{ 'v2.footer.social_links'|trans }}</p>
-                <link itemprop="url" href="{{ absolute_url(path('homepage')) }}">
-                <div class="flex gap-4">
-                    {{ include('button/contact.html.twig', {gtagEventName: 'Footer Email'}, with_context: false) }}
-                    {{ include('button/linkedin.html.twig', {gtagEventName: 'Footer Socials LinkedIn'}, with_context: false) }}
-                    {{ include('button/facebook.html.twig', {gtagEventName: 'Footer Socials Facebook'}, with_context: false) }}
-                </div>
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-6 flex flex-col sm:flex-row items-center justify-center gap-6 text-xs">
