@@ -71,7 +71,7 @@ class DefaultControllerTest extends WebTestCase
         $crawler = $this->client->request('GET', '/calendrier');
 
         self::assertResponseIsSuccessful();
-        self::assertSelectorTextContains('h1', 'Calendrier');
+        self::assertSelectorTextContains('h1', 'Agenda');
     }
 
     public function testGuide(): void

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
+use App\Config\TalkTag;
 use App\Entity\Article;
 use App\Entity\Contact;
 use App\Entity\Event;
@@ -67,7 +68,9 @@ class AppFixtures extends Fixture
             ->setTitle('title')
             ->setSource('source')
             ->setDate(new \DateTimeImmutable())
-            ->setLink('https://cojobnantes.fr');
+            ->setLink('https://cojobnantes.fr')
+            ->setTag(TalkTag::ToRead)
+            ->setDuration(5);
         $manager->persist($talk);
 
         $partner = new Partner()

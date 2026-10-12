@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Config\TalkTag;
 use App\Repository\TalkRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -54,6 +55,14 @@ class Talk
 
     #[Vich\UploadableField(mapping: 'medias', fileNameProperty: 'image')]
     private ?File $imageFile = null;
+
+    #[ORM\Column(enumType: TalkTag::class)]
+    #[Assert\NotBlank]
+    private TalkTag $tag;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    #[Assert\NotBlank]
+    private int $duration;
 
     public function __toString()
     {
@@ -144,5 +153,29 @@ class Talk
     public function getImageLink(): string
     {
         return '';
+    }
+
+    public function getTag(): ?TalkTag
+    {
+        return $this->tag;
+    }
+
+    public function setTag(TalkTag $tag): static
+    {
+        $this->tag = $tag;
+
+        return $this;
+    }
+
+    public function getDuration(): ?int
+    {
+        return $this->duration;
+    }
+
+    public function setDuration(int $duration): static
+    {
+        $this->duration = $duration;
+
+        return $this;
     }
 }
