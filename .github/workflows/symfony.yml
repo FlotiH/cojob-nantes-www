@@ -33,13 +33,13 @@ jobs:
         php-versions: ['8.5']
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup PHP, extensions and composer with shivammathur/setup-php
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
-          tools: composer:v2
+          tools: composer:v2, symfony-cli
 
       # —— Composer ——————————————————————————————————————————————————————————
       - name: Validate composer.json and composer.lock
@@ -91,16 +91,8 @@ jobs:
       - name: Static analysis of PHP code (PHPStan)
         run: vendor/bin/phpstan analyse
 
-      - name: Symfony Language Tools #TODO FHA : à tester
-        run: |
-          ARCHIVE="symfony-lsp-${SYMFONY_LSP_VERSION}-linux-x64.tar.gz"
-          BASE="https://github.com/symfony/language-tools/releases/download/${SYMFONY_LSP_VERSION}"
-          curl -sSfL -o "$ARCHIVE" "$BASE/$ARCHIVE"
-          curl -sSfL -o SHA256SUMS "$BASE/SHA256SUMS"
-          grep " $ARCHIVE\$" SHA256SUMS | sha256sum -c -
-          tar xzf "$ARCHIVE"
-          dirname "$(find . -maxdepth 2 -type f -name symfony-lsp -perm -u+x | head -1)" >> "$GITHUB_PATH"
-          symfony-lsp check --format=github
+      - name: Symfony Language Tools
+        run: symfony lsp:check --format=github
           
       # —— Tests  ———————————————————————————————————————————————————————————
 
