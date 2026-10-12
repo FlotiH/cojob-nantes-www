@@ -7,6 +7,10 @@ on:
   pull_request:
     branches-ignore: 
       - main
+
+env:
+  SYMFONY_LSP_VERSION: v0.20.1
+
 jobs:
   symfony:
     name: Symfony 8.1 (PHP ${{ matrix.php-versions }})
@@ -88,7 +92,15 @@ jobs:
         run: vendor/bin/phpstan analyse
 
       - name: Symfony Language Tools #TODO FHA : à tester
-        run: symfony lsp:check
+        run: |
+          ARCHIVE="symfony-lsp-${SYMFONY_LSP_VERSION}-linux-x64.tar.gz"
+          BASE="https://github.com/symfony/language-tools/releases/download/${SYMFONY_LSP_VERSION}"
+          curl -sSfL -o "$ARCHIVE" "$BASE/$ARCHIVE"
+          curl -sSfL -o SHA256SUMS "$BASE/SHA256SUMS"
+          grep " $ARCHIVE\$" SHA256SUMS | sha256sum -c -
+          tar xzf "$ARCHIVE"
+          dirname "$(find . -maxdepth 2 -type f -name symfony-lsp -perm -u+x | head -1)" >> "$GITHUB_PATH"
+          symfony-lsp check --format=github
           
       # —— Tests  ———————————————————————————————————————————————————————————
 
