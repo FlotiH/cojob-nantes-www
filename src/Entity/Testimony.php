@@ -52,9 +52,10 @@ class Testimony
     #[Assert\NotBlank]
     private string $firstname;
 
-    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
+    #[ORM\Column(type: Types::SMALLINT)]
+    #[Assert\NotBlank]
     #[Assert\Positive()]
-    private ?int $age = null;
+    private int $age;
 
     #[ORM\Column(length: 31)]
     #[Assert\Length(max: 31)]
@@ -160,7 +161,7 @@ class Testimony
         return $this->age;
     }
 
-    public function setAge(?int $age): static
+    public function setAge(int $age): static
     {
         $this->age = $age;
 

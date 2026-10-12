@@ -27,8 +27,6 @@ doctrine:
         dql:
             numeric_functions:
                 rand: DoctrineExtensions\Query\Mysql\Rand
-        controller_resolver:
-            auto_mapping: false
 
 when@test:
     doctrine:

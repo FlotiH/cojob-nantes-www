@@ -135,7 +135,8 @@
         ],
         "app:coding-standard": [
             "vendor/bin/php-cs-fixer fix --allow-risky=yes",
-            "vendor/bin/phpstan analyse"
+            "vendor/bin/phpstan analyse",
+            "symfony lsp:check"
         ]
     },
     "conflict": {

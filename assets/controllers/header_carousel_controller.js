@@ -12,7 +12,7 @@ export default class extends Controller {
         this.embla = EmblaCarousel(
             this.viewportTarget,
             { loop: true },
-            [Autoplay({ delay: this.autoplayDelayValue, stopOnInteraction: false })]
+            [Autoplay({ delay: this.autoplayDelayValue, stopOnInteraction: true })]
         );
 
         this.embla.on('select', () => this.updateDots());

@@ -86,6 +86,9 @@ jobs:
 
       - name: Static analysis of PHP code (PHPStan)
         run: vendor/bin/phpstan analyse
+
+      - name: Symfony Language Tools #TODO FHA : à tester
+        run: symfony lsp:check
           
       # —— Tests  ———————————————————————————————————————————————————————————
 

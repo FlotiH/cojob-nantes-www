@@ -9,8 +9,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
@@ -51,6 +53,8 @@ class TalkCrudController extends AbstractCrudController
             DateField::new('date'),
             UrlField::new('link')
                 ->setFormTypeOption('attr.placeholder', 'placeholder.website'),
+            IntegerField::new('duration')->onlyOnForms(),
+            ChoiceField::new('tag')->onlyOnForms(),
             TextField::new('createdBy')->onlyOnIndex(),
             DateTimeField::new('createdAt')->onlyOnIndex(),
         ];

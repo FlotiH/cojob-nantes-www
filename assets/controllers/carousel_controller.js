@@ -15,7 +15,7 @@ export default class extends Controller {
     };
 
     connect() {
-        this.autoplay = Autoplay({ delay: this.autoplayDelayValue, stopOnInteraction: false });
+        this.autoplay = Autoplay({ delay: this.autoplayDelayValue, stopOnInteraction: true });
 
         this.embla = EmblaCarousel(
             this.viewportTarget,
