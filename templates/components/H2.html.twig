@@ -1,0 +1,18 @@
+{% props color = 'primary' %}
+
+{% set h2 = html_cva(
+    base: 'text-[26px] font-bold font-[Poppins]',
+    variants: {
+        color: {
+            primary: 'text-navy-900',
+            secondary: '',
+        },
+    },
+    default_variant: {
+        color: 'primary',
+    },
+) %}
+
+<h2 {{ attributes.without('class') }} class="{{ h2.apply({color: color}, attributes.render('class')) }}">
+    {% block content '' %}
+</h2>

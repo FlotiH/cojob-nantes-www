@@ -21,9 +21,9 @@ enum TalkTag: string implements TranslatableInterface
     public function color(): string
     {
         return match ($this) {
-            self::ToRead => 'bg-green-100',
-            self::ToWatch => 'bg-blue-200',
-            self::ToListen => 'bg-orange-100',
+            self::ToRead => 'green100',
+            self::ToWatch => 'blue200',
+            self::ToListen => 'orange100',
         };
     }
 

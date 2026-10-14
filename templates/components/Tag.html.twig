@@ -1,0 +1,30 @@
+{% props color = 'green100', type = 'main' %}
+
+{% set tag = html_cva(
+    base: 'rounded-s',
+    variants: {
+        color: {
+            green100: 'bg-green-100 text-navy-900 border border-brand-green',
+            blue200: 'bg-blue-200 text-navy-900 border border-brand-whitedark',
+            orange100: 'bg-orange-100 text-navy-900 border border-brand-whitedark',
+            blue600: 'bg-blue-600 text-white border border-blue-300',
+            yellow300: 'bg-yellow-300',
+            yellow500: 'bg-yellow-500 text-white border border-yellow-100',
+            green: 'bg-brand-green text-white border border-green-100',
+        },
+        type: {
+            main: 'inline-block text-[13px] px-2.5 font-semibold py-1 ',
+            title: 'inline-block text-md lg:text-lg font-semibold font-[Poppins] px-2 rounded-s',
+            article: 'inline-flex items-center gap-1 text-[14px] font-semibold font-[Poppins] px-2.5 py-0.5 mb-4',
+            talkAboutUs: 'inline-flex items-center gap-1 text-[11px] px-2 py-1',
+        },
+    },
+    default_variant: {
+        color: 'green',
+        type: 'main',
+    },
+) %}
+
+<span {{ attributes.without('class') }} class="{{ tag.apply({color: color, type: type}, attributes.render('class')) }}">
+    {% block content '' %}
+</span>

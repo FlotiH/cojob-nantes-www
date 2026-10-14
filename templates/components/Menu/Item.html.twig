@@ -1,0 +1,18 @@
+{% props href, location = 'footer' %}
+
+{% set item = html_cva(
+    base: 'transition',
+    variants: {
+        location: {
+            footer: 'hover:text-white/60',
+            header: 'hover:text-brand-blue',
+        },
+    },
+    default_variant: {
+        location: 'footer',
+    },
+) %}
+
+<a href="{{ href }}" class="{{ item.apply({location: location}, attributes.render('class'))|tailwind_merge }}">
+    {% block content '' %}
+</a>

@@ -9,10 +9,12 @@ export default class extends Controller {
     };
 
     connect() {
+        this.autoplay = Autoplay({ delay: this.autoplayDelayValue, stopOnInteraction: true });
+
         this.embla = EmblaCarousel(
             this.viewportTarget,
             { loop: true },
-            [Autoplay({ delay: this.autoplayDelayValue, stopOnInteraction: true })]
+            [this.autoplay]
         );
 
         this.embla.on('select', () => this.updateDots());
@@ -24,15 +26,18 @@ export default class extends Controller {
     }
 
     next() {
+        this.autoplay.stop();
         this.embla.scrollNext();
     }
 
     prev() {
+        this.autoplay.stop();
         this.embla.scrollPrev();
     }
 
     goTo(event) {
         const index = parseInt(event.params.index, 10);
+        this.autoplay.stop();
         this.embla.scrollTo(index);
     }
 

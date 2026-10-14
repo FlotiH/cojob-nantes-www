@@ -77,10 +77,14 @@
                             },
                             blue: {
                                 100: '#F2F8FD',
+                                200: '#D3E7F8',
                                 300: '#86BDEF',
-                                600: '#1A72C1'
+                                600: '#1A72C1',
+                                700: '#145894',
+                                900: '#0A2D4C'
                             },
                             orange: {
+                                100: '#FFE0BD',
                                 200: '#FFCF99'
                             },
                             yellow: {
@@ -196,40 +200,35 @@
                 <p class="font-semibold text-xs mb-4">{{ 'v2.footer.social_links'|trans }}</p>
                 <link itemprop="url" href="{{ absolute_url(path('homepage')) }}">
                 <div class="flex gap-4 justify-center sm:justify-start">
-                    {{ include('button/contact.html.twig', {gtagEventName: 'Footer Email'}, with_context: false) }}
-                    {{ include('button/linkedin.html.twig', {gtagEventName: 'Footer Socials LinkedIn'}, with_context: false) }}
-                    {{ include('button/facebook.html.twig', {gtagEventName: 'Footer Socials Facebook'}, with_context: false) }}
+                    <twig:Social:Buttons location='Footer' />
                 </div>
             </div>
             <div class="lg:order-2 mt-4 sm:mt-0">
                 <ul class="space-y-4 text-xs font-semibold">
-                    <li><a href="{{ path('homepage') }}#about" class="hover:text-white/60">{{ 'v2.nav.about'|trans }}</a></li>
-                    <li><a href="{{ path('promos') }}" class="hover:text-white/60">{{ 'nav.promo'|trans }}</a></li>
-                    <li><a href="{{ path('calendar') }}" class="hover:text-white/60">{{ 'nav.calendar'|trans }}</a></li>
-                    <li><a href="{{ path('partners') }}" class="hover:text-white/60">{{ 'v2.nav.partners'|trans }}</a></li>
+                    <li><twig:Menu:Item href="{{ path('homepage') }}#about">{{ 'v2.nav.about'|trans }}</twig:Menu:Item></li>
+                    <li><twig:Menu:Item href="{{ path('promos') }}">{{ 'nav.promo'|trans }}</twig:Menu:Item></li>
+                    <li><twig:Menu:Item href="{{ path('calendar') }}">{{ 'nav.calendar'|trans }}</twig:Menu:Item></li>
+                    <li><twig:Menu:Item href="{{ path('partners') }}">{{ 'v2.nav.partners'|trans }}</twig:Menu:Item></li>
                 </ul>
             </div>
             <div class="lg:order-3 mt-4 sm:mt-0">
                 <p class="text-xs font-semibold mb-4">{{ 'nav.support_us'|trans }}</p>
                 <ul class="space-y-4 text-xs">
-                    <li><a href="{{ path('support') }}#join-form" class="hover:text-white/60"
-                        onclick="gtag('event', 'Join Link Footer', {'event_category': 'Button Click'});">
-                        {{ 'v2.nav.join'|trans }}</a>
-                    </li>
-                    <li><a href="{{ path('support') }}#donate-form" class="hover:text-white/60"
-                        onclick="gtag('event', 'Donate Link Footer', {'event_category': 'Button Click'});">
-                        {{ 'v2.nav.donate'|trans }}</a>
-                    </li>
-                    <li><a href="{{ path('support') }}" class="hover:text-white/60"
-                        onclick="gtag('event', 'Become volunteer Link Footer', {'event_category': 'Button Click'});">
-                        {{ 'v2.nav.become_volunteer'|trans }}</a>
-                    </li>
+                    <li><twig:Menu:Item href="{{ path('support') }}#join-form" onclick="gtag('event', 'Join Link Footer', {'event_category': 'Button Click'});">
+                        {{ 'v2.nav.join'|trans }}
+                    </twig:Menu:Item></li>
+                    <li><twig:Menu:Item href="{{ path('support') }}#donate-form" onclick="gtag('event', 'Donate Link Footer', {'event_category': 'Button Click'});">
+                        {{ 'v2.nav.donate'|trans }}
+                    </twig:Menu:Item></li>
+                    <li><twig:Menu:Item href="{{ path('support') }}" onclick="gtag('event', 'Become volunteer Link Footer', {'event_category': 'Button Click'});">
+                        {{ 'v2.nav.become_volunteer'|trans }}
+                    </twig:Menu:Item></li>
                 </ul>
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-6 flex flex-col sm:flex-row items-center justify-center gap-6 text-xs">
             <p>© COJOB Nantes 2026. Tous droits réservés.</p>
-            <a href="{{ path('legals') }}" class="underline hover:text-white/60">{{ 'footer.legals'|trans }}</a>
+            <twig:Button color="outlined" href="{{ path('legals') }}" class="text-xs">{{ 'footer.legals'|trans }}</twig:Button>
         </div>
     </footer>
     </body>
