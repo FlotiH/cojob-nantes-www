@@ -1,0 +1,21 @@
+{% props as = 'a', color = 'primary' %}
+
+{% set button = html_cva(
+    base: ' text-[15px] transition',
+    variants: {
+        color: {
+            primary: 'font-semibold px-5 py-2.5 rounded-s bg-navy-900 text-white hover:bg-blue-900',
+            secondary: 'font-semibold px-5 py-2.5 rounded-s bg-white text-navy-900 border border-brand-whitedark hover:bg-brand-whitedark',
+            outlined: 'underline hover:text-blue-900',
+        },
+    },
+    default_variant: {
+        color: 'primary',
+    },
+) %}
+
+<{{ as }} {{ attributes.without('class') }}
+    class="{{ button.apply({color: color}, attributes.render('class'))|tailwind_merge }}"
+>
+    {% block content '' %}
+</{{ as }}>

@@ -49,10 +49,12 @@ export default class extends Controller {
     }
 
     next() {
+        this.autoplay.stop();
         this.embla.scrollNext();
     }
 
     prev() {
+        this.autoplay.stop();
         this.embla.scrollPrev();
     }
 
@@ -63,7 +65,10 @@ export default class extends Controller {
             const dot = document.createElement('button');
             dot.className = 'w-2 h-2 rounded-full transition';
             dot.setAttribute('aria-label', `Aller au groupe ${index + 1}`);
-            dot.addEventListener('click', () => this.embla.scrollTo(index));
+            dot.addEventListener('click', () => {
+                this.autoplay.stop();
+                this.embla.scrollTo(index)
+            });
             this.dotsTarget.appendChild(dot);
         });
 

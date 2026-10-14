@@ -57,9 +57,9 @@
             </a>
 
             <div class="hidden lg:flex items-center gap-4 text-[15px] text-navy-900">
-                <a href="{{ path('homepage') }}#about" class="hover:text-brand-blue transition">{{ 'v2.nav.about'|trans }}</a>
-                <a href="{{ path('promos') }}" class="hover:text-brand-blue transition">{{ 'nav.promo'|trans }} </a>
-                <a href="{{ path('calendar') }}" class="hover:text-brand-blue transition">{{ 'nav.calendar'|trans }}</a>
+                <twig:Menu:Item location="header" href="{{ path('homepage') }}#about">{{ 'v2.nav.about'|trans }}</twig:Menu:Item>
+                <twig:Menu:Item location="header" href="{{ path('promos') }}">{{ 'nav.promo'|trans }}</twig:Menu:Item>
+                <twig:Menu:Item location="header" href="{{ path('calendar') }}#about">{{ 'nav.calendar'|trans }}</twig:Menu:Item>
                 <details class="relative inline-block">
                     <summary class="cursor-pointer flex items-center gap-1 hover:text-brand-blue transition list-none">
                         {{ 'nav.support_us'|trans }}
@@ -67,32 +67,27 @@
                     </summary>
 
                     <div class="absolute right-0 mt-2 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 z-10">
-                        <a href="{{ path('support') }}#join-form" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            onclick="gtag('event', 'Join Link Header', {'event_category': 'Button Click'});">
+                        <twig:Menu:DropdownItem href="{{ path('support') }}#join-form" gTagEventName="Join Link Header">
                             {{ 'v2.nav.join'|trans }}
-                        </a>
-                        <a href="{{ path('support') }}#donate-form" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            onclick="gtag('event', 'Donate Link Header', {'event_category': 'Button Click'});">
+                        </twig:Menu:DropdownItem>
+                        <twig:Menu:DropdownItem href="{{ path('support') }}#donate-form" gTagEventName="Donate Link Header">
                             {{ 'v2.nav.donate'|trans }}
-                        </a>
-                        <a href="{{ path('support') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            onclick="gtag('event', 'Become volunteer Link Header', {'event_category': 'Button Click'});">
-                            {{ 'v2.nav.become_volunteer'|trans }}
-                        </a>
+                        </twig:Menu:DropdownItem>
+                        <twig:Menu:DropdownItem href="{{ path('support') }}" gTagEventName="Become volunteer Link Header">
+                            {{ 'v2.nav.join'|trans }}
+                        </twig:Menu:DropdownItem>
                     </div>
                 </details>
             </div>
 
             <div class="flex items-center gap-4">
                 <div class="hidden md:flex items-center gap-3 text-navy-900">
-                    {{ include('button/contact.html.twig', {gtagEventName: 'Head Email'}, with_context: false) }}
-                    {{ include('button/linkedin.html.twig', {gtagEventName: 'Head Socials LinkedIn'}, with_context: false) }}
-                    {{ include('button/facebook.html.twig', {gtagEventName: 'Head Socials Facebook'}, with_context: false) }}
+                    <twig:Social:Buttons location='Head' />
                 </div>
-                <a href="{{ path('promos') }}#promoAnchor" class="hidden sm:inline-flex items-center bg-navy-900 text-white text-[15px] px-5 py-3 rounded-lg hover:bg-white hover:text-navy-900 hover:border hover:border-navy-900 transition"
+                <twig:Button href="{{ path('promos') }}#promoAnchor" class="hidden sm:inline-flex"
                     role="button">
                     {{ 'v2.home.promo_registration'|trans }}
-                </a>
+                </twig:Button>
                 <button class="lg:hidden w-9 h-9 flex items-center justify-center"
                     aria-expanded="false"
                     aria-controls="mobile-menu"
@@ -110,21 +105,15 @@
 
                 <ul id="mobile-menu" data-menu-target="panel"
                     class="hidden absolute inset-x-0 top-full z-50 w-full bg-white shadow-lg lg:hidden pb-4">
-                    <li>
-                        <a href="{{ path('homepage') }}#about" class="block px-4 py-3 hover:text-brand-blue transition">
-                            {{ 'v2.nav.about'|trans }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('promos') }}" class="block px-4 py-3 hover:text-brand-blue transition">
-                            {{ 'nav.promo'|trans }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('calendar') }}" class="block px-4 py-3 hover:text-brand-blue transition">
-                            {{ 'nav.calendar'|trans }}
-                        </a>
-                    </li>
+                    <li><twig:Menu:Item location="header" href="{{ path('homepage') }}#about" class="block px-4 py-3">
+                        {{ 'v2.nav.about'|trans }}
+                    </twig:Menu:Item></li>
+                    <li><twig:Menu:Item location="header" href="{{ path('promos') }}" class="block px-4 py-3">
+                        {{ 'nav.promo'|trans }}
+                    </twig:Menu:Item></li>
+                    <li><twig:Menu:Item location="header" href="{{ path('calendar') }}" class="block px-4 py-3">
+                        {{ 'nav.calendar'|trans }}
+                    </twig:Menu:Item></li>
                     <li>
                         <details class="relative block px-4 py-3">
                             <summary class="cursor-pointer flex items-center gap-1 hover:text-brand-blue transition list-none">
@@ -133,33 +122,28 @@
                             </summary>
 
                             <div class="absolute mt-2 w-5/6 rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 z-10">
-                                <a href="{{ path('support') }}#join-form" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                    onclick="gtag('event', 'Join Link Header', {'event_category': 'Button Click'});">
+                                <twig:Menu:DropdownItem href="{{ path('support') }}#join-form" gTagEventName="Join Link Header">
                                     {{ 'v2.nav.join'|trans }}
-                                </a>
-                                <a href="{{ path('support') }}#donate-form" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                    onclick="gtag('event', 'Donate Link Header', {'event_category': 'Button Click'});">
+                                </twig:Menu:DropdownItem>
+                                <twig:Menu:DropdownItem href="{{ path('support') }}#donate-form" gTagEventName="Donate Link Header">
                                     {{ 'v2.nav.donate'|trans }}
-                                </a>
-                                <a href="{{ path('support') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                    onclick="gtag('event', 'Become volunteer Link Header', {'event_category': 'Button Click'});">
-                                    {{ 'v2.nav.become_volunteer'|trans }}
-                                </a>
+                                </twig:Menu:DropdownItem>
+                                <twig:Menu:DropdownItem href="{{ path('support') }}" gTagEventName="Become volunteer Link Header">
+                                    {{ 'v2.nav.join'|trans }}
+                                </twig:Menu:DropdownItem>
                             </div>
                         </details>
                     </li>
                     <li class="md:hidden">
                         <div class="flex items-center gap-3 text-navy-900 px-4 py-3">
-                            {{ include('button/contact.html.twig', {gtagEventName: 'Head Email'}, with_context: false) }}
-                            {{ include('button/linkedin.html.twig', {gtagEventName: 'Head Socials LinkedIn'}, with_context: false) }}
-                            {{ include('button/facebook.html.twig', {gtagEventName: 'Head Socials Facebook'}, with_context: false) }}
+                            <twig:Social:Buttons location='Head' />
                         </div>
                     </li>
                     <li class="px-4 py-3 sm:hidden">
-                        <a href="{{ path('promos') }}#promoAnchor" class="items-center bg-navy-900 text-white text-[15px] px-5 py-3 rounded-lg hover:bg-white hover:text-navy-900 hover:border hover:border-navy-900 transition"
+                        <twig:Button href="{{ path('promos') }}#promoAnchor"
                             role="button">
                         {{ 'v2.home.promo_registration'|trans }}
-                        </a>
+                        </twig:Button>
                     </li>
                 </ul>
             </div>

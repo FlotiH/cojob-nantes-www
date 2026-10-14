@@ -21,9 +21,9 @@ enum ArticleTag: string implements TranslatableInterface
     public function color(): string
     {
         return match ($this) {
-            self::Cosearching => 'bg-blue-600',
-            self::Event => 'bg-yellow-500',
-            self::Promo => 'bg-brand-green',
+            self::Cosearching => 'blue600',
+            self::Event => 'yellow500',
+            self::Promo => 'green',
         };
     }
 
