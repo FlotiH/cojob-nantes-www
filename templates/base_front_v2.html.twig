@@ -24,34 +24,24 @@
             data-action="click@window->menu#closeOnClickOutside">
             <a href="{{ path('homepage') }}" class="flex items-center gap-2 shrink-0">
                 <picture>
-                    {# TODO FHA <source
-                        srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.avif') }} 300w,
-                        {{ asset('img/logo_partners/logo_ville_de_nantes-630.avif') }} 630w,
-                        {{ asset('img/logo_partners/logo_ville_de_nantes-170.avif') }} 170w"
-                        sizes="(max-width: 768px) 100vw, 25vw"
+                    <source
                         type="image/avif"
+                        srcset="{{ asset('img/v2/logo/header/logo-109.avif') }} 1x,
+                        {{ asset('img/v2/logo/header/logo-109@2x.avif') }} 2x"
                     >
                     <source
-                        srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.webp') }} 300w,
-                        {{ asset('img/logo_partners/logo_ville_de_nantes-630.webp') }} 630w,
-                        {{ asset('img/logo_partners/logo_ville_de_nantes-170.webp') }} 170w"
-                        sizes="(max-width: 768px) 100vw, 25vw"
                         type="image/webp"
+                        srcset="{{ asset('img/v2/logo/header/logo-109.webp') }} 1x,
+                        {{ asset('img/v2/logo/header/logo-109@2x.webp') }} 2x"
                     >
                     <img
-                        src="{{ asset('img/main/logo-200.png') }}"
-                        srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.jpg') }} 300w,
-                        {{ asset('img/logo_partners/logo_ville_de_nantes-630.jpg') }} 630w,
-                        {{ asset('img/logo_partners/logo_ville_de_nantes-170.jpg') }} 170w"
-                        sizes="(max-width: 768px) 100vw, 25vw"
-                        alt="Cojob Nantes"
-                        width="280"
-                        height="125"> #}
-                    <img
-                        src="{{ asset('img/main/logo-200.png') }}" {# TODO FHA : revoir les tailles #}
+                        src="{{ asset('img/v2/logo/header/logo-109.png') }}"
+                        srcset="{{ asset('img/v2/logo/header/logo-109.png') }} 1x,
+                        {{ asset('img/v2/logo/header/logo-109@2x.png') }} 2x"
                         alt="Cojob Nantes"
                         width="109"
-                        height="38">
+                        height="38"
+                        fetchpriority="high">
                 </picture>
                 <span class="sr-only">Cojob Nantes</span>
             </a>

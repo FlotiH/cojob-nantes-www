@@ -20,12 +20,8 @@
               {% if promoOpen[0] is defined %}
                 <twig:Tag class="mb-4">{{ 'v2.home.next_promo_from'|trans }} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }}</twig:Tag>
               {% endif %}
-              <h1 class="text-[38px] font-extrabold font-[Poppins] leading-10">
-                {{ 'v2.home.hero.slide1.title'|trans|raw }}
-              </h1>
-              <p class="mt-4 text-[15px]/1">
-                {{ 'v2.home.hero.slide1.subtitle'|trans }}
-              </p>
+              <h1 class="text-[38px] font-extrabold font-[Poppins] leading-10">{{ 'v2.home.hero.slide1.title'|trans|raw }}</h1>
+              <p class="mt-4 text-[15px]/1">{{ 'v2.home.hero.slide1.subtitle'|trans }}</p>
 
               <p class="mt-4 text-[15px] font-semibold"> {{ 'v2.home.hero.slide1.people_supported'|trans }}</p>
 
@@ -37,38 +33,35 @@
               </div>
             </div>
             <div class="flex-1">
-              <div>
-                <picture>
-                                  {# TODO FHA <source
-                                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.avif') }} 300w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.avif') }} 630w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.avif') }} 170w"
-                                    sizes="(max-width: 768px) 100vw, 25vw"
-                                    type="image/avif"
-                                  >
-                                  <source
-                                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.webp') }} 300w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.webp') }} 630w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.webp') }} 170w"
-                                    sizes="(max-width: 768px) 100vw, 25vw"
-                                    type="image/webp"
-                                  >
-                                  <img
-                                    src="{{ asset('img/main/logo-200.png') }}"
-                                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.jpg') }} 300w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.jpg') }} 630w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.jpg') }} 170w"
-                                    sizes="(max-width: 768px) 100vw, 25vw"
-                                    alt="Cojob Nantes"
-                                    width="280"
-                                    height="125"> #}
-                  <img
-                    src="{{ asset('img/main/header promo.png') }}" {# TODO FHA : revoir les tailles #}
-                    alt="Les promos de Cojob Nantes"
-                    width="508"
-                    height="521">
-                </picture>
-              </div>
+              <picture>
+                <source
+                  type="image/avif"
+                  srcset="{{ asset('img/v2/header/header promo-400.avif') }} 400w,
+                  {{ asset('img/v2/header/header promo-508.avif') }} 508w,
+                  {{ asset('img/v2/header/header promo-400@2x.avif') }} 800w,
+                  {{ asset('img/v2/header/header promo-508@2x.avif') }} 1016w"
+                  sizes="(max-width: 420px) 400px, 544px"
+                >
+                <source
+                  type="image/webp"
+                  srcset="{{ asset('img/v2/header/header promo-400.webp') }} 400w,
+                  {{ asset('img/v2/header/header promo-508.webp') }} 508w,
+                  {{ asset('img/v2/header/header promo-400@2x.webp') }} 800w,
+                  {{ asset('img/v2/header/header promo-508@2x.webp') }} 1016w"
+                  sizes="(max-width: 420px) 400px, 544px"
+                >
+                <img
+                  src="{{ asset('img/v2/header/header promo-508.png') }}" {# TODO FHA : créer les png ? #}
+                  srcset="{{ asset('img/v2/header/header promo-400.png') }} 400w,
+                  {{ asset('img/v2/header/header promo-508.png') }} 508w,
+                  {{ asset('img/v2/header/header promo-400@2x.png') }} 800w,
+                  {{ asset('img/v2/header/header promo-508@2x.png') }} 1016w"
+                  sizes="(max-width: 420px) 400px, 544px"   {# TODO FHA : à définir suivant le responsive #}
+                  width="508"
+                  height="521"
+                  alt="Les promos de Cojob Nantes"
+                  fetchpriority="high">
+              </picture>
             </div>
           </div>
 
@@ -78,12 +71,8 @@
               <twig:Tag class="mb-4">
                 {{ 'v2.home.next_cosearching_from'|trans }} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }}  {# TODO FHA : changer les dates ? #}
               </twig:Tag>
-              <h1 class="text-[38px] font-extrabold font-[Poppins] leading-tight">
-                {{ 'v2.home.hero.slide2.title'|trans|raw }}
-              </h1>
-              <p class="mt-4 text-[15px]">
-                {{ 'v2.home.hero.slide2.subtitle'|trans }}
-              </p>
+              <h1 class="text-[38px] font-extrabold font-[Poppins] leading-tight">{{ 'v2.home.hero.slide2.title'|trans|raw }}</h1>
+              <p class="mt-4 text-[15px]">{{ 'v2.home.hero.slide2.subtitle'|trans }}</p>
 
               <div class="mt-4">
                 <p class="text-[15px]"> {{ 'v2.home.hero.slide2.reserved_for_members'|trans }}</p>
@@ -99,34 +88,34 @@
 
             <div class="flex-1">
               <picture>
-                                  {# TODO FHA <source
-                                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.avif') }} 300w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.avif') }} 630w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.avif') }} 170w"
-                                    sizes="(max-width: 768px) 100vw, 25vw"
-                                    type="image/avif"
-                                  >
-                                  <source
-                                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.webp') }} 300w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.webp') }} 630w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.webp') }} 170w"
-                                    sizes="(max-width: 768px) 100vw, 25vw"
-                                    type="image/webp"
-                                  >
-                                  <img
-                                    src="{{ asset('img/main/logo-200.png') }}"
-                                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.jpg') }} 300w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.jpg') }} 630w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.jpg') }} 170w"
-                                    sizes="(max-width: 768px) 100vw, 25vw"
-                                    alt="Cojob Nantes"
-                                    width="280"
-                                    height="125"> #}
+                <source
+                  type="image/avif"
+                  srcset="{{ asset('img/v2/header/header cosearching-400.avif') }} 400w,
+                  {{ asset('img/v2/header/header cosearching-508.avif') }} 508w,
+                  {{ asset('img/v2/header/header cosearching-400@2x.avif') }} 800w,
+                  {{ asset('img/v2/header/header cosearching-508@2x.avif') }} 1016w"
+                  sizes="(max-width: 420px) 400px, 544px"
+                >
+                <source
+                  type="image/webp"
+                  srcset="{{ asset('img/v2/header/header cosearching-400.webp') }} 400w,
+                  {{ asset('img/v2/header/header cosearching-508.webp') }} 508w,
+                  {{ asset('img/v2/header/header cosearching-400@2x.webp') }} 800w,
+                  {{ asset('img/v2/header/header cosearching-508@2x.webp') }} 1016w"
+                  sizes="(max-width: 420px) 400px, 544px"
+                >
                 <img
-                  src="{{ asset('img/main/header cosearching.png') }}" {# TODO FHA : revoir les tailles #}
-                  alt="Le cosearching à Cojob Nantes"
+                  src="{{ asset('img/v2/header/header cosearching-508.png') }}"
+                  srcset="{{ asset('img/v2/header/header cosearching-400.png') }} 400w,
+                  {{ asset('img/v2/header/header cosearching-508.png') }} 508w,
+                  {{ asset('img/v2/header/header cosearching-400@2x.png') }} 800w,
+                  {{ asset('img/v2/header/header cosearching-508@2x.png') }} 1016w"
+                  sizes="(max-width: 420px) 400px, 544px"   {# TODO FHA : à définir suivant le responsive #}
                   width="508"
-                  height="521">
+                  height="521"
+                  alt="Le cosearching à Cojob Nantes"
+                  loading="lazy"
+                  decoding="async">
               </picture>
             </div>
           </div>
@@ -157,34 +146,34 @@
 
             <div class="flex-1">
               <picture>
-                                  {# TODO FHA <source
-                                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.avif') }} 300w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.avif') }} 630w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.avif') }} 170w"
-                                    sizes="(max-width: 768px) 100vw, 25vw"
-                                    type="image/avif"
-                                  >
-                                  <source
-                                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.webp') }} 300w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.webp') }} 630w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.webp') }} 170w"
-                                    sizes="(max-width: 768px) 100vw, 25vw"
-                                    type="image/webp"
-                                  >
-                                  <img
-                                    src="{{ asset('img/main/logo-200.png') }}"
-                                    srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.jpg') }} 300w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-630.jpg') }} 630w,
-                                    {{ asset('img/logo_partners/logo_ville_de_nantes-170.jpg') }} 170w"
-                                    sizes="(max-width: 768px) 100vw, 25vw"
-                                    alt="Cojob Nantes"
-                                    width="280"
-                                    height="125"> #}
+                <source
+                  type="image/avif"
+                  srcset="{{ asset('img/v2/header/header events-400.avif') }} 400w,
+                  {{ asset('img/v2/header/header events-508.avif') }} 508w,
+                  {{ asset('img/v2/header/header events-400@2x.avif') }} 800w,
+                  {{ asset('img/mav2/headerin/header events-508@2x.avif') }} 1016w"
+                  sizes="(max-width: 420px) 400px, 544px"
+                >
+                <source
+                  type="image/webp"
+                  srcset="{{ asset('img/v2/header/header events-400.webp') }} 400w,
+                  {{ asset('img/v2/header/header events-508.webp') }} 508w,
+                  {{ asset('img/v2/header/header events-400@2x.webp') }} 800w,
+                  {{ asset('img/v2/header/header events-508@2x.webp') }} 1016w"
+                  sizes="(max-width: 420px) 400px, 544px"
+                >
                 <img
-                  src="{{ asset('img/main/header events.png') }}" {# TODO FHA : revoir les tailles #}
-                  alt="Les évènements de Cojob Nantes"
+                  src="{{ asset('img/v2/header/header events-508.png') }}"
+                  srcset="{{ asset('img/v2/header/header events-400.png') }} 400w,
+                  {{ asset('img/v2/header/header events-508.png') }} 508w,
+                  {{ asset('img/v2/header/header events-400@2x.png') }} 800w,
+                  {{ asset('img/v2/header/header events-508@2x.png') }} 1016w"
+                  sizes="(max-width: 420px) 400px, 544px"   {# TODO FHA : à définir suivant le responsive #}
                   width="508"
-                  height="521">
+                  height="521"
+                  alt="Les évènements de Cojob Nantes"
+                  loading="lazy"
+                  decoding="async">
               </picture>
             </div>
           </div>
@@ -280,34 +269,34 @@
         <div class="relative">
           <div class="relative rounded-md overflow-hidden sm:h-[350px] flex items-center justify-center">
             <picture>
-              {# TODO FHA <source
-                srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.avif') }} 300w,
-                {{ asset('img/logo_partners/logo_ville_de_nantes-630.avif') }} 630w,
-                {{ asset('img/logo_partners/logo_ville_de_nantes-170.avif') }} 170w"
-                sizes="(max-width: 768px) 100vw, 25vw"
+              <source
                 type="image/avif"
+                srcset="{{ asset('img/v2/main/Cojob-Nantes-10ans-400.avif') }} 400w,
+                {{ asset('img/v2/main/Cojob-Nantes-10ans-544.avif') }} 544w,
+                {{ asset('img/v2/main/Cojob-Nantes-10ans-400@2x.avif') }} 800w,
+                {{ asset('img/v2/main/Cojob-Nantes-10ans-544@2x.avif') }} 1088w"
+                sizes="(max-width: 420px) 400px, 544px"
               >
               <source
-                srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.webp') }} 300w,
-                {{ asset('img/logo_partners/logo_ville_de_nantes-630.webp') }} 630w,
-                {{ asset('img/logo_partners/logo_ville_de_nantes-170.webp') }} 170w"
-                sizes="(max-width: 768px) 100vw, 25vw"
                 type="image/webp"
+                srcset="{{ asset('img/v2/main/Cojob-Nantes-10ans-400.webp') }} 400w,
+                {{ asset('img/v2/main/Cojob-Nantes-10ans-544.webp') }} 544w,
+                {{ asset('img/v2/main/Cojob-Nantes-10ans-400@2x.webp') }} 800w,
+                {{ asset('img/v2/main/Cojob-Nantes-10ans-544@2x.webp') }} 1088w"
+                sizes="(max-width: 420px) 400px, 544px"
               >
               <img
-                src="{{ asset('img/main/logo-200.png') }}"
-                srcset="{{ asset('img/logo_partners/logo_ville_de_nantes-300.jpg') }} 300w,
-                {{ asset('img/logo_partners/logo_ville_de_nantes-630.jpg') }} 630w,
-                {{ asset('img/logo_partners/logo_ville_de_nantes-170.jpg') }} 170w"
-                sizes="(max-width: 768px) 100vw, 25vw"
-                alt="Cojob Nantes"
-                width="280"
-                height="125"> #}
-              <img
-                src="{{ asset('img/main/Cojob-Nantes-10ans.jpg') }}" {# TODO FHA : revoir les tailles #}
-                alt="Cojob Nantes fête des 10 ans de l'association"
+                src="{{ asset('img/v2/main/Cojob-Nantes-10ans-544.jpg') }}"
+                srcset="{{ asset('img/v2/main/Cojob-Nantes-10ans-400.jpg') }} 400w,
+                {{ asset('img/v2/main/Cojob-Nantes-10ans-544.jpg') }} 544w,
+                {{ asset('img/v2/main/Cojob-Nantes-10ans-400@2x.jpg') }} 800w,
+                {{ asset('img/v2/main/Cojob-Nantes-10ans-544@2x.jpg') }} 1088w"
+                sizes="(max-width: 420px) 400px, 544px"
                 width="544"
-                height="350">
+                height="350"
+                alt="Cojob Nantes fête des 10 ans de l'association"
+                loading="lazy"
+                decoding="async">
             </picture>
             <div class="absolute bottom-4">
               <svg class="hidden sm:inline -mt-5" width="73" height="36" viewBox="0 0 73 36" fill="none" xmlns="http://www.w3.org/2000/svg">
