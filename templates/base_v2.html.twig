@@ -160,30 +160,27 @@
         <div class="px-6 xl:px-0 max-w-[1048px] mx-auto grid sm:grid-cols-2 lg:grid-cols-[3fr_2fr_2fr_2fr] pb-12 border-b border-blue-100">
             <div class="mb-8 lg:md-0">
                 <a href="{{ path('homepage') }}" class="inline-block sm:inline mx-auto">
-                {# TODO FHA : revoir les tailles quand j'aurai la bonne image #}
                     <picture>
-                        {# <source
-                            srcset="{{ asset('img/main/logo-no-bg-400.avif') }} 400w,
-                            {{ asset('img/main/logo-white-200.avif') }} 200w"
-                            sizes="(max-width: 576px) 34vw, 100vw"
+                        <source
                             type="image/avif"
+                            srcset="{{ asset('img/v2/logo/footer/logo-white-150.avif') }} 1x,
+                            {{ asset('img/v2/logo/footer/logo-white-150@2x.avif') }} 2x"
                         >
                         <source
-                            srcset="{{ asset('img/main/logo-no-bg-400.webp') }} 400w,
-                            {{ asset('img/main/logo-white-200.webp') }} 200w"
-                            sizes="(max-width: 576px) 34vw, 100vw"
                             type="image/webp"
-                        > #}
+                            srcset="{{ asset('img/v2/logo/footer/logo-white-150.webp') }} 1x,
+                            {{ asset('img/v2/logo/footer/logo-white-150@2x.webp') }} 2x"
+                        >
                         <img
-                            src="{{ asset('img/main/logo-white.png') }}"
-                            {# srcset="{{ asset('img/main/logo-white-400.png') }} 400w,
-                            {{ asset('img/main/logo-white-200.png') }} 200w"
-                            sizes="(max-width: 576px) 34vw, 100vw" #}
+                            src="{{ asset('img/v2/logo/footer/logo-white-150.png') }}"
+                            srcset="{{ asset('img/v2/logo/footer/logo-white-150.png') }} 1x,
+                            {{ asset('img/v2/logo/footer/logo-white-150@2x.png') }} 2x"
                             alt="Cojob Nantes"
                             class="w-[150px]"
                             width="150"
                             height="52"
-                        >
+                            loading="lazy"
+                            decoding="async">
                     </picture>
                 </a>
                 <p class="text-xs mt-6 max-w-[150px] text-center">

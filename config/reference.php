@@ -1572,7 +1572,8 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     metadata_cache_pool?: scalar|Param|null, // Default: null
  * }
  * @psalm-type CalendarConfig = array{
- *     cache_max_age?: int|Param, // HTTP cache max-age in seconds (0 to disable) // Default: 300
+ *     cache_max_age?: int|Param, // HTTP cache max-age in seconds for public caching; private feeds are revalidated on every request (0 to disable caching) // Default: 300
+ *     cache_public?: bool|Param, // Allow shared caches (proxies, CDNs) to store the events feed; keep false when events depend on the user // Default: false
  *     json_max_depth?: int|Param, // Maximum JSON nesting depth for filters parameter // Default: 4
  * }
  * @psalm-type VichUploaderConfig = array{

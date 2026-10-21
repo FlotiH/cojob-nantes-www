@@ -25,7 +25,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('<img src="/img/main/logo-200.avif" alt="Cojob Nantes" style="max-width: 100%">')
+            ->setTitle('<img src="/img/v2/logo/header/logo-109.avif" alt="Cojob Nantes" style="max-width: 100%">')
             ->setFaviconPath('favicon.ico');
     }
 
