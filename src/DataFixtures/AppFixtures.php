@@ -75,6 +75,7 @@ class AppFixtures extends Fixture
 
         $partner = new Partner()
             ->setPriority(1)
+            ->setDisplayWidth(100)
             ->setName('name')
         ;
         $manager->persist($partner);

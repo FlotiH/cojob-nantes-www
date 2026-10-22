@@ -225,6 +225,7 @@ Content: Contenu (penser à gérer le responsive du contenu)
 Created At: Crée le
 Created By: Crée par
 Date: Date
+Display width: Largeur d'affichage en pixel
 Duration: Durée (en min)
 Email: Email
 Enabled: Actif
@@ -298,4 +299,4 @@ placeholder:
 help:
   image:
     32x32: 'Format recommandé : 32px x 32px, merci de compresser l''image avant de la déposer (avec tinypng.com par exemple)'
-    max170x64: 'Format maximal recommandé : 170px x 64px, merci de compresser l''image avant de la déposer (avec tinypng.com par exemple)'
+    max340x128: 'Format maximal recommandé : 340px x 128px, merci de compresser l''image avant de la déposer (avec tinypng.com par exemple)'

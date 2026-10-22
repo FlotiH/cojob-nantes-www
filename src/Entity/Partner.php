@@ -52,6 +52,11 @@ class Partner
     #[Vich\UploadableField(mapping: 'medias', fileNameProperty: 'image')]
     private ?File $imageFile = null;
 
+    #[ORM\Column(type: Types::SMALLINT)]
+    #[Assert\NotBlank]
+    #[Assert\GreaterThan(0)]
+    private int $displayWidth;
+
     public function __toString()
     {
         return (string) $this->name;
@@ -141,5 +146,17 @@ class Partner
     public function getImageLink(): string
     {
         return '';
+    }
+
+    public function getDisplayWidth(): ?int
+    {
+        return $this->displayWidth;
+    }
+
+    public function setDisplayWidth(int $displayWidth): static
+    {
+        $this->displayWidth = $displayWidth;
+
+        return $this;
     }
 }
