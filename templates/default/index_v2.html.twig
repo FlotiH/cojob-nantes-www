@@ -8,179 +8,76 @@
 
 {% block content %}
 <!-- ============ HERO ============ -->
-<section class="bg-yellow-100 relative overflow-hidden py-8 sm:py-16">
+<section class="bg-yellow-100 relative overflow-hidden py-8 md:py-16">
   <div class="px-2 xl:px-0 max-w-[1048px] mx-auto ">
 
     <div {{ stimulus_controller('header_carousel') }} class="relative">
       <div {{ stimulus_target('header_carousel', 'viewport') }} class="overflow-hidden">
         <div class="flex">
           {# slide 1 #}
-          <div class="flex-[0_0_100%] min-w-0 flex gap-4 xl:gap-8 items-center">
-            <div class="flex-1">
+          <twig:Carousel:HeaderSlide loop="0" imgUrl="img/v2/header/header promo" imgAlt="Les promos de Cojob Nantes">
+            {% if promoOpen[0] is defined %}
+              <twig:Tag class="mb-4">{{ 'v2.home.next_promo_from'|trans }} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }}</twig:Tag>
+            {% endif %}
+            <h1 class="text-[30px] sm:text-[38px] font-extrabold font-[Poppins] leading-10">{{ 'v2.home.hero.slide1.title'|trans|raw }}</h1>
+            <p class="mt-4 text-[15px]/1">{{ 'v2.home.hero.slide1.subtitle'|trans }}</p>
+
+            <p class="mt-4 text-[15px] font-semibold"> {{ 'v2.home.hero.slide1.people_supported'|trans }}</p>
+
+            <div class="mt-12 flex flex-start gap-4">
               {% if promoOpen[0] is defined %}
-                <twig:Tag class="mb-4">{{ 'v2.home.next_promo_from'|trans }} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }}</twig:Tag>
+                <twig:Button href="{{ path('promos') }}#promoAnchor" onclick="gtag('event', 'Home Register promo hero', {'event_category': 'Button Click'});">{{ 'v2.home.next_promo_registration'|trans }}</twig:Button>
               {% endif %}
-              <h1 class="text-[38px] font-extrabold font-[Poppins] leading-10">{{ 'v2.home.hero.slide1.title'|trans|raw }}</h1>
-              <p class="mt-4 text-[15px]/1">{{ 'v2.home.hero.slide1.subtitle'|trans }}</p>
-
-              <p class="mt-4 text-[15px] font-semibold"> {{ 'v2.home.hero.slide1.people_supported'|trans }}</p>
-
-              <div class="mt-12 flex flex-start gap-4">
-                {% if promoOpen[0] is defined %}
-                  <twig:Button href="{{ path('promos') }}#promoAnchor" onclick="gtag('event', 'Home Register promo hero', {'event_category': 'Button Click'});">{{ 'v2.home.next_promo_registration'|trans }}</twig:Button>
-                {% endif %}
-                <twig:Button color="secondary" href="{{ path('promos') }}">{{ 'v2.home.more'|trans }}</twig:Button>
-              </div>
+              <twig:Button color="secondary" href="{{ path('promos') }}">{{ 'v2.home.more'|trans }}</twig:Button>
             </div>
-            <div class="flex-1">
-              <picture>
-                <source
-                  type="image/avif"
-                  srcset="{{ asset('img/v2/header/header promo-400.avif') }} 400w,
-                  {{ asset('img/v2/header/header promo-508.avif') }} 508w,
-                  {{ asset('img/v2/header/header promo-400@2x.avif') }} 800w,
-                  {{ asset('img/v2/header/header promo-508@2x.avif') }} 1016w"
-                  sizes="(max-width: 420px) 400px, 544px"
-                >
-                <source
-                  type="image/webp"
-                  srcset="{{ asset('img/v2/header/header promo-400.webp') }} 400w,
-                  {{ asset('img/v2/header/header promo-508.webp') }} 508w,
-                  {{ asset('img/v2/header/header promo-400@2x.webp') }} 800w,
-                  {{ asset('img/v2/header/header promo-508@2x.webp') }} 1016w"
-                  sizes="(max-width: 420px) 400px, 544px"
-                >
-                <img
-                  src="{{ asset('img/v2/header/header promo-508.png') }}" {# TODO FHA : créer les png ? #}
-                  srcset="{{ asset('img/v2/header/header promo-400.png') }} 400w,
-                  {{ asset('img/v2/header/header promo-508.png') }} 508w,
-                  {{ asset('img/v2/header/header promo-400@2x.png') }} 800w,
-                  {{ asset('img/v2/header/header promo-508@2x.png') }} 1016w"
-                  sizes="(max-width: 420px) 400px, 544px"   {# TODO FHA : à définir suivant le responsive #}
-                  width="508"
-                  height="521"
-                  alt="Les promos de Cojob Nantes"
-                  fetchpriority="high">
-              </picture>
-            </div>
-          </div>
+          </twig:Carousel:HeaderSlide>
 
           {# slide 2 #}
-          <div class="flex-[0_0_100%] min-w-0 flex gap-8 items-center">
-            <div class="flex-1">
-              <twig:Tag class="mb-4">
-                {{ 'v2.home.next_cosearching_from'|trans }} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }}  {# TODO FHA : changer les dates ? #}
-              </twig:Tag>
-              <h1 class="text-[38px] font-extrabold font-[Poppins] leading-tight">{{ 'v2.home.hero.slide2.title'|trans|raw }}</h1>
-              <p class="mt-4 text-[15px]">{{ 'v2.home.hero.slide2.subtitle'|trans }}</p>
+          <twig:Carousel:HeaderSlide loop="1" imgUrl="img/v2/header/header cosearching" imgAlt="Le cosearching à Cojob Nantes">
+            <twig:Tag class="mb-4">
+              {{ 'v2.home.next_cosearching_from'|trans }} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }}  {# TODO FHA : changer les dates ? #}
+            </twig:Tag>
+            <h1 class="text-[30px] sm:text-[38px] font-extrabold font-[Poppins] leading-tight">{{ 'v2.home.hero.slide2.title'|trans|raw }}</h1>
+            <p class="mt-4 text-[15px]">{{ 'v2.home.hero.slide2.subtitle'|trans }}</p>
 
-              <div class="mt-4">
-                <p class="text-[15px]"> {{ 'v2.home.hero.slide2.reserved_for_members'|trans }}</p>
-              </div>
-
-              <div class="mt-12 flex flex-wrap items-center gap-4">
-                {# <twig:Button href="{{ path('promos') }}#promoAnchor" onclick="gtag('event', 'Home Register promo hero', {'event_category': 'Button Click'});">
-                  {{ 'v2.home.next_promo_registration'|trans }}
-                </twig:Button> #}
-                <twig:Button color="secondary" href="{{ path('homepage_v2') }}">{{ 'v2.home.more'|trans }}</twig:Button>
-              </div>
+            <div class="mt-4">
+              <p class="text-[15px]"> {{ 'v2.home.hero.slide2.reserved_for_members'|trans }}</p>
             </div>
 
-            <div class="flex-1">
-              <picture>
-                <source
-                  type="image/avif"
-                  srcset="{{ asset('img/v2/header/header cosearching-400.avif') }} 400w,
-                  {{ asset('img/v2/header/header cosearching-508.avif') }} 508w,
-                  {{ asset('img/v2/header/header cosearching-400@2x.avif') }} 800w,
-                  {{ asset('img/v2/header/header cosearching-508@2x.avif') }} 1016w"
-                  sizes="(max-width: 420px) 400px, 544px"
-                >
-                <source
-                  type="image/webp"
-                  srcset="{{ asset('img/v2/header/header cosearching-400.webp') }} 400w,
-                  {{ asset('img/v2/header/header cosearching-508.webp') }} 508w,
-                  {{ asset('img/v2/header/header cosearching-400@2x.webp') }} 800w,
-                  {{ asset('img/v2/header/header cosearching-508@2x.webp') }} 1016w"
-                  sizes="(max-width: 420px) 400px, 544px"
-                >
-                <img
-                  src="{{ asset('img/v2/header/header cosearching-508.png') }}"
-                  srcset="{{ asset('img/v2/header/header cosearching-400.png') }} 400w,
-                  {{ asset('img/v2/header/header cosearching-508.png') }} 508w,
-                  {{ asset('img/v2/header/header cosearching-400@2x.png') }} 800w,
-                  {{ asset('img/v2/header/header cosearching-508@2x.png') }} 1016w"
-                  sizes="(max-width: 420px) 400px, 544px"   {# TODO FHA : à définir suivant le responsive #}
-                  width="508"
-                  height="521"
-                  alt="Le cosearching à Cojob Nantes"
-                  loading="lazy"
-                  decoding="async">
-              </picture>
+            <div class="mt-12 flex flex-wrap items-center gap-4">
+              {# <twig:Button href="{{ path('promos') }}#promoAnchor" onclick="gtag('event', 'Home Register promo hero', {'event_category': 'Button Click'});">
+                {{ 'v2.home.next_promo_registration'|trans }}
+              </twig:Button> #}
+              <twig:Button color="secondary" href="{{ path('homepage_v2') }}">{{ 'v2.home.more'|trans }}</twig:Button>
             </div>
-          </div>
+          </twig:Carousel:HeaderSlide>
 
           {# slide 3 #}
-          <div class="flex-[0_0_100%] min-w-0 flex gap-8 items-center">
-            <div class="flex-1">
-              <twig:Tag class="mb-4">
-                {{ 'v2.home.next_aperotaf_from'|trans }} 15 juillet {# TODO FHA : trouver date et mettre une condition #}
-              </twig:Tag>
-              <h1 class="text-[38px] font-extrabold font-[Poppins] leading-tight">
-                {{ 'v2.home.hero.slide3.title'|trans|raw }}
-              </h1>
-              <p class="mt-4 text-[15px]">
-                {{ 'v2.home.hero.slide3.subtitle'|trans }}
-              </p>
+          <twig:Carousel:HeaderSlide loop="2" imgUrl="img/v2/header/header events" imgAlt="Les évènements de Cojob Nantes">
+            <twig:Tag class="mb-4">
+              {{ 'v2.home.next_aperotaf_from'|trans }} 15 juillet {# TODO FHA : trouver date et mettre une condition #}
+            </twig:Tag>
+            <h1 class="text-[30px] sm:text-[38px] font-extrabold font-[Poppins] leading-tight">
+              {{ 'v2.home.hero.slide3.title'|trans|raw }}
+            </h1>
+            <p class="mt-4 text-[15px]">
+              {{ 'v2.home.hero.slide3.subtitle'|trans }}
+            </p>
 
-              <div class="mt-4">
-                <p class="text-[15px]"> {{ 'v2.home.hero.slide3.aperotaf_goal'|trans }}</p>
-              </div>
-
-              <div class="mt-12 flex flex-wrap items-center">
-                <twig:Button color="secondary" href="{{ path('calendar') }}">
-                  {{ 'v2.home.next_events'|trans }}
-                </twig:Button>
-              </div>
+            <div class="mt-4">
+              <p class="text-[15px]"> {{ 'v2.home.hero.slide3.aperotaf_goal'|trans }}</p>
             </div>
 
-            <div class="flex-1">
-              <picture>
-                <source
-                  type="image/avif"
-                  srcset="{{ asset('img/v2/header/header events-400.avif') }} 400w,
-                  {{ asset('img/v2/header/header events-508.avif') }} 508w,
-                  {{ asset('img/v2/header/header events-400@2x.avif') }} 800w,
-                  {{ asset('img/mav2/headerin/header events-508@2x.avif') }} 1016w"
-                  sizes="(max-width: 420px) 400px, 544px"
-                >
-                <source
-                  type="image/webp"
-                  srcset="{{ asset('img/v2/header/header events-400.webp') }} 400w,
-                  {{ asset('img/v2/header/header events-508.webp') }} 508w,
-                  {{ asset('img/v2/header/header events-400@2x.webp') }} 800w,
-                  {{ asset('img/v2/header/header events-508@2x.webp') }} 1016w"
-                  sizes="(max-width: 420px) 400px, 544px"
-                >
-                <img
-                  src="{{ asset('img/v2/header/header events-508.png') }}"
-                  srcset="{{ asset('img/v2/header/header events-400.png') }} 400w,
-                  {{ asset('img/v2/header/header events-508.png') }} 508w,
-                  {{ asset('img/v2/header/header events-400@2x.png') }} 800w,
-                  {{ asset('img/v2/header/header events-508@2x.png') }} 1016w"
-                  sizes="(max-width: 420px) 400px, 544px"   {# TODO FHA : à définir suivant le responsive #}
-                  width="508"
-                  height="521"
-                  alt="Les évènements de Cojob Nantes"
-                  loading="lazy"
-                  decoding="async">
-              </picture>
+            <div class="mt-12 flex flex-wrap items-center">
+              <twig:Button color="secondary" href="{{ path('calendar') }}">
+                {{ 'v2.home.next_events'|trans }}
+              </twig:Button>
             </div>
-          </div>
+          </twig:Carousel:HeaderSlide>
         </div>
       </div>
 
-      <div class="max-w-7xl px-6 lg:px-10 xl:pb-10 flex items-center justify-between">
+      <div class="max-w-7xl px-6 pt-2 md:pt-0 lg:px-10 xl:pb-10 flex items-center justify-between">
         <div class="flex gap-2 mx-auto">
           <button
                   {{ stimulus_target('header_carousel', 'dot') }}
@@ -478,10 +375,10 @@
             <div class="flex-[0_0_100%] sm:flex-[0_0_33.3333%] lg:flex-[0_0_16.6667%] min-w-0">
               {% if partner.link %}
                 <a href="{{ partner.link }}" target="_blank" rel="noopener noreferrer">
-                  <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}"/>
+                  <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}" class="h-auto size-[{{ partner.displayWidth }}px]"/>
                 </a>
               {% else %}
-                <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}"/>
+                <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}" class="h-auto size-[{{ partner.displayWidth }}px]"/>
               {% endif %}
             </div>
           {% endfor %}

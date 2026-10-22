@@ -1,0 +1,45 @@
+{% props loop, imgUrl, imgAlt %}
+
+<div class="flex-[0_0_100%] min-w-0 flex flex-col md:flex-row gap-4 xl:gap-8 items-center">
+    <div class="md:flex-1 md:order-2">
+        <picture>
+            <source
+                type="image/avif"
+                srcset="{{ asset(imgUrl ~ '-312.avif') }} 312w,
+                {{ asset(imgUrl ~ '-508.avif') }} 508w,
+                {{ asset(imgUrl ~ '-312@2x.avif') }} 624w,
+                {{ asset(imgUrl ~ '-508@2x.avif') }} 1016w"
+                sizes="(max-width: 768px) 312px, 508px"
+            >
+            <source
+                type="image/webp"
+                srcset="{{ asset(imgUrl ~ '-312.webp') }} 312w,
+                {{ asset(imgUrl ~ '-508.webp') }} 508w,
+                {{ asset(imgUrl ~ '-312@2x.webp') }} 624w,
+                {{ asset(imgUrl ~ '-508@2x.webp') }} 1016w"
+                sizes="(max-width: 768px) 312px, 508px"
+            >
+            <img
+                src="{{ asset(imgUrl ~ '-508.png') }}"
+                srcset="{{ asset(imgUrl ~ '-312.png') }} 312w,
+                {{ asset(imgUrl ~ '-508.png') }} 508w,
+                {{ asset(imgUrl ~ '-312@2x.png') }} 624w,
+                {{ asset(imgUrl ~ '-508@2x.png') }} 1016w"
+                sizes="(max-width: 768px) 312px, 508px"
+                width="508"
+                height="521"
+                class="w-auto h-64 sm:h-80 md:w-full md:h-auto"
+                alt="{{ imgAlt }}"
+            {% if loop == 0 %}
+                fetchpriority="high"
+            {% else %}
+                loading="lazy"
+                decoding="async"
+            {% endif %}
+            >
+        </picture>
+    </div>
+    <div class="md:flex-1 md:order-1">
+        {% block content '' %}
+    </div>
+</div>
