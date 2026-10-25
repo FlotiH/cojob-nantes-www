@@ -1,8 +1,8 @@
 {% props carouselName, direction = 'prev' %}
 
 <button {{ stimulus_action(carouselName, direction) }}
-    class="w-14 h-10 rounded-s bg-white border border-brand-whitedark flex items-center justify-center">
-    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+    class="flex h-10 w-14 items-center justify-center rounded-s border border-brand-whitedark bg-white">
+    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         {% if direction == 'prev' %}
             <path d="M15 6l-6 6 6 6"/>
         {% elseif direction == 'next' %}

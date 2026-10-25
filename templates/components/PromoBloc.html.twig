@@ -1,13 +1,13 @@
 {% props title, text1, text2 %}
 
-<div class="bg-white rounded-md px-2 py-4 lg:px-4 text-center border border-brand-whitedark">
+<div class="rounded-md border border-brand-whitedark bg-white px-2 py-4 text-center lg:px-4">
     <twig:Tag type="title" color="yellow300" class="mb-4">
         {{ title }}
     </twig:Tag>
-     <p class="text-[15px] text-left mb-4">
+     <p class="mb-4 text-left text-[15px]">
         {{ text1 }}
     </p>
-    <p class="text-[15px] text-left">
+    <p class="text-left text-[15px]">
         {{ text2 }}
     </p>
     {% block content '' %}

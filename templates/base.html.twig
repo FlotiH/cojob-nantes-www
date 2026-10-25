@@ -101,9 +101,9 @@
     <div class="container-fluid">
         {% block content %}{% endblock %}
 
-        <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button"
+        <a id="back-to-top" href="#" class="back-to-top btn btn-lg btn-primary" role="button"
            title="{{ 'back_top.title'|trans }}">
-            <i class="fa-solid fa-angle-up"></i>
+            <i class="fa-angle-up fa-solid"></i>
         </a>
 
         <footer class="row text-center">
@@ -139,7 +139,7 @@
             </div>
             <div class="col-sm-4">
                 <div class="panel">
-                    <div class="h4 cojob-title">Cojob Nantes</div>
+                    <div class="cojob-title h4">Cojob Nantes</div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><a href="{{ path('homepage') }}#about">{{ 'about.h2'|trans }}</a></li>
                         <li class="list-group-item"><a href="{{ path('contact') }}">{{ 'nav.contact'|trans }}</a>
@@ -166,7 +166,7 @@
                             <a href="https://www.facebook.com/cojobnantes/" itemprop="sameAs" target="_blank"
                                rel="noopener noreferrer"
                                onclick="gtag('event', 'Footer Socials Facebook', {'event_category': 'Button Click'});">
-                                <i class="icon fa-brands fa-square-facebook"></i>
+                                <i class="fa-brands fa-square-facebook icon"></i>
                                 <span class="visually-hidden">Facebook</span>
                             </a>
                         </li>
@@ -174,7 +174,7 @@
                             <a href="https://fr.linkedin.com/company/cojob-nantes" itemprop="sameAs" target="_blank"
                                rel="noopener noreferrer"
                                onclick="gtag('event', 'Footer Socials LinkedIn', {'event_category': 'Button Click'});">
-                                <i class="icon fa-brands fa-linkedin"></i>
+                                <i class="fa-brands fa-linkedin icon"></i>
                                 <span class="visually-hidden">LinkedIn</span>
                             </a>
                         </li>
@@ -184,7 +184,7 @@
                 </div>
             </div>
             <div class="col-12">
-                <ul class="list-inline footer-footer">
+                <ul class="footer-footer list-inline">
                     <li class="list-inline-item">© COJOB Nantes 2026. Tous droits réservés.</li>
 {# <li class="list-inline-item"><a href="{{ path('sitemap') }}">{{ 'footer.sitemap'|trans }}</a></li> #}
                     <li class="list-inline-item"><a href="{{ path('legals') }}">{{ 'footer.legals'|trans }}</a></li>

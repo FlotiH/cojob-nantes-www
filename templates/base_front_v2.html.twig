@@ -18,11 +18,11 @@
 {% endblock %}
 
 {% block header %}
-    <header class="sticky top-0 z-50 bg-white backdrop-blur border-b border-brand-whitedark font-semibold">
-        <nav class="px-4 xl:px-20 mx-auto h-20 flex items-center justify-between relative"
+    <header class="sticky top-0 z-50 border-brand-whitedark border-b bg-white font-semibold backdrop-blur">
+        <nav class="relative mx-auto flex h-20 items-center justify-between px-4 xl:px-20"
             data-controller="menu"
             data-action="click@window->menu#closeOnClickOutside">
-            <a href="{{ path('homepage') }}" class="flex items-center gap-2 shrink-0">
+            <a href="{{ path('homepage') }}" class="flex shrink-0 items-center gap-2">
                 <picture>
                     <source
                         type="image/avif"
@@ -46,17 +46,17 @@
                 <span class="sr-only">Cojob Nantes</span>
             </a>
 
-            <div class="hidden lg:flex items-center gap-4 text-[15px] text-navy-900">
+            <div class="hidden items-center gap-4 text-[15px] text-navy-900 lg:flex">
                 <twig:Menu:Item location="header" href="{{ path('homepage') }}#about">{{ 'v2.nav.about'|trans }}</twig:Menu:Item>
                 <twig:Menu:Item location="header" href="{{ path('promos') }}">{{ 'nav.promo'|trans }}</twig:Menu:Item>
                 <twig:Menu:Item location="header" href="{{ path('calendar') }}#about">{{ 'nav.calendar'|trans }}</twig:Menu:Item>
                 <details class="relative inline-block">
-                    <summary class="cursor-pointer flex items-center gap-1 hover:text-brand-blue transition list-none">
+                    <summary class="flex items-center gap-1 list-none transition cursor-pointer hover:text-brand-blue">
                         {{ 'nav.support_us'|trans }}
-                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
                     </summary>
 
-                    <div class="absolute right-0 mt-2 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 z-10">
+                    <div class="absolute right-0 z-10 mt-2 w-48 rounded-md ring-1 ring-black/5 bg-white py-1 shadow-lg">
                         <twig:Menu:DropdownItem href="{{ path('support') }}#join-form" gTagEventName="Join Link Header">
                             {{ 'v2.nav.join'|trans }}
                         </twig:Menu:DropdownItem>
@@ -71,14 +71,14 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <div class="hidden md:flex items-center gap-3 text-navy-900">
+                <div class="hidden items-center gap-3 text-navy-900 md:flex">
                     <twig:Social:Buttons location='Head' />
                 </div>
                 <twig:Button href="{{ path('promos') }}#promoAnchor" class="hidden sm:inline-flex"
                     role="button">
                     {{ 'v2.home.promo_registration'|trans }}
                 </twig:Button>
-                <button class="lg:hidden w-9 h-9 flex items-center justify-center"
+                <button class="flex h-9 w-9 items-center justify-center lg:hidden"
                     aria-expanded="false"
                     aria-controls="mobile-menu"
                     aria-label="{{ 'toggle_navigation'|trans }}"
@@ -94,7 +94,7 @@
                 </button>
 
                 <ul id="mobile-menu" data-menu-target="panel"
-                    class="hidden absolute inset-x-0 top-full z-50 w-full bg-white shadow-lg lg:hidden pb-4">
+                    class="absolute inset-x-0 top-full z-50 hidden w-full bg-white pb-4 shadow-lg lg:hidden">
                     <li><twig:Menu:Item location="header" href="{{ path('homepage') }}#about" class="block px-4 py-3">
                         {{ 'v2.nav.about'|trans }}
                     </twig:Menu:Item></li>
@@ -106,12 +106,12 @@
                     </twig:Menu:Item></li>
                     <li>
                         <details class="relative block px-4 py-3">
-                            <summary class="cursor-pointer flex items-center gap-1 hover:text-brand-blue transition list-none">
+                            <summary class="flex items-center gap-1 list-none transition cursor-pointer hover:text-brand-blue">
                                 {{ 'nav.support_us'|trans }}
-                                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
                             </summary>
 
-                            <div class="absolute mt-2 w-5/6 rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 z-10">
+                            <div class="absolute z-10 mt-2 w-5/6 rounded-md ring-1 ring-black/5 bg-white py-1 shadow-lg">
                                 <twig:Menu:DropdownItem href="{{ path('support') }}#join-form" gTagEventName="Join Link Header">
                                     {{ 'v2.nav.join'|trans }}
                                 </twig:Menu:DropdownItem>
@@ -125,7 +125,7 @@
                         </details>
                     </li>
                     <li class="md:hidden">
-                        <div class="flex items-center gap-3 text-navy-900 px-4 py-3">
+                        <div class="flex items-center gap-3 px-4 py-3 text-navy-900">
                             <twig:Social:Buttons location='Head' />
                         </div>
                     </li>

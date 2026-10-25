@@ -133,7 +133,8 @@
             "bin/console lint:yaml config --parse-tags",
             "bin/console lint:yaml translations --parse-tags",
             "bin/console lint:container",
-            "bin/console lint:translations --locale=fr"
+            "bin/console lint:translations --locale=fr",
+            "vendor/bin/tailwind-cs-fixer templates/"
         ],
         "app:coding-standard": [
             "vendor/bin/php-cs-fixer fix --allow-risky=yes",
@@ -153,6 +154,7 @@
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^4.3.1",
         "friendsofphp/php-cs-fixer": "^3.95.27",
+        "iq2i/tailwind-cs-fixer": "^1.0",
         "phpstan/phpstan": "^2.3.1",
         "phpstan/phpstan-doctrine": "^2.0.28",
         "phpstan/phpstan-symfony": "^2.1.0",

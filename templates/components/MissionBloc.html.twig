@@ -1,7 +1,7 @@
 {% props title, titleClass = '' %}
 
-<div class="bg-yellow-100 rounded-s px-4 py-4 text-center border border-yellow-300">
-    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-brand-green flex items-center justify-center">
+<div class="rounded-s border border-yellow-300 bg-yellow-100 px-4 py-4 text-center">
+    <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-brand-green">
         {% block content '' %}
     </div>
     <twig:H3 class="{{ titleClass }}">{{ title }}</twig:H3>
