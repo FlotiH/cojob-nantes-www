@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae84c6d25761461e059c82dd0b42f7a8",
+    "content-hash": "6ea0ccdd05f4846b0c12670360aba018",
     "packages": [
         {
             "name": "beberlei/doctrineextensions",
@@ -11077,6 +11077,58 @@
                 }
             ],
             "time": "2026-09-22T09:54:55+00:00"
+        },
+        {
+            "name": "iq2i/tailwind-cs-fixer",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IQ2i/tailwind-cs-fixer.git",
+                "reference": "3747610127b0eff9e6853b6a39fc25e2b5d69d41"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/IQ2i/tailwind-cs-fixer/zipball/3747610127b0eff9e6853b6a39fc25e2b5d69d41",
+                "reference": "3747610127b0eff9e6853b6a39fc25e2b5d69d41",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1",
+                "symfony/console": "^6.4|^7.0|^8.0",
+                "symfony/finder": "^6.4|^7.0|^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.90",
+                "phpstan/phpstan": "^2.1",
+                "phpunit/phpunit": "^10.0"
+            },
+            "bin": [
+                "bin/tailwind-cs-fixer"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TailwindCsFixer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Loïc Sapone",
+                    "email": "loic@sapone.fr",
+                    "homepage": "https://loic-sapone.fr"
+                }
+            ],
+            "description": "A tool to automatically sort Tailwind CSS classes in HTML and Twig files",
+            "homepage": "https://github.com/IQ2i/tailwind-cs-fixer",
+            "support": {
+                "issues": "https://github.com/IQ2i/tailwind-cs-fixer/issues",
+                "source": "https://github.com/IQ2i/tailwind-cs-fixer/tree/1.0.0"
+            },
+            "time": "2026-10-15T08:43:12+00:00"
         },
         {
             "name": "myclabs/deep-copy",

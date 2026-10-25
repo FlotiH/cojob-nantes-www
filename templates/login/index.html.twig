@@ -44,12 +44,12 @@
             <form action="{{ path('app_login') }}" method="post">
 
                 <div class="input-group mb-2">
-                    <div class="input-group-text"><i class="fas fa-user"></i></div>
+                    <div class="input-group-text"><i class="fa-user fas"></i></div>
                     <input type="text" class="form-control" id="username"  name="_username" value="{{ last_username }}" required="required" placeholder="Nom d'utilisateur">
                 </div>
 
                 <div class="input-group mb-2">
-                    <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                    <div class="input-group-text"><i class="fa-lock fas"></i></div>
                     <input type="password" class="form-control" id="password" name="_password" required="required" placeholder="Mot de passe">
                 </div>
 
@@ -57,7 +57,7 @@
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">{{ 'security.login.submit'|trans }}</button>
+                    <button type="submit" class="btn btn-block btn-flat btn-primary">{{ 'security.login.submit'|trans }}</button>
                 </div>
             </form>
         </div>

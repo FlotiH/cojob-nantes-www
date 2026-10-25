@@ -3,18 +3,18 @@
 {% if type == 'facebook' %}
     {% set link = 'https://www.facebook.com/cojobnantes/' %}
     {% set attributes = 'itemprop="sameAs" target="_blank" rel="noopener noreferrer"' %}
-    {% set svg = '<svg class="w-4 h-4" viewBox="0 0 7 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M1.59733 12.6667H4.264V7.32667H6.66667L6.93067 4.67333H4.264V3.33333C4.264 3.15652 4.33424 2.98695 4.45926 2.86193C4.58429 2.7369 4.75386 2.66667 4.93067 2.66667H6.93067V0H4.93067C4.04661 0 3.19877 0.351189 2.57364 0.976311C1.94852 1.60143 1.59733 2.44928 1.59733 3.33333V4.67333H0.264L0 7.32667H1.59733V12.6667Z"/></svg>' %}
+    {% set svg = '<svg class="h-4 w-4" viewBox="0 0 7 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M1.59733 12.6667H4.264V7.32667H6.66667L6.93067 4.67333H4.264V3.33333C4.264 3.15652 4.33424 2.98695 4.45926 2.86193C4.58429 2.7369 4.75386 2.66667 4.93067 2.66667H6.93067V0H4.93067C4.04661 0 3.19877 0.351189 2.57364 0.976311C1.94852 1.60143 1.59733 2.44928 1.59733 3.33333V4.67333H0.264L0 7.32667H1.59733V12.6667Z"/></svg>' %}
 {% elseif type == 'linkedin' %}
     {% set link = 'https://fr.linkedin.com/company/cojob-nantes' %}
     {% set attributes = 'itemprop="sameAs" target="_blank" rel="noopener noreferrer"' %}
-    {% set svg = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.24h4.5V23H.24V8.24zM8.24 8.24h4.31v2.02h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V23h-4.5v-6.99c0-1.67-.03-3.81-2.32-3.81-2.33 0-2.69 1.82-2.69 3.7V23h-4.5V8.24z"/></svg>' %}
+    {% set svg = '<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.24h4.5V23H.24V8.24zM8.24 8.24h4.31v2.02h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V23h-4.5v-6.99c0-1.67-.03-3.81-2.32-3.81-2.33 0-2.69 1.82-2.69 3.7V23h-4.5V8.24z"/></svg>' %}
 {% else %}
     {% set link = path('contact') %}
     {% set attributes = '' %}
-    {% set svg = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>' %}
+    {% set svg = '<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>' %}
 {% endif %}
 
-<a href="{{ link }}" class="size-[38px] rounded-s bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700"
+<a href="{{ link }}" class="flex size-[38px] items-center justify-center rounded-s bg-blue-600 text-white hover:bg-blue-700"
     {{ attributes }}
     onclick="gtag('event', '{{ gtagEventName }}', {'event_category': 'Button Click'});">
     {{ svg|raw }}

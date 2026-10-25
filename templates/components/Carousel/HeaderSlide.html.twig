@@ -1,6 +1,6 @@
 {% props loop, imgUrl, imgAlt %}
 
-<div class="flex-[0_0_100%] min-w-0 flex flex-col md:flex-row gap-4 xl:gap-8 items-center">
+<div class="flex flex-[0_0_100%] min-w-0 flex-col items-center gap-4 md:flex-row xl:gap-8">
     <div class="md:flex-1 md:order-2">
         <picture>
             <source
@@ -28,7 +28,7 @@
                 sizes="(max-width: 768px) 312px, 508px"
                 width="508"
                 height="521"
-                class="w-auto h-64 sm:h-80 md:w-full md:h-auto"
+                class="h-64 w-auto sm:h-80 md:h-auto md:w-full"
                 alt="{{ imgAlt }}"
             {% if loop == 0 %}
                 fetchpriority="high"

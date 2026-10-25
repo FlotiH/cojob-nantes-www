@@ -8,8 +8,8 @@
 
 {% block content %}
 
-    <div class="one-page promos-page row parallax">
-        <div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
+    <div class="one-page parallax promos-page row">
+        <div class="offset-md-1 offset-lg-2 col-lg-8 col-md-10">
             <div class="content">
                 <h1>{{ 'promo.h1'|trans }}</h1>
 
@@ -76,7 +76,7 @@
             </div>
         </div>
 
-        <div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
+        <div class="offset-md-1 offset-lg-2 col-lg-8 col-md-10">
             <div class="video-responsive">
                 <iframe src="https://www.youtube.com/embed/4q7z2rnQ8gI"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -88,7 +88,7 @@
         <div id="promoAnchor"></div>
 
         {% for promo in promos %}
-            <div class="promos-div offset-md-1 col-md-10 offset-lg-2 col-lg-8">
+            <div class="offset-md-1 offset-lg-2 col-lg-8 col-md-10 promos-div">
                 <div class="content">
                     <h2>{{ promo.name }} - {{ promo.start|dateInterval(promo.end) }}</h2>
                     <iframe id="haWidget" allowtransparency="true" scrolling="auto"
@@ -101,14 +101,14 @@
             </div>
         {% endfor %}
         {% if otherPromos|length or promos|length %}
-            <div class="promos-div offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+            <div class="offset-md-1 offset-lg-2 offset-xl-3 col-xl-6 col-lg-8 col-md-10 promos-div">
                 <div class="content">
                     <h2>{{ 'promo.next'|trans }}</h2>
                     <ul>
                         {% for promo in promos %}
                             <li>
                                 {{ promo.name }} - {{ promo.start|dateInterval(promo.end) }}
-                                <a href="#promoAnchor" class="btn btn-primary btn-sm add-to-calendar-btn"
+                                <a href="#promoAnchor" class="add-to-calendar-btn btn btn-primary btn-sm"
                                     onclick="gtag('event', 'Promo Register promo', {'event_category': 'Button Click'});">
                                         S'inscrire
                                 </a>
@@ -117,7 +117,7 @@
                         {% for promo in otherPromos %}
                             <li>
                                 {{ promo.name }} - {{ promo.start|dateInterval(promo.end) }}
-                                <div class="dropdown add-to-calendar-btn">
+                                <div class="add-to-calendar-btn dropdown">
                                     <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
                                             id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                         Ajouter au calendrier

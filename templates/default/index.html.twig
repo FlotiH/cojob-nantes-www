@@ -7,9 +7,9 @@
 {% block canonical %}{{ absolute_url(path('homepage')) }}{% endblock %}
 
 {% block content %}
-    <div id="carouselCover" class="row carousel slide" data-ride="carouselCover">
+    <div id="carouselCover" class="carousel row slide" data-ride="carouselCover">
         <div class="carousel-inner px-0">
-            <div class="carousel-item parallax active cover1"></div>
+            <div class="active carousel-item cover1 parallax"></div>
         </div>
         <div class="carousel-fixed text-center">
             <div class="container-fluid">
@@ -18,18 +18,18 @@
                         <h1>{{ 'home.h1'|trans }}</h1>
                     </div>
 
-                    <div class="col-md-6 {% if promoOpen|length == 0 %}offset-md-3 col-xl-4 offset-xl-4{% else %}col-lg-5 offset-lg-1 col-xl-4 offset-xl-2{% endif %} d-grid">
-                        <a href="{{ path('promos') }}" class="btn btn-primary btn-lg"
+                    <div class="col-md-6 {% if promoOpen|length == 0 %} offset-md-3 col-xl-4 offset-xl-4 {% else %} offset-lg-1 offset-xl-2 col-xl-4 col-lg-5 {% endif %} d-grid">
+                        <a href="{{ path('promos') }}" class="btn btn-lg btn-primary"
                            onclick="gtag('event', 'Home What is promo', {'event_category': 'Button Click'});">
-                            <i class="icon fa-solid fa-circle-info" aria-hidden="true"></i>
+                            <i class="fa-circle-info fa-solid icon" aria-hidden="true"></i>
                             {{ 'home.promo'|trans }}
                         </a>
                     </div>
                     {% if promoOpen|length > 0 %}
-                        <div class="col-md-6 col-lg-5 col-xl-4 d-grid">
-                            <a href="{{ path('promos') }}#promoAnchor" class="btn btn-primary btn-lg"
+                        <div class="col-xl-4 col-lg-5 col-md-6 d-grid">
+                            <a href="{{ path('promos') }}#promoAnchor" class="btn btn-lg btn-primary"
                                onclick="gtag('event', 'Home Register promo', {'event_category': 'Button Click'});">
-                                <i class="icon fa-regular fa-address-card" aria-hidden="true"></i>
+                                <i class="fa-address-card fa-regular icon" aria-hidden="true"></i>
                                 <div>
                                     {{ 'home.promo_registration'|trans }}
                                     <div class="small">({{ promoOpen[0].start|dateInterval(promoOpen[0].end) }})
@@ -39,9 +39,9 @@
                         </div>
                     {% endif %}
 
-                    <div class="col-12 text-center go-to-content d-none d-sm-block">
+                    <div class="col-12 d-none d-sm-block go-to-content text-center">
                         <a href="#about" aria-hidden="true">
-                            <i class="fa-solid fa-angle-down"></i>
+                            <i class="fa-angle-down fa-solid"></i>
                         </a>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
         </div>
     </div>
     <div id="about" class="row">
-        <div class="col-md-8 offset-xl-3 col-xl-6">
+        <div class="offset-xl-3 col-xl-6 col-md-8">
             <div class="content">
                 <h2>{{ 'about.h2'|trans }}</h2>
 
@@ -109,12 +109,12 @@
                 </p>
             </div>
         </div>
-        <div class="offset-sm-3 col-sm-6 offset-md-0 col-md-4 col-xl-3 event-div">
+        <div class="offset-md-0 offset-sm-3 col-xl-3 col-md-4 col-sm-6 event-div">
             <h2>{{ 'home.articles'|trans }}</h2>
-            <div id="carouselEvent" class="row carousel slide" data-ride="carouselEvent">
+            <div id="carouselEvent" class="carousel row slide" data-ride="carouselEvent">
                 <div class="carousel-inner">
                     {% for article in articles %}
-                        <section class="carousel-item {% if loop.first %}active{% endif %}">
+                        <section class="carousel-item {% if loop.first %} active {% endif %}">
                             <div class="cover-bg"
                                  style="background-image: url({{ article.imageLink }});background-repeat: no-repeat;background-position: center;background-size: cover;height: 16rem;">
                                 {# <img src="{{ asset('build/images/o-cojob-nantes.png') }}"
@@ -130,15 +130,15 @@
         </div>
 
     </div>
-    <div id="promotion" class="one-page row parallax">
+    <div id="promotion" class="one-page parallax row">
         <div class="col-12">
-            <div class="content jobber-quotes">
+            <div class="jobber-quotes content">
                 <h3>Ils ont participé à la promo (et ils ont aimé ça)</h3>
                 <br>
                 <div class="row">
 
                     {% for testimony in requiredPromoTestimonies %}
-                        <div class="col-sm-6 col-md-4 mb-4">
+                        <div class="col-md-4 col-sm-6 mb-4">
                             <h4>{{ testimony.name }}</h4>
                             <p>{{ testimony.subtitle }}</p>
 
@@ -148,7 +148,7 @@
                     {% endfor %}
 
                     {% for testimony in promoTestimonies %}
-                        <div class="col-sm-6 col-md-4 mb-4">
+                        <div class="col-md-4 col-sm-6 mb-4">
                             <h4>{{ testimony.name }}</h4>
                             <p>{{ testimony.subtitle }}</p>
 
