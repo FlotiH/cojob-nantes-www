@@ -1,11 +1,11 @@
 {% props href, location = 'footer' %}
 
 {% set item = html_cva(
-    base: 'transition',
+    base: 'transition hover:underline',
     variants: {
         location: {
             footer: 'hover:text-white/60',
-            header: 'hover:text-brand-blue',
+            header: '',
         },
     },
     default_variant: {

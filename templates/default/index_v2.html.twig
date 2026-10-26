@@ -19,8 +19,8 @@
             {% if promoOpen[0] is defined %}
               <twig:Tag class="mb-4">{{ 'v2.home.next_promo_from'|trans }} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }}</twig:Tag>
             {% endif %}
-            <h1 class="font-[Poppins] font-extrabold leading-10 text-[30px] sm:text-[38px]">{{ 'v2.home.hero.slide1.title'|trans|raw }}</h1>
-            <p class="mt-4 text-[15px]/1">{{ 'v2.home.hero.slide1.subtitle'|trans }}</p>
+            <h1 class="font-extrabold font-heading leading-10 text-[30px] sm:text-[38px]">{{ 'v2.home.hero.slide1.title'|trans|raw }}</h1>
+            <p class="mt-4 text-[15px]">{{ 'v2.home.hero.slide1.subtitle'|trans }}</p>
 
             <p class="mt-4 font-semibold text-[15px]"> {{ 'v2.home.hero.slide1.people_supported'|trans }}</p>
 
@@ -37,7 +37,7 @@
             <twig:Tag class="mb-4">
               {{ 'v2.home.next_cosearching_from'|trans }} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }}  {# TODO FHA : changer les dates ? #}
             </twig:Tag>
-            <h1 class="font-[Poppins] font-extrabold leading-tight text-[30px] sm:text-[38px]">{{ 'v2.home.hero.slide2.title'|trans|raw }}</h1>
+            <h1 class="font-extrabold font-heading leading-tight text-[30px] sm:text-[38px]">{{ 'v2.home.hero.slide2.title'|trans|raw }}</h1>
             <p class="mt-4 text-[15px]">{{ 'v2.home.hero.slide2.subtitle'|trans }}</p>
 
             <div class="mt-4">
@@ -57,7 +57,7 @@
             <twig:Tag class="mb-4">
               {{ 'v2.home.next_aperotaf_from'|trans }} 15 juillet {# TODO FHA : trouver date et mettre une condition #}
             </twig:Tag>
-            <h1 class="font-[Poppins] font-extrabold leading-tight text-[30px] sm:text-[38px]">
+            <h1 class="font-extrabold font-heading leading-tight text-[30px] sm:text-[38px]">
               {{ 'v2.home.hero.slide3.title'|trans|raw }}
             </h1>
             <p class="mt-4 text-[15px]">
@@ -116,7 +116,7 @@
         text1="{{ 'v2.home.promo.bloc1.text1'|trans }}"
         text2="{{ 'v2.home.promo.bloc1.text2'|trans }}">
         <span class="mt-4 flex items-center justify-center gap-2 rounded-md bg-blue-100 p-1 text-[15px]">
-          <svg class="h-8 w-8 text-brand-blue lg:h-4 lg:w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.4 7-12.5A7 7 0 105 9.5C5 14.6 12 22 12 22z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          <svg class="h-8 w-8 lg:h-4 lg:w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.4 7-12.5A7 7 0 105 9.5C5 14.6 12 22 12 22z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
           {{ 'v2.home.promo.bloc1.location'|trans }}
         </p>
       </twig:PromoBloc>
@@ -311,7 +311,7 @@
 </section>
 
 <!-- ============ TÉMOIGNAGES / CHIFFRES ============ -->
-<section class="bg-brand-cream py-8 sm:py-20">
+<section class="bg-yellow-100 py-8 sm:py-20">
   <div class="mx-auto max-w-[1048px] px-2 xl:px-0">
     <twig:H2 class="mb-1">{{ ('v2.home.testimonies'|trans)|raw }}</twig:H2>
     <p class="mb-6 text-[13px]">
@@ -372,7 +372,7 @@
       <div {{ stimulus_target('partner_carousel', 'viewport') }} class="overflow-hidden">
         <div class="flex items-center gap-20">
           {% for partner in partners %}
-            <div class="flex-none">
+            <div class="flex-none {% if loop.last %} mr-20 {% endif %}">
               {% if partner.link %}
                 <a href="{{ partner.link }}" target="_blank" rel="noopener noreferrer">
                   <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}" class="w-[{{ partner.displayWidth }}px]"/>
@@ -389,7 +389,7 @@
 </section>
 
 <!-- ============ ILS PARLENT DE NOUS ============ -->
-<section class="bg-brand-lightblue py-8 sm:py-20">
+<section class="bg-blue-100 py-8 sm:py-20">
   <div class="mx-auto max-w-[1048px] px-2 xl:px-0">
     <twig:H2 class="mb-6">{{ ('v2.home.talk_about_us'|trans)|raw }}</twig:H2>
     <div class="grid gap-x-5 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">

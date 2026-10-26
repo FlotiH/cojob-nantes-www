@@ -1,6 +1,6 @@
 {% props href, gTagEventName %}
 
-<a href="{{ href }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+<a href="{{ href }}" class="block px-4 py-2 text-sm hover:underline"
     onclick="gtag('event', '{{ gTagEventName }}', {'event_category': 'Button Click'});">
     {% block content '' %}
 </a>
