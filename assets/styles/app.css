@@ -1,6 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins-SemiBold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins-ExtraBold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
 @theme {
-  --font-inter: "Inter", sans-serif; 
+  /* Navy */
+  --color-navy-900: #0E3D67;
+
+  /* Green */
+  --color-green-100: #D6FFF1;
+  --color-green-300: #00C27D;
+
+  /* Blue */
+  --color-blue-100: #F2F8FD;
+  --color-blue-200: #D3E7F8;
+  --color-blue-300: #86BDEF;
+  --color-blue-600: #1A72C1;
+  --color-blue-700: #145894;
+  --color-blue-900: #0A2D4C;
+
+  /* Orange */
+  --color-orange-100: #FFE0BD;
+  --color-orange-200: #FFCF99;
+
+  /* Yellow */
+  --color-yellow-100: #FEF1D7;
+  --color-yellow-300: #FCCE74;
+  --color-yellow-500: #F9AB10;
+
+  /* Brand */
+  --color-brand-green: #00905D;
+  --color-brand-whitedark: #E9E9E9;
+
+  /* Police */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Poppins", ui-sans-serif, system-ui, sans-serif;
 }

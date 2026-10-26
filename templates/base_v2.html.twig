@@ -45,8 +45,10 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
         <link rel="manifest" href="{{ asset('manifest.json') }}">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
         {% block stylesheets %}
+            <link rel="preload" href="{{ asset('fonts/Inter-Variable.woff2') }}" as="font" type="font/woff2" crossorigin>
+            <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
         {% endblock %}
 
         {% block javascripts %}
@@ -59,64 +61,8 @@
         <script src="https://cdn.jsdelivr.net/npm/idiomorph"></script>
         <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
         {% endif %}
-
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        colors: {
-                            navy: {
-                                900: '#0E3D67',
-                                800: '#123258',
-                                700: '#1a4272'
-                            },
-                            green: {
-                                100: '#D6FFF1',
-                                300: '#00C27D'
-                            },
-                            blue: {
-                                100: '#F2F8FD',
-                                200: '#D3E7F8',
-                                300: '#86BDEF',
-                                600: '#1A72C1',
-                                700: '#145894',
-                                900: '#0A2D4C'
-                            },
-                            orange: {
-                                100: '#FFE0BD',
-                                200: '#FFCF99'
-                            },
-                            yellow: {
-                                100: '#FEF1D7',
-                                300: '#FCCE74',
-                                500: '#F9AB10'
-                            },
-                            brand: {
-                                blue: '#1c4f8f',
-                                cream: '#fdf1dd',
-                                lightblue: '#eaf1fb',
-                                teal: '#189b78',
-                                amber: '#f6c445',
-                                orange: '#f2821f',
-                                green: '#00905D',
-                                whitedark: '#E9E9E9'
-                            }
-                        },
-                        fontFamily: {
-                            sans: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif']
-                        }
-                    }
-                }
-            }
-        </script>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-        <style>
-            body { font-family: 'Inter', sans-serif; }
-        </style>
     </head>
-    <body class="bg-white text-navy-900" itemscope="" itemtype="https://schema.org/WebPage">
+    <body class="bg-white font-sans text-navy-900" itemscope="" itemtype="https://schema.org/WebPage">
         <meta itemprop="name" content="COJOB Nantes">
         <meta itemprop="description" content="{{ block('description') }}">
         <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">

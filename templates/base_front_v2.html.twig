@@ -51,7 +51,7 @@
                 <twig:Menu:Item location="header" href="{{ path('promos') }}">{{ 'nav.promo'|trans }}</twig:Menu:Item>
                 <twig:Menu:Item location="header" href="{{ path('calendar') }}#about">{{ 'nav.calendar'|trans }}</twig:Menu:Item>
                 <details class="relative inline-block">
-                    <summary class="flex items-center gap-1 list-none transition cursor-pointer hover:text-brand-blue">
+                    <summary class="flex items-center gap-1 list-none transition cursor-pointer hover:underline">
                         {{ 'nav.support_us'|trans }}
                         <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
                     </summary>
@@ -64,7 +64,7 @@
                             {{ 'v2.nav.donate'|trans }}
                         </twig:Menu:DropdownItem>
                         <twig:Menu:DropdownItem href="{{ path('support') }}" gTagEventName="Become volunteer Link Header">
-                            {{ 'v2.nav.join'|trans }}
+                            {{ 'v2.nav.become_volunteer'|trans }}
                         </twig:Menu:DropdownItem>
                     </div>
                 </details>
@@ -106,7 +106,7 @@
                     </twig:Menu:Item></li>
                     <li>
                         <details class="relative block px-4 py-3">
-                            <summary class="flex items-center gap-1 list-none transition cursor-pointer hover:text-brand-blue">
+                            <summary class="flex items-center gap-1 list-none transition cursor-pointer hover:underline">
                                 {{ 'nav.support_us'|trans }}
                                 <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
                             </summary>
@@ -119,7 +119,7 @@
                                     {{ 'v2.nav.donate'|trans }}
                                 </twig:Menu:DropdownItem>
                                 <twig:Menu:DropdownItem href="{{ path('support') }}" gTagEventName="Become volunteer Link Header">
-                                    {{ 'v2.nav.join'|trans }}
+                                    {{ 'v2.nav.become_volunteer'|trans }}
                                 </twig:Menu:DropdownItem>
                             </div>
                         </details>

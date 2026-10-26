@@ -56,7 +56,7 @@ class DefaultController extends AbstractController
     {
         return $this->render('default/index_v2.html.twig', [
             'articles' => $articleRepo->findPublishedArticles(),
-            'testimonies' => $testimonyRepo->findBy([], ['createdAt' => 'DESC']), // TODO FHA : à voir quelle requêtes faire en fonction des choix du CDC
+            'testimonies' => $testimonyRepo->findBy([], ['createdAt' => 'DESC']),
             'promoOpen' => $promoRepo->findOpenPromos(),
             'talks' => $talkRepo->findBy([], ['createdAt' => 'DESC'], 6),
             'partners' => $partnerRepo->findBy([], ['priority' => 'ASC']),
