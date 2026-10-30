@@ -60,7 +60,7 @@
           <twig:Carousel:HeaderSlide loop="2" imgUrl="img/v2/header/header events" imgAlt="Les évènements de Cojob Nantes">
             {% if nextAperotaf %}
               <twig:Tag class="mb-4">
-                {{ 'v2.home.next_aperotaf_from'|trans }} {{ article.start|format_datetime(locale: 'fr', pattern: 'dd MMMM') }}
+                {{ 'v2.home.next_aperotaf_from'|trans }} {{ nextAperotaf.start|format_datetime(locale: 'fr', pattern: 'dd MMMM') }}
               </twig:Tag>
             {% endif %}
             <div class="font-extrabold font-heading leading-tight text-[30px] sm:text-[38px]">
@@ -273,6 +273,7 @@
                 <div class="pt-4 text-[13px]">
                   <twig:Tag color="{{ article.tag.color() }}" type="article">{{ article.tag.svg()|raw }} <span>{{ article.tag|trans }}</span></twig:Tag>
                   <twig:H3 class="mb-4">{{ article.title }}</twig:H3>
+                  <p class="text-[15px]">{{ article.content|raw }}</p>
                   {% if article.start %}
                     {% if article.end %}
                       <p class="mb-2 flex items-center gap-2">
