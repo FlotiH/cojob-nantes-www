@@ -219,6 +219,8 @@ Absolute File Path: Image
 Article: Actualités
 Article Create: Création d'une actualité
 Article List: Liste des actualités
+Button Label: Label du bouton
+Button Link: Lien du bouton
 Contact List: Liste des contacts
 Contact: Contacts
 Content: Contenu (penser à gérer le responsive du contenu)
@@ -241,6 +243,7 @@ Is Registering Open: Inscriptions ouvertes
 Last Login At: Dernière connexion
 Last Name: Nom
 Link: Lien
+Location: Localisation
 Message: Message
 Meta Description: Meta description (utilisée seulement pour le référencement, merci de bien choisir vos mots-clés)
 Name: Nom
@@ -258,6 +261,7 @@ Registering Start: Début des inscriptions
 Search: Recherche
 Source: Source de l'article
 Start: Début
+Start Time: Heure de début
 Subtitle: Sous-titre
 Tag: Etiquette
 Talk: Ils parlent de nous

@@ -113,7 +113,7 @@ class Promo
     {
         $now = new \DateTime();
 
-        return $this->getRegisteringStart() <= $now && $this->getRegisteringEnd() >= $now;
+        return $this->helloAssoFormLink ? $this->getRegisteringStart() <= $now && $this->getRegisteringEnd() >= $now : false;
     }
 
     public function getRegisteringStart(): \DateTime

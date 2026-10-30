@@ -16,8 +16,8 @@
         <div class="flex">
           {# slide 1 #}
           <twig:Carousel:HeaderSlide loop="0" imgUrl="img/v2/header/header promo" imgAlt="Les promos de Cojob Nantes">
-            {% if promoOpen[0] is defined %}
-              <twig:Tag class="mb-4">{{ 'v2.home.next_promo_from'|trans }} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }}</twig:Tag>
+            {% if nextPromos[0] is defined %}
+              <twig:Tag class="mb-4">{{ 'v2.home.next_promo_from'|trans }} {{ nextPromos[0].start|dateIntervalv2(nextPromos[0].end) }}</twig:Tag>
             {% endif %}
             <h1 class="font-extrabold font-heading leading-10 text-[30px] sm:text-[38px]">{{ 'v2.home.hero.slide1.title'|trans|raw }}</h1>
             <p class="mt-4 text-[15px]">{{ 'v2.home.hero.slide1.subtitle'|trans }}</p>
@@ -25,7 +25,7 @@
             <p class="mt-4 font-semibold text-[15px]"> {{ 'v2.home.hero.slide1.people_supported'|trans }}</p>
 
             <div class="mt-12 flex flex-start gap-4">
-              {% if promoOpen[0] is defined %}
+              {% if nextPromos[0] is defined and nextPromos[0].isRegisteringOpen %}
                 <twig:Button href="{{ path('promos') }}#promoAnchor" onclick="gtag('event', 'Home Register promo hero', {'event_category': 'Button Click'});">{{ 'v2.home.next_promo_registration'|trans }}</twig:Button>
               {% endif %}
               <twig:Button color="secondary" href="{{ path('promos') }}">{{ 'v2.home.more'|trans }}</twig:Button>
@@ -35,9 +35,13 @@
           {# slide 2 #}
           <twig:Carousel:HeaderSlide loop="1" imgUrl="img/v2/header/header cosearching" imgAlt="Le cosearching à Cojob Nantes">
             <twig:Tag class="mb-4">
-              {{ 'v2.home.next_cosearching_from'|trans }} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }}  {# TODO FHA : changer les dates ? #}
+              {% if nextPromos[0] is defined %}
+                {{ 'v2.home.next_cosearching_from'|trans }} {{ nextPromos[0].start|date_modify('+2 weeks')|dateIntervalv2(nextPromos[1].start|date_modify('-2 days')) }}
+              {% else %}
+                {{ 'v2.home.next_cosearching_from'|trans }} {{ date('now')|dateIntervalv2(date('+2 weeks')) }}
+              {% endif %}
             </twig:Tag>
-            <h1 class="font-extrabold font-heading leading-tight text-[30px] sm:text-[38px]">{{ 'v2.home.hero.slide2.title'|trans|raw }}</h1>
+            <div class="font-extrabold font-heading leading-tight text-[30px] sm:text-[38px]">{{ 'v2.home.hero.slide2.title'|trans|raw }}</div>
             <p class="mt-4 text-[15px]">{{ 'v2.home.hero.slide2.subtitle'|trans }}</p>
 
             <div class="mt-4">
@@ -57,9 +61,9 @@
             <twig:Tag class="mb-4">
               {{ 'v2.home.next_aperotaf_from'|trans }} 15 juillet {# TODO FHA : trouver date et mettre une condition #}
             </twig:Tag>
-            <h1 class="font-extrabold font-heading leading-tight text-[30px] sm:text-[38px]">
+            <div class="font-extrabold font-heading leading-tight text-[30px] sm:text-[38px]">
               {{ 'v2.home.hero.slide3.title'|trans|raw }}
-            </h1>
+            </div>
             <p class="mt-4 text-[15px]">
               {{ 'v2.home.hero.slide3.subtitle'|trans }}
             </p>
@@ -263,7 +267,7 @@
           {% for article in articles %}
             <div class="flex-[0_0_100%] min-w-0 pl-4 sm:flex-[0_0_50%] lg:flex-[0_0_33.3333%]">
               <article class="rounded-sm border border-brand-whitedark bg-blue-100 p-4">
-                <div class="h-[180px] bg-[url({{ article.imageLink }})] rounded-s bg-center bg-cover bg-no-repeat"></div>
+                <div class="bg-(image:--bg) h-[180px] rounded-s bg-center bg-cover bg-no-repeat" style="--bg: url('{{ article.imageLink }}')"></div>
                 <div class="pt-4 text-[13px]">
                   <twig:Tag color="{{ article.tag.color() }}" type="article">{{ article.tag.svg()|raw }} <span>{{ article.tag|trans }}</span></twig:Tag>
                   <twig:H3 class="mb-4">{{ article.title }}</twig:H3>
@@ -375,10 +379,10 @@
             <div class="flex-none {% if loop.last %} mr-20 {% endif %}">
               {% if partner.link %}
                 <a href="{{ partner.link }}" target="_blank" rel="noopener noreferrer">
-                  <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}" class="w-[{{ partner.displayWidth }}px]"/>
+                  <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}" class="w-(--largeur)" style="--largeur: {{ partner.displayWidth }}px"/>
                 </a>
               {% else %}
-                <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}" class="w-[{{ partner.displayWidth }}px]"/>
+                <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}" class="w-(--largeur)" style="--largeur: {{ partner.displayWidth }}px"/>
               {% endif %}
             </div>
           {% endfor %}
@@ -438,11 +442,11 @@
 </section>
 
 <!-- ============ CTA FINAL ============ -->
-  {% if promoOpen|length > 0 %}
+  {% if nextPromos|length > 0 %}
     <section class="bg-blue-600 py-8 text-center text-white sm:py-20">
       <div class="mx-auto max-w-3xl px-6">
         <twig:Tag class="mb-6">
-          {{ 'v2.home.next_promo_from'|trans }} {{ promoOpen[0].start|dateIntervalv2(promoOpen[0].end) }}
+          {{ 'v2.home.next_promo_from'|trans }} {{ nextPromos[0].start|dateIntervalv2(nextPromos[0].end) }}
         </twig:Tag>
         <twig:H2 color="secondary" class="mb-3">{{ 'v2.home.next_promo_ready'|trans }}</twig:H2>
         <p class="mb-8 text-[15px]">{{ 'v2.home.next_promo_start_soon'|trans }}</p>

@@ -62,4 +62,18 @@ class PromoRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    /**
+     * @return Promo[] Returns an array of n elements of next Promo
+     */
+    public function findNextPromos(int $limit = 2): array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.start >= :date')
+            ->setParameter('date', new \DateTime())
+            ->orderBy('p.start', 'ASC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
 }

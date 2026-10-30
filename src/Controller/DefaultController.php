@@ -57,7 +57,7 @@ class DefaultController extends AbstractController
         return $this->render('default/index_v2.html.twig', [
             'articles' => $articleRepo->findPublishedArticles(),
             'testimonies' => $testimonyRepo->findBy([], ['createdAt' => 'DESC']),
-            'promoOpen' => $promoRepo->findOpenPromos(),
+            'nextPromos' => $promoRepo->findNextPromos(),
             'talks' => $talkRepo->findBy([], ['createdAt' => 'DESC'], 6),
             'partners' => $partnerRepo->findBy([], ['priority' => 'ASC']),
         ]);
