@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\Config\ArticleTag;
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -32,13 +34,18 @@ class ArticleRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    //    public function findOneBySomeField($value): ?Article
-    //    {
-    //        return $this->createQueryBuilder('a')
-    //            ->andWhere('a.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    public function findNextAperotaf(): ?Article
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.publishedAt IS NOT NULL AND a.publishedAt <= :date')
+            ->andWhere('a.expiresAt IS NULL OR a.expiresAt > :date')
+            ->andWhere('a.tag = :aperotaf')
+            ->setParameter('aperotaf', ArticleTag::Aperotaf)
+            ->setParameter('date', new \DateTime())
+            ->orderBy('a.start', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult(Query::HYDRATE_OBJECT)
+        ;
+    }
 }
