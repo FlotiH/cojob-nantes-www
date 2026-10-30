@@ -60,6 +60,7 @@ class DefaultController extends AbstractController
             'nextPromos' => $promoRepo->findNextPromos(),
             'talks' => $talkRepo->findBy([], ['createdAt' => 'DESC'], 6),
             'partners' => $partnerRepo->findBy([], ['priority' => 'ASC']),
+            'nextAperotaf' => $articleRepo->findNextAperotaf(),
         ]);
     }
 

@@ -16,10 +16,15 @@ class DashboardController extends AbstractDashboardController
 {
     public function index(): Response
     {
-        /** @var AdminUrlGenerator $adminUrlGenerator */
-        $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
+        // TODO FHA : to remove when v2 will be online
+        if ($this->isGranted('ROLE_WEBMASTER')) {
+            /** @var AdminUrlGenerator $adminUrlGenerator */
+            $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
 
-        return $this->redirect($adminUrlGenerator->setController(ContactCrudController::class)->generateUrl());
+            return $this->redirect($adminUrlGenerator->setController(ContactCrudController::class)->generateUrl());
+        }
+
+        return $this->redirect('homepage_v2');
     }
 
     public function configureDashboard(): Dashboard
