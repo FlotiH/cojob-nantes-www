@@ -15,7 +15,9 @@ export default class extends Controller {
     };
 
     connect() {
-        this.autoplay = Autoplay({ delay: this.autoplayDelayValue, stopOnInteraction: false });
+        this.userStopped = false;
+
+        this.autoplay = Autoplay({ delay: this.autoplayDelayValue, stopOnInteraction: false, playOnInit: false });
 
         this.embla = EmblaCarousel(
             this.viewportTarget,
@@ -26,11 +28,33 @@ export default class extends Controller {
         this.mediaQueries = BREAKPOINTS.map(bp => window.matchMedia(bp.query));
         this.handleBreakpointChange = () => this.applyBreakpoint();
         this.mediaQueries.forEach(mq => mq.addEventListener('change', this.handleBreakpointChange));
+
+        this.embla.on('pointerDown', () => { this.userStopped = true; });
+
+        this.observeVisibility();
     }
 
     disconnect() {
+        this.observer?.disconnect();
         this.mediaQueries?.forEach(mq => mq.removeEventListener('change', this.handleBreakpointChange));
         this.embla?.destroy();
+    }
+
+    observeVisibility() {
+        this.observer = new IntersectionObserver(
+            ([entry]) => {
+                if (this.userStopped) return;
+
+                if (entry.isIntersecting) {
+                    this.autoplay.play();
+                } else {
+                    this.autoplay.stop();
+                }
+            },
+            { threshold: 0.4 } // at least 40 % of the carousel visible
+        );
+
+        this.observer.observe(this.element);
     }
 
     currentSlidesToScroll() {
@@ -45,10 +69,14 @@ export default class extends Controller {
     }
 
     next() {
+        this.userStopped = true;
+        this.autoplay.stop();
         this.embla.scrollNext();
     }
 
     prev() {
+        this.userStopped = true;
+        this.autoplay.stop();
         this.embla.scrollPrev();
     }
 }

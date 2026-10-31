@@ -61,7 +61,7 @@ class DefaultController extends AbstractController
             ...array_map(ArticleItem::fromPromo(...), $nextPromos),
         ];
 
-        usort($articles, static fn (ArticleItem $x, ArticleItem $y) => $y->start <=> $x->start);
+        usort($articles, static fn (ArticleItem $x, ArticleItem $y) => $x->start <=> $y->start);
 
         return $this->render('default/index_v2.html.twig', [
             'articles' => $articles,
