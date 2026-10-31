@@ -26,6 +26,6 @@
     },
 ) %}
 
-<span {{ attributes.without('class') }} class="{{ tag.apply({color: color, type: type}, attributes.render('class')) }}">
+<div {{ attributes.without('class') }} class="{{ tag.apply({color: color, type: type}, attributes.render('class')) }}">
     {% block content '' %}
-</span>
+</div>

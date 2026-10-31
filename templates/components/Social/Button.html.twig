@@ -15,7 +15,7 @@
 {% endif %}
 
 <a href="{{ link }}" class="flex size-[38px] items-center justify-center rounded-s bg-blue-600 text-white hover:bg-blue-700"
-    {{ attributes }}
+    {{ attributes|raw }}
     onclick="gtag('event', '{{ gtagEventName }}', {'event_category': 'Button Click'});">
     {{ svg|raw }}
     <span class="sr-only">{{ type|capitalize }}</span>
