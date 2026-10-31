@@ -15,7 +15,7 @@
       <div {{ stimulus_target('header_carousel', 'viewport') }} class="overflow-hidden">
         <div class="flex">
           {# slide 1 #}
-          <twig:Carousel:HeaderSlide loop="0" imgUrl="img/v2/header/header promo" imgAlt="Les promos de Cojob Nantes">
+          <twig:Carousel:HeaderSlide loop="0" imgUrl="img/v2/header/header-promo" imgAlt="Les promos de Cojob Nantes">
             {% if nextPromos[0] is defined %}
               <twig:Tag class="mb-4">{{ 'v2.home.next_promo_from'|trans }} {{ nextPromos[0].start|dateIntervalv2(nextPromos[0].end) }}</twig:Tag>
             {% endif %}
@@ -33,7 +33,7 @@
           </twig:Carousel:HeaderSlide>
 
           {# slide 2 #}
-          <twig:Carousel:HeaderSlide loop="1" imgUrl="img/v2/header/header cosearching" imgAlt="Le cosearching à Cojob Nantes">
+          <twig:Carousel:HeaderSlide loop="1" imgUrl="img/v2/header/header-cosearching" imgAlt="Le cosearching à Cojob Nantes">
             <twig:Tag class="mb-4">
               {% if nextPromos[0] is defined %}
                 {{ 'v2.home.next_cosearching_from'|trans }} {{ nextPromos[0].start|date_modify('+2 weeks')|dateIntervalv2(nextPromos[1].start|date_modify('-2 days')) }}
@@ -57,7 +57,7 @@
           </twig:Carousel:HeaderSlide>
 
           {# slide 3 #}
-          <twig:Carousel:HeaderSlide loop="2" imgUrl="img/v2/header/header events" imgAlt="Les évènements de Cojob Nantes">
+          <twig:Carousel:HeaderSlide loop="2" imgUrl="img/v2/header/header-events" imgAlt="Les évènements de Cojob Nantes">
             {% if nextAperotaf %}
               <twig:Tag class="mb-4">
                 {{ 'v2.home.next_aperotaf_from'|trans }} {{ nextAperotaf.start|format_datetime(locale: 'fr', pattern: 'dd MMMM') }}
@@ -89,21 +89,21 @@
                   {{ stimulus_target('header_carousel', 'dot') }}
                   {{ stimulus_action('header_carousel', 'goTo') }}
                   data-header-carousel-index-param="0"
-                  class="h-2 w-2 rounded-full"
+                  class="h-2 w-2 rounded-full cursor-pointer"
                   aria-label="Aller à la slide 1">
           </button>
           <button
                   {{ stimulus_target('header_carousel', 'dot') }}
                   {{ stimulus_action('header_carousel', 'goTo') }}
                   data-header-carousel-index-param="1"
-                  class="h-2 w-2 rounded-full"
+                  class="h-2 w-2 rounded-full cursor-pointer"
                   aria-label="Aller à la slide 2">
           </button>
           <button
                   {{ stimulus_target('header_carousel', 'dot') }}
                   {{ stimulus_action('header_carousel', 'goTo') }}
                   data-header-carousel-index-param="2"
-                  class="h-2 w-2 rounded-full"
+                  class="h-2 w-2 rounded-full cursor-pointer"
                   aria-label="Aller à la slide 3">
           </button>
         </div>
@@ -124,7 +124,7 @@
         <span class="mt-4 flex items-center justify-center gap-2 rounded-md bg-blue-100 p-1 text-[15px]">
           <svg class="h-8 w-8 lg:h-4 lg:w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.4 7-12.5A7 7 0 105 9.5C5 14.6 12 22 12 22z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
           {{ 'v2.home.promo.bloc1.location'|trans }}
-        </p>
+        </span>
       </twig:PromoBloc>
 
       <twig:PromoBloc title="{{ 'v2.home.promo.bloc2.title'|trans }}"
@@ -382,10 +382,10 @@
             <div class="flex-none {% if loop.last %} mr-20 {% endif %}">
               {% if partner.link %}
                 <a href="{{ partner.link }}" target="_blank" rel="noopener noreferrer">
-                  <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}" class="w-(--largeur)" style="--largeur: {{ partner.displayWidth }}px"/>
+                  <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}" class="w-(--largeur)" style="--largeur: {{ partner.displayWidth }}px">
                 </a>
               {% else %}
-                <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}" class="w-(--largeur)" style="--largeur: {{ partner.displayWidth }}px"/>
+                <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name }}" class="w-(--largeur)" style="--largeur: {{ partner.displayWidth }}px">
               {% endif %}
             </div>
           {% endfor %}

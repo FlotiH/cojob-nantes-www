@@ -80,7 +80,7 @@ export default class extends Controller {
 
         Array.from(this.dotsTarget.children).forEach((dot, index) => {
             dot.classList.toggle('bg-navy-900', index === selectedIndex);
-            dot.classList.toggle('bg-blue-300', index !== selectedIndex);
+            dot.classList.toggle('bg-blue-300 cursor-pointer', index !== selectedIndex);
         });
     }
 }
