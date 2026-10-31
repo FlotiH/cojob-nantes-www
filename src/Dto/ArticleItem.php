@@ -54,7 +54,7 @@ final readonly class ArticleItem
             tag: ArticleTag::Promo,
             imageLink: 'https://cojobnantes.fr/uploads/images/medias/image-1-6ae59f14ba646281339313.jpg',
             source: ArticleItemType::Promo,
-            content: $promo->isRegisteringOpen() ? '<span class="font-semibold">Inscriptions ouvertes !</span>' : 'Ouverture des inscriptions le '.$promo->getRegisteringStart()->format('dd MMMM'),
+            content: $promo->isRegisteringOpen() ? '<span class="font-semibold">Inscriptions ouvertes !</span>' : 'Ouverture des inscriptions le '.$promo->getRegisteringStart()->format('d/m'),
         );
     }
 }
