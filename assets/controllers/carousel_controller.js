@@ -63,7 +63,7 @@ export default class extends Controller {
 
         this.embla.scrollSnapList().forEach((_, index) => {
             const dot = document.createElement('button');
-            dot.className = 'w-2 h-2 rounded-full transition';
+            dot.className = 'w-2 h-2 rounded-full transition cursor-pointer';
             dot.setAttribute('aria-label', `Aller au groupe ${index + 1}`);
             dot.addEventListener('click', () => {
                 this.autoplay.stop();
@@ -80,7 +80,7 @@ export default class extends Controller {
 
         Array.from(this.dotsTarget.children).forEach((dot, index) => {
             dot.classList.toggle('bg-navy-900', index === selectedIndex);
-            dot.classList.toggle('bg-blue-300 cursor-pointer', index !== selectedIndex);
+            dot.classList.toggle('bg-blue-300', index !== selectedIndex);
         });
     }
 }
