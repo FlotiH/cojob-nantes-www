@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Dto\ArticleItem;
 use App\Entity\Contact;
 use App\Entity\Event;
 use App\Entity\Promo;
@@ -54,10 +55,18 @@ class DefaultController extends AbstractController
     #[Route('/v2', name: 'homepage_v2')]
     public function indexV2(ArticleRepository $articleRepo, PromoRepository $promoRepo, TestimonyRepository $testimonyRepo, TalkRepository $talkRepo, PartnerRepository $partnerRepo): RedirectResponse|Response
     {
+        $nextPromos = $promoRepo->findNextPromos();
+        $articles = [
+            ...array_map(ArticleItem::fromArticle(...), $articleRepo->findPublishedArticles()),
+            ...array_map(ArticleItem::fromPromo(...), $nextPromos),
+        ];
+
+        usort($articles, static fn (ArticleItem $x, ArticleItem $y) => $y->start <=> $x->start);
+
         return $this->render('default/index_v2.html.twig', [
-            'articles' => $articleRepo->findPublishedArticles(),
+            'articles' => $articles,
             'testimonies' => $testimonyRepo->findBy([], ['createdAt' => 'DESC']),
-            'nextPromos' => $promoRepo->findNextPromos(),
+            'nextPromos' => $nextPromos,
             'talks' => $talkRepo->findBy([], ['createdAt' => 'DESC'], 6),
             'partners' => $partnerRepo->findBy([], ['priority' => 'ASC']),
             'nextAperotaf' => $articleRepo->findNextAperotaf(),
