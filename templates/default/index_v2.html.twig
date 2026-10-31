@@ -272,8 +272,8 @@
                 <div class="bg-(image:--bg) h-[180px] rounded-s bg-center bg-cover bg-no-repeat" style="--bg: url('{{ article.imageLink }}')"></div>
                 <div class="pt-4 text-[13px]">
                   <twig:Tag color="{{ article.tag.color() }}" type="article">{{ article.tag.svg()|raw }} <span>{{ article.tag|trans }}</span></twig:Tag>
-                  <twig:H3 class="mb-4">{{ article.title }}</twig:H3>
-                  <p class="text-[15px]">{{ article.content|raw }}</p>
+                  <twig:H3>{{ article.title }}</twig:H3>
+                  <div class="{% if article.content %} mt-2 {% endif %} mb-4 text-[15px]">{{ article.content|raw }}</div>
                   {% if article.start %}
                     {% if article.end %}
                       <p class="mb-2 flex items-center gap-2">
@@ -299,7 +299,7 @@
                       {{ article.location }}
                     </p>
                   {% endif %}
-                  <twig:Button color="outlined" href="{{ article.buttonLink }}">{{ article.buttonLabel }}</twig:Button>
+                  <twig:Button color="outlined" href="{{ article.source.isPromo ? path(article.source.route) ~ '#promoAnchor' : article.buttonLink }}">{{ article.buttonLabel }}</twig:Button>
                 </div>
               </article>
             </div>
