@@ -35,4 +35,5 @@ return [
     '@hotwired/stimulus' => ['version' => '3.2.2'],
     '@symfony/stimulus-bundle' => ['path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js'],
     'embla-carousel-autoplay' => ['version' => '8.6.0'],
+    'embla-carousel-auto-scroll' => ['version' => '8.6.0'],
 ];
