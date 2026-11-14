@@ -247,9 +247,10 @@
         </twig:MissionBloc>
       </div>
 
+      {# TODO FHA : to uncomment when who we are page will be ready
       <twig:Button color="secondary" href="#" class="mt-6 inline-block">
         {{ 'v2.home.more'|trans }}
-      </twig:Button>
+      </twig:Button> #}
     </div>
   </div>
 </section>
@@ -269,12 +270,12 @@
         <div class="-ml-4 flex">
           {% for article in articles %}
             <div class="flex-[0_0_100%] min-w-0 pl-4 sm:flex-[0_0_50%] lg:flex-[0_0_33.3333%]">
-              <article class="rounded-sm border border-brand-whitedark bg-blue-100 p-4">
-                <div class="bg-(image:--bg) h-[180px] rounded-s bg-center bg-cover bg-no-repeat" style="--bg: url('{{ article.imageLink }}')"></div>
-                <div class="pt-4 text-[13px]">
+              <article class="flex h-full flex-col rounded-sm border border-brand-whitedark bg-blue-100 p-4">
+                <div class="bg-(image:--bg) h-[180px] shrink-0 rounded-s bg-center bg-cover bg-no-repeat" style="--bg: url('{{ article.imageLink }}')"></div>
+                <div class="flex flex-1 flex-col pt-4 text-[13px]">
                   <twig:Tag color="{{ article.tag.color() }}" type="article">{{ article.tag.svg()|raw }} <span>{{ article.tag|trans }}</span></twig:Tag>
                   <twig:H3>{{ article.title }}</twig:H3>
-                  <div class="{% if article.content %} mt-2 {% endif %} mb-4 text-[15px]">{{ article.content|raw }}</div>
+                  <div class="{% if article.content %} mt-2 {% endif %} line-clamp-6 mb-4 text-[15px]">{{ article.content|raw }}</div>
                   {% if article.start %}
                     {% if article.end %}
                       <p class="mb-2 flex items-center gap-2">
@@ -329,7 +330,7 @@
         <path d="M7.83244 55.1513C10.1488 55.7427 12.2944 55.2586 14.4705 54.313C19.6842 52.0689 24.9923 50.0089 30.2162 47.7792C31.9448 47.0261 33.6089 46.15 35.1959 45.1639C36.6564 44.2621 37.1097 42.8703 36.5897 41.6596C36.0443 40.4063 34.608 39.7164 32.9392 40.3456C30.1888 41.3827 27.5374 42.6783 24.8249 43.8312C20.7166 45.5904 16.5704 47.2337 12.529 49.0884C10.1734 50.1597 8.30665 51.8983 7.32187 54.3913L7.83244 55.1513ZM12.4925 0.0315297C14.6859 -0.119349 16.7874 0.251482 18.5537 1.56035C23.1175 4.94875 27.635 8.41271 32.1129 11.9433C32.9885 12.6332 33.7087 13.5139 34.2167 14.5043C34.5524 15.1623 34.6219 16.352 34.2329 16.8314C33.7702 17.3841 32.6838 17.5451 31.8544 17.6296C31.3712 17.6789 30.7875 17.3196 30.3133 17.0304C24.7756 13.4955 19.2732 9.91864 14.6601 5.19702C13.4242 3.93099 12.8624 2.00746 11.9918 0.382142L12.4925 0.0315297ZM4.51483 23.7517C10.3092 23.4826 16.0786 23.067 21.8328 24.3362C23.2054 24.6393 24.6644 24.5668 26.0679 24.7663C27.3122 24.9478 28.5845 25.114 29.7632 25.5528C30.815 25.9338 31.4946 26.8429 31.2518 28.0916C31.0191 29.2685 30.1108 29.8009 29.0408 29.8684C26.762 30.0143 24.4566 30.2393 22.2017 30.0622C17.6893 29.6795 13.209 29.0716 8.72525 28.5266C6.96163 28.3118 5.18786 28.0825 3.43638 27.7988C2.07629 27.569 0.789685 27.1237 -0.000115426 25.7309C1.22609 24.3157 2.80889 23.8287 4.51483 23.7517Z" fill="#00905D"/>
       </svg>
       <twig:KeyCounter counterValue="98" counterName="counter-a">{{ 'v2.home.stats.more_efficient.label'|trans }}</twig:KeyCounter>
-      <twig:KeyCounter counterValue="91" counterName="counter-b">{{ 'v2.home.stats.gained_confidence.label'|trans }}</twig:KeyCounter>
+      <twig:KeyCounter counterValue="91" counterName="counter-b">{{ 'v2.home.stats.gained_confidence.label'|trans|raw }}</twig:KeyCounter>
       <twig:KeyCounter counterValue="96" counterName="counter-c">{{ 'v2.home.stats.pro_networking.label'|trans }}</twig:KeyCounter>
       <svg class="hidden lg:block" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M37.1384 5.31848C34.7545 5.13826 32.7256 5.98758 30.7467 7.2967C26.0019 10.4121 21.1322 13.3625 16.3749 16.4654C14.8033 17.5072 13.3166 18.659 11.925 19.9057C10.6432 21.0475 10.4385 22.4968 11.1608 23.5988C11.9156 24.7384 13.4499 25.1684 14.984 24.259C17.5126 22.76 19.8987 21.0237 22.3698 19.4173C26.1102 16.9714 29.9081 14.6331 33.566 12.1047C35.6998 10.6407 37.2363 8.6044 37.7732 5.97824L37.1384 5.31848ZM42.1206 60.41C39.9867 60.9395 37.8527 60.9392 35.886 59.9569C30.8032 57.4125 25.7528 54.7856 20.7298 52.0863C19.7477 51.5589 18.8856 50.8167 18.2133 49.9295C17.7684 49.3397 17.4934 48.1803 17.7932 47.6406C18.1529 47.0159 19.1949 46.6687 19.997 46.4414C20.4642 46.3091 21.1014 46.5615 21.6187 46.764C27.6861 49.2835 33.726 51.8506 39.0889 55.6994C40.5259 56.7316 41.4132 58.5283 42.5528 59.9778L42.1206 60.41ZM45.8581 35.6649C40.1985 36.9361 34.5889 38.3472 28.7017 38.0966C27.2974 38.0364 25.8731 38.3611 24.4563 38.4084C23.1994 38.4457 21.9175 38.503 20.6806 38.2755C19.5786 38.0829 18.7514 37.3057 18.7737 36.0338C18.7985 34.8344 19.6006 34.1523 20.6425 33.9001C22.8614 33.3606 25.0927 32.7387 27.3441 32.5216C31.8544 32.1149 36.3722 31.9355 40.8825 31.6937C42.6566 31.599 44.4432 31.5168 46.2174 31.492C47.5967 31.4822 48.9411 31.6973 49.9608 32.9318C48.9989 34.5384 47.5247 35.2928 45.8581 35.6649Z" fill="#00905D"/>
@@ -343,7 +344,7 @@
             <div class="flex-[0_0_100%] min-w-0 pl-2 sm:flex-[0_0_50%] lg:flex-[0_0_33.3333%] xl:pl-4">
               <article class="flex h-full flex-col rounded-md border border-brand-whitedark bg-white p-4">
                 <twig:H3 class="mb-2">{{ testimony.subtitle }}</twig:H3>
-                <div class="mb-6 text-[15px]/[22px] text-navy-900">
+                <div class="line-clamp-10 mb-6 text-[15px]/[22px] text-navy-900">
                   {{ testimony.content|raw }}
                 </div>
                 <div class="mt-auto flex items-center gap-3">
@@ -374,7 +375,7 @@
   <div class="mx-auto max-w-[1048px] px-2 xl:px-0">
     <twig:H2 class="mb-4">{{ ('v2.home.partners'|trans)|raw }}</twig:H2>
 
-    <div {{ stimulus_controller('partner_carousel') }} data-carousel-slides-to-scroll-value="6" class="relative">
+    <div {{ stimulus_controller('partner_carousel', {speed: 1}) }} class="relative">
       <div {{ stimulus_target('partner_carousel', 'viewport') }} class="overflow-hidden">
         <div class="flex items-center gap-20">
           {% for partner in partners %}

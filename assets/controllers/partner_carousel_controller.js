@@ -1,82 +1,53 @@
 import { Controller } from '@hotwired/stimulus';
 import EmblaCarousel from 'embla-carousel';
-import Autoplay from 'embla-carousel-autoplay';
-
-const BREAKPOINTS = [
-    { query: '(min-width: 1024px)', slidesToScroll: 6 },
-    { query: '(min-width: 640px)', slidesToScroll: 3 },
-    { query: '(min-width: 0px)', slidesToScroll: 1 },
-];
+import AutoScroll from 'embla-carousel-auto-scroll';
 
 export default class extends Controller {
     static targets = ['viewport'];
     static values = {
-        autoplayDelay: { type: Number, default: 5000 },
+        speed: { type: Number, default: 1 },
     };
 
     connect() {
-        this.userStopped = false;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        this.autoplay = Autoplay({ delay: this.autoplayDelayValue, stopOnInteraction: false, playOnInit: false });
+        this.autoScroll = AutoScroll({
+            speed: this.speedValue,
+            startDelay: 0,
+            playOnInit: false,
+            stopOnInteraction: false,
+            stopOnMouseEnter: true, 
+            stopOnFocusIn: true,
+        });
 
         this.embla = EmblaCarousel(
             this.viewportTarget,
-            { loop: true, align: 'start', containScroll: 'trimSnaps', slidesToScroll: this.currentSlidesToScroll() },
-            [this.autoplay]
+            { loop: true, align: 'start', dragFree: true },
+            reduceMotion ? [] : [this.autoScroll]
         );
 
-        this.mediaQueries = BREAKPOINTS.map(bp => window.matchMedia(bp.query));
-        this.handleBreakpointChange = () => this.applyBreakpoint();
-        this.mediaQueries.forEach(mq => mq.addEventListener('change', this.handleBreakpointChange));
-
-        this.embla.on('pointerDown', () => { this.userStopped = true; });
-
-        this.observeVisibility();
+        if (!reduceMotion) {
+            this.observeVisibility();
+        }
     }
 
     disconnect() {
         this.observer?.disconnect();
-        this.mediaQueries?.forEach(mq => mq.removeEventListener('change', this.handleBreakpointChange));
         this.embla?.destroy();
     }
 
     observeVisibility() {
         this.observer = new IntersectionObserver(
             ([entry]) => {
-                if (this.userStopped) return;
-
                 if (entry.isIntersecting) {
                     this.autoplay.play();
                 } else {
                     this.autoplay.stop();
                 }
             },
-            { threshold: 0.4 } // at least 40 % of the carousel visible
+            { threshold: 0.2 } // at least 20 % of the carousel visible
         );
 
         this.observer.observe(this.element);
-    }
-
-    currentSlidesToScroll() {
-        const match = BREAKPOINTS.find(bp => window.matchMedia(bp.query).matches);
-        return match ? match.slidesToScroll : 1;
-    }
-
-    applyBreakpoint() {
-        const newValue = this.currentSlidesToScroll();
-
-        this.embla.reInit({ loop: true, align: 'start', containScroll: 'trimSnaps', slidesToScroll: newValue });
-    }
-
-    next() {
-        this.userStopped = true;
-        this.autoplay.stop();
-        this.embla.scrollNext();
-    }
-
-    prev() {
-        this.userStopped = true;
-        this.autoplay.stop();
-        this.embla.scrollPrev();
     }
 }
