@@ -1,7 +1,7 @@
 {% props color = 'green100', type = 'main' %}
 
 {% set tag = html_cva(
-    base: 'rounded-s',
+    base: 'rounded-[4px]',
     variants: {
         color: {
             green100: 'bg-green-100 text-navy-900 border border-brand-green',
@@ -15,7 +15,7 @@
         },
         type: {
             main: 'inline-block text-[13px] px-2.5 font-semibold py-1 ',
-            title: 'inline-block text-md lg:text-lg font-semibold font-heading px-2 rounded-s',
+            title: 'inline-block text-lg font-semibold font-heading px-2 rounded-[4px]',
             article: 'inline-flex items-center gap-1 self-start text-[14px] font-semibold font-heading px-2.5 py-0.5 mb-4',
             talkAboutUs: 'inline-flex items-center gap-1 text-[11px] px-2 py-1',
         },

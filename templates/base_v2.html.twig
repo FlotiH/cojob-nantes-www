@@ -102,9 +102,9 @@
 
     {% block content %}{% endblock %}
 
-    <footer class="bg-navy-900 pb-8 pt-16 text-center text-white sm:text-left">
-        <div class="mx-auto grid max-w-[1048px] border-blue-100 border-b px-6 pb-12 sm:grid-cols-2 lg:grid-cols-[3fr_2fr_2fr_2fr] xl:px-0">
-            <div class="mb-8 lg:md-0">
+    <footer class="bg-navy-900 py-8 text-white sm:py-16">
+        <div class="mx-auto grid max-w-[1048px] px-4 pb-8 sm:grid-cols-2 sm:border-blue-100 sm:border-b sm:px-6 sm:pb-12 lg:grid-cols-[3fr_2fr_2fr_2fr] xl:px-0">
+            <div class="mb-8 text-center lg:md-0">
                 <a href="{{ path('homepage') }}" class="mx-auto inline-block sm:inline">
                     <picture>
                         <source
@@ -129,24 +129,12 @@
                             decoding="async">
                     </picture>
                 </a>
-                <p class="m-auto mt-6 max-w-[150px] text-center text-xs sm:ml-0">
+                <p class="m-auto mt-6 text-center text-xs sm:ml-0 sm:max-w-[150px]">
                     {{ 'v2.footer.cojob'|trans }}
                 </p>
             </div>
-            <div class="lg:order-4" itemscope itemtype="https://schema.org/Organization">
-                <meta itemprop="name" content="COJOB Nantes">
-                <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                    <meta itemprop="streetAddress" content="boulevard salvador Allende, Les Salorges 2">
-                    <meta itemprop="postalCode" content="44100">
-                    <meta itemprop="addressLocality" content="Nantes, France">
-                </div>
-                <p class="mb-4 text-xs font-semibold">{{ 'v2.footer.social_links'|trans }}</p>
-                <link itemprop="url" href="{{ absolute_url(path('homepage')) }}">
-                <div class="flex justify-center gap-4 sm:justify-start">
-                    <twig:Social:Buttons location='Footer' />
-                </div>
-            </div>
-            <div class="mt-4 sm:mt-0 lg:order-2">
+            <hr class="mb-8 text-blue-100 sm:hidden">
+            <div class="sm:mt-0">
                 <ul class="space-y-4 text-xs font-semibold">
                     <li><twig:Menu:Item href="{{ path('homepage') }}#about">{{ 'v2.nav.about'|trans }}</twig:Menu:Item></li>
                     <li><twig:Menu:Item href="{{ path('promos') }}">{{ 'nav.promo'|trans }}</twig:Menu:Item></li>
@@ -154,7 +142,7 @@
                     <li><twig:Menu:Item href="{{ path('partners') }}">{{ 'v2.nav.partners'|trans }}</twig:Menu:Item></li>
                 </ul>
             </div>
-            <div class="mt-4 sm:mt-0 lg:order-3">
+            <div class="mt-4 sm:mt-0">
                 <p class="mb-4 text-xs font-semibold">{{ 'nav.support_us'|trans }}</p>
                 <ul class="space-y-4 text-xs">
                     <li><twig:Menu:Item href="{{ path('support') }}#join-form" onclick="gtag('event', 'Join Link Footer', {'event_category': 'Button Click'});">
@@ -168,10 +156,24 @@
                     </twig:Menu:Item></li>
                 </ul>
             </div>
+            <div itemscope itemtype="https://schema.org/Organization" class="mt-8 sm:mt-0">
+                <meta itemprop="name" content="COJOB Nantes">
+                <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                    <meta itemprop="streetAddress" content="boulevard salvador Allende, Les Salorges 2">
+                    <meta itemprop="postalCode" content="44100">
+                    <meta itemprop="addressLocality" content="Nantes, France">
+                </div>
+                <p class="mb-4 text-xs font-semibold">{{ 'v2.footer.social_links'|trans }}</p>
+                <link itemprop="url" href="{{ absolute_url(path('homepage')) }}">
+                <div class="flex gap-4">
+                    <twig:Social:Buttons location='Footer' />
+                </div>
+            </div>
         </div>
-        <div class="mx-auto flex max-w-7xl flex-col items-center justify-center gap-6 px-6 pt-6 text-xs sm:flex-row lg:px-10">
+        <hr class="mx-4 text-blue-100 sm:hidden">
+        <div class="mx-auto flex max-w-7xl flex-col items-center justify-center gap-2 px-6 pt-8 text-xs sm:flex-row sm:gap-6 sm:pt-6 lg:px-10">
             <p>© COJOB Nantes 2026. Tous droits réservés.</p>
-            <twig:Button color="outlined" href="{{ path('legals') }}" class="text-xs">{{ 'footer.legals'|trans }}</twig:Button>
+            <twig:Button color="outlined" href="{{ path('legals') }}" class="m-auto text-xs sm:m-[initial]">{{ 'footer.legals'|trans }}</twig:Button>
         </div>
     </footer>
     </body>
