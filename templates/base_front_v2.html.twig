@@ -21,7 +21,7 @@
     <header class="sticky top-0 z-50 border-brand-whitedark border-b bg-white font-semibold backdrop-blur">
         <nav class="relative mx-auto flex h-20 items-center justify-between px-4 group xl:px-20"
             data-controller="menu"
-            data-action="click@window->menu#closeOnClickOutside">
+            data-action="click@window->menu#closeOnClickOutside keydown.esc@window->menu#closeDropdowns">
             <a href="{{ path('homepage') }}" class="flex shrink-0 items-center gap-2">
                 <picture>
                     <source
@@ -50,7 +50,7 @@
                 <twig:Menu:Item location="header" href="{{ path('homepage') }}#about">{{ 'v2.nav.about'|trans }}</twig:Menu:Item>
                 <twig:Menu:Item location="header" href="{{ path('promos') }}">{{ 'nav.promo'|trans }}</twig:Menu:Item>
                 <twig:Menu:Item location="header" href="{{ path('calendar') }}#about">{{ 'nav.calendar'|trans }}</twig:Menu:Item>
-                <details class="relative inline-block">
+                <details class="relative inline-block" data-menu-target="dropdown">
                     <summary class="flex items-center gap-1 list-none transition cursor-pointer hover:underline">
                         {{ 'nav.support_us'|trans }}
                         <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
