@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-    static targets = ['panel', 'openIcon', 'closeIcon', 'button'];
+    static targets = ['panel', 'openIcon', 'closeIcon', 'button', 'dropdown'];
 
     connect() {
         this.close();
@@ -27,8 +27,18 @@ export default class extends Controller {
     }
 
     closeOnClickOutside(event) {
+        this.dropdownTargets.forEach((details) => {
+            if (details.open && !details.contains(event.target)) {
+                details.open = false
+            }
+        })
+
         if (!this.element.contains(event.target)) {
             this.close();
         }
+    }
+
+    closeDropdowns() {
+        this.dropdownTargets.forEach((details) => (details.open = false))
     }
 }

@@ -76,7 +76,8 @@ return [
         'main' => [400, 200],
         'v2/logo/header' => [109],
         'v2/logo/footer' => [150],
-        'v2/header' => [312, 508],
+        'v2/header/xs' => [380],
+        'v2/header' => [508],
         'v2/main' => [400, 544],
     ],
 ];

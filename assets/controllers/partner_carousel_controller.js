@@ -40,9 +40,9 @@ export default class extends Controller {
         this.observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    this.autoplay.play();
+                    this.autoScroll.play();
                 } else {
-                    this.autoplay.stop();
+                    this.autoScroll.stop();
                 }
             },
             { threshold: 0.2 } // at least 20 % of the carousel visible

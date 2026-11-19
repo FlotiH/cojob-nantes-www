@@ -20,9 +20,10 @@ final readonly class ArticleItem
         public ?ArticleTag $tag,
         public string $imageLink,
         public ArticleItemType $source,
-        public ?string $content,
+        public ?string $content = null,
         public ?string $buttonLink = null,
         public ?\DateTimeInterface $startTime = null,
+        public ?bool $forceFirst = false,
     ) {
     }
 
@@ -46,7 +47,7 @@ final readonly class ArticleItem
     public static function fromPromo(Promo $promo): self
     {
         return new self(
-            title: $promo->getName(),
+            title: $promo->getName().($promo->isRegisteringOpen() ? '<br>Inscriptions ouvertes !' : '<br>Ouverture des inscriptions le '.$promo->getRegisteringStart()->format('d/m')),
             start: $promo->getStart(),
             end: $promo->getEnd(),
             buttonLabel: 'S\'inscrire',
@@ -54,7 +55,7 @@ final readonly class ArticleItem
             tag: ArticleTag::Promo,
             imageLink: 'https://cojobnantes.fr/uploads/images/medias/image-1-6ae59f14ba646281339313.jpg',
             source: ArticleItemType::Promo,
-            content: $promo->isRegisteringOpen() ? '<span class="font-semibold">Inscriptions ouvertes !</span>' : 'Ouverture des inscriptions le '.$promo->getRegisteringStart()->format('d/m'),
+            forceFirst: $promo->isRegisteringOpen(),
         );
     }
 }
