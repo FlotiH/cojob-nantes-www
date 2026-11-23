@@ -51,8 +51,8 @@
             <div class="mt-8 flex flex-start flex-col gap-4 sm:mt-12 sm:flex-row">
               {# <twig:Button class="w-fit" href="{{ path('promos') }}#promoAnchor" onclick="gtag('event', 'Home Register promo hero', {'event_category': 'Button Click'});">
                 {{ 'v2.home.next_promo_registration'|trans }}
-              </twig:Button> #}
-              <twig:Button class="w-fit" color="secondary" href="{{ path('homepage_v2') }}">{{ 'v2.home.more'|trans }}</twig:Button>
+              </twig:Button>
+              <twig:Button class="w-fit" color="secondary" href="{{ path('homepage_v2') }}">{{ 'v2.home.more'|trans }}</twig:Button> TODO FHA : to uncomment when cosearching page will be ready #}
             </div>
           </twig:Carousel:HeaderSlide>
 
@@ -149,7 +149,7 @@
 </section>
 
 <!-- ============ QUI SOMMES-NOUS ============ -->
-<section id="qui-sommes-nous" class="py-8 sm:py-16">
+<section id="about" class="py-8 sm:py-16">
   <div class="mx-auto max-w-[1048px] px-4 xl:px-0">
     <twig:H2 class="mb-6">{{ 'v2.home.who_are_we.title'|trans|raw }}</twig:H2>
 
@@ -270,7 +270,7 @@
         <div class="-ml-4 flex">
           {% for article in articles %}
             <div class="flex-[0_0_90%] min-w-0 pl-4 sm:flex-[0_0_50%] lg:flex-[0_0_33.3333%]">
-              <article class="flex h-full flex-col rounded-[4px]m border border-brand-whitedark bg-blue-100 p-4">
+              <article class="flex h-full flex-col rounded-[4px] border border-brand-whitedark bg-blue-100 p-4">
                 <div class="bg-(image:--bg) h-[180px] shrink-0 rounded-[4px] bg-center bg-cover bg-no-repeat" style="--bg: url('{{ article.imageLink }}')"></div>
                 <div class="flex flex-1 flex-col pt-4 text-[13px]">
                   <twig:Tag color="{{ article.tag.color() }}" type="article">{{ article.tag.svg()|raw }} <span>{{ article.tag|trans }}</span></twig:Tag>
