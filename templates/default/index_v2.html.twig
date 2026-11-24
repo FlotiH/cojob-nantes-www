@@ -265,8 +265,8 @@
       </twig:Button>
     </div>
 
-    <div {{ stimulus_controller('carousel') }} data-carousel-slides-to-scroll-value="3" class="relative">
-      <div {{ stimulus_target('carousel', 'viewport') }} class="sm:overflow-hidden">
+    <div {{ stimulus_controller('carousel') }} data-carousel-slides-to-scroll-value="3" class="relative -mr-4">
+      <div {{ stimulus_target('carousel', 'viewport') }} class="overflow-hidden">
         <div class="-ml-4 flex">
           {% for article in articles %}
             <div class="flex-[0_0_92.5%] min-w-0 pl-4 sm:flex-[0_0_50%] lg:flex-[0_0_33.3333%]">
@@ -340,8 +340,8 @@
       </svg>
     </div>
 
-    <div {{ stimulus_controller('carousel') }} data-carousel-slides-to-scroll-value="3" class="relative">
-      <div {{ stimulus_target('carousel', 'viewport') }} class="sm:overflow-hidden">
+    <div {{ stimulus_controller('carousel') }} data-carousel-slides-to-scroll-value="3" class="relative -mr-4">
+      <div {{ stimulus_target('carousel', 'viewport') }} class="overflow-hidden">
         <div class="flex">
           {% for testimony in testimonies %}
             <div class="mr-4 flex-[0_0_92%] min-w-0 sm:flex-[0_0_49%] lg:flex-[0_0_32.25%]">

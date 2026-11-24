@@ -63,7 +63,7 @@
         "twig/inky-extra": "^3.26",
         "twig/intl-extra": "^3.31",
         "twig/string-extra": "^3.24",
-        "twig/twig": "^3.31.0",
+        "twig/twig": "^3.31.1",
         "vich/uploader-bundle": "^2.10.1"
     },
     "config": {
