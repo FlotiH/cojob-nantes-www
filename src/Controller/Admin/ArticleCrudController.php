@@ -61,7 +61,7 @@ class ArticleCrudController extends AbstractCrudController
                 ->setTemplatePath('admin/fields/image.html.twig'),
             TextField::new('title'),
             DateTimeField::new('createdAt')->onlyOnIndex(),
-            TextEditorField::new('content')->onlyOnForms(),
+            TextEditorField::new('content')->onlyOnForms()->setHelp('help.truncate.lines6'),
             TextField::new('location')->onlyOnForms(),
             DateField::new('start')->onlyOnForms(),
             TimeField::new('startTime')->onlyOnForms(),

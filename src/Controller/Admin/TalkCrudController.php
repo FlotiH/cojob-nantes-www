@@ -48,7 +48,7 @@ class TalkCrudController extends AbstractCrudController
                 ->setFormType(VichImageType::class)
                 ->setTemplatePath('admin/fields/vich_image.html.twig')
                 ->setRequired(Crud::PAGE_NEW === $pageName),
-            TextField::new('title'),
+            TextField::new('title')->setHelp('help.truncate.lines2'),
             TextField::new('source'),
             DateField::new('date'),
             UrlField::new('link')

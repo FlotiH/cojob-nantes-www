@@ -39,7 +39,7 @@ class TestimonyCrudController extends AbstractCrudController
             IntegerField::new('age')->onlyOnForms(),
             TextField::new('promoNb')->onlyOnForms(),
             TextField::new('subtitle'),
-            TextEditorField::new('content')->onlyOnForms(),
+            TextEditorField::new('content')->onlyOnForms()->setHelp('help.truncate.lines10'),
             BooleanField::new('requiredDisplaying'),
             BooleanField::new('promo'),
             TextField::new('createdBy')->onlyOnIndex(),
