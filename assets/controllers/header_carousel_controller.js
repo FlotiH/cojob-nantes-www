@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
 import EmblaCarousel from 'embla-carousel';
 import Autoplay from 'embla-carousel-autoplay';
+import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
 export default class extends Controller {
     static targets = ['viewport', 'dot'];
@@ -14,7 +15,7 @@ export default class extends Controller {
         this.embla = EmblaCarousel(
             this.viewportTarget,
             { loop: true },
-            [this.autoplay]
+            [this.autoplay, WheelGesturesPlugin()]
         );
 
         this.embla.on('select', () => this.updateDots());
