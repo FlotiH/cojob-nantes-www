@@ -36,4 +36,6 @@ return [
     '@symfony/stimulus-bundle' => ['path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js'],
     'embla-carousel-autoplay' => ['version' => '8.6.0'],
     'embla-carousel-auto-scroll' => ['version' => '8.6.0'],
+    'embla-carousel-wheel-gestures' => ['version' => '8.1.0'],
+    'wheel-gestures' => ['version' => '2.2.48'],
 ];
