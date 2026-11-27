@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
 import EmblaCarousel from 'embla-carousel';
 import Autoplay from 'embla-carousel-autoplay';
+import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
 const BREAKPOINTS = [
     { query: '(min-width: 1024px)', slidesToScroll: 3 },
@@ -20,7 +21,7 @@ export default class extends Controller {
         this.embla = EmblaCarousel(
             this.viewportTarget,
             { loop: false, align: 'start', containScroll: 'trimSnaps', slidesToScroll: this.currentSlidesToScroll() },
-            [this.autoplay]
+            [this.autoplay, WheelGesturesPlugin()]
         );
 
         this.buildDots();

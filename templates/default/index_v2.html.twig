@@ -265,11 +265,11 @@
       </twig:Button>
     </div>
 
-    <div {{ stimulus_controller('carousel') }} data-carousel-slides-to-scroll-value="3" class="relative -mr-4 sm:mr-0">
-      <div {{ stimulus_target('carousel', 'viewport') }} class="overflow-hidden">
+    <div {{ stimulus_controller('carousel') }} data-carousel-slides-to-scroll-value="3" class="relative -mr-4 lg:mr-0">
+      <div {{ stimulus_target('carousel', 'viewport') }} class="overscroll-x-contain overflow-hidden">
         <div class="-ml-4 flex">
           {% for article in articles %}
-            <div class="flex-[0_0_89%] min-w-0 pl-4 sm:flex-[0_0_50%] lg:flex-[0_0_33.3333%]">
+            <div class="flex-[0_0_89%] min-w-0 pl-4 sm:flex-[0_0_338px] lg:flex-[0_0_33.3333%]">
               <article class="flex h-full flex-col rounded-[4px] border border-brand-whitedark bg-blue-100 p-4">
                 <div class="bg-(image:--bg) h-[180px] shrink-0 rounded-[4px] bg-center bg-cover bg-no-repeat" style="--bg: url('{{ article.imageLink }}')"></div>
                 <div class="flex flex-1 flex-col pt-4 text-[13px]">
@@ -313,7 +313,7 @@
 
         <div {{ stimulus_target('carousel', 'dots') }} class="mx-auto flex justify-center gap-1"></div>
 
-        <twig:Carousel:Arrows carouselName="carousel" class="hidden sm:flex" />
+        <twig:Carousel:Arrows carouselName="carousel" class="hidden lg:flex" />
       </div>
     </div>
   </div>
@@ -340,11 +340,11 @@
       </svg>
     </div>
 
-    <div {{ stimulus_controller('carousel') }} data-carousel-slides-to-scroll-value="3" class="relative -mr-4 sm:mr-0">
-      <div {{ stimulus_target('carousel', 'viewport') }} class="overflow-hidden">
+    <div {{ stimulus_controller('carousel') }} data-carousel-slides-to-scroll-value="3" class="relative -mr-4 lg:mr-0">
+      <div {{ stimulus_target('carousel', 'viewport') }} class="overscroll-x-contain overflow-hidden">
         <div class="flex">
           {% for testimony in testimonies %}
-            <div class="mr-4 flex-[0_0_88.5%] min-w-0 sm:flex-[0_0_49%] lg:flex-[0_0_32.25%]">
+            <div class="mr-4 flex-[0_0_88.5%] min-w-0 sm:flex-[0_0_338px] lg:flex-[0_0_32.25%]">
               <article class="flex h-full flex-col rounded-[4px] border border-brand-whitedark bg-white p-4">
                 <twig:H3 class="mb-2">{{ testimony.subtitle }}</twig:H3>
                 <div class="line-clamp-10 mb-6 text-[15px]/[22px] text-navy-900">
@@ -363,7 +363,7 @@
         </div>
       </div>
 
-      <div class="mt-6 hidden items-center justify-between sm:flex">
+      <div class="mt-6 hidden items-center justify-between lg:flex">
 
         <div {{ stimulus_target('carousel', 'dots') }} class="mx-auto flex justify-center gap-1"></div>
 
